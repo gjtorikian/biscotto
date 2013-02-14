@@ -18,7 +18,13 @@ module.exports = class Doc extends Node
   constructor: (@node, @options) ->
     try
       if @node
-        @parseTags @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        if @options.parser is 'yard'
+          @parseTags @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        else if @options.parser is 'tomdoc'
+          @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        else
+          console.error "I don't understand #{@options.parser} as a parse type!"
+          process.exit 1
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
@@ -272,6 +278,85 @@ module.exports = class Doc extends Node
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
     @summary = Markdown.convert(_.str.clean(sentence || text), true)
+
+
+  # Parse the given lines as TomDoc and adds the result
+  # to the result object.
+  #
+  parseBlock: (lines) ->
+    comment = []
+
+    return unless lines isnt undefined
+    
+    sections = lines.join("\n").split "\n\n"
+
+    text = parse_description(sections.shift())
+    #@comment = Markdown.convert(text)
+
+    sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
+    sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
+    @summary = Markdown.convert(_.str.clean(sentence || text), true)
+
+    if sections.first && sections.first =~ /^\w+\s+\-/m
+      parse_arguments(sections.shift)
+
+    current = sections.shift
+    while current
+      switch current
+        when /^Examples/
+          parse_examples(current, sections)
+
+  # Parse description.
+  #
+  # section - String containing description.
+  #
+  # Returns nothing.
+  parse_description: (section) ->
+    if md = /^([A-Z]\w+\:)/.match(section)
+      @status      = md[1].chomp(':')
+      @description = md.post_match.strip
+    else
+      @description = section.strip
+
+  # Parse arguments section. Arguments occur subsequent to
+  # the description.
+  #
+  # section - String contaning agument definitions.
+  #
+  # Returns nothing.
+  parse_arguments: (section) ->
+    args = []
+    last_indent = nil
+
+    for line of section.split("\n")
+      next if line.strip.empty?
+      indent = line.scan(/^\s*/)[0].to_s.size
+
+      if last_indent && indent > last_indent
+        args.last.description += line.squeeze(" ")
+      else
+        [param, desc] = line.split(" - ")
+        @params.push
+                    name: param.strip
+                    desc: Markdown.convert(param[3] || '', true)
+
+  # Parse examples.
+  #
+  # section  - String starting with `Examples`.
+  # sections - All sections subsequent to section.
+  #
+  # Returns nothing.
+  parse_examples: (section, sections) ->
+    examples = []
+
+    section = section.sub('Examples', '').strip
+
+    examples.push(section) unless section.empty?
+    while sections.first && sections.first !~ /^\S/
+      lines = sections.shift.split("\n")
+      examples.push(deindent(lines).join("\n"))
+
+    @examples = examples
 
   # Get a JSON representation of the object
   #

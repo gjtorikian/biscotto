@@ -91,6 +91,11 @@ module.exports = class Codo
             describe  : 'The project name used'
             default   : codoopts.name || codoopts.n || defaults.name
           )
+          .options('p',
+            alias     : 'parser'
+            describe  : 'The parsing type to use'
+            default   : 'yard'
+          )
           .options('q',
             alias     : 'quiet'
             describe  : 'Show no warnings'
@@ -156,6 +161,7 @@ module.exports = class Codo
             output: argv.o
             extras: []
             name: argv.n
+            parser: argv.p
             readme: argv.r
             title: argv.title
             quiet: argv.q
