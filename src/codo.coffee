@@ -137,6 +137,11 @@ module.exports = class Codo
             alias     : 'server'
             describe  : 'Start a documentation server'
           )
+          .options('j',
+            alias     : 'json'
+            describe  : 'The location (including filename) of optional JSON output'
+            default   : ""
+          )
           .options('private',
             boolean   : true
             default   : codoopts.private || false
@@ -159,6 +164,7 @@ module.exports = class Codo
           options =
             inputs: []
             output: argv.o
+            json: argv.j
             extras: []
             name: argv.n
             parser: argv.p

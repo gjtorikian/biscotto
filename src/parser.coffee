@@ -253,7 +253,9 @@ module.exports = class Parser
       """
 
     console.log stats
-    fs.writeFileSync 'doc.json', JSON.stringify(@toJSON(), null, "    ");
+
+    if @options.json.length
+      fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
   # Get a JSON representation of the object
   #
