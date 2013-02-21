@@ -140,7 +140,6 @@ module.exports = class Codo
           .options('j',
             alias     : 'json'
             describe  : 'The location (including filename) of optional JSON output'
-            default   : ""
           )
           .options('private',
             boolean   : true
@@ -161,6 +160,8 @@ module.exports = class Codo
           console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
 
         else
+          if argv.j == true
+            argv.j = './doc.json'
           options =
             inputs: []
             output: argv.o

@@ -20,7 +20,6 @@ module.exports = class Parser
   # @param [Object] options the parser options
   #
   constructor: (@options) ->
-    log @options
     @files   = []
     @classes = []
     @mixins  = []
@@ -254,8 +253,8 @@ module.exports = class Parser
       """
 
     console.log stats
-
-    if @options.json.length
+    
+    if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
   # Get a JSON representation of the object
