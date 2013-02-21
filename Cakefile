@@ -18,15 +18,17 @@ onerror = (err) ->
     process.stdout.write "#{ red }#{ err.stack }#{ reset }\n"
     process.exit -1
 
-test = (cb) ->
-  exec 'jasmine-node --coffee spec', (err, stdout, stderr) ->
+test = (type, cb) ->
+  exec "jasmine-node --coffee #{type}", (err, stdout, stderr) ->
     msg = /(\d+) tests?, (\d+) assertions?, (\d+) failures?/
     matches = stdout.match msg || stderr.match msg
     cb new Error('Tests failed') if matches[3] != '0'
     log matches[0]
     cb err
 
-task 'test', 'Run all tests', -> test onerror
+task 'test', 'Run all tests using regular parser', -> test "spec", onerror
+
+task 'test_tomdoc', 'Run all tests using tomdoc parser', -> test "spec_tomdoc", onerror
 
 publish = (cb) ->
   npmPublish = (cb) ->

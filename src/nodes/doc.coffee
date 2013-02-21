@@ -18,13 +18,10 @@ module.exports = class Doc extends Node
   constructor: (@node, @options) ->
     try
       if @node
-        if @options.parser is 'yard'
-          @parseTags @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
-        else if @options.parser is 'tomdoc'
-          @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        if @options.parser is 'tomdoc'
+          @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n')) 
         else
-          console.error "I don't understand #{@options.parser} as a parse type!"
-          process.exit 1
+          @parseTags @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose

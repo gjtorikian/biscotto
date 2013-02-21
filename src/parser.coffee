@@ -20,6 +20,7 @@ module.exports = class Parser
   # @param [Object] options the parser options
   #
   constructor: (@options) ->
+    log @options
     @files   = []
     @classes = []
     @mixins  = []
