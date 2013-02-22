@@ -290,7 +290,7 @@ module.exports = class Doc extends Node
     info_block     = @parse_description(sections.shift())
 
     text     = info_block.description
-    status   = info_block.status
+    @status   = info_block.status
 
     if _.first(sections) && /^\w+\s+\-/.test(_.first(sections))
       @params or= []
@@ -300,7 +300,9 @@ module.exports = class Doc extends Node
 
     while current
       if /^Examples/.test(current)
-        @parse_examples(current, sections)
+        @examples or= []
+
+        @examples = @parse_examples(current, sections)
       else if /^Returns/.test(current)
         @returnValue or= []
 
@@ -343,12 +345,11 @@ module.exports = class Doc extends Node
     section = _.str.strip(section.replace(/Examples/, ''))
 
     examples.push(section) unless _.isEmpty(section)
-
     while _.first(sections) && !/^\S/.test(_.first(sections))
-      lines = sections.shift.split("\n")
+      lines = sections.shift().split("\n")
       examples.push(@deindent(lines).join("\n"))
 
-    @examples = examples
+    examples
 
   # Parse returns section.
   #
@@ -400,7 +401,7 @@ module.exports = class Doc extends Node
     # remove indention
     spaces = _.map lines, (line) ->
       return line if _.isEmpty(_.str.strip(line))
-      md = /^(\s*)/.match(line)
+      md = line.match(/^(\s*)/)
       if md then md[1].length else null
     
     spaces = _.compact(spaces)
@@ -435,6 +436,7 @@ module.exports = class Doc extends Node
         copyright: @copyright
         comment: @comment
         summary: @summary
+        status: @status
         params: @params
         options: @paramsOptions
         see: @see
