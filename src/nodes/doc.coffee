@@ -292,25 +292,25 @@ module.exports = class Doc extends Node
     text     = info_block.description
     @status   = info_block.status
 
-    if _.first(sections) && /^\w+\s+\-/.test(_.first(sections))
-      @params or= []
-      @params.push @parse_arguments(sections.shift())
-
     current = sections.shift()
 
     while current
-      if /^Examples/.test(current)
+      if /^\w+\s+\-/.test(current)
+        @params or= []
+        @params = @parse_arguments(current)
+
+      else if /^\s*Examples/.test(current)
         @examples or= []
 
         @examples = @parse_examples(current, sections)
-      else if /^Returns/.test(current)
+      else if /^\s*Returns/.test(current)
         @returnValue or= []
 
         @returnValue.push
           type: ''
           desc: @parse_returns(current)
       else
-        text.concat "\n#{current}"
+        text = text.concat "\n#{current}"
 
       current = sections.shift()
 
@@ -363,7 +363,7 @@ module.exports = class Doc extends Node
     lines = section.split("\n")  
     _.each lines, (line) ->
       if /^Returns/.test(line)
-        returns.push(line)
+        returns.push(Markdown.convert(line))
         current = returns
       else if /^\s+/.test(line)
         _.last(current).concat _.str.clean(line)
@@ -390,9 +390,15 @@ module.exports = class Doc extends Node
           _.last(args).description += _.str.clean(line)
         else
           arg = line.split(" - ")
-          param = arg[0]
-          desc = arg[1]
-          args.push [_.str.strip(param), _.str.strip(desc)] if param && desc
+          param = _.str.strip(arg[0])
+          desc = Markdown.convert(_.str.strip(arg[1]))
+
+          # it's a hash description
+          if param[0] == ":"
+            _.last(args).keys ||= []
+            _.last(args).keys.push( {name: param[1 .. param.length], desc: desc} )
+          else
+            args.push( {name: param, desc: desc} )
         last_indent = indent
 
     args
