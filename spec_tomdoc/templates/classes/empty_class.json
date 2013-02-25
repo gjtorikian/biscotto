@@ -1,0 +1,21 @@
+[
+  {
+    "file": "spec_tomdoc/templates/classes/empty_class.coffee",
+    "class": {
+      "className": "A",
+      "name": "A",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>foo</strong>()",
+        "name": "foo",
+        "bound": false,
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]
