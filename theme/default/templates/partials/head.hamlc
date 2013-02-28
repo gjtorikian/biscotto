@@ -1,8 +1,8 @@
 %head
   %meta{ charset: 'UTF-8' }
   %title= @title
-  %link{ rel: 'stylesheet', href: "#{ @path }assets/codo.css", type: 'text/css' }
-  %script{ src: "#{ @path }assets/codo.js" }
+  %link{ rel: 'stylesheet', href: "#{ @path }assets/biscotto.css", type: 'text/css' }
+  %script{ src: "#{ @path }assets/biscotto.js" }
   %script{ src: "#{ @path }assets/search_data.js" }
 
   - if @analytics

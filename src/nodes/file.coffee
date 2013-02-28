@@ -11,9 +11,9 @@ module.exports = class File extends Class
 
   # Construct a File
   #
-  # @param [Object] node the class node
-  # @param [String] the filename
-  # @param [Object] options the parser options
+  # node - the class node (a [Object])
+  # the - filename (a [String])
+  # options - the parser options (a [Object])
   #
   constructor: (@node, @fileName, @options) ->
     try
@@ -56,7 +56,7 @@ module.exports = class File extends Class
 
   # Get the full file name with path
   #
-  # @return [String] the file name with path
+  # Returns the file name with path (a [String])
   #
   getFullName: ->
     fullName = @fileName
@@ -71,14 +71,14 @@ module.exports = class File extends Class
 
   # Returns the file class name
   #
-  # @return [String] the file name without path
+  # Returns the file name without path (a [String])
   #
   getFileName: ->
     Path.basename @getFullName()
 
   # Get the file path
   #
-  # @return [String] the file path
+  # Returns the file path (a [String])
   #
   getPath: ->
     path = Path.dirname @getFullName()
@@ -88,14 +88,14 @@ module.exports = class File extends Class
   # Test if the file doesn't contain any top-level
   # methods and variables.
   #
-  # @return [Boolean] true if empty
+  # Returns true if empty (a [Boolean])
   #
   isEmpty: ->
     @getMethods().length is 0 and @getVariables().length is 0
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json =

@@ -8,25 +8,31 @@ _         = require 'underscore'
 Parser    = require './parser'
 Generator = require './generator'
 
-# Codo - the CoffeeScript API documentation generator
+# Biscotto - the TomDoc-CoffeeScript API documentation generator
 #
-module.exports = class Codo
+module.exports = class Biscotto
 
-  # Get the current Codo version
+  # Get the current Biscotto version
   #
-  # @return [String] the Codo version
+  # Returns a [String] representing the Biscotto version
   #
   @version: ->
     'v' + JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['version']
 
   # Run the documentation generator. This is usually done through
-  # the command line utility `codo` that is provided by this package.
+  # the command line utility `biscotto` that is provided by this package.
   #
   # You can also run the documentation generation without writing files
   # to the file system, by supplying a callback function.
   #
-  # @example Run generation
-  #   codo = require 'codo'
+  # done - The documentation done callback (a [Function])
+  # file - The new file callback (a [Function])
+  # analytics - The Google analytics tracking code (a [String])
+  # homepage - The homepage in the breadcrumbs (a [String])
+  #
+  # Examples
+  #
+  #   biscotto = require 'biscotto'
   #
   #   file = (filename, content) ->
   #     console.log "New file %s with content %s", filename, content
@@ -37,33 +43,29 @@ module.exports = class Codo
   #     else
   #       console.log "Documentation generated"
   #
-  #   codo.run file, done
+  #   biscotto.run file, done
   #
-  # @param [Function] done the documentation done callback
-  # @param [Function] file the new file callback
-  # @param [String] analytics the Google analytics tracking code
-  # @param [String] homepage the homepage in the breadcrumbs
   #
   @run: (done, file, analytics = false, homepage = false) ->
 
-    codoopts =
+    biscottoopts =
       _ : []
 
-    # Read .codoopts project defaults
+    # Read .biscottoopts project defaults
     try
-      if (fs.existsSync || path.existsSync)('.codoopts')
-        configs = fs.readFileSync '.codoopts', 'utf8'
+      if (fs.existsSync || path.existsSync)('.biscottoopts')
+        configs = fs.readFileSync '.biscottoopts', 'utf8'
 
         for config in configs.split('\n')
           # Key value configs
           if option = /^-{1,2}([\w-]+)\s+(['"])?(.*?)\2?$/.exec config
-            codoopts[option[1]] = option[3]
+            biscottoopts[option[1]] = option[3]
           # Boolean configs
           else if bool = /^-{1,2}([\w-]+)\s*$/.exec config
-            codoopts[bool[1]] = true
+            biscottoopts[bool[1]] = true
           # Argv configs
           else if config isnt ''
-            codoopts._.push config
+            biscottoopts._.push config
 
 
       Async.parallel {
@@ -84,40 +86,40 @@ module.exports = class Codo
           .options('r',
             alias     : 'readme'
             describe  : 'The readme file used'
-            default   : codoopts.readme || codoopts.r || defaults.readme
+            default   : biscottoopts.readme || biscottoopts.r || defaults.readme
           )
           .options('n',
             alias     : 'name'
             describe  : 'The project name used'
-            default   : codoopts.name || codoopts.n || defaults.name
+            default   : biscottoopts.name || biscottoopts.n || defaults.name
           )
           .options('q',
             alias     : 'quiet'
             describe  : 'Show no warnings'
             boolean   : true
-            default   : codoopts.quiet || false
+            default   : biscottoopts.quiet || false
           )
           .options('o',
             alias     : 'output-dir'
             describe  : 'The output directory'
-            default   : codoopts['output-dir'] || codoopts.o || './doc'
+            default   : biscottoopts['output-dir'] || biscottoopts.o || './doc'
           )
           .options('a',
             alias     : 'analytics'
             describe  : 'The Google analytics ID'
-            default   : codoopts.analytics || codoopts.a || false
+            default   : biscottoopts.analytics || biscottoopts.a || false
           )
           .options('v',
             alias     : 'verbose'
             describe  : 'Show parsing errors'
             boolean   : true
-            default   : codoopts.verbose || codoopts.v  || false
+            default   : biscottoopts.verbose || biscottoopts.v  || false
           )
           .options('d',
             alias     : 'debug'
             describe  : 'Show stacktraces and converted CoffeeScript source'
             boolean   : true
-            default   : codoopts.debug || codoopts.d  || false
+            default   : biscottoopts.debug || biscottoopts.d  || false
           )
           .options('h',
             alias     : 'help'
@@ -126,18 +128,22 @@ module.exports = class Codo
           .options('cautious',
             describe  : 'Don\'t attempt to parse singleline comments'
             boolean   : true
-            default   : codoopts.cautious || false
+            default   : biscottoopts.cautious || false
           )
           .options('s',
             alias     : 'server'
             describe  : 'Start a documentation server'
           )
+          .options('j',
+            alias     : 'json'
+            describe  : 'The location (including filename) of optional JSON output'
+          )
           .options('private',
             boolean   : true
-            default   : codoopts.private || false
+            default   : biscottoopts.private || false
             describe  : 'Show private methods'
           )
-          .default('title', codoopts.title || 'CoffeeScript API Documentation')
+          .default('title', biscottoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
 
@@ -148,12 +154,13 @@ module.exports = class Codo
           port = if argv.s is true then 8080 else argv.s
           connect = require 'connect'
           connect.createServer(connect.static(argv.o)).listen port
-          console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
+          console.log 'Biscotto documentation from %s is available at http://localhost:%d', argv.o, port
 
         else
           options =
             inputs: []
             output: argv.o
+            json: argv.j || ""
             extras: []
             name: argv.n
             readme: argv.r
@@ -168,8 +175,8 @@ module.exports = class Codo
 
           extra = false
 
-          # ignore params if codo has not been started directly
-          args = if argv._.length isnt 0 and /.+codo$/.test(process.argv[1]) then argv._ else codoopts._
+          # ignore params if biscotto has not been started directly
+          args = if argv._.length isnt 0 and /.+biscotto$/.test(process.argv[1]) then argv._ else biscottoopts._
 
 
           for arg in args
@@ -212,19 +219,19 @@ module.exports = class Codo
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
 
-  # Get the Codo script content that is used in the webinterface
+  # Get the Biscotto script content that is used in the webinterface
   #
-  # @return [String] the script content
+  # Returns the script content (a [String])
   #
   @script: ->
-    @codoScript or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.js'), 'utf-8'
+    @biscottoScript or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.js'), 'utf-8'
 
-  # Get the Codo style content that is used in the webinterface
+  # Get the Biscotto style content that is used in the webinterface
   #
-  # @return [String] the style content
+  # Returns the style content (a [String])
   #
   @style: ->
-    @codoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), 'utf-8'
+    @biscottoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.css'), 'utf-8'
 
   # Find the source directories.
   #
@@ -268,6 +275,7 @@ module.exports = class Codo
   # Find the project name by either parse `package.json`
   # or get the current working directory name.
   #
+  # done - The callback to call
   @detectName: (done) ->
     if (fs.exists || path.exists)('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']

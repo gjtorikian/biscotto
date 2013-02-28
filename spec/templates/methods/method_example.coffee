@@ -1,16 +1,16 @@
 class TestExample
 
-  # @example Run generation
-  #   codo = require 'codo'
+  # A method to run.
+  # 
+  # Examples
   #
+  #   biscotto = require 'biscotto'
   #   file = (filename, content) ->
   #     console.log "New file %s with content %s", filename, content
-  #
   #   done = (err) ->
   #     if err
   #       console.log "Cannot generate documentation:", err
   #     else
   #       console.log "Documentation generated"
-  #
-  #   codo.run file, done
+  #   biscotto.run file, done
   run: ->

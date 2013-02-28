@@ -1,4 +1,4 @@
-# Codo - the CoffeeScript API documentation generator
+# Biscotto - the TomDoc-CoffeeScript API documentation generator
 #
 # # Header 1
 #
@@ -24,29 +24,23 @@
 #
 # This is a paragraph.
 #
-# @abstract _Template methods_ must be implemented
-# @note Also notes have _now_ <del>Markdown</del>
-# @todo Allow **markdown** in todos
-#
-# @author Mickey
-# @author **Donald**
-# @copyright _No Copyright_
-# @since **1.0.0**
-# @version _1.1.0_
-# @deprecated **nobody** uses this
-#
 class TestMarkdownDocumentation
 
+  # This method is a test.
+  # 
+  # See {another} for _more_ information.
   #
-  # @see #another for _more_ information
-  # @param a [Hash] this _must_ be supplied
-  # @option a [String] prop this is the **URL**
-  # @return [String] something **very** important
+  # a - The [Hash] options that _must_ be supplied
+  #     :option - A [String] property representing the **URL**
+  # 
+  #
+  # Returns A [String] that is **very** important
   #
   test: (a) ->
 
+  # Yet another method.
   #
-  # @param [String] a this _must_ be supplied
-  # @return A _very_ nice thing
-  #
+  # a - A String that _must_ be supplied
+  # 
+  # Returns a _very_ nice thing
   another: (a) ->

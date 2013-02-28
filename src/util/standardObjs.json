@@ -1,0 +1,21 @@
+{
+	"Array" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array",
+	"Boolean" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean",
+	"Date" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date",
+	"Error" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error",
+	"EvalError" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/EvalError",
+	"RangeError" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RangeError",
+	"ReferenceError" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/ReferenceError",
+	"SyntaxError" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/SyntaxError",
+	"TypeError" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/TypeError",
+	"URIError" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/URIError",
+	"Function" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function",
+	"Infinity" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Infinity",
+	"JSON" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON",
+	"Math" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math",
+	"NaN" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/NaN",
+	"Number" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number",
+	"Object" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object",
+	"RegExp" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp",
+	"String" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String"
+}
