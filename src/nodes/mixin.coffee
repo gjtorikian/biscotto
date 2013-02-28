@@ -9,10 +9,10 @@ module.exports = class Mixin extends Node
 
   # Construct a mixin
   #
-  # @param [Object] node the mixin node
-  # @param [String] the filename
-  # @param [Object] options the parser options
-  # @param [Object] comment the comment node
+  # node - the mixin node (a [Object])
+  # the - filename (a [String])
+  # options - the parser options (a [Object])
+  # comment - the comment node (a [Object])
   #
   constructor: (@node, @fileName, @options, comment) ->
     try
@@ -62,19 +62,19 @@ module.exports = class Mixin extends Node
 
   # Get the source file name.
   #
-  # @return [String] the filename of the mixin
+  # Returns the filename of the mixin (a [String])
   #
   getFileName: -> @fileName
 
   # Get the mixin doc
   #
-  # @return [Doc] the mixin doc
+  # Returns the mixin doc (a [Doc])
   #
   getDoc: -> @doc
 
   # Get the full mixin name
   #
-  # @return [String] full mixin name
+  # Returns full mixin name (a [String])
   #
   getMixinName: ->
     try
@@ -96,7 +96,7 @@ module.exports = class Mixin extends Node
 
   # Get the mixin name
   #
-  # @return [String] the name
+  # Returns the name (a [String])
   #
   getName: ->
     try
@@ -110,7 +110,7 @@ module.exports = class Mixin extends Node
 
   # Get the mixin namespace
   #
-  # @return [String] the namespace
+  # Returns the namespace (a [String])
   #
   getNamespace: ->
     try
@@ -127,19 +127,19 @@ module.exports = class Mixin extends Node
 
   # Get all methods.
   #
-  # @return [Array<Method>] the methods
+  # Returns  (a ) [Array<Method>] the methods
   #
   getMethods: -> @methods
 
   # Get all variables.
   #
-  # @return [Array<Variable>] the variables
+  # Returns  (a ) [Array<Variable>] the variables
   #
   getVariables: -> @variables
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json =

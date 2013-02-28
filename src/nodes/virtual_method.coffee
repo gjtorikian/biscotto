@@ -11,15 +11,15 @@ module.exports = class VirtualMethod extends Node
 
   # Construct a virtual method
   #
-  # @param [Class] entity the methods class
-  # @param [Doc] doc the virtual doc
-  # @param [Object] options the parser options
+  # entity - the methods class (a [Class])
+  # doc - the virtual doc (a [Doc])
+  # options - the parser options (a [Object])
   #
   constructor: (@entity, @doc, @options) ->
 
   # Get the method type, either `class`, `instance` or `mixin`.
   #
-  # @return [String] the method type
+  # Returns the method type (a [String])
   #
   getType: ->
     unless @type
@@ -34,13 +34,13 @@ module.exports = class VirtualMethod extends Node
 
   # Get the class doc
   #
-  # @return [Doc] the class doc
+  # Returns the class doc (a [Doc])
   #
   getDoc: -> @doc
 
   # Get the full method signature.
   #
-  # @return [String] the signature
+  # Returns the signature (a [String])
   #
   getSignature: ->
     try
@@ -74,7 +74,7 @@ module.exports = class VirtualMethod extends Node
 
   # Get the short method signature.
   #
-  # @return [String] the short signature
+  # Returns the short signature (a [String])
   #
   getShortSignature: ->
     try
@@ -95,7 +95,7 @@ module.exports = class VirtualMethod extends Node
 
   # Get the method name
   #
-  # @return [String] the method name
+  # Returns the method name (a [String])
   #
   getName: ->
     try
@@ -112,25 +112,25 @@ module.exports = class VirtualMethod extends Node
 
   # Get the method parameters
   #
-  # @param [Array<Parameter>] the method parameters
+  # params - The method parameters
   #
   getParameters: -> @doc.params or []
 
   # Get the method source in CoffeeScript
   #
-  # @return [String] the CoffeeScript source
+  # Returns the CoffeeScript source (a [String])
   #
   getCoffeeScriptSource: ->
 
   # Get the method source in JavaScript
   #
-  # @return [String] the JavaScript source
+  # Returns the JavaScript source (a [String])
   #
   getJavaScriptSource: ->
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json =

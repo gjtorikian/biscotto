@@ -8,14 +8,14 @@ Referencer = require './util/referencer'
 Markdown   = require './util/markdown'
 
 # The documentation generator uses the parser JSON
-# to generate the final codo documentation.
+# to generate the final biscotto documentation.
 #
 module.exports = class Generator
 
   # Construct a generator
   #
-  # @param [Parser] parser the parser
-  # @param [Object] options the options
+  # parser - The parser (a [Parser])
+  # options - The options (a [Object])
   #
   constructor: (@parser, @options) ->
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
@@ -26,9 +26,9 @@ module.exports = class Generator
   # will be passed to the callback.
   #
   # With a provided file generation callback, the assets will not be copied,
-  # use {Codo.script} and {Codo.style} to get them.
+  # use {Biscotto.script} and {Biscotto.style} to get them.
   #
-  # @param [Function] file the optional file generation callback
+  # fileTthe - optional file generation callback (a [Function])
   #
   generate: (file) ->
     @templater.redirect(file) if file
@@ -384,13 +384,13 @@ module.exports = class Generator
   # Copy the styles and scripts.
   #
   copyAssets: ->
-    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.css'), path.join(@options.output, 'assets', 'codo.css')
-    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'codo.js'), path.join(@options.output, 'assets', 'codo.js')
+    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.css'), path.join(@options.output, 'assets', 'biscotto.css')
+    @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.js'), path.join(@options.output, 'assets', 'biscotto.js')
 
   # Copy a file
   #
-  # @param [String] from the source file name
-  # @param [String] to the destination file name
+  # from - the source file name (a [String])
+  # to - the destination file name (a [String])
   #
   copy: (from, to) ->
     dir = path.dirname(to)
@@ -405,7 +405,7 @@ module.exports = class Generator
   # Write the data used in search into
   # a JSON file used by the frontend.
   #
-  # @param [Function] file the file callback
+  # file - the file callback (a [Function])
   #
   generateSearchData: (file) ->
     search = []

@@ -7,11 +7,11 @@ module.exports = class Variable extends Node
 
   # Construct a variable
   #
-  # @param [Class] entity the variables class
-  # @param [Object] node the node
-  # @param [Object] options the parser options
-  # @param [Boolean] classType whether its a class variable or not
-  # @param [Object] comment the comment node
+  # entity - the variables class (a [Class])
+  # node - the node (a [Object])
+  # options - the parser options (a [Object])
+  # classType - whether its a class variable or not (a [Boolean])
+  # comment - the comment node (a [Object])
   #
   constructor: (@entity, @node, @options, @classType = false, comment = null) ->
     try
@@ -23,7 +23,7 @@ module.exports = class Variable extends Node
 
   # Get the variable type, either `class` or `constant`
   #
-  # @return [String] the variable type
+  # Returns the variable type (a [String])
   #
   getType: ->
     unless @type
@@ -33,7 +33,7 @@ module.exports = class Variable extends Node
 
   # Test if the given value should be treated ad constant.
   #
-  # @return [Boolean] true if a constant
+  # Returns true if a constant (a [Boolean])
   #
   isConstant: ->
     unless @constant
@@ -43,13 +43,13 @@ module.exports = class Variable extends Node
 
   # Get the class doc
   #
-  # @return [Doc] the class doc
+  # Returns the class doc (a [Doc])
   #
   getDoc: -> @doc
 
   # Get the variable name
   #
-  # @return [String] the variable name
+  # Returns the variable name (a [String])
   #
   getName: ->
     try
@@ -70,7 +70,7 @@ module.exports = class Variable extends Node
 
   # Get the variable value.
   #
-  # @return [String] the value
+  # Returns the value (a [String])
   #
   getValue: ->
     try
@@ -84,7 +84,7 @@ module.exports = class Variable extends Node
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json =

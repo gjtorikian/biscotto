@@ -6,7 +6,8 @@ _.str     = require 'underscore.string'
 
 # A class property that is defined by custom property set/get methods.
 #
-# @example Define a class property
+# Examples
+#
 #   class Test
 #
 #    get = (props) => @::__defineGetter__ name, getter for name, getter of props
@@ -19,11 +20,11 @@ module.exports = class Property extends Node
 
   # Construct a new property
   #
-  # @param [Class] entity the methods class
-  # @param [Object] node the class node
-  # @param [Object] options the parser options
-  # @param [String] name the name of the property
-  # @param [Object] comment the comment node
+  # entity - The methods class (a [Class])
+  # node - The class node (a [Object])
+  # options - The parser options (a [Object])
+  # name - The name of the property (a [String])
+  # comment - The comment node (a [Object])
   #
   constructor: (@entity, @node, @options, @name, comment) ->
     @doc = new Doc(comment, @options)
@@ -33,7 +34,7 @@ module.exports = class Property extends Node
 
   # Get the property signature.
   #
-  # @return [String] the signature
+  # Returns the signature (a [String])
   #
   getSignature: ->
     try
@@ -52,7 +53,7 @@ module.exports = class Property extends Node
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     {

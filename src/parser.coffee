@@ -17,7 +17,7 @@ module.exports = class Parser
 
   # Construct the parser
   #
-  # @param [Object] options the parser options
+  # options - the parser options (a [Object])
   #
   constructor: (@options) ->
     @files   = []
@@ -28,7 +28,7 @@ module.exports = class Parser
 
   # Parse the given CoffeeScript file
   #
-  # @param [String] file the CoffeeScript file name
+  # file - the CoffeeScript file name (a [String])
   #
   parseFile: (file) ->
     @parseContent fs.readFileSync(file, 'utf8'), file
@@ -36,8 +36,8 @@ module.exports = class Parser
 
   # Parse the given CoffeeScript content
   #
-  # @param [String] content the CoffeeScript file content
-  # @param [String] file the CoffeeScript file name
+  # content - the CoffeeScript file content (a [String])
+  # file - the CoffeeScript file name (a [String])
   #
   parseContent: (content, file = '') ->
     @previousNodes = []
@@ -111,7 +111,7 @@ module.exports = class Parser
   # Convert the comments to block comments,
   # so they appear in the nodes.
   #
-  # @param [String] content the CoffeeScript file content
+  # content - the CoffeeScript file content (a [String])
   #
   convertComments: (content) ->
     result         = []
@@ -172,7 +172,7 @@ module.exports = class Parser
   # parent attribute is already used in the class node,
   # the parent is stored as `ancestor`.
   #
-  # @param [Base] nodes the CoffeeScript nodes
+  # nodes - the CoffeeScript nodes (a [Base])
   #
   linkAncestors: (node) ->
     node.eachChild (child) =>
@@ -181,7 +181,7 @@ module.exports = class Parser
 
   # Get all parsed methods
   #
-  # @return [Array<Method>] all methods
+  # Returns  (a ) [Array<Method>] all methods
   #
   getAllMethods: ->
     unless @methods
@@ -200,7 +200,7 @@ module.exports = class Parser
 
   # Get all parsed variables
   #
-  # @return [Array<Variable>] all variables
+  # Returns  (a ) [Array<Variable>] all variables
   #
   getAllVariables: ->
     unless @variables
@@ -253,10 +253,13 @@ module.exports = class Parser
       """
 
     console.log stats
+    
+    if @options.json && @options.json.length
+      fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json = []

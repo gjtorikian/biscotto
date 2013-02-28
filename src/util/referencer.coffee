@@ -1,4 +1,6 @@
 _ = require 'underscore'
+path = require 'path'
+fs = require 'fs'
 
 # Class reference resolver.
 #
@@ -6,25 +8,28 @@ module.exports = class Referencer
 
   # Construct a referencer.
   #
-  # @param [Array<Classes>] classes all known classes
-  # @param [Array<Classes>] mixins all known mixins
-  # @param [Object] options the parser options
+  # classes - All known classes
+  # mixins - All known mixins
+  # options - the parser options (a [Object])
   #
   constructor: (@classes, @mixins, @options) ->
+    @readStandardJSON()
     @resolveParamReferences()
 
   # Get all direct subclasses.
   #
-  # @param [Class] clazz the parent class
-  # @return [Array<Class>] the classes
+  # clazz - the parent class (a [Class])
+  #
+  # Returns the classes
   #
   getDirectSubClasses: (clazz) ->
     _.filter @classes, (cl) -> cl.getParentClassName() is clazz.getFullName()
 
   # Get all inherited methods.
   #
-  # @param [Class] clazz the parent class
-  # @return [Array<Method>] the methods
+  # clazz - the parent class (a [Class])
+  # 
+  # Returns the classes
   #
   getInheritedMethods: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
@@ -36,8 +41,9 @@ module.exports = class Referencer
 
   # Get all included mixins in the class hierarchy.
   #
-  # @param [Class] clazz the class
-  # @return [Object] the mixins
+  # clazz - the class (a [Class])
+  #
+  # Returns the mixins (a [Object])
   #
   getIncludedMethods: (clazz) ->
     result = {}
@@ -55,8 +61,9 @@ module.exports = class Referencer
 
   # Get all extended mixins in the class hierarchy.
   #
-  # @param [Class] clazz the class
-  # @return [Object] the mixins
+  # clazz - the class (a [Class])
+  #
+  # Returns the mixins (a [Object])
   #
   getExtendedMethods: (clazz) ->
     result = {}
@@ -74,8 +81,9 @@ module.exports = class Referencer
 
   # Get all concerns
   #
-  # @param [Class] clazz the class
-  # @return [Object] the concerns
+  # clazz - the class (a [Class])
+  #
+  # Returns the concerns (a [Object])
   #
   getConcernMethods: (clazz) ->
     result = {}
@@ -93,8 +101,9 @@ module.exports = class Referencer
 
   # Get a list of all methods from the given mixin name
   #
-  # @param name [String] the full name of the mixin
-  # @return [Array<Methods>] the mixin methods
+  # name - The full name of the mixin
+  #
+  # Returns the mixin methods
   #
   resolveMixinMethods: (name) ->
     mixin = _.find @mixins, (m) -> m.getMixinName() is name
@@ -107,8 +116,9 @@ module.exports = class Referencer
 
   # Get all inherited variables.
   #
-  # @param [Class] clazz the parent class
-  # @return [Array<Variable>] the variables
+  # clazz - the parent class (a [Class])
+  #
+  # Returns the variables
   #
   getInheritedVariables: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
@@ -120,16 +130,18 @@ module.exports = class Referencer
 
   # Get all inherited constants.
   #
-  # @param [Class] clazz the parent class
-  # @return [Array<Variable>] the constants
+  # clazz - the parent class (a [Class])
+  #
+  # Returns the constants
   #
   getInheritedConstants: (clazz) ->
     _.filter @getInheritedVariables(clazz), (v) -> v.isConstant()
 
   # Get all inherited properties.
   #
-  # @param [Class] clazz the parent class
-  # @return [Array<Properties>] the properties
+  # clazz - the parent class (a [Class])
+  #
+  # Returns the properties
   #
   getInheritedProperties: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
@@ -141,11 +153,12 @@ module.exports = class Referencer
 
   # Create browsable links for known entities.
   #
-  # @see #getLink
+  # See {#getLink}.
   #
-  # @param [String] text the text to parse.
-  # @param [String] path the path prefix
-  # @return [String] the processed text
+  # text - the text to parse. (a [String])
+  # path - the path prefix (a [String])
+  #
+  # Returns the processed text (a [String])
   #
   linkTypes: (text = '', path) ->
     text = text.split ','
@@ -157,11 +170,12 @@ module.exports = class Referencer
 
   # Create browsable links to a known entity.
   #
-  # @see #getLink
+  # See {#getLink}.
   #
-  # @param [String] text the text to parse.
-  # @param [String] path the path prefix
-  # @return [String] the processed text
+  # text - the text to parse. (a {String})
+  # path - the path prefix (a {Number string string string.})
+  #
+  # Returns the processed text (a [String])
   #
   linkType: (text = '', path) ->
     text = _.str.escapeHTML text
@@ -174,10 +188,12 @@ module.exports = class Referencer
 
   # Get the link to classname.
   #
-  # @see #linkTypes
-  # @param [String] classname the class name
-  # @param [String] path the path prefix
-  # @return [undefined, String] the link if any
+  # See {#linkTypes}.
+  #
+  # classname - the class name (a [String])
+  # path - the path prefix (a [String])
+  # 
+  # Returns the link (if any)
   #
   getLink: (classname, path) ->
     for clazz in @classes
@@ -185,12 +201,13 @@ module.exports = class Referencer
 
     undefined
 
-  # Resolve all @see tags on class and method json output.
+  # Resolve all tags on class and method json output.
   #
-  # @param [Object] data the json data
-  # @param [Class] entity the entity context
-  # @param [String] path the path to the asset root
-  # @return [Object] the json data with resolved references
+  # data - the json data (a [Object])
+  # entity - the entity context (a [Class])
+  # path - the path to the asset root (a [String])
+  #
+  # Returns the json data with resolved references (a [Object])
   #
   resolveDoc: (data, entity, path) ->
     if data.doc
@@ -240,11 +257,13 @@ module.exports = class Referencer
 
   # Search a text to find see links wrapped in curly braces.
   #
-  # @example Reference an object
+  # Examples
+  #
   #   "To get a list of all customers, go to {Customers.getAll}"
   #
-  # @param [String] the text to search
-  # @return [String] the text with hyperlinks
+  # text - The text to search (a [String])
+  #
+  # Returns the text with hyperlinks (a [String])
   #
   resolveTextReferences: (text = '', entity, path) ->
     # Make curly braces within code blocks undetectable
@@ -267,12 +286,13 @@ module.exports = class Referencer
     # Restore curly braces within code blocks
     text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
 
-  # Resolves a @see link.
+  # Resolves curly-bracket reference links.
   #
-  # @param [Object] see the see object
-  # @param [Class] entity the entity context
-  # @param [String] path the path to the asset root
-  # @return [Object] the resolved see
+  # see - the reference object (a [Object])
+  # entity - the entity context (a [Class])
+  # path - the path to the asset root (a [String])
+  #
+  # Returns the resolved see (a [Object])
   #
   resolveSee: (see, entity, path) ->
     # If a reference starts with a space like `{ a: 1 }`, then it's not a valid reference
@@ -352,9 +372,13 @@ module.exports = class Referencer
                 console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
 
           else
-            see.label = see.reference
-            see.reference = undefined
-            console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
+            if @verifyExternalObjReference(see.reference)
+              see.label = ref unless see.label
+              see.reference = @standardObjs[see.reference]
+            else
+              see.label = see.reference
+              see.reference = undefined
+              console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
 
         else
           see.label = see.reference
@@ -363,6 +387,12 @@ module.exports = class Referencer
 
     see
 
+  readStandardJSON: ->
+    @standardObjs = JSON.parse(fs.readFileSync(path.join(__dirname, 'standardObjs.json'), 'utf-8'))
+
+  verifyExternalObjReference: (name) ->
+    @standardObjs[name] != undefined
+            
   # Resolve parameter references. This goes through all
   # method parameter and see if a param doc references another
   # method. If so, copy over the doc meta data.

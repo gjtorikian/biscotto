@@ -4,8 +4,8 @@ module.exports = class Node
 
   # Find an ancestor node by type.
   #
-  # @param [String] type the class name
-  # @param [Base] node the CoffeeScript node
+  # type - the class name (a [String])
+  # node - the CoffeeScript node (a [Base])
   #
   findAncestor: (type, node = @node) ->
     if node.ancestor

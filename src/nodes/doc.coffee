@@ -12,20 +12,20 @@ module.exports = class Doc extends Node
 
   # Construct a documentation
   #
-  # @param [Object] node the comment node
-  # @param [Object] options the parser options
+  # node - the comment node (a [Object])
+  # options - the parser options (a [Object])
   #
   constructor: (@node, @options) ->
     try
       if @node
-        @parseTags @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))     
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
 
   # Determines if the current doc has some comments
   #
-  # @return [Boolean] the comment status
+  # Returns the comment status (a [Boolean])
   #
   hasComment: ->
     @node && @node.comment
@@ -33,14 +33,16 @@ module.exports = class Doc extends Node
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
-  # @example left trim all lines
+  # lines - The comment lines [[String]]
+  #
+  # Examples
+  #
   #   leftTrimBlock(['', '  Escape at maximum speed.', '', '  @param (see #move)', '  '])
   #   => ['', 'Escape at maximum speed.', '', '@param (see #move)', '']
   #
   # This will keep indention for examples intact.
   #
-  # @param [Array<String>] lines the comment lines
-  # @return [Array<String>] lines left trimmed lines
+  # Returns the left trimmed lines as an array of Strings
   #
   leftTrimBlock: (lines) ->
     # Detect minimal left trim amount
@@ -62,220 +64,152 @@ module.exports = class Doc extends Node
 
     lines
 
-  # Parse the given lines and adds the result
+  # Parse the given lines as TomDoc and adds the result
   # to the result object.
   #
-  # @param [Array<String>] lines the lines to parse
-  #
-  parseTags: (lines) ->
+  parseBlock: (lines) ->
     comment = []
 
-    while (line = lines.shift()) isnt undefined
+    return unless lines isnt undefined
+    
+    sections       = lines.join("\n").split "\n\n"
 
-      # Look ahead
-      unless /^@example|@overload|@method/.exec line
-        while /^\s{2}\S+/.test(lines[0])
-          line += lines.shift().substring(1)
+    info_block     = @parse_description(sections.shift())
 
-      if property = /^@property\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @property = property[1]
-        lines.push property[2]
+    text     = info_block.description
+    @status   = info_block.status
 
-      else if returnValue = /^@return\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @returnValue =
-          type: returnValue[1]
-          desc: Markdown.convert(returnValue[2], true)
+    current = sections.shift()
 
-      else if returnValue = /^@return\s+(.+)/i.exec line
-        @returnValue =
-          type: '?'
-          desc: Markdown.convert(returnValue[1], true)
-
-      else if throwValue = /^@throw\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @throwValue or= []
-        @throwValue.push
-          type: throwValue[1]
-          desc: Markdown.convert(throwValue[2], true)
-
-      else if throwValue = /^@throw\s+(.+)/i.exec line
-        @throwValue or= []
-        @throwValue.push
-          type: '?'
-          desc: Markdown.convert(throwValue[1], true)
-
-      else if param = /^@param\s+\(see ((?:[$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)?[#.][$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)\)/i.exec line
+    while current
+      if /^\w+\s+\-/.test(current)
         @params or= []
-        @params.push
-          reference: param[1]
+        @params = @parse_arguments(current)
 
-      else if param = /^@param\s+([$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)\s+\(see ((?:[$A-Za-z_\x7f-\uffff][$.\w\x7f-\uffff]*)?[#.][$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)\)/i.exec line
-        @params or= []
-        @params.push
-          name: param[1]
-          reference: param[2]
+      else if /^\s*Examples/.test(current)
+        @examples or= []
 
-      else if param = /^@param\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @params or= []
-        @params.push
-          type: param[2]
-          name: param[1]
-          desc: Markdown.convert(param[3] || '', true)
+        @examples = @parse_examples(current, sections)
+      else if /^\s*Returns/.test(current)
+        @returnValue or= []
 
-      else if param = /^@param\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
-        @params or= []
-        @params.push
-          type: param[1]
-          name: param[2]
-          desc: Markdown.convert(param[3] || '', true)
-
-      else if option = /^@option\s+([^ ]+)\s+[\[\{](.+?)[\]\}]\s+([^ ]+)(?:\s+(.+))?/i.exec line
-        @paramsOptions or= {}
-        @paramsOptions[option[1]] or= []
-
-        @paramsOptions[option[1]].push
-          type: option[2]
-          name: option[3]
-          desc: Markdown.convert(option[4] || '', true)
-
-      else if option = /^@option\s+([^ ]+)\s+([^ ]+)\s+[\[\{](.+?)[\]\}](?:\s+(.+))?/i.exec line
-        @paramsOptions or= {}
-        @paramsOptions[option[1]] or= []
-
-        @paramsOptions[option[1]].push
-          type: option[3]
-          name: option[2]
-          desc: Markdown.convert(option[4] || '', true)
-
-      else if see = /^@see\s+([^\s]+)(?:\s+(.+))?/i.exec line
-        @see or= []
-        @see.push
-          reference: see[1]
-          label: Markdown.convert(see[2], true)
-
-      else if author = /^@author\s+(.+)/i.exec line
-        @authors or= []
-        @authors.push Markdown.convert(author[1], true)
-
-      else if copyright = /^@copyright\s+(.+)/i.exec line
-        @copyright = Markdown.convert(copyright[1], true)
-
-      else if note = /^@note\s+(.+)/i.exec line
-        @notes or= []
-        @notes.push Markdown.convert(note[1], true)
-
-      else if todo = /^@todo\s+(.+)/i.exec line
-        @todos or= []
-        @todos.push Markdown.convert(todo[1], true)
-
-      else if example = /^@example(?:\s+(.+))?/i.exec line
-        title = example[1] || ''
-        code = []
-
-        while /^\s{2}.*/.test(lines[0]) or (/^$/.test(lines[0]) and /^\s{2}.*/.test(lines[1]))
-          code.push lines.shift().substring(2)
-
-        if code.length isnt 0
-          @examples or= []
-          @examples.push
-            title: title
-            code: code.join '\n'
-
-      else if abstract = /^@abstract(?:\s+(.+))?/i.exec line
-        @abstract = Markdown.convert(abstract[1] || '', true)
-
-      else if /^@private/.exec line
-        @private = true
-
-      else if since = /^@since\s+(.+)/i.exec line
-        @since = Markdown.convert(since[1], true)
-
-      else if version = /^@version\s+(.+)/i.exec line
-        @version = Markdown.convert(version[1], true)
-
-      else if deprecated = /^@deprecated\s+(.*)/i.exec line
-        @deprecated = Markdown.convert(deprecated[1], true)
-
-      else if mixin = /^@mixin/i.exec line
-        @mixin = true
-
-      else if concern = /^@concern\s+(.+)/i.exec line
-        @concerns or= []
-        @concerns.push concern[1]
-
-      else if include = /^@include\s+(.+)/i.exec line
-        @includeMixins or= []
-        @includeMixins.push include[1]
-
-      else if extend = /^@extend\s+(.+)/i.exec line
-        @extendMixins or= []
-        @extendMixins.push extend[1]
-
-      else if overload = /^@overload\s+(.+)/i.exec line
-        signature = overload[1]
-        innerComment = []
-
-        while /^\s{2}.*/.test(lines[0])
-          innerComment.push lines.shift().substring(2)
-
-        if innerComment.length isnt 0
-          @overloads or= []
-
-          doc = {}
-          @parseTags.call doc, innerComment
-
-          @overloads.push
-            signature: signature.replace(/([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)(.+)/, (str, name, params) -> "<strong>#{ name }</strong>#{ params }")
-            comment: doc.comment
-            summary: doc.summary
-            params: doc.params
-            options: doc.paramsOptions
-            returnValue: doc.returnValue
-
-      else if method = /^@method\s+(.+)/i.exec line
-        signature = method[1]
-        innerComment = []
-
-        while /^\s{2}.*/.test(lines[0])
-          innerComment.push lines.shift().substring(2)
-
-        if innerComment.length isnt 0
-          @methods or= []
-
-          doc = {}
-          @parseTags.call doc, innerComment
-
-          @methods.push
-            signature: signature
-            comment: doc.comment
-            summary: doc.summary
-            params: doc.params
-            options: doc.paramsOptions
-            private: doc.private
-            abstract: doc.abstract
-            deprecated: doc.deprecated
-            version: doc.version
-            since: doc.since
-            see: doc.see
-            returnValue: doc.returnValue
-            notes: doc.notes
-            todos: doc.todos
-            examples: doc.examples
-            authors: doc.authors
-            hasComment: -> true
-
+        @returnValue.push
+          type: ''
+          desc: @parse_returns(current)
       else
-        comment.push line
+        text = text.concat "\n#{current}"
 
-    text = comment.join('\n')
+      current = sections.shift()
+
     @comment = Markdown.convert(text)
-
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
     @summary = Markdown.convert(_.str.clean(sentence || text), true)
 
+  # Parse description.
+  #
+  # section - String containing description.
+  #
+  # Returns nothing.
+  parse_description: (section) ->
+    if md = /([A-Z]\w+)\:\s+(.+)/.exec(section)
+      return {
+        status:      md[1]
+        description: _.str.strip(md[2])
+      }
+    else
+      return { description: _.str.strip(section) }
+
+  # Parse examples.
+  #
+  # section  - String starting with `Examples`.
+  # sections - All sections subsequent to section.
+  #
+  # Returns nothing.
+  parse_examples: (section, sections) ->
+    examples = []
+
+    section = _.str.strip(section.replace(/Examples/, ''))
+
+    examples.push(section) unless _.isEmpty(section)
+    while _.first(sections) && !/^\S/.test(_.first(sections))
+      lines = sections.shift().split("\n")
+      examples.push(@deindent(lines).join("\n"))
+
+    examples
+
+  # Parse returns section.
+  #
+  # section - String contaning Returns and/or Raises lines.
+  #
+  # Returns nothing.
+  parse_returns: (section) ->
+    returns = []
+    current = []
+
+    lines = section.split("\n")  
+    _.each lines, (line) ->
+      if /^Returns/.test(line)
+        returns.push(Markdown.convert(line))
+        current = returns
+      else if /^\s+/.test(line)
+        _.last(current).concat _.str.clean(line)
+      else
+        current.concat line  # TODO: What to do with non-compliant line?
+
+    returns
+
+  # Parse arguments section. Arguments occur subsequent to
+  # the description.
+  #
+  # section - String contaning agument definitions.
+  #
+  # Returns nothing.
+  parse_arguments: (section) ->
+    args = []
+    last_indent = null
+
+    _.each section.split("\n"), (line) ->
+      unless _.isEmpty(_.str.strip(line))
+        indent = line.match(/^(\s*)/)[0].length
+
+        if last_indent && indent > last_indent
+          _.last(args).description += _.str.clean(line)
+        else
+          arg = line.split(" - ")
+          param = _.str.strip(arg[0])
+          desc = Markdown.convert(_.str.strip(arg[1]))
+
+          # it's a hash description
+          if param[0] == ":"
+            _.last(args).keys ||= []
+            _.last(args).keys.push( {name: param[1 .. param.length], desc: desc} )
+          else
+            args.push( {name: param, desc: desc} )
+        last_indent = indent
+
+    args
+
+  deindent: (lines) ->
+    # remove indention
+    spaces = _.map lines, (line) ->
+      return line if _.isEmpty(_.str.strip(line))
+      md = line.match(/^(\s*)/)
+      if md then md[1].length else null
+    
+    spaces = _.compact(spaces)
+
+    space = _.min(spaces) || 0
+
+    _.map lines, (line) ->
+      if _.isEmpty(line)
+        _.str.strip(line)
+      else
+        line[space..-1]
+
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     if @node
@@ -295,6 +229,7 @@ module.exports = class Doc extends Node
         copyright: @copyright
         comment: @comment
         summary: @summary
+        status: @status
         params: @params
         options: @paramsOptions
         see: @see

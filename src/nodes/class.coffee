@@ -12,10 +12,10 @@ module.exports = class Class extends Node
 
   # Construct a class
   #
-  # @param [Object] node the class node
-  # @param [String] the filename
-  # @param [Object] options the parser options
-  # @param [Object] comment the comment node
+  # node - the class node (a [Object])
+  # the - filename (a [String])
+  # options - the parser options (a [Object])
+  # comment - the comment node (a [Object])
   #
   constructor: (@node, @fileName, @options, comment) ->
     try
@@ -122,26 +122,26 @@ module.exports = class Class extends Node
 
   # Get the source file name.
   #
-  # @return [String] the filename of the class
+  # Returns the filename of the class (a [String])
   #
   getFileName: -> @fileName
 
   # Get the class doc
   #
-  # @return [Doc] the class doc
+  # Returns the class doc (a [Doc])
   #
   getDoc: -> @doc
 
   # Alias for {#getClassName}
   #
-  # @return [String] the full class name
+  # Returns the full class name (a [String])
   #
   getFullName: ->
     @getClassName()
 
   # Get the full class name
   #
-  # @return [String] the class
+  # Returns the class (a [String])
   #
   getClassName: ->
     try
@@ -171,7 +171,7 @@ module.exports = class Class extends Node
 
   # Get the class name
   #
-  # @return [String] the name
+  # Returns the name (a [String])
   #
   getName: ->
     try
@@ -185,7 +185,7 @@ module.exports = class Class extends Node
 
   # Get the class namespace
   #
-  # @return [String] the namespace
+  # Returns the namespace (a [String])
   #
   getNamespace: ->
     try
@@ -202,7 +202,7 @@ module.exports = class Class extends Node
 
   # Get the full parent class name
   #
-  # @return [String] the parent class name
+  # Returns the parent class name (a [String])
   #
   getParentClassName: ->
     try
@@ -233,7 +233,7 @@ module.exports = class Class extends Node
 
   # Get all methods.
   #
-  # @return [Array<Method>] the methods
+  # Returns  (a ) [Array<Method>] the methods
   #
   getMethods: ->
     if @options.private
@@ -243,13 +243,13 @@ module.exports = class Class extends Node
 
   # Get all variables.
   #
-  # @return [Array<Variable>] the variables
+  # Returns  (a ) [Array<Variable>] the variables
   #
   getVariables: -> @variables
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json =

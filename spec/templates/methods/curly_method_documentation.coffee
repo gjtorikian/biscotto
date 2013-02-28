@@ -2,50 +2,51 @@ class App.TestMethodDocumentation extends App.Doc
 
   # Should be overloaded to change fetch limit.
   #
-  # @return Number of items per fetch
+  # Returns the {Number} of items per fetch
   #
   fetchLimit: () -> 5
 
-  # Do it!
+  # Private: Do it!
   #
-  # @see #undo for more information
+  # See #undo for more information.
   #
-  # @private
-  # @param {String} it The thing to do
-  # @param again {Boolean} Do it again
-  # @param {Object} options The do options
-  # @option options {String} speed The speed
-  # @option options {Number} repeat How wany time to repeat
-  # @option options {Array<Tasks>} tasks The tasks to do
-  # @return {Boolean} When successful executed
+  # it - The {String} thing to do
+  # again - A {Boolean} for do it again
+  # options - The do options
+  #           :speed - The {String} speed
+  #           :repeat - How many {Number} times to repeat
+  #           :tasks - The {[Tasks]} tasks to do
+  # 
+  # Returns {Boolean} when successfully executed
   #
   do: (it, again, options) ->
 
-  # Do it!
+  # Private: Do it!
   #
-  # @see #undo for more information
+  # See #undo for more information.
   #
-  # @private
-  # @param {String} it The thing to do
-  # @param again {Boolean} Do it again
-  # @param {Object} options The do options
-  # @option options {String} speed The speed
-  # @option options {Number} repeat How wany time to repeat
-  # @option options {Array<Tasks>} tasks The tasks to do
-  # @return {Boolean} When successful executed
+  # it - The {String} thing to do
+  # again - A {Boolean} for do it again
+  # options - The do options
+  #           :speed - The {String} speed
+  #           :repeat - How many {Number} times to repeat
+  #           :tasks - The {[Tasks]} tasks to do
+  #
+  # Returns {Boolean} when successfully executed
   #
   doWithoutSpace:(it, again, options)->
 
-  # Do it!
+  # Private: Do it!
   #
-  # @see {#undo} for more information
+  # See #undo for more information.
   #
-  # @private
-  # @param {String} it The thing to do
-  # @param {Object} options The do options
-  # @option options {String} speed The speed
-  # @option options {Number} repeat How wany time to repeat
-  # @option options {Array<Tasks>} tasks The tasks to do
-  # @return {Boolean} When successful executed
+  # it - The {String} thing to do
+  # again - A {Boolean} for do it again
+  # options - The do options
+  #           :speed - The {String} speed
+  #           :repeat - How many {Number} times to repeat
+  #           :tasks - The {[Tasks]} tasks to do
+  #
+  # Returns {Boolean} when successfully executed
   #
   @lets_do_it = (it, options) ->
