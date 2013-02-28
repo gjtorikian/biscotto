@@ -12,8 +12,8 @@ module.exports = class Doc extends Node
 
   # Construct a documentation
   #
-  # @param [Object] node the comment node
-  # @param [Object] options the parser options
+  # node - the comment node (a [Object])
+  # options - the parser options (a [Object])
   #
   constructor: (@node, @options) ->
     try
@@ -25,7 +25,7 @@ module.exports = class Doc extends Node
 
   # Determines if the current doc has some comments
   #
-  # @return [Boolean] the comment status
+  # Returns the comment status (a [Boolean])
   #
   hasComment: ->
     @node && @node.comment
@@ -33,14 +33,16 @@ module.exports = class Doc extends Node
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
-  # @example left trim all lines
+  # lines - The comment lines [[String]]
+  #
+  # Examples
+  #
   #   leftTrimBlock(['', '  Escape at maximum speed.', '', '  @param (see #move)', '  '])
   #   => ['', 'Escape at maximum speed.', '', '@param (see #move)', '']
   #
   # This will keep indention for examples intact.
   #
-  # @param [Array<String>] lines the comment lines
-  # @return [Array<String>] lines left trimmed lines
+  # Returns the left trimmed lines as an array of Strings
   #
   leftTrimBlock: (lines) ->
     # Detect minimal left trim amount
@@ -207,7 +209,7 @@ module.exports = class Doc extends Node
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     if @node

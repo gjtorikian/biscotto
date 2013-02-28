@@ -14,8 +14,8 @@ module.exports = class Markdown
   # is true, then all unwanted elements are stripped from the
   # result and also all existing newlines.
   #
-  # @param [String] markdown the markdown markup
-  # @param [Boolean] limit if elements should be limited
+  # markdown - the markdown markup (a [String])
+  # limit - if elements should be limited (a [Boolean])
   #
   @convert: (markdown, limit = false, allowed = Markdown.limitedTags) ->
     return if markdown is undefined
@@ -33,9 +33,9 @@ module.exports = class Markdown
 
   # Strips all unwanted tag from the html
   #
-  # @param [String] html the Html to clean
-  # @param [String] allowed the comma separated list of allowed tags
-  # @return [String] the cleaned Html
+  # html - the Html to clean (a [String])
+  # allowed - the comma separated list of allowed tags (a [String])
+  # Returns the cleaned Html (a [String])
   #
   @limit: (html, allowed) ->
     allowed = allowed.split ','

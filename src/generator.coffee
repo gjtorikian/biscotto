@@ -14,8 +14,8 @@ module.exports = class Generator
 
   # Construct a generator
   #
-  # @param [Parser] parser the parser
-  # @param [Object] options the options
+  # parser - The parser (a [Parser])
+  # options - The options (a [Object])
   #
   constructor: (@parser, @options) ->
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
@@ -28,7 +28,7 @@ module.exports = class Generator
   # With a provided file generation callback, the assets will not be copied,
   # use {Biscotto.script} and {Biscotto.style} to get them.
   #
-  # @param [Function] file the optional file generation callback
+  # fileTthe - optional file generation callback (a [Function])
   #
   generate: (file) ->
     @templater.redirect(file) if file
@@ -389,8 +389,8 @@ module.exports = class Generator
 
   # Copy a file
   #
-  # @param [String] from the source file name
-  # @param [String] to the destination file name
+  # from - the source file name (a [String])
+  # to - the destination file name (a [String])
   #
   copy: (from, to) ->
     dir = path.dirname(to)
@@ -405,7 +405,7 @@ module.exports = class Generator
   # Write the data used in search into
   # a JSON file used by the frontend.
   #
-  # @param [Function] file the file callback
+  # file - the file callback (a [Function])
   #
   generateSearchData: (file) ->
     search = []

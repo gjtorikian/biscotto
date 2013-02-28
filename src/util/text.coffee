@@ -4,8 +4,9 @@ module.exports =
 
   # Whitespace helper function
   #
-  # @param [Number] n the number of spaces
-  # @return [String] the space string
+  # n - the number of spaces (a [Number])
+  #
+  # Returns the space string (a [String])
   #
   whitespace: (n) ->
     a = []

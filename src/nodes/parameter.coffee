@@ -6,14 +6,14 @@ module.exports = class Parameter extends Node
 
   # Construct a parameter
   #
-  # @param [Object] node the node
-  # @param [Object] options the parser options
+  # node - the node (a [Object])
+  # options - the parser options (a [Object])
   #
   constructor: (@node, @options) ->
 
   # Get the full parameter signature.
   #
-  # @return [String] the signature
+  # Returns the signature (a [String])
   #
   getSignature: ->
     try
@@ -33,7 +33,7 @@ module.exports = class Parameter extends Node
 
   # Get the parameter name
   #
-  # @return [String] the name
+  # Returns the name (a [String])
   #
   getName: ->
     try
@@ -54,7 +54,7 @@ module.exports = class Parameter extends Node
 
   # Get the parameter default value
   #
-  # @return [String] the default
+  # Returns the default (a [String])
   #
   getDefault: ->
     try
@@ -68,7 +68,7 @@ module.exports = class Parameter extends Node
 
   # Tests if the parameters is a splat
   #
-  # @return [Boolean] true if a splat
+  # Returns true if a splat (a [Boolean])
   #
   isSplat: ->
     try
@@ -79,7 +79,7 @@ module.exports = class Parameter extends Node
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # Returns the JSON object (a [Object])
   #
   toJSON: ->
     json =

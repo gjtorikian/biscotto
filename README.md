@@ -1,4 +1,4 @@
-Tomdocodo is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying technology is based
+Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying technology is based
 entirely on [codo](https://github.com/netzpirat/codo). However, this uses [TomDoc](http://tomdoc.org/) notation instead.
 
 Its generated documentation is focused on CoffeeScript class syntax for classical inheritance.
@@ -12,16 +12,11 @@ Its generated documentation is focused on CoffeeScript class syntax for classica
 
 ### GitHub Flavored Markdown
 
-Tomdocodo class, mixin and method documentation and extra files written in
-[Markdown](http://daringfireball.net/projects/markdown/) syntax are rendered as full
-[GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
-
-The `@return`, `@param`, `@option`, `@see`, `@author`, `@copyright`, `@note`, `@todo`, `@since`, `@version` and
-`@deprecated` tags rendered with a limited Markdown syntax, which means that only inline elements will be returned.
+Biscotto documentation should be written in [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
 
 ### Automatically link references
 
-Tomdocodo comments and all tag texts will be parsed for references to other classes, methods and mixins, and are automatically
+Biscotto comments and all tag texts will be parsed for references to other classes, methods and mixins, and are automatically
 linked. The reference searching will not take place within code blocks, thus you can avoid reference searching errors
 by surround your code block that contains curly braces with backticks.
 
@@ -36,34 +31,21 @@ If you are referring to a method within the same class, you can omit the class n
 
 ## Generate
 
-After the installation you will have a `tomdocodo` binary that can be used to generate the documentation recursively for all
+After the installation you will have a `biscotto` binary that can be used to generate the documentation recursively for all
 CoffeeScript files within a directory.
+
+To view a list of commands, type
 
 ```bash
 $ codo --help
-Usage: codo [options] [source_files [- extra_files]]
-
-Options:
-  -r, --readme      The readme file used                                [default: "README.md"]
-  -n, --name        The project name used                               [default: "Tomdocodo"]
-  -q, --quiet       Show no warnings                                    [boolean]  [default: false]
-  -o, --output-dir  The output directory                                [default: "./doc"]
-  -a, --analytics   The Google analytics ID                             [default: false]
-  -v, --verbose     Show parsing errors                                 [boolean]  [default: false]
-  -d, --debug       Show stacktraces and converted CoffeeScript source  [boolean]  [default: false]
-  -h, --help        Show the help
-  --cautious        Don't attempt to parse singleline comments          [boolean]  [default: false]
-  -s, --server      Start a documentation server
-  --private         Show private methods                                [boolean]  [default: true]
-  --title                                               [default: "CoffeeScript API Documentation"]
 ```
 
-Tomdocodo wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files and
+Biscotto wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files, and
 the project name, so the above defaults may be different on your project.
 
 ### Project defaults
 
-You can define your project defaults by write your command line options to a `.tomdocodoopts` file:
+You can define your project defaults by writing your command line options to a `.biscottoopts` file:
 
 ```bash
 --name       "Tomdocodo"

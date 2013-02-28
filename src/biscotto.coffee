@@ -14,7 +14,7 @@ module.exports = class Biscotto
 
   # Get the current Biscotto version
   #
-  # @return [String] the Biscotto version
+  # Returns a [String] representing the Biscotto version
   #
   @version: ->
     'v' + JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['version']
@@ -25,7 +25,13 @@ module.exports = class Biscotto
   # You can also run the documentation generation without writing files
   # to the file system, by supplying a callback function.
   #
+  # done - The documentation done callback (a [Function])
+  # file - The new file callback (a [Function])
+  # analytics - The Google analytics tracking code (a [String])
+  # homepage - The homepage in the breadcrumbs (a [String])
+  #
   # Examples
+  #
   #   biscotto = require 'biscotto'
   #
   #   file = (filename, content) ->
@@ -39,10 +45,6 @@ module.exports = class Biscotto
   #
   #   biscotto.run file, done
   #
-  # @param [Function] done the documentation done callback
-  # @param [Function] file the new file callback
-  # @param [String] analytics the Google analytics tracking code
-  # @param [String] homepage the homepage in the breadcrumbs
   #
   @run: (done, file, analytics = false, homepage = false) ->
 
@@ -219,14 +221,14 @@ module.exports = class Biscotto
 
   # Get the Biscotto script content that is used in the webinterface
   #
-  # @return [String] the script content
+  # Returns the script content (a [String])
   #
   @script: ->
     @biscottoScript or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.js'), 'utf-8'
 
   # Get the Biscotto style content that is used in the webinterface
   #
-  # @return [String] the style content
+  # Returns the style content (a [String])
   #
   @style: ->
     @biscottoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.css'), 'utf-8'
@@ -273,6 +275,7 @@ module.exports = class Biscotto
   # Find the project name by either parse `package.json`
   # or get the current working directory name.
   #
+  # done - The callback to call
   @detectName: (done) ->
     if (fs.exists || path.exists)('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']

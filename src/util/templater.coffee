@@ -13,9 +13,9 @@ module.exports = class Templater
   # Construct the templater. Reads all templates and constructs
   # the global template context.
   #
-  # @param [Object] options the options
-  # @param [Referencer] referencer the link type referencer
-  # @param [Parser] parser the biscotto parser
+  # options - the options (a [Object])
+  # referencer - the link type referencer (a [Referencer])
+  # parser - the biscotto parser (a [Parser])
   #
   constructor: (@options, @referencer, @parser) ->
     @JST = []
@@ -41,7 +41,7 @@ module.exports = class Templater
 
   # Redirect template generation to a callback.
   #
-  # @param [Function] file the file callback function
+  # file - the file callback function (a [Function])
   #
   redirect: (file) -> @file = file
 
@@ -49,9 +49,9 @@ module.exports = class Templater
   # global context object merged as template data. Writes
   # the file as the output filename.
   #
-  # @param [String] template the template name
-  # @param [Object] context the context object
-  # @param [String] filename the output file name
+  # template - the template name (a [String])
+  # context - the context object (a [Object])
+  # filename - the output file name (a [String])
   #
   render: (template, context = {}, filename = '') ->
     html = @JST[template](_.extend(@globalContext, context))
