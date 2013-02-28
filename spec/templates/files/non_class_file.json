@@ -9,9 +9,8 @@
                     "summary": "Says hello to a person",
                     "params": [
                         {
-                            "type": "String",
                             "name": "name",
-                            "desc": "the name of the persion"
+                            "desc": "<p>The name of the person</p>"
                         }
                     ]
                 },
@@ -32,9 +31,8 @@
                     "summary": "Says bye to a person",
                     "params": [
                         {
-                            "type": "String",
                             "name": "name",
-                            "desc": "the name of the persion"
+                            "desc": "<p>The name of the person</p>"
                         }
                     ]
                 },
@@ -55,9 +53,8 @@
                     "summary": "Say hi to a person",
                     "params": [
                         {
-                            "type": "String",
                             "name": "name",
-                            "desc": "the name of the persion"
+                            "desc": "<p>The name of the person</p>"
                         }
                     ]
                 },

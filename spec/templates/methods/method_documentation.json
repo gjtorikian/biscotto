@@ -12,77 +12,65 @@
         "doc": {
           "comment": "<p>Should be overloaded to change fetch limit.</p>",
           "summary": "Should be overloaded to change fetch limit.",
-          "returnValue": {
-            "type": "?",
-            "desc": "Number of items per fetch"
-          }
+          "returnValue": [
+            {
+              "type": "",
+              "desc": [
+                "<p>Returns the [Number] of items per fetch</p>"
+              ]
+            }
+          ]
         },
         "type": "instance",
-        "signature": "- (?) <strong>fetchLimit</strong>()",
+        "signature": "- () <strong>fetchLimit</strong>()",
         "name": "fetchLimit",
         "bound": false,
         "parameters": []
       },
       {
         "doc": {
-          "private": true,
-          "comment": "<p>Do it!</p>",
-          "summary": "Do it!",
+          "comment": "<p>Do it!\nSee #undo for more information.</p>",
+          "summary": "Do it! See #undo for more information.",
+          "status": "Private",
           "params": [
             {
-              "type": "String",
               "name": "it",
-              "desc": "The thing to do"
+              "desc": "<p>The [String] thing to do</p>"
             },
             {
-              "type": "Boolean",
               "name": "again",
-              "desc": "Do it again"
+              "desc": "<p>A [Boolean] for do it again</p>"
             },
             {
-              "type": "Object",
               "name": "options",
-              "desc": "The do options"
+              "desc": "<p>The do options</p>",
+              "keys": [
+                {
+                  "name": "speed",
+                  "desc": "<p>The [String] speed</p>"
+                },
+                {
+                  "name": "repeat",
+                  "desc": "<p>How many [Number] times to repeat</p>"
+                },
+                {
+                  "name": "tasks",
+                  "desc": "<p>The {[Tasks]} tasks to do</p>"
+                }
+              ]
             }
           ],
-          "options": {
-            "options": [
-              {
-                "type": "String",
-                "name": "speed",
-                "desc": "The speed"
-              },
-              {
-                "type": "Number",
-                "name": "repeat",
-                "desc": "How wany time to repeat"
-              },
-              {
-                "type": "Array<Tasks>",
-                "name": "tasks",
-                "desc": "The tasks to do"
-              }
-            ]
-          },
-          "see": [
+          "returnValue": [
             {
-              "reference": "#undo",
-              "label": "for more information"
-            }
-          ],
-          "returnValue": {
-            "type": "Boolean",
-            "desc": "When successful executed"
-          },
-          "throwValue": [
-            {
-              "type": "TypeError",
-              "desc": "when it can&#39;t be done"
+              "type": "",
+              "desc": [
+                "<p>Returns [Boolean] when successfully executed</p>"
+              ]
             }
           ]
         },
         "type": "instance",
-        "signature": "- (Boolean) <strong>do</strong>(it, again, options)",
+        "signature": "- () <strong>do</strong>(it, again, options)",
         "name": "do",
         "bound": false,
         "parameters": [
@@ -102,58 +90,48 @@
       },
       {
         "doc": {
-          "private": true,
-          "comment": "<p>Do it!</p>",
-          "summary": "Do it!",
+          "comment": "<p>Do it!\nSee #undo for more information.</p>",
+          "summary": "Do it! See #undo for more information.",
+          "status": "Private",
           "params": [
             {
-              "type": "String",
               "name": "it",
-              "desc": "The thing to do"
+              "desc": "<p>The [String] thing to do</p>"
             },
             {
-              "type": "Boolean",
               "name": "again",
-              "desc": "Do it again"
+              "desc": "<p>A [Boolean] for do it again</p>"
             },
             {
-              "type": "Object",
               "name": "options",
-              "desc": "The do options"
+              "desc": "<p>The do options</p>",
+              "keys": [
+                {
+                  "name": "speed",
+                  "desc": "<p>The [String] speed</p>"
+                },
+                {
+                  "name": "repeat",
+                  "desc": "<p>How many [Number] times to repeat</p>"
+                },
+                {
+                  "name": "tasks",
+                  "desc": "<p>The {[Tasks]} tasks to do</p>"
+                }
+              ]
             }
           ],
-          "options": {
-            "options": [
-              {
-                "type": "String",
-                "name": "speed",
-                "desc": "The speed"
-              },
-              {
-                "type": "Number",
-                "name": "repeat",
-                "desc": "How wany time to repeat"
-              },
-              {
-                "type": "Array<Tasks>",
-                "name": "tasks",
-                "desc": "The tasks to do"
-              }
-            ]
-          },
-          "see": [
+          "returnValue": [
             {
-              "reference": "#undo",
-              "label": "for more information"
+              "type": "",
+              "desc": [
+                "<p>Returns [Boolean] when successfully executed</p>"
+              ]
             }
-          ],
-          "returnValue": {
-            "type": "Boolean",
-            "desc": "When successful executed"
-          }
+          ]
         },
         "type": "instance",
-        "signature": "- (Boolean) <strong>doWithoutSpace</strong>(it, again, options)",
+        "signature": "- () <strong>doWithoutSpace</strong>(it, again, options)",
         "name": "doWithoutSpace",
         "bound": false,
         "parameters": [

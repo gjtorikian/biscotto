@@ -1,2 +1,0 @@
-class TestAssignedParameters
-  help: (@me) ->

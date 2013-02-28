@@ -26,6 +26,7 @@ for filename in walkdir.sync './spec/templates'
             quiet: false
             private: true
             github: ''
+            parser: 'tomdoc'
           })
 
           filename = filename.substring process.cwd().length + 1
@@ -33,7 +34,7 @@ for filename in walkdir.sync './spec/templates'
           try
             tokens = parser.parseContent source, filename
             generated = JSON.stringify(parser.toJSON(), null, 2)
-  
+            
             report = "\n-------------------- CoffeeScript ----------------------\n"
             report += source
             report += "\n------------- Preprocessed CoffeeScript-----------------\n"
