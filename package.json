@@ -1,31 +1,20 @@
 {
-  "name" : "codo",
+  "name" : "biscotto",
   "description" : "A CoffeeScript documentation generator.",
   "keywords" : ["coffeescript", "doc"],
-  "author" : "Michael Kessler <michi@netzpiraten.ch>",
+  "author" : "Garen J. Torikian <gjtorikian@gmail.com>",
   "maintainers" : [
     {
-      "name" : "Michael Kessler"
+      "name" : "Garen J. Torikian"
     }
   ],
-  "version" : "1.5.4",
-  "licenses" : [
-    {
-      "type" : "MIT",
-      "url" : "http://github.com/netzpirat/codo/raw/master/LICENSE"
-    }
-  ],
+  "version" : "0.0.1",
   "engines" : {
-    "node" : ">=0.4.0"
+    "node" : ">=0.8.0"
   },
-  "directories" : {
-    "lib" : "./src",
-    "theme/default/assets" : "./theme/default/assets",
-    "theme/default/templates" : "./theme/default/templates"
-  },
-  "main" : "./src/codo",
+  "main" : "./src/biscotto",
   "bin" : {
-    "codo" : "./bin/codo"
+    "biscotto" : "./bin/biscotto"
   },
   "dependencies" : {
     "coffee-script" : ">= 1.2.0",
@@ -42,13 +31,10 @@
   "devDependencies" : {
     "jasmine-node" : ">= 1.0.13"
   },
-  "homepage" : "https://github.com/netzpirat/codo",
+  "homepage" : "https://github.com/gjtorikian/biscotto",
   "repository" : {
     "type" : "git",
-    "url" : "git://github.com/netzpirat/codo.git"
-  },
-  "bugs" : {
-    "url" : "https://github.com/netzpirat/codo/issues"
+    "url" : "git://github.com/gjtorikian/biscotto.git"
   },
   "scripts" : {
     "test" : "jasmine-node --coffee spec"

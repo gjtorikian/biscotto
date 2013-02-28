@@ -10,7 +10,7 @@
           {
             "doc": {
               "examples": [
-                "  codo = require 'codo'\n  file = (filename, content) ->\n    console.log \"New file %s with content %s\", filename, content\n  done = (err) ->\n    if err\n      console.log \"Cannot generate documentation:\", err\n    else\n      console.log \"Documentation generated\"\n  codo.run file, done\n  "
+                "  biscotto = require 'biscotto'\n  file = (filename, content) ->\n    console.log \"New file %s with content %s\", filename, content\n  done = (err) ->\n    if err\n      console.log \"Cannot generate documentation:\", err\n    else\n      console.log \"Documentation generated\"\n  biscotto.run file, done\n  "
               ],
               "comment": "<p>A method to run.</p>",
               "summary": "A method to run."

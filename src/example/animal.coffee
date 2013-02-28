@@ -1,6 +1,6 @@
 # Base class for all animals.
 #
-# @note This is not used for codo, its purpose is to show
+# @note This is not used for biscotto, its purpose is to show
 #   all possible tags within a class, even when it makes no sense at all.
 #   For example this reference test to {Example.Animal.Lion#move}
 #

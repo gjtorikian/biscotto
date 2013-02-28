@@ -1,4 +1,4 @@
-# Codo - the CoffeeScript API documentation generator
+# Biscotto - the TomDoc-CoffeeScript API documentation generator
 #
 # # Header 1
 #
