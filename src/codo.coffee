@@ -91,11 +91,6 @@ module.exports = class Codo
             describe  : 'The project name used'
             default   : codoopts.name || codoopts.n || defaults.name
           )
-          .options('p',
-            alias     : 'parser'
-            describe  : 'The parsing type to use'
-            default   : 'yard'
-          )
           .options('q',
             alias     : 'quiet'
             describe  : 'Show no warnings'
@@ -160,15 +155,12 @@ module.exports = class Codo
           console.log 'Codo documentation from %s is available at http://localhost:%d', argv.o, port
 
         else
-          if argv.j == true
-            argv.j = './doc.json'
           options =
             inputs: []
             output: argv.o
-            json: argv.j
+            json: argv.j || ""
             extras: []
             name: argv.n
-            parser: argv.p
             readme: argv.r
             title: argv.title
             quiet: argv.q

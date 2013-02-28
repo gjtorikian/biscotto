@@ -26,7 +26,6 @@ for filename in walkdir.sync './spec/templates'
             quiet: false
             private: true
             github: ''
-            parser: 'tomdoc'
           })
 
           filename = filename.substring process.cwd().length + 1
