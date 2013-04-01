@@ -1,5 +1,6 @@
 Node      = require './node'
 Markdown  = require '../util/markdown'
+Referencer  = require '../util/referencer'
 
 marked = require 'marked'
 _      = require 'underscore'
@@ -93,9 +94,7 @@ module.exports = class Doc extends Node
       else if /^\s*Returns/.test(current)
         @returnValue or= []
 
-        @returnValue.push
-          type: ''
-          desc: @parse_returns(current)
+        @returnValue = @parse_returns(current)
       else
         text = text.concat "\n#{current}"
 
@@ -140,7 +139,7 @@ module.exports = class Doc extends Node
 
   # Parse returns section.
   #
-  # section - String contaning Returns and/or Raises lines.
+  # section - String containing Returns lines.
   #
   # Returns nothing.
   parse_returns: (section) ->
@@ -149,8 +148,13 @@ module.exports = class Doc extends Node
 
     lines = section.split("\n")  
     _.each lines, (line) ->
+      line = _.str.trim(line)
+      
       if /^Returns/.test(line)
-        returns.push(Markdown.convert(line))
+        returns.push(
+          type: Referencer.getLinkMatch(line)
+          desc: Markdown.convert(line)
+        )
         current = returns
       else if /^\s+/.test(line)
         _.last(current).concat _.str.clean(line)

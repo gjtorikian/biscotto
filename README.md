@@ -10,9 +10,27 @@ Its generated documentation is focused on CoffeeScript class syntax for classica
 
 ## Text processing
 
+### TomDoc Notation
+
+API documentation should be written in the [TomDoc](http://tomdoc.org/) notation.  
+Originally conceived for Ruby, TomDoc lends itself pretty nicely to the Coffeescript
+format. There are some slight changes in the parse rules to match Coffeescript.
+Briefly, here's a list of how you should format your documentation:
+
+#### Return types
+
+When returning from a method, your line should start with the word `Returns`. When
+describing the return type, wrap it in the link reference notation (two curly braces,
+like this: `{ }`). This ensures that the generated methods correlates a return type.
+Methods without return types returned `undefined`. You can list more than one `Returns`
+per method.
+
+For more technical examples, peruse the [spec](./spec) folder, which contains all
+the tests for Biscotto.
+
 ### GitHub Flavored Markdown
 
-Biscotto documentation should be written in [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
+Biscotto documentation is processed with [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
 
 ### Automatically link references
 

@@ -261,9 +261,9 @@ module.exports = class Referencer
   #
   #   "To get a list of all customers, go to {Customers.getAll}"
   #
-  # text - The text to search (a [String])
+  # text - The text to search (a {String})
   #
-  # Returns the text with hyperlinks (a [String])
+  # Returns the text with hyperlinks (a {String})
   #
   resolveTextReferences: (text = '', entity, path) ->
     # Make curly braces within code blocks undetectable
@@ -387,6 +387,12 @@ module.exports = class Referencer
 
     see
 
+  @getLinkMatch: (text) ->
+    if m = text.match(/\{([^\}]*)\}/)
+      return m[1]
+    else
+      return ""
+      
   readStandardJSON: ->
     @standardObjs = JSON.parse(fs.readFileSync(path.join(__dirname, 'standardObjs.json'), 'utf-8'))
 

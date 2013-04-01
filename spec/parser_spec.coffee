@@ -40,10 +40,10 @@ for filename in walkdir.sync './spec/templates'
             report += parser.convertComments(source)
             report += "\n----------------------- Nodes --------------------------"
             report += tokens.toString()
-            report += "\n-------------------- Parsed JSON ------------------------\n"
-            report += generated
-            report += "\n------------------- Expected JSON ---------------------\n"
+            report += "\n-------------------- Expected JSON ------------------------\n"
             report += expected
+            report += "\n------------------- Generated JSON ---------------------\n"
+            report += generated
             report += "\n-------------------------------------------------------\n"
 
             expect({

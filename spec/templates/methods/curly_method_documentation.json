@@ -14,10 +14,8 @@
           "summary": "Should be overloaded to change fetch limit.",
           "returnValue": [
             {
-              "type": "",
-              "desc": [
-                "<p>Returns the {Number} of items per fetch</p>"
-              ]
+              "type": "Number",
+              "desc": "<p>Returns the {Number} of items per fetch</p>"
             }
           ]
         },
@@ -62,10 +60,8 @@
           ],
           "returnValue": [
             {
-              "type": "",
-              "desc": [
-                "<p>Returns {Boolean} when successfully executed</p>"
-              ]
+              "type": "Boolean",
+              "desc": "<p>Returns {Boolean} when successfully executed</p>"
             }
           ]
         },
@@ -123,10 +119,8 @@
           ],
           "returnValue": [
             {
-              "type": "",
-              "desc": [
-                "<p>Returns {Boolean} when successfully executed</p>"
-              ]
+              "type": "Boolean",
+              "desc": "<p>Returns {Boolean} when successfully executed</p>"
             }
           ]
         },

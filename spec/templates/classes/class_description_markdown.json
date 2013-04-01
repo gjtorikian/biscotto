@@ -1,84 +1,80 @@
 [
-    {
-      "file": "spec/templates/classes/class_description_markdown.coffee",
-      "doc": {
-        "comment": "<p>Biscotto - the TomDoc-CoffeeScript API documentation generator</p><h1>Header 1</h1><p>This is a paragraph.</p><h2>Header 2</h2><p>This is a paragraph.</p><h3>Header 3</h3><p>This is a paragraph.</p><h4>Header 4</h4><p>This is a paragraph.</p><h5>Header 5</h5><p>This is a paragraph.</p><h6>Header 6</h6><p>This is a paragraph.</p>",
-        "summary": "Biscotto - the TomDoc-CoffeeScript API documentation generator"
-      },
-      "class": {
-        "className": "TestMarkdownDocumentation",
-        "name": "TestMarkdownDocumentation",
-        "namespace": ""
-      },
-      "methods": [
-        {
-          "doc": {
-            "comment": "<p>This method is a test.\nSee {another} for <em>more</em> information.</p>",
-            "summary": "This method is a test.",
-            "params": [
-              {
-                "name": "a",
-                "desc": "<p>The [Hash] options that <em>must</em> be supplied</p>",
-                "keys": [
-                  {
-                    "name": "option",
-                    "desc": "<p>A [String] property representing the <strong>URL</strong></p>"
-                  }
-                ]
-              }
-            ],
-            "returnValue": [
-              {
-                "type": "",
-                "desc": [
-                  "<p>Returns A [String] that is <strong>very</strong> important</p>"
-                ]
-              }
-            ]
-          },
-          "type": "instance",
-          "signature": "- () <strong>test</strong>(a)",
-          "name": "test",
-          "bound": false,
-          "parameters": [
+  {
+    "file": "spec/templates/classes/class_description_markdown.coffee",
+    "doc": {
+      "comment": "<p>Biscotto - the TomDoc-CoffeeScript API documentation generator</p><h1>Header 1</h1><p>This is a paragraph.</p><h2>Header 2</h2><p>This is a paragraph.</p><h3>Header 3</h3><p>This is a paragraph.</p><h4>Header 4</h4><p>This is a paragraph.</p><h5>Header 5</h5><p>This is a paragraph.</p><h6>Header 6</h6><p>This is a paragraph.</p>",
+      "summary": "Biscotto - the TomDoc-CoffeeScript API documentation generator"
+    },
+    "class": {
+      "className": "TestMarkdownDocumentation",
+      "name": "TestMarkdownDocumentation",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>This method is a test.\nSee {another} for <em>more</em> information.</p>",
+          "summary": "This method is a test.",
+          "params": [
             {
               "name": "a",
-              "splat": false
+              "desc": "<p>The [Hash] options that <em>must</em> be supplied</p>",
+              "keys": [
+                {
+                  "name": "option",
+                  "desc": "<p>A [String] property representing the <strong>URL</strong></p>"
+                }
+              ]
+            }
+          ],
+          "returnValue": [
+            {
+              "type": "",
+              "desc": "<p>Returns A [String] that is <strong>very</strong> important</p>"
             }
           ]
         },
-        {
-          "doc": {
-            "comment": "<p>Yet another method.</p>",
-            "summary": "Yet another method.",
-            "params": [
-              {
-                "name": "a",
-                "desc": "<p>A String that <em>must</em> be supplied</p>"
-              }
-            ],
-            "returnValue": [
-              {
-                "type": "",
-                "desc": [
-                  "<p>Returns a <em>very</em> nice thing</p>"
-                ]
-              }
-            ]
-          },
-          "type": "instance",
-          "signature": "- () <strong>another</strong>(a)",
-          "name": "another",
-          "bound": false,
-          "parameters": [
+        "type": "instance",
+        "signature": "- () <strong>test</strong>(a)",
+        "name": "test",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Yet another method.</p>",
+          "summary": "Yet another method.",
+          "params": [
             {
               "name": "a",
-              "splat": false
+              "desc": "<p>A String that <em>must</em> be supplied</p>"
+            }
+          ],
+          "returnValue": [
+            {
+              "type": "",
+              "desc": "<p>Returns a <em>very</em> nice thing</p>"
             }
           ]
-        }
-      ],
-      "variables": [],
-      "properties": []
-    }
+        },
+        "type": "instance",
+        "signature": "- () <strong>another</strong>(a)",
+        "name": "another",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
 ]

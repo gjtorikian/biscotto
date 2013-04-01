@@ -1,172 +1,208 @@
-[
-  {
-    "file": "spec/templates/methods/method_documentation.coffee",
-    "class": {
-      "className": "App.TestMethodDocumentation",
-      "name": "TestMethodDocumentation",
-      "namespace": "App",
-      "parent": "App.Doc"
-    },
-    "methods": [
+    [
       {
-        "doc": {
-          "comment": "<p>Should be overloaded to change fetch limit.</p>",
-          "summary": "Should be overloaded to change fetch limit.",
-          "returnValue": [
-            {
-              "type": "",
-              "desc": [
-                "<p>Returns the [Number] of items per fetch</p>"
-              ]
-            }
-          ]
+        "file": "spec/templates/methods/method_documentation.coffee",
+        "class": {
+          "className": "App.TestMethodDocumentation",
+          "name": "TestMethodDocumentation",
+          "namespace": "App",
+          "parent": "App.Doc"
         },
-        "type": "instance",
-        "signature": "- () <strong>fetchLimit</strong>()",
-        "name": "fetchLimit",
-        "bound": false,
-        "parameters": []
-      },
-      {
-        "doc": {
-          "comment": "<p>Do it!\nSee #undo for more information.</p>",
-          "summary": "Do it! See #undo for more information.",
-          "status": "Private",
-          "params": [
-            {
-              "name": "it",
-              "desc": "<p>The [String] thing to do</p>"
-            },
-            {
-              "name": "again",
-              "desc": "<p>A [Boolean] for do it again</p>"
-            },
-            {
-              "name": "options",
-              "desc": "<p>The do options</p>",
-              "keys": [
+        "methods": [
+          {
+            "doc": {
+              "comment": "<p>Should be overloaded to change fetch limit.</p>",
+              "summary": "Should be overloaded to change fetch limit.",
+              "returnValue": [
                 {
-                  "name": "speed",
-                  "desc": "<p>The [String] speed</p>"
-                },
-                {
-                  "name": "repeat",
-                  "desc": "<p>How many [Number] times to repeat</p>"
-                },
-                {
-                  "name": "tasks",
-                  "desc": "<p>The {[Tasks]} tasks to do</p>"
+                  "type": "Number",
+                  "desc": "<p>Returns the {Number} of items per fetch</p>"
                 }
               ]
-            }
-          ],
-          "returnValue": [
-            {
-              "type": "",
-              "desc": [
-                "<p>Returns [Boolean] when successfully executed</p>"
-              ]
-            }
-          ]
-        },
-        "type": "instance",
-        "signature": "- () <strong>do</strong>(it, again, options)",
-        "name": "do",
-        "bound": false,
-        "parameters": [
-          {
-            "name": "it",
-            "splat": false
+            },
+            "type": "instance",
+            "signature": "- () <strong>fetchLimit</strong>()",
+            "name": "fetchLimit",
+            "bound": false,
+            "parameters": []
           },
           {
-            "name": "again",
-            "splat": false
-          },
-          {
-            "name": "options",
-            "splat": false
-          }
-        ]
-      },
-      {
-        "doc": {
-          "comment": "<p>Do it!\nSee #undo for more information.</p>",
-          "summary": "Do it! See #undo for more information.",
-          "status": "Private",
-          "params": [
-            {
-              "name": "it",
-              "desc": "<p>The [String] thing to do</p>"
-            },
-            {
-              "name": "again",
-              "desc": "<p>A [Boolean] for do it again</p>"
-            },
-            {
-              "name": "options",
-              "desc": "<p>The do options</p>",
-              "keys": [
+            "doc": {
+              "comment": "<p>Do it!\nSee #undo for more information.</p>",
+              "summary": "Do it! See #undo for more information.",
+              "status": "Private",
+              "params": [
                 {
-                  "name": "speed",
-                  "desc": "<p>The [String] speed</p>"
+                  "name": "it",
+                  "desc": "<p>The {String} thing to do</p>"
                 },
                 {
-                  "name": "repeat",
-                  "desc": "<p>How many [Number] times to repeat</p>"
+                  "name": "again",
+                  "desc": "<p>A {Boolean} for do it again</p>"
                 },
                 {
-                  "name": "tasks",
-                  "desc": "<p>The {[Tasks]} tasks to do</p>"
+                  "name": "options",
+                  "desc": "<p>The do options</p>",
+                  "keys": [
+                    {
+                      "name": "speed",
+                      "desc": "<p>The {String} speed</p>"
+                    },
+                    {
+                      "name": "repeat",
+                      "desc": "<p>How many {Number} times to repeat</p>"
+                    },
+                    {
+                      "name": "tasks",
+                      "desc": "<p>The {[Tasks]} tasks to do</p>"
+                    }
+                  ]
+                }
+              ],
+              "returnValue": [
+                {
+                  "type": "Boolean",
+                  "desc": "<p>Returns {Boolean} when successfully executed</p>"
                 }
               ]
-            }
-          ],
-          "returnValue": [
-            {
-              "type": "",
-              "desc": [
-                "<p>Returns [Boolean] when successfully executed</p>"
+            },
+            "type": "instance",
+            "signature": "- () <strong>do</strong>(it, again, options)",
+            "name": "do",
+            "bound": false,
+            "parameters": [
+              {
+                "name": "it",
+                "splat": false
+              },
+              {
+                "name": "again",
+                "splat": false
+              },
+              {
+                "name": "options",
+                "splat": false
+              }
+            ]
+          },
+          {
+            "doc": {
+              "comment": "<p>Do it!\nSee #undo for more information.</p>",
+              "summary": "Do it! See #undo for more information.",
+              "status": "Private",
+              "params": [
+                {
+                  "name": "it",
+                  "desc": "<p>The {String} thing to do</p>"
+                },
+                {
+                  "name": "again",
+                  "desc": "<p>A {Boolean} for do it again</p>"
+                },
+                {
+                  "name": "options",
+                  "desc": "<p>The do options</p>",
+                  "keys": [
+                    {
+                      "name": "speed",
+                      "desc": "<p>The {String} speed</p>"
+                    },
+                    {
+                      "name": "repeat",
+                      "desc": "<p>How many {Number} times to repeat</p>"
+                    },
+                    {
+                      "name": "tasks",
+                      "desc": "<p>The {[Tasks]} tasks to do</p>"
+                    }
+                  ]
+                }
+              ],
+              "returnValue": [
+                {
+                  "type": "Boolean",
+                  "desc": "<p>Returns {Boolean} when successfully executed</p>"
+                }
               ]
-            }
-          ]
-        },
-        "type": "instance",
-        "signature": "- () <strong>doWithoutSpace</strong>(it, again, options)",
-        "name": "doWithoutSpace",
-        "bound": false,
-        "parameters": [
-          {
-            "name": "it",
-            "splat": false
+            },
+            "type": "instance",
+            "signature": "- () <strong>doWithoutSpace</strong>(it, again, options)",
+            "name": "doWithoutSpace",
+            "bound": false,
+            "parameters": [
+              {
+                "name": "it",
+                "splat": false
+              },
+              {
+                "name": "again",
+                "splat": false
+              },
+              {
+                "name": "options",
+                "splat": false
+              }
+            ]
           },
           {
-            "name": "again",
-            "splat": false
+            "doc": {
+              "comment": "<p>Do it!\nSee #undo for more information.</p>",
+              "summary": "Do it! See #undo for more information.",
+              "status": "Private",
+              "returnValue": [
+                {
+                  "type": "Boolean",
+                  "desc": "<p>Returns {Boolean} when it works.</p>"
+                }
+              ]
+            },
+            "type": "instance",
+            "signature": "- () <strong>returnSingleType</strong>()",
+            "name": "returnSingleType",
+            "bound": false,
+            "parameters": []
           },
           {
-            "name": "options",
-            "splat": false
+            "doc": {
+              "comment": "<p>Blahblah.</p>",
+              "summary": "Blahblah.",
+              "status": "Public",
+              "returnValue": [
+                {
+                  "type": "",
+                  "desc": "<p>Returns no type.</p>"
+                }
+              ]
+            },
+            "type": "instance",
+            "signature": "- () <strong>returnNoType</strong>()",
+            "name": "returnNoType",
+            "bound": false,
+            "parameters": []
+          },
+          {
+            "doc": {
+              "comment": "<p>Blahblah.</p>",
+              "summary": "Blahblah.",
+              "status": "Public",
+              "returnValue": [
+                {
+                  "type": "String",
+                  "desc": "<p>Returns a {String}.</p>"
+                },
+                {
+                  "type": "Number",
+                  "desc": "<p>Returns also a {Number}.</p>"
+                }
+              ]
+            },
+            "type": "instance",
+            "signature": "- () <strong>returnTwoReturns</strong>()",
+            "name": "returnTwoReturns",
+            "bound": false,
+            "parameters": []
           }
-        ]
-      },
-      {
-        "type": "class",
-        "signature": "+ (void) <strong>lets_do_it</strong>(it, options)",
-        "name": "lets_do_it",
-        "bound": false,
-        "parameters": [
-          {
-            "name": "it",
-            "splat": false
-          },
-          {
-            "name": "options",
-            "splat": false
-          }
-        ]
+        ],
+        "variables": [],
+        "properties": []
       }
-    ],
-    "variables": [],
-    "properties": []
-  }
-]
+    ]
