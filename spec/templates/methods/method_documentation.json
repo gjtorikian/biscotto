@@ -15,7 +15,7 @@
               "returnValue": [
                 {
                   "type": "Number",
-                  "desc": "<p>Returns the {Number} of items per fetch</p>"
+                  "desc": "<p>Returns the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of items per fetch</p>"
                 }
               ]
             },
@@ -33,11 +33,11 @@
               "params": [
                 {
                   "name": "it",
-                  "desc": "<p>The {String} thing to do</p>"
+                  "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> thing to do</p>"
                 },
                 {
                   "name": "again",
-                  "desc": "<p>A {Boolean} for do it again</p>"
+                  "desc": "<p>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> for do it again</p>"
                 },
                 {
                   "name": "options",
@@ -45,15 +45,15 @@
                   "keys": [
                     {
                       "name": "speed",
-                      "desc": "<p>The {String} speed</p>"
+                      "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> speed</p>"
                     },
                     {
                       "name": "repeat",
-                      "desc": "<p>How many {Number} times to repeat</p>"
+                      "desc": "<p>How many <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> times to repeat</p>"
                     },
                     {
                       "name": "tasks",
-                      "desc": "<p>The {[Tasks]} tasks to do</p>"
+                      "desc": "<p>The <a href=''>[Tasks]</a> tasks to do</p>"
                     }
                   ]
                 }
@@ -61,7 +61,7 @@
               "returnValue": [
                 {
                   "type": "Boolean",
-                  "desc": "<p>Returns {Boolean} when successfully executed</p>"
+                  "desc": "<p>Returns <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> when successfully executed</p>"
                 }
               ]
             },
@@ -92,11 +92,11 @@
               "params": [
                 {
                   "name": "it",
-                  "desc": "<p>The {String} thing to do</p>"
+                  "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> thing to do</p>"
                 },
                 {
                   "name": "again",
-                  "desc": "<p>A {Boolean} for do it again</p>"
+                  "desc": "<p>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> for do it again</p>"
                 },
                 {
                   "name": "options",
@@ -104,15 +104,15 @@
                   "keys": [
                     {
                       "name": "speed",
-                      "desc": "<p>The {String} speed</p>"
+                      "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> speed</p>"
                     },
                     {
                       "name": "repeat",
-                      "desc": "<p>How many {Number} times to repeat</p>"
+                      "desc": "<p>How many <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> times to repeat</p>"
                     },
                     {
                       "name": "tasks",
-                      "desc": "<p>The {[Tasks]} tasks to do</p>"
+                      "desc": "<p>The <a href=''>[Tasks]</a> tasks to do</p>"
                     }
                   ]
                 }
@@ -120,7 +120,7 @@
               "returnValue": [
                 {
                   "type": "Boolean",
-                  "desc": "<p>Returns {Boolean} when successfully executed</p>"
+                  "desc": "<p>Returns <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> when successfully executed</p>"
                 }
               ]
             },
@@ -151,7 +151,7 @@
               "returnValue": [
                 {
                   "type": "Boolean",
-                  "desc": "<p>Returns {Boolean} when it works.</p>"
+                  "desc": "<p>Returns <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> when it works.</p>"
                 }
               ]
             },
@@ -187,11 +187,11 @@
               "returnValue": [
                 {
                   "type": "String",
-                  "desc": "<p>Returns a {String}.</p>"
+                  "desc": "<p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</p>"
                 },
                 {
                   "type": "Number",
-                  "desc": "<p>Returns also a {Number}.</p>"
+                  "desc": "<p>Returns also a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</p>"
                 }
               ]
             },

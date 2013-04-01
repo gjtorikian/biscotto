@@ -46,7 +46,7 @@ for filename in walkdir.sync './spec/templates'
           report += generated
           report += "\n-------------------------------------------------------\n"
 
-          delta = diff.diffChars expected, generated
+          delta = diff.diffLines expected, generated
           expect(delta.length).toEqual(1)
           if (delta.length > 1)
             console.log diff.convertChangesToXML(delta).replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">")

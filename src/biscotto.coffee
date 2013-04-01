@@ -210,7 +210,13 @@ module.exports = class Biscotto
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
-          new Generator(parser, options).generate(file)
+          generator = new Generator(parser, options)
+          generator.generate(file)
+
+          if options.json && options.json.length
+            console.log(generator.referencer)
+            fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
+
           parser.showResult() unless options.quiet
           done() if done
 

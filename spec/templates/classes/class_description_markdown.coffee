@@ -28,19 +28,28 @@ class TestMarkdownDocumentation
 
   # This method is a test.
   # 
-  # See {another} for _more_ information.
+  # See {#another} for _more_ information.
   #
-  # a - The [Hash] options that _must_ be supplied
-  #     :option - A [String] property representing the **URL**
+  # a - The {JSON} options that _must_ be supplied
+  #     :option - A {String} property representing the **URL**
   # 
   #
-  # Returns A [String] that is **very** important
+  # Returns A {String} that is **very** important
   #
   test: (a) ->
+
+  # Yet another method.
+  #
+  # Not to be confused with {.someOther}.
+  #
+  # a - A String that _must_ be supplied
+  # 
+  # Returns a _very_ nice thing
+  another: (a) ->
 
   # Yet another method.
   #
   # a - A String that _must_ be supplied
   # 
   # Returns a _very_ nice thing
-  another: (a) ->
+  @someOther: (a) ->
