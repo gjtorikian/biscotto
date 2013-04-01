@@ -37,7 +37,7 @@ CoffeeScript files within a directory.
 To view a list of commands, type
 
 ```bash
-$ codo --help
+$ biscotto --help
 ```
 
 Biscotto wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files, and
@@ -48,9 +48,9 @@ the project name, so the above defaults may be different on your project.
 You can define your project defaults by writing your command line options to a `.biscottoopts` file:
 
 ```bash
---name       "Tomdocodo"
+--name       "Biscotto"
 --readme     README.md
---title      "Tomdocodo Documentation"
+--title      "Biscotto Documentation"
 --private
 --quiet
 --output-dir ./doc
