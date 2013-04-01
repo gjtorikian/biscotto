@@ -8,7 +8,7 @@ class App.TestMethodDocumentation extends App.Doc
 
   # Private: Do it!
   #
-  # See #undo for more information.
+  # See {#fetchLimit} for more information.
   #
   # it - The {String} thing to do
   # again - A {Boolean} for do it again

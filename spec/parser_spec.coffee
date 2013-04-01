@@ -1,6 +1,7 @@
 fs      = require 'fs'
 walkdir = require 'walkdir'
 Parser  = require '../src/parser'
+diff    = require 'diff'
 
 beforeEach ->
   @addMatchers
@@ -30,30 +31,30 @@ for filename in walkdir.sync './spec/templates'
 
           filename = filename.substring process.cwd().length + 1
 
-          try
-            tokens = parser.parseContent source, filename
-            generated = JSON.stringify(parser.toJSON(), null, 2)
-            
-            report = "\n-------------------- CoffeeScript ----------------------\n"
-            report += source
-            report += "\n------------- Preprocessed CoffeeScript-----------------\n"
-            report += parser.convertComments(source)
-            report += "\n----------------------- Nodes --------------------------"
-            report += tokens.toString()
-            report += "\n-------------------- Expected JSON ------------------------\n"
-            report += expected
-            report += "\n------------------- Generated JSON ---------------------\n"
-            report += generated
-            report += "\n-------------------------------------------------------\n"
+          tokens = parser.parseContent source, filename
+          generated = JSON.stringify(parser.toJSON(), null, 2)
+          
+          report = "\n-------------------- CoffeeScript ----------------------\n"
+          report += source
+          report += "\n------------- Preprocessed CoffeeScript-----------------\n"
+          report += parser.convertComments(source)
+          report += "\n----------------------- Nodes --------------------------"
+          report += tokens.toString()
+          report += "\n-------------------- Expected JSON ------------------------\n"
+          report += expected
+          report += "\n------------------- Generated JSON ---------------------\n"
+          report += generated
+          report += "\n-------------------------------------------------------\n"
 
-            expect({
-              generated: generated
-              report: report.split('\n').join('\n    ')
-            }).toBeCompiledTo(expected)
+          delta = diff.diffChars expected, generated
+          expect(delta.length).toEqual(1)
+          if (delta.length > 1)
+            console.log diff.convertChangesToXML(delta).replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">")
 
-          catch e
-            expect({
-              generated: generated
-              report: "#{ filename }: #{ e.message }\n\n #{ source }"
-            }).toBeCompiledTo(expected)
+          # console.log expected
+          # console.log generated
+          # expect({
+          #   generated: generated
+          #   report: report.split('\n').join('\n    ')
+          # }).toBeCompiledTo(expected)
 

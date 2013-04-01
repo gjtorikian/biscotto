@@ -27,8 +27,8 @@
           },
           {
             "doc": {
-              "comment": "<p>Do it!\nSee #undo for more information.</p>",
-              "summary": "Do it! See #undo for more information.",
+              "comment": "<p>Do it!\nSee {#fetchLimit} for more information.</p>",
+              "summary": "Do it! See {#fetchLimit} for more information.",
               "status": "Private",
               "params": [
                 {
