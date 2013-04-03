@@ -214,7 +214,6 @@ module.exports = class Biscotto
           generator.generate(file)
 
           if options.json && options.json.length
-            console.log(generator.referencer)
             fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
 
           parser.showResult() unless options.quiet

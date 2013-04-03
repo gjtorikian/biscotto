@@ -61,14 +61,18 @@ module.exports = class Method extends Node
       unless @signature
         @signature = switch @getType()
                      when 'class'
-                       '+ '
+                       '#'
                      when 'instance'
-                       '- '
+                       '.'
                      else
                        '? '
+        doc = @getDoc()
 
-        if @getDoc()
-          @signature += if @getDoc().returnValue then "(#{ _.str.escapeHTML @getDoc().returnValue.type }) " else "(void) "
+        if doc.returnValue
+          retVals = []
+          for retVal in doc.returnValue
+            retVals.push "#{ _.str.escapeHTML retVal.type }"
+          @signature = retVals.join("|") + " #{@signature}"
 
         @signature += "<strong>#{ @getName() }</strong>"
         @signature += '('

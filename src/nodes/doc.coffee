@@ -153,7 +153,7 @@ module.exports = class Doc extends Node
       if /^Returns/.test(line)
         returns.push(
           type: Referencer.getLinkMatch(line)
-          desc: Markdown.convert(line)
+          desc: Markdown.convert(line).replace /<\/?p>/g, ""
         )
         current = returns
       else if /^\s+/.test(line)
@@ -166,7 +166,7 @@ module.exports = class Doc extends Node
   # Parse arguments section. Arguments occur subsequent to
   # the description.
   #
-  # section - String contaning agument definitions.
+  # section - String containing agument definitions.
   #
   # Returns nothing.
   parse_arguments: (section) ->
@@ -177,12 +177,12 @@ module.exports = class Doc extends Node
       unless _.isEmpty(_.str.strip(line))
         indent = line.match(/^(\s*)/)[0].length
 
-        if last_indent && indent > last_indent
-          _.last(args).description += _.str.clean(line)
+        if last_indent != null && indent >= last_indent
+          _.last(args).desc += " " + Markdown.convert(_.str.strip(line)).replace /<\/?p>/g, ""
         else
           arg = line.split(" - ")
           param = _.str.strip(arg[0])
-          desc = Markdown.convert(_.str.strip(arg[1]))
+          desc = Markdown.convert(_.str.strip(arg[1])).replace /<\/?p>/g, ""
 
           # it's a hash description
           if param[0] == ":"

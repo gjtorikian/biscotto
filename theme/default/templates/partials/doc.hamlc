@@ -49,10 +49,6 @@
         - for param in @doc.params
           %li
             %span.name= param.name
-            %span.type
-              (
-                %tt>!= @referencer.linkTypes param.type, @path
-              )
             - if param.desc
               &mdash;
               %span.desc!= param.desc
@@ -92,16 +88,17 @@
     - if @doc?.returnValue
       %h3 Returns:
       %ul.return
-        %li
-          %span.type
-          - if @doc.returnValue.desc
-            (
-              %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
-            )
-            &mdash;
-            %span.desc!= @doc.returnValue.desc
-          - else
-            %tt>!= @referencer.linkTypes @doc.returnValue.type, @path
+        - for returnVal in @doc.returnValue
+          %li
+            %span.type
+            - if returnVal.type
+              (
+                %tt>!= @referencer.linkTypes returnVal.type, @path
+              )
+              &mdash;
+              %span.desc!= returnVal.desc
+            - else
+              %tt>!= returnVal
 
   - if @doc?.authors
     %h3 Author:
