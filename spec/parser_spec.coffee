@@ -2,6 +2,8 @@ fs      = require 'fs'
 walkdir = require 'walkdir'
 Parser  = require '../src/parser'
 diff    = require 'diff'
+_       = require 'underscore'
+_.str   = require 'underscore.string'
 
 beforeEach ->
   @addMatchers
@@ -49,11 +51,12 @@ for filename in walkdir.sync './spec/templates'
           delta = diff.diffLines expected, generated
           expect(delta.length).toEqual(1)
           if (delta.length > 1)
+            console.log "\nFor #{filename}:"
             for diff in delta
               if diff.added
-                console.log "Added: #{diff.value}"
+                console.log "Added: \n#{_.str.strip(diff.value)}"
               if diff.removed
-                console.log "Removed: #{diff.value}"
+                console.log "Removed: \n#{_.str.strip(diff.value)}"
 
 
           # console.log expected

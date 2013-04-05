@@ -1,6 +1,6 @@
     [
       {
-        "file": "spec/templates/methods/method_documentation.coffee",
+        "file": "spec/templates/methods/return_values.coffee",
         "class": {
           "className": "App.TestMethodDocumentation",
           "name": "TestMethodDocumentation",
@@ -10,153 +10,18 @@
         "methods": [
           {
             "doc": {
-              "comment": "<p>Should be overloaded to change fetch limit.</p>",
-              "summary": "Should be overloaded to change fetch limit.",
-              "returnValue": [
-                {
-                  "type": "Number",
-                  "desc": "<p>Returns the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of items per fetch</p>"
-                }
-              ]
-            },
-            "type": "instance",
-            "signature": "- () <strong>fetchLimit</strong>()",
-            "name": "fetchLimit",
-            "bound": false,
-            "parameters": []
-          },
-          {
-            "doc": {
-              "comment": "<p>Do it!\nSee {#fetchLimit} for more information.</p>",
-              "summary": "Do it! See {#fetchLimit} for more information.",
-              "status": "Private",
-              "params": [
-                {
-                  "name": "it",
-                  "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> thing to do</p>"
-                },
-                {
-                  "name": "again",
-                  "desc": "<p>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> for do it again</p>"
-                },
-                {
-                  "name": "options",
-                  "desc": "<p>The do options</p>",
-                  "keys": [
-                    {
-                      "name": "speed",
-                      "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> speed</p>"
-                    },
-                    {
-                      "name": "repeat",
-                      "desc": "<p>How many <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> times to repeat</p>"
-                    },
-                    {
-                      "name": "tasks",
-                      "desc": "<p>The <a href=''>[Tasks]</a> tasks to do</p>"
-                    }
-                  ]
-                }
-              ],
-              "returnValue": [
-                {
-                  "type": "Boolean",
-                  "desc": "<p>Returns <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> when successfully executed</p>"
-                }
-              ]
-            },
-            "type": "instance",
-            "signature": "- () <strong>do</strong>(it, again, options)",
-            "name": "do",
-            "bound": false,
-            "parameters": [
-              {
-                "name": "it",
-                "splat": false
-              },
-              {
-                "name": "again",
-                "splat": false
-              },
-              {
-                "name": "options",
-                "splat": false
-              }
-            ]
-          },
-          {
-            "doc": {
-              "comment": "<p>Do it!\nSee #undo for more information.</p>",
-              "summary": "Do it! See #undo for more information.",
-              "status": "Private",
-              "params": [
-                {
-                  "name": "it",
-                  "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> thing to do</p>"
-                },
-                {
-                  "name": "again",
-                  "desc": "<p>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> for do it again</p>"
-                },
-                {
-                  "name": "options",
-                  "desc": "<p>The do options</p>",
-                  "keys": [
-                    {
-                      "name": "speed",
-                      "desc": "<p>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> speed</p>"
-                    },
-                    {
-                      "name": "repeat",
-                      "desc": "<p>How many <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> times to repeat</p>"
-                    },
-                    {
-                      "name": "tasks",
-                      "desc": "<p>The <a href=''>[Tasks]</a> tasks to do</p>"
-                    }
-                  ]
-                }
-              ],
-              "returnValue": [
-                {
-                  "type": "Boolean",
-                  "desc": "<p>Returns <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> when successfully executed</p>"
-                }
-              ]
-            },
-            "type": "instance",
-            "signature": "- () <strong>doWithoutSpace</strong>(it, again, options)",
-            "name": "doWithoutSpace",
-            "bound": false,
-            "parameters": [
-              {
-                "name": "it",
-                "splat": false
-              },
-              {
-                "name": "again",
-                "splat": false
-              },
-              {
-                "name": "options",
-                "splat": false
-              }
-            ]
-          },
-          {
-            "doc": {
               "comment": "<p>Do it!\nSee #undo for more information.</p>",
               "summary": "Do it! See #undo for more information.",
               "status": "Private",
               "returnValue": [
                 {
                   "type": "Boolean",
-                  "desc": "<p>Returns <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> when it works.</p>"
+                  "desc": "Returns {Boolean} when it works."
                 }
               ]
             },
             "type": "instance",
-            "signature": "- () <strong>returnSingleType</strong>()",
+            "signature": "Boolean .<strong>returnSingleType</strong>()",
             "name": "returnSingleType",
             "bound": false,
             "parameters": []
@@ -169,12 +34,12 @@
               "returnValue": [
                 {
                   "type": "",
-                  "desc": "<p>Returns no type.</p>"
+                  "desc": "Returns no type."
                 }
               ]
             },
             "type": "instance",
-            "signature": "- () <strong>returnNoType</strong>()",
+            "signature": ".<strong>returnNoType</strong>()",
             "name": "returnNoType",
             "bound": false,
             "parameters": []
@@ -187,16 +52,16 @@
               "returnValue": [
                 {
                   "type": "String",
-                  "desc": "<p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</p>"
+                  "desc": "Returns a {String}."
                 },
                 {
                   "type": "Number",
-                  "desc": "<p>Returns also a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</p>"
+                  "desc": "Returns also a {Number}."
                 }
               ]
             },
             "type": "instance",
-            "signature": "- () <strong>returnTwoReturns</strong>()",
+            "signature": "String|Number .<strong>returnTwoReturns</strong>()",
             "name": "returnTwoReturns",
             "bound": false,
             "parameters": []

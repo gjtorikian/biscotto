@@ -16,7 +16,7 @@
               "summary": "A method to run."
             },
             "type": "instance",
-            "signature": "- (void) <strong>run</strong>()",
+            "signature": ".<strong>run</strong>()",
             "name": "run",
             "bound": false,
             "parameters": []

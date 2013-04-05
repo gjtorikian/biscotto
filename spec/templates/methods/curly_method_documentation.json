@@ -1,6 +1,6 @@
 [
     {
-        "file": "spec/methods/curly_method_documentation.coffee",
+        "file": "spec/templates/methods/curly_method_documentation.coffee",
         "class": {
             "className": "App.TestMethodDocumentation",
             "name": "TestMethodDocumentation",
@@ -33,12 +33,12 @@
                     "params": [
                         {
                             "name": "it",
-                            "desc": "The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> thing to do",
+                            "desc": "The {String} thing to do",
                             "type": "String"
                         },
                         {
                             "name": "again",
-                            "desc": "A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> for do it again",
+                            "desc": "A {Boolean} for do it again",
                             "type": "Boolean"
                         },
                         {

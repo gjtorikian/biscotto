@@ -68,7 +68,8 @@ module.exports = class Method extends Node
                        '? '
         doc = @getDoc()
 
-        if doc.returnValue
+        # this adds a superfluous space if there's no type defined
+        if doc.returnValue && doc.returnValue[0].type
           retVals = []
           for retVal in doc.returnValue
             retVals.push "#{ _.str.escapeHTML retVal.type }"
