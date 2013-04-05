@@ -9,7 +9,7 @@
     "methods": [
       {
         "type": "instance",
-        "signature": "- (void) <strong>foo</strong>()",
+        "signature": ".<strong>foo</strong>()",
         "name": "foo",
         "bound": false,
         "parameters": []

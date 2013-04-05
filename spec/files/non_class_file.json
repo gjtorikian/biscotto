@@ -10,12 +10,12 @@
                     "params": [
                         {
                             "name": "name",
-                            "desc": "<p>The name of the person</p>"
+                            "desc": "The name of the person"
                         }
                     ]
                 },
                 "type": "file",
-                "signature": "? (void) <strong>hello</strong>(name)",
+                "signature": "? <strong>hello</strong>(name)",
                 "name": "hello",
                 "bound": false,
                 "parameters": [
@@ -32,12 +32,12 @@
                     "params": [
                         {
                             "name": "name",
-                            "desc": "<p>The name of the person</p>"
+                            "desc": "The name of the person"
                         }
                     ]
                 },
                 "type": "file",
-                "signature": "? (void) <strong>bye</strong>(name)",
+                "signature": "? <strong>bye</strong>(name)",
                 "name": "bye",
                 "bound": false,
                 "parameters": [
@@ -54,12 +54,12 @@
                     "params": [
                         {
                             "name": "name",
-                            "desc": "<p>The name of the person</p>"
+                            "desc": "The name of the person"
                         }
                     ]
                 },
                 "type": "class",
-                "signature": "+ (void) <strong>sayHi</strong>(hi)",
+                "signature": "#<strong>sayHi</strong>(hi)",
                 "name": "sayHi",
                 "bound": false,
                 "parameters": [

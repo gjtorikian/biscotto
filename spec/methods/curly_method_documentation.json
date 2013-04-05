@@ -1,0 +1,144 @@
+[
+    {
+        "file": "spec/methods/curly_method_documentation.coffee",
+        "class": {
+            "className": "App.TestMethodDocumentation",
+            "name": "TestMethodDocumentation",
+            "namespace": "App",
+            "parent": "App.Doc"
+        },
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>Should be overloaded to change fetch limit.</p>",
+                    "summary": "Should be overloaded to change fetch limit.",
+                    "returnValue": [
+                        {
+                            "type": "Number",
+                            "desc": "Returns the {Number} of items per fetch"
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": "Number .<strong>fetchLimit</strong>()",
+                "name": "fetchLimit",
+                "bound": false,
+                "parameters": []
+            },
+            {
+                "doc": {
+                    "comment": "<p>Do it!\nSee #undo for more information.</p>",
+                    "summary": "Do it! See #undo for more information.",
+                    "status": "Private",
+                    "params": [
+                        {
+                            "name": "it",
+                            "desc": "The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> thing to do",
+                            "type": "String"
+                        },
+                        {
+                            "name": "again",
+                            "desc": "A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> for do it again",
+                            "type": "Boolean"
+                        },
+                        {
+                            "name": "options",
+                            "desc": "The do options",
+                            "type": "",
+                            "options": [
+                                {
+                                    "name": "speed",
+                                    "desc": "The {String} speed",
+                                    "type": "String"
+                                },
+                                {
+                                    "name": "repeat",
+                                    "desc": "How many {Number} times to repeat",
+                                    "type": "Number"
+                                },
+                                {
+                                    "name": "tasks",
+                                    "desc": "The {[Tasks]} tasks to do",
+                                    "type": "[Tasks]"
+                                }
+                            ]
+                        }
+                    ],
+                    "returnValue": [
+                        {
+                            "type": "Boolean",
+                            "desc": "Returns {Boolean} when successfully executed"
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": "Boolean .<strong>do</strong>(it, again, options)",
+                "name": "do",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "it",
+                        "splat": false
+                    },
+                    {
+                        "name": "again",
+                        "splat": false
+                    },
+                    {
+                        "name": "options",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Do it without spaces!\nSee {#lets_do_it} for more information.</p>",
+                    "summary": "Do it without spaces! See {#lets_do_it} for more information.",
+                    "status": "Private",
+                    "returnValue": [
+                        {
+                            "type": "Boolean",
+                            "desc": "Returns {Boolean} when successfully executed"
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": "Boolean .<strong>doWithoutSpace</strong>(it, again, options)",
+                "name": "doWithoutSpace",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "it",
+                        "splat": false
+                    },
+                    {
+                        "name": "again",
+                        "splat": false
+                    },
+                    {
+                        "name": "options",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "type": "class",
+                "signature": "#<strong>lets_do_it</strong>(it, options)",
+                "name": "lets_do_it",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "it",
+                        "splat": false
+                    },
+                    {
+                        "name": "options",
+                        "splat": false
+                    }
+                ]
+            }
+        ],
+        "variables": [],
+        "properties": []
+    }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "file": "spec/templates/methods/instance_methods.coffee",
+    "class": {
+      "className": "TestInstanceMethods",
+      "name": "TestInstanceMethods",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>helper</strong>()",
+        "name": "helper",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>another</strong>(param, obj)",
+        "name": "another",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "param",
+            "splat": false
+          },
+          {
+            "name": "obj",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>anotherWithValues</strong>(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
+        "name": "anotherWithValues",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "param",
+            "default": "123",
+            "splat": false
+          },
+          {
+            "name": "obj",
+            "default": "{\n  a: 1\n}",
+            "splat": false
+          },
+          {
+            "name": "yup",
+            "splat": false
+          },
+          {
+            "name": "comp",
+            "default": "new TestInstanceMethods()",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>nowWithSpalt</strong>(foo, bar...)",
+        "name": "nowWithSpalt",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": true
+          }
+        ]
+      },
+      {
+        "type": "instance",
+        "signature": "- (void) <strong>bound</strong>()",
+        "name": "bound",
+        "bound": true,
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

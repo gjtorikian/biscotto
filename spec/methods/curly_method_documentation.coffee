@@ -21,16 +21,9 @@ class App.TestMethodDocumentation extends App.Doc
   #
   do: (it, again, options) ->
 
-  # Private: Do it!
+  # Private: Do it without spaces!
   #
-  # See #undo for more information.
-  #
-  # it - The {String} thing to do
-  # again - A {Boolean} for do it again
-  # options - The do options
-  #           :speed - The {String} speed
-  #           :repeat - How many {Number} times to repeat
-  #           :tasks - The {[Tasks]} tasks to do
+  # See {#lets_do_it} for more information.
   #
   # Returns {Boolean} when successfully executed
   #
@@ -38,15 +31,6 @@ class App.TestMethodDocumentation extends App.Doc
 
   # Private: Do it!
   #
-  # See #undo for more information.
-  #
-  # it - The {String} thing to do
-  # again - A {Boolean} for do it again
-  # options - The do options
-  #           :speed - The {String} speed
-  #           :repeat - How many {Number} times to repeat
-  #           :tasks - The {[Tasks]} tasks to do
-  #
-  # Returns {Boolean} when successfully executed
+  # See .do for more information.
   #
   @lets_do_it = (it, options) ->
