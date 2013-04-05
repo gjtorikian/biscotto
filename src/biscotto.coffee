@@ -138,6 +138,10 @@ module.exports = class Biscotto
             alias     : 'json'
             describe  : 'The location (including filename) of optional JSON output'
           )
+          .options('statsOnly',
+            boolean   : true
+            describe  : 'Only returns stats; generates no doc output'
+          )
           .options('private',
             boolean   : true
             default   : biscottoopts.private || false
@@ -167,6 +171,7 @@ module.exports = class Biscotto
             title: argv.title
             quiet: argv.q
             private: argv.private
+            statsOnly: argv.statsOnly
             verbose: argv.v
             debug: argv.d
             cautious: argv.cautious
