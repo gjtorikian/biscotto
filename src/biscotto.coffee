@@ -142,6 +142,10 @@ module.exports = class Biscotto
             boolean   : true
             describe  : 'Only returns stats; generates no doc output'
           )
+          .options('listMissing',
+            boolean   : true
+            describe  : 'Lists which elements are missing documentation'
+          )
           .options('private',
             boolean   : true
             default   : biscottoopts.private || false
@@ -172,6 +176,7 @@ module.exports = class Biscotto
             quiet: argv.q
             private: argv.private
             statsOnly: argv.statsOnly
+            listMissing: argv.listMissing
             verbose: argv.v
             debug: argv.d
             cautious: argv.cautious

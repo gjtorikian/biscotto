@@ -223,34 +223,57 @@ module.exports = class Parser
     fileCount      = @files.length
 
     classCount     = @classes.length
-    noDocClasses   = _.filter(@classes, (clazz) -> !clazz.getDoc().hasComment()).length
+    noDocClasses   = _.filter(@classes, (clazz) -> !clazz.getDoc().hasComment())
+    noDocClassesLength   = noDocClasses.length
 
     mixinCount     = @mixins.length
 
     methodsToCount = _.filter(@getAllMethods(), (method) -> method not instanceof VirtualMethod)
     methodCount    = methodsToCount.length
-    noDocMethods   = _.filter(methodsToCount, (method) -> !method.getDoc().hasComment()).length
+    noDocMethods   = _.filter(methodsToCount, (method) -> !method.getDoc().hasComment())
+    noDocMethodsLength = noDocMethods.length
 
     constants      = _.filter(@getAllVariables(), (variable) -> variable.isConstant())
     constantCount  = constants.length
     noDocConstants = _.filter(constants, (constant) -> !constant.getDoc().hasComment()).length
 
-    documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClasses + noDocMethods + noDocConstants)
+    documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClassesLength + noDocMethodsLength + noDocConstants)
     documented ||= 100
 
     maxCountLength = String(_.max([fileCount, mixinCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
-    maxNoDocLength = String(_.max([noDocClasses, noDocMethods, noDocConstants], (count) -> String(count).length)).length
+    maxNoDocLength = String(_.max([noDocClassesLength, noDocMethodsLength, noDocConstants], (count) -> String(count).length)).length
 
     stats =
       """
       Parsed files:    #{ _.str.pad(@fileCount, maxCountLength) }
-      Classes:         #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClasses, maxNoDocLength) } undocumented)
+      Classes:         #{ _.str.pad(classCount, maxCountLength) } (#{ _.str.pad(noDocClassesLength, maxNoDocLength) } undocumented)
       Mixins:          #{ _.str.pad(mixinCount, maxCountLength) }
       Non-Class files: #{ _.str.pad(fileCount, maxCountLength) }
-      Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethods, maxNoDocLength) } undocumented)
+      Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethodsLength, maxNoDocLength) } undocumented)
       Constants:       #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
        #{ _.str.sprintf('%.2f', documented) }% documented
       """
+
+    if @options.listMissing
+      noDocClassNames = []
+      for noDocClass in noDocClasses
+        noDocClassNames.push noDocClass.className
+      
+      noDocMethodNames = []
+      prevFileName = ""
+      for noDocMethod in noDocMethods
+        if prevFileName != noDocMethod.entity.fileName
+          prevFileName = noDocMethod.entity.fileName
+          noDocMethodNames.push "\nIn #{prevFileName}:"
+
+        noDocMethodNames.push noDocMethod.shortSignature
+
+      stats +=
+        """
+
+          Classes missing docs: #{noDocClassNames.join('\n')}
+          Methods missing docs: #{noDocMethodNames.join('\n')}
+        """
 
     console.log stats
     
