@@ -21,6 +21,7 @@ onerror = (err) ->
 test = (cb) ->
   exec 'jasmine-node --coffee spec', (err, stdout, stderr) ->
     log stdout
+    log stderr
     #msg = /(\d+) tests?, (\d+) assertions?, (\d+) failures?/
     #matches = stdout.match msg || stderr.match msg
     #cb new Error('Tests failed') if matches[3] != '0'

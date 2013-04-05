@@ -49,7 +49,12 @@ for filename in walkdir.sync './spec/templates'
           delta = diff.diffLines expected, generated
           expect(delta.length).toEqual(1)
           if (delta.length > 1)
-            console.log diff.convertChangesToXML(delta).replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+            for diff in delta
+              if diff.added
+                console.log "Added: #{diff.value}"
+              if diff.removed
+                console.log "Removed: #{diff.value}"
+
 
           # console.log expected
           # console.log generated

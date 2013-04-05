@@ -174,11 +174,12 @@ module.exports = class Doc extends Node
     last_indent = null
 
     _.each section.split("\n"), (line) ->
-      unless _.isEmpty(_.str.strip(line))
+      line = _.str.strip(line)
+      unless _.isEmpty(line)
         indent = line.match(/^(\s*)/)[0].length
 
-        if last_indent != null && indent >= last_indent
-          _.last(args).desc += " " + Markdown.convert(_.str.strip(line)).replace /<\/?p>/g, ""
+        if last_indent != null && indent > last_indent
+          _.last(args).desc += " " + Markdown.convert(line).replace /<\/?p>/g, ""
         else
           arg = line.split(" - ")
           param = _.str.strip(arg[0])
@@ -186,10 +187,10 @@ module.exports = class Doc extends Node
 
           # it's a hash description
           if param[0] == ":"
-            _.last(args).keys ||= []
-            _.last(args).keys.push( {name: param[1 .. param.length], desc: desc} )
+            _.last(args).options ||= []
+            _.last(args).options.push( {name: param[1 .. param.length], desc: desc, type: Referencer.getLinkMatch(line)} )
           else
-            args.push( {name: param, desc: desc} )
+            args.push( {name: param, desc: desc, type: Referencer.getLinkMatch(line)} )
         last_indent = indent
 
     args
