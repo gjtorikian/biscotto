@@ -48,27 +48,23 @@
       %ul.param
         - for param in @doc.params
           %li
+            - if param.type
+              %span.type= '(' + param.type + ')'
             %span.name= param.name
             - if param.desc
               &mdash;
               %span.desc!= param.desc
 
-    - if @doc?.options
-      - for hash, options of @doc.options
-        %h3
-          Options Hash:
-          = surround '(', '):', -> hash
-        %ul.options
-          - for option in options
-            %li
-              %span.name= option.name
-              %span.type
-                (
-                  %tt>!= @referencer.linkTypes option.type, @path
-                )
-              - if option.desc
-                &mdash;
-                %span.desc!= option.desc
+          - if param.options
+            %ul.options
+              - for hash, option of param.options
+                %li
+                  - if option.type
+                    %span.type= '(' + option.type + ')'
+                  %span.name= option.name
+                  - if option.desc
+                    &mdash;
+                    %span.desc!= option.desc
 
     - if @doc?.throwValue
       %h3 Throws:
