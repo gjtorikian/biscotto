@@ -142,12 +142,12 @@
       - if @classMethods.length isnt 0
         %h2 Class Method Summary
 
-        != @JST['partials/method_summary']({ methods: @classMethods })
+        != @JST['partials/method_summary']({ methods: @underscore.sortBy @classMethods, "name" })
 
       - if @instanceMethods.length isnt 0
         %h2 Instance Method Summary
 
-        != @JST['partials/method_summary']({ methods: @instanceMethods })
+        != @JST['partials/method_summary']({ methods: @underscore.sortBy @instanceMethods, "name" })
 
       - unless @underscore.isEmpty @inheritedMethods
         %h2
@@ -217,7 +217,7 @@
       - if @classMethods.length isnt 0
         %h2 Class Method Details
 
-        != @JST['partials/method_list']({ str: @str, methods: @classMethods, parent: @ })
+        != @JST['partials/method_list']({ str: @str, methods: @underscore.sortBy(@classMethods, "name"), parent: @ })
 
       - constructor = @underscore.filter @instanceMethods, (m) -> m.name is 'constructor'
       - if constructor.length isnt 0
@@ -229,6 +229,6 @@
       - if instanceMethods.length isnt 0
         %h2 Instance Method Details
 
-        != @JST['partials/method_list']({ str: @str, methods: instanceMethods, parent: @ })
+        != @JST['partials/method_list']({ str: @str, methods: @underscore.sortBy(instanceMethods, "name"), parent: @ })
 
     != @JST['partials/footer'](@)
