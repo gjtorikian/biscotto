@@ -236,10 +236,12 @@ module.exports = class Class extends Node
   # Returns  (a ) [Array<Method>] the methods
   #
   getMethods: ->
-    if @options.private
-      @methods
-    else
-      method for method in @methods when !method.doc.private
+    _.reject(@methods, (method) => 
+      if @options.private && method.doc.private
+        return true
+      else if @options.internal && method.doc.internal
+        return true
+    )
 
   # Get all variables.
   #

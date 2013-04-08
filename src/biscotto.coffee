@@ -151,6 +151,11 @@ module.exports = class Biscotto
             default   : biscottoopts.private || false
             describe  : 'Show private methods'
           )
+          .options('internal',
+            boolean   : true
+            default   : biscottoopts.internal || false
+            describe  : 'Show internal methods'
+          )
           .default('title', biscottoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
@@ -175,6 +180,7 @@ module.exports = class Biscotto
             title: argv.title
             quiet: argv.q
             private: argv.private
+            internal: argv.internal
             statsOnly: argv.statsOnly
             listMissing: argv.listMissing
             verbose: argv.v
