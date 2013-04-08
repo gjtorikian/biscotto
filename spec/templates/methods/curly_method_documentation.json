@@ -27,7 +27,7 @@
             },
             {
                 "doc": {
-                    "comment": "<p>Do it!\nSee #undo for more information.</p>",
+                    "comment": "<p>Do it!</p><p>See #undo for more information.</p>",
                     "summary": "Do it! See #undo for more information.",
                     "status": "Private",
                     "params": [
@@ -92,7 +92,7 @@
             },
             {
                 "doc": {
-                    "comment": "<p>Do it without spaces!\nSee {#lets_do_it} for more information.</p>",
+                    "comment": "<p>Do it without spaces!</p><p>See {#lets_do_it} for more information.</p>",
                     "summary": "Do it without spaces! See {#lets_do_it} for more information.",
                     "status": "Private",
                     "returnValue": [

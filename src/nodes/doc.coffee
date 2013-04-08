@@ -96,7 +96,7 @@ module.exports = class Doc extends Node
 
         @returnValue = @parse_returns(current)
       else
-        text = text.concat "\n#{current}"
+        text = text.concat "\n\n#{current}"
 
       current = sections.shift()
 

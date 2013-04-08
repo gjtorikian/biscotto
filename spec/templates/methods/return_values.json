@@ -10,7 +10,7 @@
         "methods": [
           {
             "doc": {
-              "comment": "<p>Do it!\nSee #undo for more information.</p>",
+              "comment": "<p>Do it!</p><p>See #undo for more information.</p>",
               "summary": "Do it! See #undo for more information.",
               "status": "Private",
               "returnValue": [
