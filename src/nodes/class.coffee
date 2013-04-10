@@ -240,7 +240,6 @@ module.exports = class Class extends Node
       if !@options.private && method.doc.status == "Private"
         return false
       else if !@options.internal && method.doc.status == "Internal"
-        console.log method.name
         return false
       else
         return true
