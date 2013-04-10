@@ -238,7 +238,6 @@ module.exports = class Parser
     noDocConstants = _.filter(constants, (constant) -> !constant.getDoc().hasComment()).length
 
     documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClassesLength + noDocMethodsLength + noDocConstants)
-    documented ||= 100
 
     maxCountLength = String(_.max([fileCount, mixinCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
     maxNoDocLength = String(_.max([noDocClassesLength, noDocMethodsLength, noDocConstants], (count) -> String(count).length)).length
