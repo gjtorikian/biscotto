@@ -111,7 +111,7 @@ module.exports = class Doc extends Node
   #
   # Returns nothing.
   parse_description: (section) ->
-    if md = /([A-Z]\w+)\:\s+(.+)/.exec(section)
+    if md = /([A-Z]\w+)\:(.*)/.exec(section)
       return {
         status:      md[1]
         description: _.str.strip(md[2])

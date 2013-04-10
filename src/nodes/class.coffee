@@ -233,25 +233,28 @@ module.exports = class Class extends Node
 
   # Get all methods.
   #
-  # Returns  (a ) [Array<Method>] the methods
+  # Returns the methods
   #
   getMethods: ->
-    _.reject(@methods, (method) => 
-      if @options.private && method.doc.private
-        return true
-      else if @options.internal && method.doc.internal
+    _.filter(@methods, (method) => 
+      if !@options.private && method.doc.status == "Private"
+        return false
+      else if !@options.internal && method.doc.status == "Internal"
+        console.log method.name
+        return false
+      else
         return true
     )
 
   # Get all variables.
   #
-  # Returns  (a ) [Array<Variable>] the variables
+  # Returns the variables
   #
   getVariables: -> @variables
 
   # Get a JSON representation of the object
   #
-  # Returns the JSON object (a [Object])
+  # Returns the JSON object (an {Object})
   #
   toJSON: ->
     json =

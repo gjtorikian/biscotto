@@ -1,0 +1,45 @@
+    [
+      {
+        "file": "spec/templates/methods/method_shortdesc.coffee",
+        "class": {
+          "className": "ShortDesc",
+          "name": "ShortDesc",
+          "namespace": ""
+        },
+        "methods": [
+          {
+            "doc": {
+              "comment": "",
+              "summary": "",
+              "status": "Public"
+            },
+            "type": "instance",
+            "signature": ".<strong>helper</strong>()",
+            "name": "helper",
+            "bound": false,
+            "parameters": []
+          },
+          {
+            "type": "instance",
+            "signature": ".<strong>bound</strong>()",
+            "name": "bound",
+            "bound": true,
+            "parameters": []
+          },
+          {
+            "doc": {
+              "comment": "",
+              "summary": "",
+              "status": "Internal"
+            },
+            "type": "instance",
+            "signature": ".<strong>internalToClassClosure</strong>()",
+            "name": "internalToClassClosure",
+            "bound": false,
+            "parameters": []
+          }
+        ],
+        "variables": [],
+        "properties": []
+      }
+    ]
