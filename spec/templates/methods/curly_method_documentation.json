@@ -122,6 +122,11 @@
                 ]
             },
             {
+                "doc": {
+                  "comment": "<p>Do it!</p><p>See .do for more information.</p>",
+                  "summary": "Do it! See .do for more information.",
+                  "status": "Private"
+                },
                 "type": "class",
                 "signature": "#<strong>lets_do_it</strong>(it, options)",
                 "name": "lets_do_it",

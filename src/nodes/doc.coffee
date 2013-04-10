@@ -131,7 +131,7 @@ module.exports = class Doc extends Node
     section = _.str.strip(section.replace(/Examples/, ''))
 
     examples.push(section) unless _.isEmpty(section)
-    while _.first(sections) && !/^\S/.test(_.first(sections))
+    while _.first(sections)
       lines = sections.shift().split("\n")
       examples.push(@deindent(lines).join("\n"))
 
@@ -149,17 +149,15 @@ module.exports = class Doc extends Node
     lines = section.split("\n")  
     _.each lines, (line) ->
       line = _.str.trim(line)
-      
+
       if /^Returns/.test(line)
         returns.push(
           type: Referencer.getLinkMatch(line)
           desc: Markdown.convert(line).replace /<\/?p>/g, ""
         )
         current = returns
-      else if /^\s+/.test(line)
-        _.last(current).concat _.str.clean(line)
-      else
-        current.concat line  # TODO: What to do with non-compliant line?
+      else if /^\S+/.test(line)
+        _.last(returns).desc = _.last(returns).desc.concat "\n" + _.str.strip(line)
 
     returns
 

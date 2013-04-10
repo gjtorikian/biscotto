@@ -15,6 +15,7 @@ module.exports = class Referencer
   constructor: (@classes, @mixins, @options) ->
     @readStandardJSON()
     @resolveParamReferences()
+    @errors = 0
 
   # Get all direct subclasses.
   #
@@ -112,6 +113,7 @@ module.exports = class Referencer
       mixin.getMethods()
     else
       console.log "[WARN] Cannot resolve mixin name #{ name }" unless @options.quiet
+      @errors++
       []
 
   # Get all inherited variables.
@@ -311,6 +313,7 @@ module.exports = class Referencer
         see.label = see.reference
         see.reference = undefined
         console.log "[WARN] Cannot resolve link to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+        @errors++
 
     # Link to direct instance methods
     else if /^\#/.test(ref)
@@ -323,6 +326,7 @@ module.exports = class Referencer
         see.label = see.reference
         see.reference = undefined
         console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
+        @errors++
 
     # Link to other objects
     else
@@ -346,6 +350,7 @@ module.exports = class Referencer
                 see.label = see.reference
                 see.reference = undefined
                 console.log "[WARN] Cannot resolve link to entity #{ refClass } in #{ entity.getFullName() }" unless @options.quiet
+                @errors++
 
             # Link to other class class methods
             else if /^\./.test(refMethod)
@@ -358,6 +363,7 @@ module.exports = class Referencer
                 see.label = see.reference
                 see.reference = undefined
                 console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
+                @errors++
 
             # Link to other class instance methods
             else if /^\#/.test(refMethod)
@@ -370,7 +376,7 @@ module.exports = class Referencer
                 see.label = see.reference
                 see.reference = undefined
                 console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
-
+                @errors++
           else
             if @verifyExternalObjReference(see.reference)
               see.label = ref unless see.label
@@ -379,12 +385,12 @@ module.exports = class Referencer
               see.label = see.reference
               see.reference = undefined
               console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
-
+              @errors++
         else
           see.label = see.reference
           see.reference = undefined
           console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
-
+          @errors++
     see
 
   @getLinkMatch: (text) ->
@@ -445,7 +451,7 @@ module.exports = class Referencer
 
                   else
                     console.log "[WARN] Parameter #{ param.name } does not exist in #{ param.reference } in class #{ entity.getFullName() }" unless @options.quiet
-
+                    @errors++
                 else
                   # Copy all parameters that exist on the given method
                   names = _.map method.getParameters(), (p) -> p.getName()
@@ -458,3 +464,4 @@ module.exports = class Referencer
 
               else
                 console.log "[WARN] Cannot resolve reference tag #{ param.reference } in class #{ entity.getFullName() }" unless @options.quiet
+                @errors++

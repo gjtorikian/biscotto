@@ -94,7 +94,7 @@
               &mdash;
               %span.desc!= returnVal.desc
             - else
-              %tt>!= returnVal
+              %span.desc!= returnVal.desc
 
   - if @doc?.authors
     %h3 Author:

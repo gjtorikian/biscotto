@@ -1,4 +1,4 @@
-# Taken from https://github.com/cjoudrey/typhoon/blob/master/Cakefile and adapted to Codo
+# Taken from https://github.com/cjoudrey/typhoon/blob/master/Cakefile and adapted to Biscotto
 
 {exec}   = require 'child_process'
 {series} = require 'async'
