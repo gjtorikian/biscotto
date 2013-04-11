@@ -219,7 +219,7 @@ module.exports = class Parser
 
   # Show the parsing statistics
   #
-  showResult: ->
+  showResult: (generator) ->
     fileCount      = @files.length
 
     classCount     = @classes.length
@@ -251,6 +251,7 @@ module.exports = class Parser
       Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethodsLength, maxNoDocLength) } undocumented)
       Constants:       #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
        #{ _.str.sprintf('%.2f', documented) }% documented
+       #{generator.referencer.errors} errors
       """
 
     if @options.listMissing

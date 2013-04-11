@@ -232,7 +232,7 @@ module.exports = class Biscotto
           if options.json && options.json.length
             fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
 
-          parser.showResult() unless options.quiet
+          parser.showResult(generator) unless options.quiet
           done() if done
 
     catch error
