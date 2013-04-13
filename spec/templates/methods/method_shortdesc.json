@@ -25,18 +25,6 @@
             "name": "bound",
             "bound": true,
             "parameters": []
-          },
-          {
-            "doc": {
-              "comment": "",
-              "summary": "",
-              "status": "Internal"
-            },
-            "type": "instance",
-            "signature": ".<strong>internalToClassClosure</strong>()",
-            "name": "internalToClassClosure",
-            "bound": false,
-            "parameters": []
           }
         ],
         "variables": [],

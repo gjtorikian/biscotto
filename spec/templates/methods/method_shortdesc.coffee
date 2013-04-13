@@ -5,5 +5,5 @@ class ShortDesc
 
   bound: =>
 
-  # Internal:
+  # Internal: Should not show up!
   internalToClassClosure: ->
