@@ -270,7 +270,7 @@ module.exports = class Parser
 
       stats +=
         """
-
+          \n
           Classes missing docs: #{noDocClassNames.join('\n')}
           Methods missing docs: #{noDocMethodNames.join('\n')}
         """
