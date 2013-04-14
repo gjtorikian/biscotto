@@ -1,14 +1,14 @@
 {
   "name" : "biscotto",
   "description" : "A CoffeeScript documentation generator.",
-  "keywords" : ["coffeescript", "doc"],
+  "keywords" : ["coffeescript", "doc", "api", "tomdoc"],
   "author" : "Garen J. Torikian <gjtorikian@gmail.com>",
   "maintainers" : [
     {
       "name" : "Garen J. Torikian"
     }
   ],
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "engines" : {
     "node" : ">=0.8.0"
   },

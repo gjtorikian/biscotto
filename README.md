@@ -1,21 +1,32 @@
-Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying technology is based
-entirely on [codo](https://github.com/netzpirat/codo). However, this uses [TomDoc](http://tomdoc.org/) notation instead.
-
-Its generated documentation is focused on CoffeeScript class syntax for classical inheritance.
+Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying architecture is based on [codo](https://github.com/netzpirat/codo); however, this uses [TomDoc](http://tomdoc.org/) notation, instead of JSDoc.
 
 ## Features
 
 * Detects classes, methods, constants, mixins & concerns.
 * Generates a nice site to browse your code documentation in various ways.
+# JSON output
 
 ## Text processing
 
 ### TomDoc Notation
 
 API documentation should be written in the [TomDoc](http://tomdoc.org/) notation.  
-Originally conceived for Ruby, TomDoc lends itself pretty nicely to the Coffeescript
-format. There are some slight changes in the parse rules to match Coffeescript.
+Originally conceived for Ruby, TomDoc lends itself pretty nicely to Coffeescript. 
+There are some slight changes in the parse rules to match Coffeescript.
 Briefly, here's a list of how you should format your documentation:
+
+#### Status types
+
+Every class and method should start with one of three phrases: `Public:`, `Internal:`,
+and `Private:`. You can flag whether or not to include Internal and Private members
+via the options.
+
+#### Method arguments
+
+Each method argument starts with the argument name, followed by a dash (`-`), and 
+the description of the argument. Hash options are placed on a newline and preceded
+with a colon (`:`). If a description has a default value, define it at the end of the
+description with `(default: <desc>)`.
 
 #### Return types
 
@@ -23,10 +34,7 @@ When returning from a method, your line should start with the word `Returns`. Wh
 describing the return type, wrap it in the link reference notation (two curly braces,
 like this: `{ }`). This ensures that the generated methods correlates a return type.
 Methods without return types returned `undefined`. You can list more than one `Returns`
-per method.
-
-For more technical examples, peruse the [spec](./spec) folder, which contains all
-the tests for Biscotto.
+per method by seperating each type on a different line.
 
 ### GitHub Flavored Markdown
 
@@ -47,10 +55,14 @@ There are several ways of link types supported and all can take an optional labe
 
 If you are referring to a method within the same class, you can omit the class name: `{#walk}` or `{.constructor}`.
 
+### Examples
+
+For more technical examples, peruse the [spec](./spec) folder, which contains all
+the tests for Biscotto.
+
 ## Generate
 
-After the installation you will have a `biscotto` binary that can be used to generate the documentation recursively for all
-CoffeeScript files within a directory.
+After the installation, you will have a `biscotto` binary that can be used to generate the documentation recursively for all CoffeeScript files within a directory.
 
 To view a list of commands, type
 
