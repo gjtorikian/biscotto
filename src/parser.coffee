@@ -25,6 +25,7 @@ module.exports = class Parser
     @mixins  = []
 
     @fileCount = 0
+    @globalStatus = "Public"
 
   # Parse the given CoffeeScript file
   #
@@ -51,8 +52,10 @@ module.exports = class Parser
     if not @options.cautious
       content = @convertComments(content)
 
+    console.log content
     try
       root = CoffeeScript.nodes(content)
+      console.log root
     catch error
       console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
       throw error
@@ -75,7 +78,7 @@ module.exports = class Parser
         # Check the previous tokens for comment nodes
         previous = @previousNodes[@previousNodes.length-1]
         switch previous?.constructor.name
-          # A comment is preveding the class declaration
+          # A comment is preceding the class declaration
           when 'Comment'
             doc = previous
           when 'Literal'
@@ -118,6 +121,7 @@ module.exports = class Parser
     comment        = []
     inComment      = false
     inBlockComment = false
+    globalStatusBlock = false
     indentComment  = 0
 
     for line in content.split('\n')
@@ -125,11 +129,21 @@ module.exports = class Parser
       blockComment = /^\s*#{3}/.exec(line) && !/^\s*#{3}.+#{3}/.exec(line)
 
       if blockComment || inBlockComment
-        inBlockComment = !inBlockComment if blockComment
-        result.push line
+        # don't add global statuses to the result queue
+        if status = /^\s*# (\w+) #/.exec(line)
+          @globalStatus = status[1]
+          globalStatusBlock = true
+          result.pop()
+        else    
+          inBlockComment = !inBlockComment if blockComment
+          if globalStatusBlock
+            globalStatusBlock = false
+          else
+            result.push line
       else
         commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
         if commentLine
+          console.log "l ", commentLine[2]
           if inComment
             comment.push commentLine[2]?.replace /#/g, "\u0091#"
           else
@@ -138,11 +152,13 @@ module.exports = class Parser
 
             comment.push whitespace(indentComment) + '###'
             comment.push commentLine[2]?.replace /#/g, "\u0091#"
+          console.log "coco ", comment
         else
           if inComment
             inComment = false
             comment.push whitespace(indentComment) + '###'
 
+            console.log "r ", comment
             # Push here comments only before certain lines
             if ///
                  ( # Class
@@ -162,9 +178,18 @@ module.exports = class Parser
               result.push c for c in comment
 
             comment = []
+          # A method with no preceding description; apply the global status
+          else if _.str.strip(line).length
+            #result.push "  ###".replace /#/g, "\u0091#"
+            #result.push "#{@globalStatus}:"
+            #result.push "  ###".replace /#/g, "\u0091#"
+            result.push line
+            #comment.push "  ###", "#{@globalStatus}", "  ###"
+            #result.push c for c in comment
 
-          result.push line
-
+          else
+            result.push line
+    console.log "end ", result
     result.join('\n')
 
   # Attach each parent to its children, so we are able
