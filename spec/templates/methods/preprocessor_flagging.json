@@ -1,86 +1,67 @@
 [
-  {
-    "file":      "spec/templates/methods/preprocessor_flagging.coffee",
-    "class":     {
-      "className": "TestAssignedParameters",
-      "name":      "TestAssignedParameters",
-      "namespace": ""
-    },
-    "methods":   [
-      {
+    {
+        "file": "spec/templates/methods/preprocessor_flagging.coffee",
         "doc": {
-          "comment": "<p>Blah blah!</p>",
-          "summary": "Blah blah!",
-          "status": "Public"
+            "comment": "<p>Testing block statuses.</p>",
+            "summary": "Testing block statuses.",
+            "status": "Public"
         },
-        "type":       "instance",
-        "signature":  ".<strong>help</strong>(me)",
-        "name":       "help",
-        "bound":      false,
-        "parameters": [
-          {
-            "name": "me",
-            "splat": false
-          }
-        ]
-      },
-      {
-        "doc": {
-          "comment": "<p>Blah blah!</p>",
-          "summary": "Blah blah!",
-          "status": "Public"
+        "class": {
+            "className": "TestBlockStatus",
+            "name": "TestBlockStatus",
+            "namespace": ""
         },
-        "type": "instance",
-        "signature": ".<strong>test</strong>()",
-        "name": "test",
-        "bound": false,
-        "parameters": []
-      },
-      {
-        "doc": {
-          "status": "Internal"
-        },
-        "type": "instance",
-        "signature": ".<strong>internal1</strong>()",
-        "name": "internal1",
-        "bound": false,
-        "parameters": []
-      },
-      {
-        "doc": {
-          "comment": "<p>Tricksy!</p>",
-          "summary": "Tricksy!",
-          "status": "Public"
-        },
-        "type": "instance",
-        "signature": ".<strong>internal2</strong>()",
-        "name": "internal2",
-        "bound": false,
-        "parameters": []
-      },
-      {
-        "doc": {
-          "status": "Internal"
-        },
-        "type": "instance",
-        "signature": ".<strong>internal4</strong>()",
-        "name": "internal4",
-        "bound": false,
-        "parameters": []
-      },
-      {
-        "doc": {
-          "comment": "<p>Public</p>",
-          "summary": "Public"
-        },
-        "type": "instance",
-        "signature": ".<strong>public</strong>()",
-        "name": "public",
-        "bound": false,
-        "parameters": []
-      }
-    ],
-    "variables": [],
-    "properties": []
-  }
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>Blah blah!</p>",
+                    "summary": "Blah blah!",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>help</strong>(me)",
+                "name": "help",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "me",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Blah blah test!</p>",
+                    "summary": "Blah blah test!",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>test</strong>()",
+                "name": "test",
+                "bound": false,
+                "parameters": []
+            },
+            {
+                "doc": {
+                    "comment": "<p>Tricksy words!</p>",
+                    "summary": "Tricksy words!",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>internal2</strong>()",
+                "name": "internal2",
+                "bound": false,
+                "parameters": []
+            },
+            {
+                "type": "instance",
+                "signature": ".<strong>public1</strong>()",
+                "name": "public1",
+                "bound": false,
+                "parameters": []
+            }
+        ],
+        "variables": [],
+        "properties": []
+    }
 ]

@@ -8,6 +8,11 @@
     },
     "methods": [
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "instance",
         "signature": ".<strong>helper</strong>()",
         "name": "helper",
@@ -15,6 +20,11 @@
         "parameters": []
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "instance",
         "signature": ".<strong>another</strong>(param, obj)",
         "name": "another",
@@ -31,6 +41,11 @@
         ]
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "instance",
         "signature": ".<strong>anotherWithValues</strong>(param = 123, obj = { a: 1 }, yup, comp = new TestInstanceMethods())",
         "name": "anotherWithValues",
@@ -58,6 +73,11 @@
         ]
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "instance",
         "signature": ".<strong>nowWithSpalt</strong>(foo, bar...)",
         "name": "nowWithSpalt",
@@ -74,6 +94,11 @@
         ]
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "instance",
         "signature": ".<strong>bound</strong>()",
         "name": "bound",

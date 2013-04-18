@@ -7,6 +7,7 @@
                 "doc": {
                     "comment": "<p>Says hello to a person</p>",
                     "summary": "Says hello to a person",
+                    "status": "Public",
                     "params": [
                         {
                             "name": "name",
@@ -30,6 +31,7 @@
                 "doc": {
                     "comment": "<p>Says bye to a person</p>",
                     "summary": "Says bye to a person",
+                    "status": "Public",
                     "params": [
                         {
                             "name": "name",
@@ -53,6 +55,7 @@
                 "doc": {
                     "comment": "<p>Say hi to a person</p>",
                     "summary": "Say hi to a person",
+                    "status": "Public",
                     "params": [
                         {
                             "name": "name",
@@ -77,7 +80,8 @@
             {
                 "doc": {
                     "comment": "<p>The greeting</p>",
-                    "summary": "The greeting"
+                    "summary": "The greeting",
+                    "status": "Public"
                 },
                 "type": "class",
                 "constant": true,

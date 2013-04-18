@@ -27,6 +27,10 @@ module.exports = class Parser
     @fileCount = 0
     @globalStatus = "Public"
 
+    @classMemberRegex = """
+
+                        """
+
   # Parse the given CoffeeScript file
   #
   # file - the CoffeeScript file name (a [String])
@@ -52,10 +56,8 @@ module.exports = class Parser
     if not @options.cautious
       content = @convertComments(content)
 
-    console.log content
     try
       root = CoffeeScript.nodes(content)
-      console.log root
     catch error
       console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
       throw error
@@ -143,22 +145,22 @@ module.exports = class Parser
       else
         commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
         if commentLine
-          console.log "l ", commentLine[2]
           if inComment
             comment.push commentLine[2]?.replace /#/g, "\u0091#"
           else
+            # append current global status flag if needed
+            if !/^\s*\w+:/.test(commentLine[2])
+              commentLine[2] = @globalStatus + ": " + commentLine[2]
             inComment = true
             indentComment =  commentLine[1].length - 1
 
             comment.push whitespace(indentComment) + '###'
             comment.push commentLine[2]?.replace /#/g, "\u0091#"
-          console.log "coco ", comment
         else
           if inComment
             inComment = false
             comment.push whitespace(indentComment) + '###'
 
-            console.log "r ", comment
             # Push here comments only before certain lines
             if ///
                  ( # Class
@@ -179,17 +181,30 @@ module.exports = class Parser
 
             comment = []
           # A method with no preceding description; apply the global status
-          else if _.str.strip(line).length
-            #result.push "  ###".replace /#/g, "\u0091#"
-            #result.push "#{@globalStatus}:"
-            #result.push "  ###".replace /#/g, "\u0091#"
-            result.push line
-            #comment.push "  ###", "#{@globalStatus}", "  ###"
-            #result.push c for c in comment
+          member = ///
+           ( # Function
+             [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
+           | # Function
+             @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
+           | # Constant
+             ^\s*@[$A-Z_][A-Z_]*)
+           | # Properties
+             ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:\s*\S+
+          ///.exec(line)
 
-          else
-            result.push line
-    console.log "end ", result
+          if member and _.last(result).length == 0
+            indentComment = /^(\s*)/.exec(line)
+            if indentComment
+              indentComment = indentComment[1]
+            else
+              indentComment = ""
+
+            result.push("#{indentComment}###")
+            result.push("#{@globalStatus}:")
+            result.push("#{indentComment}###")
+
+          result.push line
+
     result.join('\n')
 
   # Attach each parent to its children, so we are able
@@ -262,6 +277,8 @@ module.exports = class Parser
     constantCount  = constants.length
     noDocConstants = _.filter(constants, (constant) -> !constant.getDoc().hasComment()).length
 
+    totalFound = (classCount + methodCount + constantCount)
+    totalNoDoc = (noDocClassesLength + noDocMethodsLength + noDocConstants)
     documented   = 100 - 100 / (classCount + methodCount + constantCount) * (noDocClassesLength + noDocMethodsLength + noDocConstants)
 
     maxCountLength = String(_.max([fileCount, mixinCount, classCount, methodCount, constantCount], (count) -> String(count).length)).length + 6
@@ -275,7 +292,7 @@ module.exports = class Parser
       Non-Class files: #{ _.str.pad(fileCount, maxCountLength) }
       Methods:         #{ _.str.pad(methodCount, maxCountLength) } (#{ _.str.pad(noDocMethodsLength, maxNoDocLength) } undocumented)
       Constants:       #{ _.str.pad(constantCount, maxCountLength) } (#{ _.str.pad(noDocConstants, maxNoDocLength) } undocumented)
-       #{ _.str.sprintf('%.2f', documented) }% documented
+       #{ _.str.sprintf('%.2f', documented) }% documented (#{totalFound} total, #{totalNoDoc} with no doc)
        #{generator.referencer.errors} errors
       """
 
@@ -293,12 +310,9 @@ module.exports = class Parser
 
         noDocMethodNames.push noDocMethod.shortSignature
 
-      stats +=
-        """
-          \n
-          Classes missing docs: #{noDocClassNames.join('\n')}
-          Methods missing docs: #{noDocMethodNames.join('\n')}
-        """
+      stats += "\n"
+      stats += "Classes missing docs: #{noDocClassNames.join('\n')}" if noDocClassNames.length > 0
+      stats += "Methods missing docs: #{noDocMethodNames.join('\n')}" if noDocMethodNames.length > 0
 
     console.log stats
     
