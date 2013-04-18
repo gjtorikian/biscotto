@@ -23,9 +23,9 @@ module.exports = class VirtualMethod extends Node
   #
   getType: ->
     unless @type
-      if @doc.signature.substring(0, 1) is '#'
+      if @doc.signature.substring(0, 1) is '.'
         @type = 'instance'
-      else if @doc.signature.substring(0, 1) is '.'
+      else if @doc.signature.substring(0, 1) is '@'
         @type = 'class'
       else
         @type = 'mixin'

@@ -62,10 +62,10 @@ by surround your code block that contains curly braces with backticks.
 
 There are several ways of link types supported and all can take an optional label after the link.
 
-* Normal URL links: `{http://coffeescript.org/}` or `{http://coffeescript.org/ Try CoffeeScript}`
-* Link to a class or mixin: `{Animal.Lion}` or `{Animal.Lion The mighty lion}`
-* Direct link to an instance method: `{Animal.Lion#walk}` or `{Animal.Lion#walk The lion walks}`
-* Direct link to a class method: `{Animal.Lion.constructor}` or `{Animal.Lion.constructor} A new king was born`
+* Normal URL links: `{http://coffeescript.org/}` or `[Try CoffeeScript](http://coffeescript.org/)`
+* Link to a class or mixin: `{Animal.Lion}` or `[The mighty lion]{Animal.Lion}`
+* Direct link to an instance method: `{Animal.Lion#walk}` or `[The lion walks]{Animal.Lion#walk}`
+* Direct link to a class method: `{Animal.Lion.constructor}` or `[A new king was born]{Animal.Lion.constructor}`
 
 If you are referring to a method within the same class, you can omit the class name: `{#walk}` or `{.constructor}`.
 
