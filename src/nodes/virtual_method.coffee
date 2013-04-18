@@ -81,9 +81,9 @@ module.exports = class VirtualMethod extends Node
       unless @shortSignature
         @shortSignature = switch @getType()
                           when 'class'
-                            '.'
+                            '@'
                           when 'instance'
-                            '#'
+                            '.'
                           else
                             ''
         @shortSignature += @getName()

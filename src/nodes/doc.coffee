@@ -29,7 +29,7 @@ module.exports = class Doc extends Node
   # Returns the comment status (a [Boolean])
   #
   hasComment: ->
-    @node && @node.comment
+    !_.str.isBlank(@comment)
 
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
