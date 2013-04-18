@@ -42,13 +42,28 @@ You can flag methods in a file with the following syntax:
 
 ```coffee
 ###
-# Public
+# Public #
 ###
 ```
 
 That will mark every method underneath that block as `Public`. You can follow the
 same notion for `Internal` as well. You can have as many block status flags as you
-want.
+want. If you specify a status for a method within a block, the status is respected.
+For example:
+
+
+```coffee
+###
+# Public #
+###
+
+# Internal: A secret method
+notShown: ->
+
+shown: ->
+```
+
+`shown` is kept as Public because of the status block, while `notShown` is indeed Internal.
 
 ### GitHub Flavored Markdown
 
