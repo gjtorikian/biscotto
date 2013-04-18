@@ -272,15 +272,13 @@ module.exports = class Referencer
     text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
 
     # Search for references and replace them
-    text = text.replace /(\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*\{([^\}]*)\}/gm, (match, label, link) =>
+    text = text.replace /(?:\[((?:\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*)\])?\{([^\}]*)\}/gm, (match, label, link) =>
       # Remove the markdown generated autolinks
       link = link.replace(/<.+?>/g, '').split(' ')
       href = link.shift()
       label = _.str.strip(label)
 
-      if label.length >= 2
-        label = label[1 .. label.length - 2]
-      else
+      if label.length < 2
         label = ""
 
       see = @resolveSee({ reference: href, label: label }, entity, path)
