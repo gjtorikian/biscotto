@@ -13,7 +13,8 @@
                 "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done\n"
               ],
               "comment": "<p>A method to run.</p>",
-              "summary": "A method to run."
+              "summary": "A method to run.",
+              "status": "Public"
             },
             "type": "instance",
             "signature": ".<strong>run</strong>()",

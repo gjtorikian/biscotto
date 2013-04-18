@@ -20,6 +20,11 @@
             "parameters": []
           },
           {
+           "doc": {
+              "comment": "",
+              "summary": "",
+              "status": "Public"
+            },
             "type": "instance",
             "signature": ".<strong>bound</strong>()",
             "name": "bound",

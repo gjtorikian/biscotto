@@ -36,6 +36,20 @@ like this: `{ }`). This ensures that the generated methods correlates a return t
 Methods without return types returned `undefined`. You can list more than one `Returns`
 per method by seperating each type on a different line.
 
+### Block Flagging Statuses
+
+You can flag methods in a file with the following syntax:
+
+```coffee
+###
+# Public
+###
+```
+
+That will mark every method underneath that block as `Public`. You can follow the
+same notion for `Internal` as well. You can have as many block status flags as you
+want.
+
 ### GitHub Flavored Markdown
 
 Biscotto documentation is processed with [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
