@@ -7,3 +7,4 @@ Gemfile.lock
 doc
 out.json
 atom_src
+npm-debug.log
