@@ -191,13 +191,15 @@ module.exports = class Parser
              [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
            | # Function
              @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
+           | # Function
+             [$A-Za-z_\x7f-\uffff][\.$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
            | # Constant
              ^\s*@[$A-Z_][A-Z_]*)
            | # Properties
              ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:\s*\S+
           ///.exec(line)
 
-          if member and _.last(result).length == 0
+          if member and _.str.isBlank(_.last(result))
             indentComment = /^(\s*)/.exec(line)
             if indentComment
               indentComment = indentComment[1]
@@ -316,8 +318,8 @@ module.exports = class Parser
         noDocMethodNames.push noDocMethod.shortSignature
 
       stats += "\n"
-      stats += "Classes missing docs: #{noDocClassNames.join('\n')}" if noDocClassNames.length > 0
-      stats += "Methods missing docs: #{noDocMethodNames.join('\n')}" if noDocMethodNames.length > 0
+      stats += "\nClasses missing docs:\n\n#{noDocClassNames.join('\n')}" if noDocClassNames.length > 0
+      stats += "\n\nMethods missing docs:\n#{noDocMethodNames.join('\n')}" if noDocMethodNames.length > 0
 
     console.log stats
     
