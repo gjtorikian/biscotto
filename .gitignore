@@ -6,3 +6,4 @@ Gemfile.lock
 .sass-cache
 doc
 out.json
+atom_src

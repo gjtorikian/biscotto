@@ -105,7 +105,12 @@ module.exports = class Parser
         if entity == 'clazz'
           clazz = new Class(child, file, @options, doc)
 
-          if @options.private || !clazz.doc.private
+
+          if (!@options.private && clazz.doc.status == "Private")
+            # no op
+          else if (!@options.internal && clazz.doc.status == "Internal")
+            # no op
+          else
             @classes.push clazz
 
       @previousNodes.push child
