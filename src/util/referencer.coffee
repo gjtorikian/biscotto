@@ -272,11 +272,14 @@ module.exports = class Referencer
     text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
 
     # Search for references and replace them
-    text = text.replace /\{([^\}]*)\}/gm, (match, link) =>
+    text = text.replace /(?:\[((?:\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*)\])?\{([^\}]*)\}/gm, (match, label, link) =>
       # Remove the markdown generated autolinks
       link = link.replace(/<.+?>/g, '').split(' ')
       href = link.shift()
-      label = link.join(' ')
+      label = _.str.strip(label)
+
+      if label.length < 2
+        label = ""
 
       see = @resolveSee({ reference: href, label: label }, entity, path)
 
@@ -303,7 +306,7 @@ module.exports = class Referencer
     ref = see.reference
 
     # Link to direct class methods
-    if /^\./.test(ref)
+    if /^\@/.test(ref)
       methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
       if _.include methods, ref.substring(1)
@@ -316,7 +319,7 @@ module.exports = class Referencer
         @errors++
 
     # Link to direct instance methods
-    else if /^\#/.test(ref)
+    else if /^\./.test(ref)
       instanceMethods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m.getName())
 
       if _.include instanceMethods, ref.substring(1)
@@ -334,7 +337,7 @@ module.exports = class Referencer
       unless /^https?:\/\//.test ref
 
         # Get class and method reference
-        if match = /^(.*?)([.#][$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
+        if match = /^(.*?)([.@][$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
           refClass = match[1]
           refMethod = match[2]
           otherEntity   = _.find @classes, (c) -> c.getFullName() is refClass
@@ -353,7 +356,7 @@ module.exports = class Referencer
                 @errors++
 
             # Link to other class class methods
-            else if /^\./.test(refMethod)
+            else if /^\@/.test(refMethod)
               methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
               if _.include methods, refMethod.substring(1)
@@ -366,7 +369,7 @@ module.exports = class Referencer
                 @errors++
 
             # Link to other class instance methods
-            else if /^\#/.test(refMethod)
+            else if /^\./.test(refMethod)
               instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['instance', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
               if _.include instanceMethods, refMethod.substring(1)
@@ -421,13 +424,13 @@ module.exports = class Referencer
               # Find referenced entity
               if ref = /([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)([#.])([$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*)/i.test param.reference
                 otherEntity = _.first entities, (e) -> e.getFullName() is ref[1]
-                otherMethodType = if ref[2] is '#' then ['instance'] else ['class', 'mixin']
+                otherMethodType = if ref[2] is '.' then ['instance'] else ['class', 'mixin']
                 otherMethod = ref[3]
 
               # The referenced entity is on the current entity
               else
                 otherEntity = entity
-                otherMethodType = if param.reference.substring(0, 1) is '#' then ['instance', 'mixin'] else ['class', 'mixin']
+                otherMethodType = if param.reference.substring(0, 1) is '.' then ['instance', 'mixin'] else ['class', 'mixin']
                 otherMethod = param.reference.substring(1)
 
               # Find the referenced method
