@@ -8,6 +8,11 @@
     },
     "methods": [
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "class",
         "signature": "#<strong>helper</strong>()",
         "name": "helper",
@@ -15,6 +20,11 @@
         "parameters": []
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "class",
         "signature": "#<strong>another</strong>(a, b)",
         "name": "another",
@@ -31,6 +41,11 @@
         ]
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "class",
         "signature": "#<strong>withDefault</strong>(a = 2, c, d = 'hi', d, e = { a: 2 }, f = new TestClassMethods())",
         "name": "withDefault",
@@ -67,6 +82,11 @@
         ]
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "class",
         "signature": "#<strong>nowWithSpalt</strong>(foo, bar...)",
         "name": "nowWithSpalt",
@@ -83,6 +103,11 @@
         ]
       },
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "class",
         "signature": "#<strong>andSoDoesThis</strong>(foo, bar)",
         "name": "andSoDoesThis",

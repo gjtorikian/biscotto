@@ -1,0 +1,67 @@
+[
+    {
+        "file": "spec/templates/methods/preprocessor_flagging.coffee",
+        "doc": {
+            "comment": "<p>Testing block statuses.</p>",
+            "summary": "Testing block statuses.",
+            "status": "Public"
+        },
+        "class": {
+            "className": "TestBlockStatus",
+            "name": "TestBlockStatus",
+            "namespace": ""
+        },
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>Blah blah!</p>",
+                    "summary": "Blah blah!",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>help</strong>(me)",
+                "name": "help",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "me",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Blah blah test!</p>",
+                    "summary": "Blah blah test!",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>test</strong>()",
+                "name": "test",
+                "bound": false,
+                "parameters": []
+            },
+            {
+                "doc": {
+                    "comment": "<p>Tricksy words!</p>",
+                    "summary": "Tricksy words!",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>internal2</strong>()",
+                "name": "internal2",
+                "bound": false,
+                "parameters": []
+            },
+            {
+                "type": "instance",
+                "signature": ".<strong>public1</strong>()",
+                "name": "public1",
+                "bound": false,
+                "parameters": []
+            }
+        ],
+        "variables": [],
+        "properties": []
+    }
+]

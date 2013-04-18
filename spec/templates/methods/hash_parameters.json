@@ -8,6 +8,11 @@
     },
     "methods": [
       {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
         "type": "instance",
         "signature": ".<strong>helper</strong>()",
         "name": "helper",

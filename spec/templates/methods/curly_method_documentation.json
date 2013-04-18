@@ -12,6 +12,7 @@
                 "doc": {
                     "comment": "<p>Should be overloaded to change fetch limit.</p>",
                     "summary": "Should be overloaded to change fetch limit.",
+                    "status": "Public",
                     "returnValue": [
                         {
                             "type": "Number",
