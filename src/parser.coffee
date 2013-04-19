@@ -46,6 +46,7 @@ module.exports = class Parser
   #
   parseContent: (content, file = '') ->
     @previousNodes = []
+    @globalStatus = "Public"
 
     # Defines typical conditions for entities we are looking through nodes
     entities =
@@ -176,6 +177,8 @@ module.exports = class Parser
                    [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
                  | # Function
                    @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
+                 | # Function
+                   [$A-Za-z_\x7f-\uffff][\.$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
                  | # Constant
                    ^\s*@[$A-Z_][A-Z_]*)
                  | # Properties
@@ -187,17 +190,21 @@ module.exports = class Parser
             comment = []
           # A method with no preceding description; apply the global status
           member = ///
-           ( # Function
-             [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
-           | # Function
-             @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
-           | # Function
-             [$A-Za-z_\x7f-\uffff][\.$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
-           | # Constant
-             ^\s*@[$A-Z_][A-Z_]*)
-           | # Properties
-             ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:\s*\S+
-          ///.exec(line)
+                 ( # Class
+                   class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
+                 | # Mixin or assignment
+                   ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff.]*\s+\=
+                 | # Function
+                   [$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*:\s*(\(.*\)\s*)?[-=]>
+                 | # Function
+                   @[A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
+                 | # Function
+                   [$A-Za-z_\x7f-\uffff][\.$\w\x7f-\uffff]*\s*=\s*(\(.*\)\s*)?[-=]>
+                 | # Constant
+                   ^\s*@[$A-Z_][A-Z_]*)
+                 | # Properties
+                   ^\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*:\s*\S+
+               ///.exec line
 
           if member and _.str.isBlank(_.last(result))
             indentComment = /^(\s*)/.exec(line)
@@ -209,7 +216,6 @@ module.exports = class Parser
             result.push("#{indentComment}###")
             result.push("#{@globalStatus}:")
             result.push("#{indentComment}###")
-
           result.push line
 
     result.join('\n')

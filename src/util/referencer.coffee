@@ -387,7 +387,7 @@ module.exports = class Referencer
             else
               see.label = see.reference
               see.reference = undefined
-              console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() }" unless @options.quiet
+              console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() } (#{see.label})" unless @options.quiet
               @errors++
         else
           see.label = see.reference
