@@ -134,11 +134,11 @@ module.exports = class Parser
 
     for line in content.split('\n')
 
-      blockComment = /^\s*#{3}/.exec(line) && !/^\s*#{3}.+#{3}/.exec(line)
+      blockComment = /^\s*#{3,}/.exec(line) && !/^\s*#{3,}.+#{3,}/.exec(line)
 
       if blockComment || inBlockComment
         # don't add global statuses to the result queue
-        if status = /^\s*# (\w+) #/.exec(line)
+        if status = /^\s*# (\w+):?(?:[^#])* #/.exec(line)
           @globalStatus = status[1]
           globalStatusBlock = true
           result.pop()

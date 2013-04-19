@@ -47,8 +47,18 @@ You can flag methods in a file with the following syntax:
 ```
 
 That will mark every method underneath that block as `Public`. You can follow the
-same notion for `Internal` as well. You can have as many block status flags as you
-want. If you specify a status for a method within a block, the status is respected.
+same notion for `Internal` as well. 
+
+You can have as many block status flags as you want. The amount of `#`s must be at 
+least three, and you can have any text inside the block you want. For example:
+
+```coffee
+##########################################
+# Internal: This does some secret stuff. #
+##########################################
+```
+
+If you specify a status for a method within a block, the status is respected.
 For example:
 
 
