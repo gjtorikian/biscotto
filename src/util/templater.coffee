@@ -64,12 +64,13 @@ module.exports = class Templater
 
       # Write to file system
       else
-        file = path.join @options.output, filename
-        dir  = path.dirname(file)
-        mkdirp dir, (err) =>
-          if err
-            console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
-          else
-            fs.writeFile file, html unless @options.statsOnly
+        unless @options.statsOnly
+          file = path.join @options.output, filename
+          dir  = path.dirname(file)
+          mkdirp dir, (err) =>
+            if err
+              console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
+            else
+              fs.writeFile file, html 
 
     html

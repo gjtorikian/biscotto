@@ -48,7 +48,7 @@ module.exports = class Generator
     @generateExtraList()
 
     @generateSearchData file
-    @copyAssets() unless file
+    @copyAssets() unless file or @options.statsOnly
 
   # Generate the frame source.
   #
@@ -454,12 +454,13 @@ module.exports = class Generator
 
     # Write the content to a file
     else
-      destinationFolder = path.join(@options.output, 'assets')
+      unless @options.statsOnly
+        destinationFolder = path.join(@options.output, 'assets')
 
-      mkdirp destinationFolder, (err) ->
-        if err
-          console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
-        else
-          destinationFile = path.join destinationFolder, 'search_data.js'
-          fs.writeFile destinationFile, 'window.searchData = ' + JSON.stringify(search), (err) ->
-            console.error "[ERROR] Cannot write search data: ", err if err
+        mkdirp destinationFolder, (err) ->
+          if err
+            console.error "[ERROR] Cannot create directory #{ dir }: #{ err }"
+          else
+            destinationFile = path.join destinationFolder, 'search_data.js'
+            fs.writeFile destinationFile, 'window.searchData = ' + JSON.stringify(search), (err) ->
+              console.error "[ERROR] Cannot write search data: ", err if err
