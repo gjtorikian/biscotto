@@ -129,25 +129,19 @@ module.exports = class Parser
     comment        = []
     inComment      = false
     inBlockComment = false
-    globalStatusBlock = false
     indentComment  = 0
 
     for line in content.split('\n')
+      globalStatusBlock = false
+
+      if globalStatusBlock = /^\s*#{3} (\w+).+?#{3}/.exec(line)
+        @globalStatus = globalStatusBlock[1]
 
       blockComment = /^\s*#{3,}/.exec(line) && !/^\s*#{3,}.+#{3,}/.exec(line)
 
       if blockComment || inBlockComment
-        # don't add global statuses to the result queue
-        if status = /^\s*# (\w+):?(?:[^#])* #/.exec(line)
-          @globalStatus = status[1]
-          globalStatusBlock = true
-          result.pop()
-        else    
-          inBlockComment = !inBlockComment if blockComment
-          if globalStatusBlock
-            globalStatusBlock = false
-          else
-            result.push line
+        inBlockComment = !inBlockComment if blockComment
+        result.push line
       else
         commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
         if commentLine
@@ -313,7 +307,7 @@ module.exports = class Parser
       noDocClassNames = []
       for noDocClass in noDocClasses
         noDocClassNames.push noDocClass.className
-      
+
       noDocMethodNames = []
       prevFileName = ""
       for noDocMethod in noDocMethods
@@ -328,7 +322,7 @@ module.exports = class Parser
       stats += "\n\nMethods missing docs:\n#{noDocMethodNames.join('\n')}" if noDocMethodNames.length > 0
 
     console.log stats
-    
+
     if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 

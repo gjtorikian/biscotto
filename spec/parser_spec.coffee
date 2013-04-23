@@ -35,7 +35,7 @@ for filename in walkdir.sync './spec/templates'
 
           tokens = parser.parseContent source, filename
           generated = JSON.stringify(parser.toJSON(), null, 2)
-          
+
           report = "\n-------------------- CoffeeScript ----------------------\n"
           report += source
           report += "\n------------- Preprocessed CoffeeScript-----------------\n"
@@ -59,10 +59,9 @@ for filename in walkdir.sync './spec/templates'
                 console.log "Removed: \n#{_.str.strip(diff.value)}"
 
 
-          # console.log expected
-          # console.log generated
+          #console.log expected
+          #console.log generated
           # expect({
           #   generated: generated
           #   report: report.split('\n').join('\n    ')
           # }).toBeCompiledTo(expected)
-

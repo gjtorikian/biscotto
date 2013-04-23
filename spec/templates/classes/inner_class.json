@@ -1,6 +1,11 @@
 [
       {
         "file": "spec/templates/classes/inner_class.coffee",
+        "doc": {
+              "comment": "",
+              "summary": "",
+              "status": "Public"
+        },
         "class": {
           "className": "Tower.Model.Relation.HasMany",
           "name": "HasMany",

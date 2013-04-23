@@ -1,6 +1,11 @@
 [
   {
     "file":      "spec/templates/classes/namespaced_class.coffee",
+    "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+     },
      "class":     {
       "className": "Some.Namespace.MyClass",
       "name":      "MyClass",

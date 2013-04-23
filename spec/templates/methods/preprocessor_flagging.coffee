@@ -7,31 +7,27 @@ class TestBlockStatus
   # Public: Blah blah test!
   test: ->
 
-  ###
-  # Internal #
-  ###
+  ### Internal ###
 
   # Testing with words
-  internal1: -> 
+  internal1: ->
 
   # Public: Tricksy words!
-  internal2: -> 
+  internal2: ->
 
   # Internal: WORDS.
-  internal3: -> 
+  internal3: ->
 
   # WORDS 4.
-  internal4: -> 
+  internal4: ->
 
-  internal5: -> 
+  internal5: ->
 
-  @internal6: -> 
+  @internal6: ->
 
-  ###
-  # Public #
-  ###
+  ### Public ###
 
-  
+  # I'm really documented.
   public1: ->
 
   # Internal: WORDS 6!

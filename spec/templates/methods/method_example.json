@@ -1,6 +1,11 @@
     [
       {
         "file": "spec/templates/methods/method_example.coffee",
+        "doc": {
+              "comment": "",
+              "summary": "",
+              "status": "Public"
+        },
         "class": {
           "className": "TestExample",
           "name": "TestExample",

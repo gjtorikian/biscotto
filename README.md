@@ -11,7 +11,7 @@ Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generat
 ### TomDoc Notation
 
 API documentation should be written in the [TomDoc](http://tomdoc.org/) notation.  
-Originally conceived for Ruby, TomDoc lends itself pretty nicely to Coffeescript. 
+Originally conceived for Ruby, TomDoc lends itself pretty nicely to Coffeescript.
 There are some slight changes in the parse rules to match Coffeescript.
 Briefly, here's a list of how you should format your documentation:
 
@@ -23,7 +23,7 @@ via the options.
 
 #### Method arguments
 
-Each method argument starts with the argument name, followed by a dash (`-`), and 
+Each method argument starts with the argument name, followed by a dash (`-`), and
 the description of the argument. Hash options are placed on a newline and preceded
 with a colon (`:`). If a description has a default value, define it at the end of the
 description with `(default: <desc>)`.
@@ -41,21 +41,17 @@ per method by seperating each type on a different line.
 You can flag methods in a file with the following syntax:
 
 ```coffee
-###
-# Public #
-###
+### Public ###
 ```
 
 That will mark every method underneath that block as `Public`. You can follow the
-same notion for `Internal` as well. 
+same notion for `Internal` as well.
 
-You can have as many block status flags as you want. The amount of `#`s must be at 
+You can have as many block status flags as you want. The amount of `#`s must be at
 least three, and you can have any text inside the block you want. For example:
 
 ```coffee
-##########################################
-# Internal: This does some secret stuff. #
-##########################################
+### Internal: This does some secret stuff. ###
 ```
 
 If you specify a status for a method within a block, the status is respected.
@@ -63,9 +59,7 @@ For example:
 
 
 ```coffee
-###
-# Public #
-###
+### Public ###
 
 # Internal: A secret method
 notShown: ->

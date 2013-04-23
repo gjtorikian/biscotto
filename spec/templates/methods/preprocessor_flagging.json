@@ -2,9 +2,9 @@
     {
         "file": "spec/templates/methods/preprocessor_flagging.coffee",
         "doc": {
-            "comment": "<p>Testing block statuses.</p>",
-            "summary": "Testing block statuses.",
-            "status": "Public"
+              "comment": "<p>Testing block statuses.</p>",
+              "summary": "Testing block statuses.",
+              "status": "Public"
         },
         "class": {
             "className": "TestBlockStatus",
@@ -54,6 +54,11 @@
                 "parameters": []
             },
             {
+                "doc": {
+                    "comment": "<p>I&#39;m really documented.</p>",
+                    "summary": "I&#39;m really documented.",
+                    "status": "Public"
+                },
                 "type": "instance",
                 "signature": ".<strong>public1</strong>()",
                 "name": "public1",

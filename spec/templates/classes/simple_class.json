@@ -1,6 +1,11 @@
 [
   {
     "file":      "spec/templates/classes/simple_class.coffee",
+    "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+    },
     "class":     {
       "className": "MyTestClass",
       "name":      "MyTestClass",

@@ -1,6 +1,11 @@
 [
   {
     "file": "spec/templates/methods/hash_parameters.coffee",
+    "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+    },
     "class": {
       "className": "TestInstanceMethods",
       "name": "TestInstanceMethods",
