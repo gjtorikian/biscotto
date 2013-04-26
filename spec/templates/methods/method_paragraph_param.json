@@ -1,0 +1,161 @@
+[
+    {
+        "file": "spec/templates/methods/method_paragraph_param.coffee",
+        "doc": {
+            "comment": "",
+            "summary": "",
+            "status": "Public"
+        },
+        "class": {
+            "className": "ParagraphParm",
+            "name": "ParagraphParm",
+            "namespace": ""
+        },
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>Does stuff</p>",
+                    "summary": "Does stuff",
+                    "status": "Public",
+                    "params": [
+                        {
+                            "name": "something",
+                            "desc": "Blah blah blah. Foo foo foo!",
+                            "type": ""
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": ".<strong>helper</strong>(something)",
+                "name": "helper",
+                "bound": false,
+                "parameters": [
+                    {
+                        "name": "something",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Does other stuff</p>",
+                    "summary": "Does other stuff",
+                    "status": "Public",
+                    "params": [
+                        {
+                            "name": "something",
+                            "desc": "Blah blah blah. Fah fah fah? Foo foo foo!",
+                            "type": ""
+                        },
+                        {
+                            "name": "something2",
+                            "desc": "Bar bar bar. Cha cha cha!!",
+                            "type": ""
+                        },
+                        {
+                            "name": "options",
+                            "desc": "The do options",
+                            "type": "",
+                            "options": [
+                                {
+                                    "name": "speed",
+                                    "desc": "The {String} speed",
+                                    "type": "String"
+                                },
+                                {
+                                    "name": "repeat",
+                                    "desc": "How many {Number} times to repeat",
+                                    "type": "Number"
+                                },
+                                {
+                                    "name": "tasks",
+                                    "desc": "The {[Tasks]} tasks to do",
+                                    "type": "[Tasks]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": ".<strong>bound</strong>(something, something2)",
+                "name": "bound",
+                "bound": true,
+                "parameters": [
+                    {
+                        "name": "something",
+                        "splat": false
+                    },
+                    {
+                        "name": "something2",
+                        "splat": false
+                    }
+                ]
+            },
+            {
+                "doc": {
+                    "comment": "<p>Does more other stuff</p>",
+                    "summary": "Does more other stuff",
+                    "status": "Public",
+                    "params": [
+                        {
+                            "name": "something",
+                            "desc": "Blah blah blah. Fah fah fah? Foo foo foo!",
+                            "type": ""
+                        },
+                        {
+                            "name": "something2",
+                            "desc": "Bar bar bar. Cha cha cha!!",
+                            "type": ""
+                        },
+                        {
+                            "name": "opts",
+                            "desc": "The do options",
+                            "type": "",
+                            "options": [
+                                {
+                                    "name": "speed",
+                                    "desc": "The {String} speed",
+                                    "type": "String"
+                                },
+                                {
+                                    "name": "repeat",
+                                    "desc": "How many {Number} times to repeat",
+                                    "type": "Number"
+                                },
+                                {
+                                    "name": "tasks",
+                                    "desc": "The {[Tasks]} tasks to do",
+                                    "type": "[Tasks]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "type": "instance",
+                "signature": ".<strong>bound</strong>(something, something2, opts, opts2)",
+                "name": "bound",
+                "bound": true,
+                "parameters": [
+                    {
+                        "name": "something",
+                        "splat": false
+                    },
+                    {
+                        "name": "something2",
+                        "splat": false
+                    },
+                    {
+                        "name": "opts",
+                        "splat": false
+                    },
+                    {
+                        "name": "opts2",
+                        "splat": false
+                    }
+                ]
+            }
+        ],
+        "variables": [],
+        "properties": []
+    }
+]

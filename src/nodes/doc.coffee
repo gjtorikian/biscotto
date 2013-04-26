@@ -19,7 +19,7 @@ module.exports = class Doc extends Node
   constructor: (@node, @options) ->
     try
       if @node
-        @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))     
+        @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
@@ -72,7 +72,7 @@ module.exports = class Doc extends Node
     comment = []
 
     return unless lines isnt undefined
-    
+
     sections       = lines.join("\n").split "\n\n"
 
     info_block     = @parse_description(sections.shift())
@@ -146,7 +146,7 @@ module.exports = class Doc extends Node
     returns = []
     current = []
 
-    lines = section.split("\n")  
+    lines = section.split("\n")
     _.each lines, (line) ->
       line = _.str.trim(line)
 
@@ -172,12 +172,13 @@ module.exports = class Doc extends Node
     last_indent = null
 
     _.each section.split("\n"), (line) ->
-      line = _.str.strip(line)
+      #line = _.str.strip(line)
       unless _.isEmpty(line)
         indent = line.match(/^(\s*)/)[0].length
 
-        if last_indent != null && indent > last_indent
-          _.last(args).desc += " " + Markdown.convert(line).replace /<\/?p>/g, ""
+        stripped_line = _.str.strip(line)
+        if last_indent != null && indent > last_indent && stripped_line[0] != ":"
+          _.last(args).desc += " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
         else
           arg = line.split(" - ")
           param = _.str.strip(arg[0])
@@ -199,7 +200,7 @@ module.exports = class Doc extends Node
       return line if _.isEmpty(_.str.strip(line))
       md = line.match(/^(\s*)/)
       if md then md[1].length else null
-    
+
     spaces = _.compact(spaces)
 
     space = _.min(spaces) || 0
