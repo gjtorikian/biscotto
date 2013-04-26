@@ -1,0 +1,91 @@
+[
+  {
+    "file": "spec/templates/methods/method_paragraph_param.coffee",
+    "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+    },
+    "class": {
+      "className": "ParagraphParm",
+      "name": "ParagraphParm",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Does stuff</p>",
+          "summary": "Does stuff",
+          "status": "Public",
+          "params": [
+            {
+              "name": "something",
+              "desc": "Blah blah blah.",
+              "type": ""
+            },
+            {
+              "name": "Foo foo foo!",
+              "desc": "",
+              "type": ""
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": ".<strong>helper</strong>(something)",
+        "name": "helper",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "something",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Does other stuff</p>",
+          "summary": "Does other stuff",
+          "status": "Public",
+          "params": [
+            {
+              "name": "something",
+              "desc": "Blah blah blah.",
+              "type": ""
+            },
+            {
+              "name": "Foo foo foo!",
+              "desc": "",
+              "type": ""
+            },
+            {
+              "name": "something2",
+              "desc": "Bar bar bar.",
+              "type": ""
+            },
+            {
+              "name": "Cha cha cha!!",
+              "desc": "",
+              "type": ""
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": ".<strong>bound</strong>(something, something2)",
+        "name": "bound",
+        "bound": true,
+        "parameters": [
+          {
+            "name": "something",
+            "splat": false
+          },
+          {
+            "name": "something2",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]
