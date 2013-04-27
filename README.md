@@ -24,8 +24,21 @@ via the options.
 #### Method arguments
 
 Each method argument starts with the argument name, followed by a dash (`-`), and
-the description of the argument. Hash options are placed on a newline and preceded
-with a colon (`:`). If a description has a default value, define it at the end of the
+the description of the argument:
+
+```
+argument - Some word about the arg!
+```
+
+Hash options are placed on a newline and end with a colon:
+
+```
+options - These are the options:
+          key1: Blah blah.
+          key2: Blah
+```
+
+If a description has a default value, define it at the end of the
 description with `(default: <desc>)`.
 
 #### Return types
