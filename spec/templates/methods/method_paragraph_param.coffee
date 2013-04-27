@@ -14,9 +14,9 @@ class ParagraphParm
   # something2 - Bar bar bar.
   #              Cha cha cha!!
   # options - The do options
-  #           :speed - The {String} speed
-  #           :repeat - How many {Number} times to repeat
-  #           :tasks - The {[Tasks]} tasks to do
+  #           speed: The {String} speed
+  #           repeat: How many {Number} times to repeat
+  #           tasks: The {[Tasks]} tasks to do
   bound: (something, something2) =>
 
   # Public: Does more other stuff
@@ -27,7 +27,7 @@ class ParagraphParm
   # something2 - Bar bar bar.
   #              Cha cha cha!!
   # opts - The do options
-  #        :speed - The {String} speed
-  #        :repeat - How many {Number} times to repeat
-  #        :tasks - The {[Tasks]} tasks to do
+  #        speed: The {String} speed
+  #        repeat:  How many {Number} times to repeat
+  #        tasks: The {[Tasks]} tasks to do
   bound: (something, something2, opts, opts2) =>
