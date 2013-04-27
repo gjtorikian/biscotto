@@ -172,24 +172,28 @@ module.exports = class Doc extends Node
     last_indent = null
 
     _.each section.split("\n"), (line) ->
-      #line = _.str.strip(line)
       unless _.isEmpty(line)
         indent = line.match(/^(\s*)/)[0].length
 
         stripped_line = _.str.strip(line)
-        if last_indent != null && indent > last_indent && stripped_line[0] != ":"
+
+        if last_indent != null && indent >= last_indent && (indent != 0) && stripped_line.match(/^\w+:/) == null
           _.last(args).desc += " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
         else
           arg = line.split(" - ")
           param = _.str.strip(arg[0])
           desc = Markdown.convert(_.str.strip(arg[1])).replace /<\/?p>/g, ""
 
+          param_match = param.match(/^\w+:/)
           # it's a hash description
-          if param[0] == ":"
+          if param_match && _.str.endsWith(param_match[0], ":")
             _.last(args).options ||= []
-            _.last(args).options.push( {name: param[1 .. param.length], desc: desc, type: Referencer.getLinkMatch(line)} )
+            key = param.split(":")
+            keyDesc = _.str.strip(key[1])
+            _.last(args).options.push( {name: key[0], desc: Markdown.convert(keyDesc).replace(/<\/?p>/g, ""), type: Referencer.getLinkMatch(line)} )
           else
             args.push( {name: param, desc: desc, type: Referencer.getLinkMatch(line)} )
+
         last_indent = indent
 
     args
