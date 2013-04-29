@@ -80,6 +80,10 @@ module.exports = class Doc extends Node
     text     = info_block.description
     @status   = info_block.status
 
+    delegationMatch =  text.match(/\{Delegates to: (.+?)\}/)
+    if delegationMatch && @delegation = delegationMatch[1]
+      return
+
     current = sections.shift()
 
     while current
@@ -240,6 +244,7 @@ module.exports = class Doc extends Node
         status: @status
         params: @params
         options: @paramsOptions
+        delegation: @delegation
         see: @see
         returnValue: @returnValue
         throwValue: @throwValue

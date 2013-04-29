@@ -1,0 +1,31 @@
+[
+    {
+        "file": "spec/templates/methods/method_delegation.coffee",
+        "doc": {
+            "comment": "",
+            "summary": "",
+            "status": "Public"
+        },
+        "class": {
+            "className": "MethodDelegation",
+            "name": "MethodDelegation",
+            "namespace": ""
+        },
+        "methods": [
+            {
+                "doc": {
+                    "comment": "<p>Delegates to: TestInstanceMethods.someMethod</p>",
+                    "summary": "Delegates to: TestInstanceMethods.someMethod",
+                    "status": "Public"
+                },
+                "type": "instance",
+                "signature": ".<strong>delegatedRegular</strong>()",
+                "name": "delegatedRegular",
+                "bound": false,
+                "parameters": []
+            }
+        ],
+        "variables": [],
+        "properties": []
+    }
+]
