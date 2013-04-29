@@ -14,7 +14,7 @@ class MethodDelegation
 
   # At last, we have the same content!
   #
-  # You might also like {@delegatedIrregular}.
+  # You might also like {@undelegatedRegular}.
   #
   # Returns a {Number}.
   @doubleDelegationThree: ->
@@ -22,8 +22,7 @@ class MethodDelegation
   # {Delegates to: App.CurlyMethodDocumentation@lets_do_it}
   delegatedInternalRegular: ->
 
-
-  # Oh hello.
+  # Private: Oh hello.
   #
   # p - A {String}
   #

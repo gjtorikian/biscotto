@@ -98,10 +98,14 @@ module.exports = class Generator
 
       methods = clazz.getMethods()
 
+      # resolve all delegations in methods
       for method in methods by 1
         delegation = method.doc.delegation
         if delegation
+          originalStatus = method.doc.status
           [method.doc, method.parameters] = @referencer.resolveDelegation(method.name, delegation, clazz)
+          method.doc.status = originalStatus
+
 
       @templater.render 'class', {
         path: assetPath

@@ -8,7 +8,7 @@ class App.CurlyMethodDocumentation extends App.Doc
 
   # Private: Do it!
   #
-  # See #undo for more information.
+  # See {#undo} for more information.
   #
   # it - The {String} thing to do
   # again - A {Boolean} for do it again
@@ -31,6 +31,6 @@ class App.CurlyMethodDocumentation extends App.Doc
 
   # Private: Do it!
   #
-  # See .do for more information.
+  # See {.do} for more information.
   #
   @lets_do_it = (it, options) ->

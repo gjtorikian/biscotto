@@ -310,7 +310,7 @@ module.exports = class Referencer
         if match.doc.delegation
           return @resolveDelegation(origin, match.doc.delegation, entity)
         else
-          return [ match.doc, match.parameters ]
+          return [ _.clone(match.doc), match.parameters ]
       else
         console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
         @errors++
@@ -326,7 +326,7 @@ module.exports = class Referencer
         if match.doc.delegation
           return @resolveDelegation(origin, match.doc.delegation, entity)
         else
-          return [ match.doc, match.parameters ]
+          return [ _.clone(match.doc), match.parameters ]
       else
         console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
         @errors++
@@ -362,7 +362,7 @@ module.exports = class Referencer
               if match.doc.delegation
                 return @resolveDelegation(origin, match.doc.delegation, otherEntity)
               else
-                return [ match.doc, match.parameters ]
+                return [ _.clone(match.doc), match.parameters ]
             else
               console.log "[WARN] Cannot resolve delegation to #{ refMethod } in #{ otherEntity.getFullName() }" unless @options.quiet
               @errors++
@@ -378,12 +378,12 @@ module.exports = class Referencer
               if match.doc.delegation
                 return @resolveDelegation(origin, match.doc.delegation, otherEntity)
               else
-                return [ match.doc, match.parameters ]
+                return [ _.clone(match.doc), match.parameters ]
             else
               console.log "[WARN] Cannot resolve delegation to #{ refMethod } in #{ otherEntity.getFullName() }" unless @options.quiet
               @errors++
         else
-          console.log "[WARN] Cannot find delegation to #{ refClass } in class #{ otherEntity.getFullName() }" unless @options.quiet
+          console.log "[WARN] Cannot find delegation to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
           @errors++
       else
         console.log "[WARN] Cannot resolve delegation to #{ ref } in class #{ otherEntity.getFullName() }" unless @options.quiet
