@@ -6,6 +6,19 @@ class MethodDelegation
   # Public: I'm being delegated to!
   delegatedRegular: ->
 
+  # {Delegates to: .doubleDelegationTwo}
+  doubleDelegationOne: ->
+
+  # {Delegates to: @doubleDelegationThree}
+  doubleDelegationTwo: ->
+
+  # At last, we have the same content!
+  #
+  # You might also like {@delegatedIrregular}.
+  #
+  # Returns a {Number}.
+  @doubleDelegationThree: ->
+
   # {Delegates to: App.TestMethodDocumentation@lets_do_it}
   #delegatedInternalRegular: ->
 

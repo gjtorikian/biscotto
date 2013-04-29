@@ -308,7 +308,7 @@ module.exports = class Referencer
 
       if match
         if match.doc.delegation
-          return resolveDelegation(match.doc.delegation, entity)
+          return @resolveDelegation(origin, match.doc.delegation, entity)
         else
           return [ match.doc, match.parameters ]
       else
@@ -324,64 +324,67 @@ module.exports = class Referencer
 
       if match
         if match.doc.delegation
-          return resolveDelegation(match.doc.delegation, entity)
+          return @resolveDelegation(origin, match.doc.delegation, entity)
         else
           return [ match.doc, match.parameters ]
       else
         console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
         @errors++
 
-    # # Link to other objects
-    # else
+     # Link to other objects
+     else
 
-    #   # Get class and method reference
-    #   if match = /^(.*?)([.@][$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
-    #     refClass = match[1]
-    #     refMethod = match[2]
-    #     otherEntity   = _.find @classes, (c) -> c.getFullName() is refClass
-    #     otherEntity ||= _.find @mixins, (c) -> c.getFullName() is refClass
+      # Get class and method reference
+      if match = /^(.*?)([.@][$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
+        refClass = match[1]
+        refMethod = match[2]
+        otherEntity   = _.find @classes, (c) -> c.getFullName() is refClass
+        otherEntity ||= _.find @mixins, (c) -> c.getFullName() is refClass
 
-    #     if otherEntity
-    #       # Link to another class
-    #       if _.isUndefined refMethod
-    #         if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@mixins, (c) -> c.getFullName()), refClass)
-    #           see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ refClass.replace(/\./g, '/') }.html"
-    #           see.label = ref unless see.label
-    #         else
-    #           console.log "[WARN] Cannot resolve link to entity #{ refClass } in #{ entity.getFullName() }" unless @options.quiet
-    #           @errors++
+        if otherEntity
+          # Link to another class
+          if _.isUndefined refMethod
+            # if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@mixins, (c) -> c.getFullName()), refClass)
+            #   see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ refClass.replace(/\./g, '/') }.html"
+            #   see.label = ref unless see.label
+            # else
+            #   console.log "[WARN] Cannot resolve link to entity #{ refClass } in #{ entity.getFullName() }" unless @options.quiet
+            #   @errors++
 
-    #       # Link to other class' class methods
-    #       else if /^\@/.test(refMethod)
-    #         methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
+          # Link to other class' class methods
+          else if /^\@/.test(refMethod)
+            methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
+            
+            match = _.find methods, (m) ->
+              return ref.substring(1) == m.getName()
 
-    #         if _.include methods, refMethod.substring(1)
-    #           see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-class"
-    #           see.label = ref unless see.label
-    #         else
-    #           console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
-    #           @errors++
+            if match
+              if match.doc.delegation
+                return @resolveDelegation(origin, match.doc.delegation, entity)
+              else
+                return [ match.doc, match.parameters ]
+            else
+              console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+              @errors++
 
-    #       # Link to other class instance methods
-    #       else if /^\./.test(refMethod)
-    #         instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['instance', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
+          # Link to other class instance methods
+          else if /^\./.test(refMethod)
+            methods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
 
-    #         if _.include instanceMethods, refMethod.substring(1)
-    #           see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
-    #           see.label = ref unless see.label
-    #         else
-    #           console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
-    #           @errors++
-    #     else
-    #       if @verifyExternalObjReference(delegation)
-    #         see.label = ref unless see.label
-    #         see.reference = @standardObjs[delegation]
-    #       else
-    #         console.log "[WARN] Cannot find referenced class #{ refClass } in class #{ entity.getFullName() } (#{see.label})" unless @options.quiet
-    #         @errors++
-    #   else
-    #     console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
-    #     @errors++
+            match = _.find methods, (m) ->
+              return ref.substring(1) == m.getName()  
+
+            if match
+              if match.doc.delegation
+                return @resolveDelegation(origin, match.doc.delegation, entity)
+              else
+                return [ match.doc, match.parameters ]
+            else
+              console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+              @errors++
+      else
+        console.log "[WARN] Cannot resolve delegation to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
+        @errors++
 
   # Resolves curly-bracket reference links.
   #
