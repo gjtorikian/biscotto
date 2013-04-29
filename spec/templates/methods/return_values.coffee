@@ -1,4 +1,4 @@
-class App.TestMethodDocumentation extends App.Doc
+class App.ReturnValsDocumentation extends App.Doc
 
   # Private: Do it!
   #

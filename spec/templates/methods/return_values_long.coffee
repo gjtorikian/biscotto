@@ -1,4 +1,4 @@
-class App.TestMethodDocumentation extends App.Doc
+class App.ReturnValuesLongDocumentation extends App.Doc
 
   # Public: Compares two `Point`s.
   #

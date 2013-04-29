@@ -96,11 +96,22 @@ module.exports = class Generator
       breadcrumbs.push
         name: clazz.getName()
 
+      methods = clazz.getMethods()
+
+      # resolve all delegations in methods
+      for method in methods by 1
+        delegation = method.doc.delegation
+        if delegation
+          originalStatus = method.doc.status
+          [method.doc, method.parameters] = @referencer.resolveDelegation(method, delegation, clazz)
+          method.doc.status = originalStatus
+
+
       @templater.render 'class', {
         path: assetPath
         classData: @referencer.resolveDoc(clazz.toJSON(), clazz, assetPath)
-        classMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'class'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
-        instanceMethods: _.map _.filter(clazz.getMethods(), (method) => method.type is 'instance'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
+        classMethods: _.map _.filter(methods, (method) => method.type is 'class'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
+        instanceMethods: _.map _.filter(methods, (method) => method.type is 'instance'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         properties: _.map clazz.properties, (p) => @referencer.resolveDoc(p.toJSON(), clazz, assetPath)
         constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
         subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()

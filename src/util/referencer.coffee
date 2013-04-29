@@ -29,7 +29,7 @@ module.exports = class Referencer
   # Get all inherited methods.
   #
   # clazz - the parent class (a [Class])
-  # 
+  #
   # Returns the classes
   #
   getInheritedMethods: (clazz) ->
@@ -194,7 +194,7 @@ module.exports = class Referencer
   #
   # classname - the class name (a [String])
   # path - the path prefix (a [String])
-  # 
+  #
   # Returns the link (if any)
   #
   getLink: (classname, path) ->
@@ -291,6 +291,106 @@ module.exports = class Referencer
     # Restore curly braces within code blocks
     text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
 
+  # Resolves delegations; that is, methods whose source content come from
+  # another file.
+  #
+  # Conrefs, basically.
+  #
+  #
+  resolveDelegation: (origin, ref, entity) ->
+    
+    # Link to direct class methods
+    if /^\@/.test(ref)
+      methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
+      
+      match = _.find methods, (m) ->
+        return ref.substring(1) == m.getName()
+
+      if match
+        if match.doc.delegation
+          return @resolveDelegation(origin, match.doc.delegation, entity)
+        else
+          return [ _.clone(match.doc), match.parameters ]
+      else
+        console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+        @errors++
+
+    # Link to direct instance methods
+    else if /^\./.test(ref)
+      methods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
+
+      match = _.find methods, (m) ->
+        return ref.substring(1) == m.getName()  
+
+      if match
+        if match.doc.delegation
+          return @resolveDelegation(origin, match.doc.delegation, entity)
+        else
+          return [ _.clone(match.doc), match.parameters ]
+      else
+        console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+        @errors++
+
+     # Link to other objects
+     else
+
+      # Get class and method reference
+      if match = /^(.*?)([.@][$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
+        refClass = match[1]
+        refMethod = match[2]
+        otherEntity   = _.find @classes, (c) -> c.getFullName() is refClass
+        otherEntity ||= _.find @mixins, (c) -> c.getFullName() is refClass
+
+        if otherEntity
+          # Link to another class
+          if _.isUndefined refMethod
+            # if _.include(_.map(@classes, (c) -> c.getFullName()), refClass) || _.include(_.map(@mixins, (c) -> c.getFullName()), refClass)
+            #   see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ refClass.replace(/\./g, '/') }.html"
+            #   see.label = ref unless see.label
+            # else
+            #   console.log "[WARN] Cannot resolve link to entity #{ refClass } in #{ entity.getFullName() }" unless @options.quiet
+            #   @errors++
+
+          # Link to other class' class methods
+          else if /^\@/.test(refMethod)
+            methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
+            
+            match = _.find methods, (m) ->
+              return refMethod.substring(1) == m.getName()
+
+            if match
+              if match.doc.delegation
+                return @resolveDelegation(origin, match.doc.delegation, otherEntity)
+              else
+                return [ _.clone(match.doc), match.parameters ]
+            else
+              console.log "[WARN] Cannot resolve delegation to #{ refMethod } in #{ otherEntity.getFullName() }" unless @options.quiet
+              @errors++
+
+          # Link to other class instance methods
+          else if /^\./.test(refMethod)
+            methods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
+
+            match = _.find methods, (m) ->
+              return refMethod.substring(1) == m.getName()  
+
+            if match
+              if match.doc.delegation
+                return @resolveDelegation(origin, match.doc.delegation, otherEntity)
+              else
+                return [ _.clone(match.doc), match.parameters ]
+            else
+              console.log "[WARN] Cannot resolve delegation to #{ refMethod } in #{ otherEntity.getFullName() }" unless @options.quiet
+              @errors++
+        else
+          console.log "[WARN] Cannot find delegation to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
+          @errors++
+      else
+        console.log "[WARN] Cannot resolve delegation to #{ ref } in class #{ otherEntity.getFullName() }" unless @options.quiet
+        @errors++
+
+    return [ origin.doc, origin.parameters ]
+
   # Resolves curly-bracket reference links.
   #
   # see - the reference object (a [Object])
@@ -355,7 +455,7 @@ module.exports = class Referencer
                 console.log "[WARN] Cannot resolve link to entity #{ refClass } in #{ entity.getFullName() }" unless @options.quiet
                 @errors++
 
-            # Link to other class class methods
+            # Link to other class' class methods
             else if /^\@/.test(refMethod)
               methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
@@ -381,9 +481,10 @@ module.exports = class Referencer
                 console.log "[WARN] Cannot resolve link to #{ refMethod } of class #{ otherEntity.getFullName() } in class #{ entity.getFullName() }" unless @options.quiet
                 @errors++
           else
+            # controls external reference links
             if @verifyExternalObjReference(see.reference)
-              see.label = ref unless see.label
-              see.reference = @standardObjs[see.reference]
+              see.label = see.reference unless see.label
+              see.reference = undefined
             else
               see.label = see.reference
               see.reference = undefined
@@ -401,13 +502,13 @@ module.exports = class Referencer
       return m[1]
     else
       return ""
-      
+
   readStandardJSON: ->
     @standardObjs = JSON.parse(fs.readFileSync(path.join(__dirname, 'standardObjs.json'), 'utf-8'))
 
   verifyExternalObjReference: (name) ->
     @standardObjs[name] != undefined
-            
+
   # Resolve parameter references. This goes through all
   # method parameter and see if a param doc references another
   # method. If so, copy over the doc meta data.

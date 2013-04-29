@@ -47,7 +47,7 @@ When returning from a method, your line should start with the word `Returns`. Wh
 describing the return type, wrap it in the link reference notation (two curly braces,
 like this: `{ }`). This ensures that the generated methods correlates a return type.
 Methods without return types returned `undefined`. You can list more than one `Returns`
-per method by seperating each type on a different line.
+per method by separating each type on a different line.
 
 ### Block Flagging Statuses
 

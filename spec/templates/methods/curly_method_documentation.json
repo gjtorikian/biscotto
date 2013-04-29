@@ -7,8 +7,8 @@
               "status": "Public"
         },
         "class": {
-            "className": "App.TestMethodDocumentation",
-            "name": "TestMethodDocumentation",
+            "className": "App.CurlyMethodDocumentation",
+            "name": "CurlyMethodDocumentation",
             "namespace": "App",
             "parent": "App.Doc"
         },
@@ -33,8 +33,8 @@
             },
             {
                 "doc": {
-                    "comment": "<p>Do it!</p><p>See #undo for more information.</p>",
-                    "summary": "Do it! See #undo for more information.",
+                    "comment": "<p>Do it!</p><p>See {#undo} for more information.</p>",
+                    "summary": "Do it! See {#undo} for more information.",
                     "status": "Private",
                     "params": [
                         {
@@ -129,8 +129,8 @@
             },
             {
                 "doc": {
-                  "comment": "<p>Do it!</p><p>See .do for more information.</p>",
-                  "summary": "Do it! See .do for more information.",
+                  "comment": "<p>Do it!</p><p>See {.do} for more information.</p>",
+                  "summary": "Do it! See {.do} for more information.",
                   "status": "Private"
                 },
                 "type": "class",
