@@ -7,8 +7,8 @@
               "status": "Public"
         },
         "class": {
-          "className": "App.TestMethodDocumentation",
-          "name": "TestMethodDocumentation",
+          "className": "App.ReturnValsDocumentation",
+          "name": "ReturnValsDocumentation",
           "namespace": "App",
           "parent": "App.Doc"
         },

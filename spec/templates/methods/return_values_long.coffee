@@ -2,7 +2,7 @@ class App.ReturnValuesLongDocumentation extends App.Doc
 
   # Public: Compares two `Point`s.
   #
-  # other - The Point to compare against
+  # other - The {Point} to compare against
   #
   # Returns a {Number} matching the following rules:
   # * If the first `row` is greater than `other.row`, returns `1`.

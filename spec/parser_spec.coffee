@@ -5,6 +5,8 @@ diff    = require 'diff'
 _       = require 'underscore'
 _.str   = require 'underscore.string'
 
+Generator = require '../src/generator'
+
 beforeEach ->
   @addMatchers
     toBeCompiledTo: (expected) ->
@@ -36,32 +38,32 @@ for filename in walkdir.sync './spec/templates'
           tokens = parser.parseContent source, filename
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
-          report = "\n-------------------- CoffeeScript ----------------------\n"
-          report += source
-          report += "\n------------- Preprocessed CoffeeScript-----------------\n"
-          report += parser.convertComments(source)
-          report += "\n----------------------- Nodes --------------------------"
-          report += tokens.toString()
-          report += "\n-------------------- Expected JSON ------------------------\n"
-          report += expected
-          report += "\n------------------- Generated JSON ---------------------\n"
-          report += generated
-          report += "\n-------------------------------------------------------\n"
+          if /method_delegation/.test filename
+            generator = new Generator(parser, 
+                                      statsOnly: true
+                                      extras: []
+                                      quiet: true
+                                    )
+            # for clazz in @parser.classes
+            #   methods = clazz.getMethods()
 
-          delta = diff.diffLines expected, generated
-          expect(delta.length).toEqual(1)
-          if (delta.length > 1)
-            console.log "\nFor #{filename}:"
-            for diff in delta
-              if diff.added
-                console.log "Added: \n#{_.str.strip(diff.value)}"
-              if diff.removed
-                console.log "Removed: \n#{_.str.strip(diff.value)}"
+            #   # resolve all delegations in methods
+            #   for method in methods by 1
+            #     delegation = method.doc.delegation
+            #     if delegation
+            #       originalStatus = method.doc.status
+            #       [method.doc, method.parameters] = @referencer.resolveDelegation(method, delegation, clazz)
+            #       method.doc.status = originalStatus
 
+            # generator.generateClasses()
 
-          #console.log expected
-          #console.log generated
-          # expect({
-          #   generated: generated
-          #   report: report.split('\n').join('\n    ')
-          # }).toBeCompiledTo(expected)
+          else
+            delta = diff.diffLines expected, generated
+            expect(delta.length).toEqual(1)
+            if (delta.length > 1)
+              console.log "\nFor #{filename}:"
+              for diff in delta
+                if diff.added
+                  console.log "Added: \n#{_.str.strip(diff.value)}"
+                if diff.removed
+                  console.log "Removed: \n#{_.str.strip(diff.value)}"

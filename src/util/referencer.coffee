@@ -298,7 +298,7 @@ module.exports = class Referencer
   #
   #
   resolveDelegation: (origin, ref, entity) ->
-
+    
     # Link to direct class methods
     if /^\@/.test(ref)
       methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
@@ -388,6 +388,8 @@ module.exports = class Referencer
       else
         console.log "[WARN] Cannot resolve delegation to #{ ref } in class #{ otherEntity.getFullName() }" unless @options.quiet
         @errors++
+
+    return [ origin.doc, origin.parameters ]
 
   # Resolves curly-bracket reference links.
   #

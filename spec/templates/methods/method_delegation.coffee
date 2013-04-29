@@ -1,15 +1,17 @@
 class MethodDelegation
 
+  ### Public ###
+
   # {Delegates to: @delegatedClassRegular}
   delegatedClassname: ->
 
   # Public: I'm being delegated to!
   delegatedRegular: ->
 
-  # {Delegates to: .doubleDelegationTwo}
+  # Public: {Delegates to: .doubleDelegationTwo}
   doubleDelegationOne: ->
 
-  # {Delegates to: @doubleDelegationThree}
+  # Public: {Delegates to: @doubleDelegationThree}
   doubleDelegationTwo: ->
 
   # At last, we have the same content!

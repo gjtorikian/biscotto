@@ -103,7 +103,7 @@ module.exports = class Generator
         delegation = method.doc.delegation
         if delegation
           originalStatus = method.doc.status
-          [method.doc, method.parameters] = @referencer.resolveDelegation(method.name, delegation, clazz)
+          [method.doc, method.parameters] = @referencer.resolveDelegation(method, delegation, clazz)
           method.doc.status = originalStatus
 
 
