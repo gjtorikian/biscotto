@@ -49,7 +49,7 @@ like this: `{ }`). This ensures that the generated methods correlates a return t
 Methods without return types returned `undefined`. You can list more than one `Returns`
 per method by separating each type on a different line.
 
-### Block Flagging Statuses
+### Status Blocks
 
 You can flag methods in a file with the following syntax:
 
@@ -100,6 +100,36 @@ There are several ways of link types supported and all can take an optional labe
 * Direct link to a class method: `{Animal.Lion@constructor}` or `[A new king was born]{Animal.Lion@constructor}`
 
 If you are referring to a method within the same class, you can omit the class name: `{#walk}` or `{.constructor}`.
+
+### Delegation
+
+If you're writing methods that do the exact same thing as another method, you can
+choose to copy over the documentation via _delegation_. For example:
+
+```coffee
+# {Delegates to: .delegatedRegular}
+delegatedMethod: ->
+
+# Public: I'm being delegated to!
+# 
+# a - A {Number}
+# b - A {String}
+#
+# Returns a {Boolean}
+delegatedRegular: (a, b) ->
+```
+
+`delegatedMethod` has the same arguments, return type, and documentation as 
+`delegatedRegular`. You can also choose to delegate to a different class:
+
+```coffee
+# Private: {Delegates to: Another.Class@somewhere}
+delegatedMethod: ->
+```
+
+Classes that are delegated should still set their own statuses. For example, if
+`Another.Class@somewhere` is Public, `delegatedMethod` is still marked as `Private`.
+The same documentation remains.
 
 ### Examples
 
