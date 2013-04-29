@@ -316,15 +316,20 @@ module.exports = class Referencer
         @errors++
 
     # Link to direct instance methods
-    # else if /^\./.test(ref)
-    #   instanceMethods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m.getName())
+    else if /^\./.test(ref)
+      methods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
 
-    #   if _.include instanceMethods, ref.substring(1)
-    #     see.reference = "#{ path }classes/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(1) }-instance"
-    #     see.label = ref unless see.label
-    #   else
-    #     console.log "[WARN] Cannot resolve link to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
-    #     @errors++
+      match = _.find methods, (m) ->
+        return ref.substring(1) == m.getName()  
+
+      if match
+        if match.doc.delegation
+          return resolveDelegation(match.doc.delegation, entity)
+        else
+          return [ match.doc, match.parameters ]
+      else
+        console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+        @errors++
 
     # # Link to other objects
     # else

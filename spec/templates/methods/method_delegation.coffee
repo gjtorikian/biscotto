@@ -3,11 +3,12 @@ class MethodDelegation
   # {Delegates to: @delegatedClassRegular}
   delegatedClassname: ->
 
+  # Public: I'm being delegated to!
+  delegatedRegular: ->
+
   # {Delegates to: App.TestMethodDocumentation@lets_do_it}
   #delegatedInternalRegular: ->
 
-  # Public: {Delegates to: TestInstanceMethods.someMethod}
-  #delegatedRegular: ->
 
   # Oh hello.
   #
@@ -17,7 +18,7 @@ class MethodDelegation
   @delegatedClassRegular: (p) ->
 
   # {Delegates to: .delegatedRegular}
-  #@delegatedIrregular: ->
+  @delegatedIrregular: ->
 
 
   # Blah
