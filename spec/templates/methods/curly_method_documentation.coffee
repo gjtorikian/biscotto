@@ -1,4 +1,4 @@
-class App.TestMethodDocumentation extends App.Doc
+class App.CurlyMethodDocumentation extends App.Doc
 
   # Should be overloaded to change fetch limit.
   #

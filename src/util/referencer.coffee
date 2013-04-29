@@ -353,37 +353,40 @@ module.exports = class Referencer
 
           # Link to other class' class methods
           else if /^\@/.test(refMethod)
-            methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
+            methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
             
             match = _.find methods, (m) ->
-              return ref.substring(1) == m.getName()
+              return refMethod.substring(1) == m.getName()
 
             if match
               if match.doc.delegation
-                return @resolveDelegation(origin, match.doc.delegation, entity)
+                return @resolveDelegation(origin, match.doc.delegation, otherEntity)
               else
                 return [ match.doc, match.parameters ]
             else
-              console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+              console.log "[WARN] Cannot resolve delegation to #{ refMethod } in #{ otherEntity.getFullName() }" unless @options.quiet
               @errors++
 
           # Link to other class instance methods
           else if /^\./.test(refMethod)
-            methods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
+            methods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
 
             match = _.find methods, (m) ->
-              return ref.substring(1) == m.getName()  
+              return refMethod.substring(1) == m.getName()  
 
             if match
               if match.doc.delegation
-                return @resolveDelegation(origin, match.doc.delegation, entity)
+                return @resolveDelegation(origin, match.doc.delegation, otherEntity)
               else
                 return [ match.doc, match.parameters ]
             else
-              console.log "[WARN] Cannot resolve delegation to #{ ref } in #{ entity.getFullName() }" unless @options.quiet
+              console.log "[WARN] Cannot resolve delegation to #{ refMethod } in #{ otherEntity.getFullName() }" unless @options.quiet
               @errors++
+        else
+          console.log "[WARN] Cannot find delegation to #{ refClass } in class #{ otherEntity.getFullName() }" unless @options.quiet
+          @errors++
       else
-        console.log "[WARN] Cannot resolve delegation to #{ ref } in class #{ entity.getFullName() }" unless @options.quiet
+        console.log "[WARN] Cannot resolve delegation to #{ ref } in class #{ otherEntity.getFullName() }" unless @options.quiet
         @errors++
 
   # Resolves curly-bracket reference links.

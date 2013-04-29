@@ -19,8 +19,8 @@ class MethodDelegation
   # Returns a {Number}.
   @doubleDelegationThree: ->
 
-  # {Delegates to: App.TestMethodDocumentation@lets_do_it}
-  #delegatedInternalRegular: ->
+  # {Delegates to: App.CurlyMethodDocumentation@lets_do_it}
+  delegatedInternalRegular: ->
 
 
   # Oh hello.
@@ -30,10 +30,10 @@ class MethodDelegation
   # Returns a {Boolean}.
   @delegatedClassRegular: (p) ->
 
-  # {Delegates to: .delegatedRegular}
+  # {Delegates to: TestExample.run}
   @delegatedIrregular: ->
 
 
   # Blah
-  #@undelegatedRegular: ->
+  @undelegatedRegular: ->
 
