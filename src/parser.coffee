@@ -303,7 +303,7 @@ module.exports = class Parser
        #{generator.referencer.errors} errors
       """
 
-    if @options.listMissing
+    if @options.missing
       noDocClassNames = []
       for noDocClass in noDocClasses
         noDocClassNames.push noDocClass.className

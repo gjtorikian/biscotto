@@ -48,7 +48,7 @@ module.exports = class Generator
     @generateExtraList()
 
     @generateSearchData file
-    @copyAssets() unless file or @options.statsOnly
+    @copyAssets() unless file or @options.noOutput
 
   # Generate the frame source.
   #
@@ -465,7 +465,7 @@ module.exports = class Generator
 
     # Write the content to a file
     else
-      unless @options.statsOnly
+      unless @options.noOutput
         destinationFolder = path.join(@options.output, 'assets')
 
         mkdirp destinationFolder, (err) ->

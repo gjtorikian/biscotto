@@ -138,11 +138,15 @@ module.exports = class Biscotto
             alias     : 'json'
             describe  : 'The location (including filename) of optional JSON output'
           )
-          .options('statsOnly',
+          .options('noOutput',
             boolean   : true
-            describe  : 'Only returns stats; generates no doc output'
+            describe  : 'Generates no documentation output'
           )
-          .options('listMissing',
+          .options('stats',
+            boolean   : true
+            describe  : 'Returns stats on documentation, such as total coverage'
+          )
+          .options('missing',
             boolean   : true
             describe  : 'Lists which elements are missing documentation'
           )
@@ -181,8 +185,8 @@ module.exports = class Biscotto
             quiet: argv.q
             private: argv.private
             internal: argv.internal
-            statsOnly: argv.statsOnly
-            listMissing: argv.listMissing
+            noOutput: argv.noOutput
+            missing: argv.missing
             verbose: argv.v
             debug: argv.d
             cautious: argv.cautious
