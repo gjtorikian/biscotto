@@ -29,7 +29,8 @@
     "async": ">= 0.1.22"
   },
   "devDependencies" : {
-    "jasmine-node" : ">= 1.0.13"
+    "jasmine-node" : ">= 1.0.13",
+    "diff": "1.0.4"
   },
   "homepage" : "https://github.com/gjtorikian/biscotto",
   "repository" : {
