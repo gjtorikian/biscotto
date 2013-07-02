@@ -30,6 +30,15 @@ test = (cb) ->
 
 task 'test', 'Run all tests', -> test onerror
 
+build = (callback) ->
+  fs.mkdir 'js_src', 0o0755
+  log "compiling..."
+  exec 'coffee --compile --output js_src src', (err, stdout, stderr) ->
+    log stdout
+    log stderr
+
+task 'build', 'Build the Javascript output', -> build()
+
 publish = (cb) ->
   npmPublish = (cb) ->
     log 'Publishing to NPM'

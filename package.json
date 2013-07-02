@@ -10,7 +10,7 @@
   ],
   "version" : "0.0.11",
   "engines" : {
-    "node" : ">=0.8.0"
+    "node" : ">=0.10.0"
   },
   "main" : "./src/biscotto",
   "bin" : {
@@ -37,6 +37,6 @@
     "url" : "git://github.com/gjtorikian/biscotto.git"
   },
   "scripts" : {
-    "test" : "jasmine-node --coffee spec"
+    "test" : "./node_modules/.bin/cake test"
   }
 }
