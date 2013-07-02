@@ -39,8 +39,9 @@ for filename in walkdir.sync './spec/templates'
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
           if /method_delegation/.test filename
-            generator = new Generator(parser, 
-                                      statsOnly: true
+            generator = new Generator(parser,
+                                      noOutput: true
+                                      stats: true
                                       extras: []
                                       quiet: true
                                     )
