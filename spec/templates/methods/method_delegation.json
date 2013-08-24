@@ -1,130 +1,179 @@
 [
-    {
-        "file": "spec/templates/methods/method_delegation.coffee",
+  {
+    "file": "spec/templates/methods/method_delegation.coffee",
+    "doc": {
+      "comment": "",
+      "summary": "",
+      "status": "Public"
+    },
+    "class": {
+      "className": "MethodDelegation",
+      "name": "MethodDelegation",
+      "namespace": ""
+    },
+    "methods": [
+      {
         "doc": {
-            "comment": "",
-            "summary": "",
-            "status": "Public"
-        },
-        "class": {
-            "className": "MethodDelegation",
-            "name": "MethodDelegation",
-            "namespace": ""
-        },
-        "methods": [
+          "comment": "<p>Oh hello.</p>",
+          "summary": "Oh hello.",
+          "status": "Public",
+          "params": [
             {
-                "doc": {
-                    "status": "Public",
-                    "delegation": "@delegatedClassRegular"
-                },
-                "type": "instance",
-                "signature": ".<strong>delegatedClassname</strong>()",
-                "name": "delegatedClassname",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "comment": "<p>I&#39;m being delegated to!</p>",
-                    "summary": "I&#39;m being delegated to!",
-                    "status": "Public"
-                },
-                "type": "instance",
-                "signature": ".<strong>delegatedRegular</strong>()",
-                "name": "delegatedRegular",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
-                    "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
-                    "status": "Public",
-                    "returnValue": [
-                        {
-                            "type": "Number",
-                            "desc": "Returns a {Number}."
-                        }
-                    ]
-                },
-                "type": "instance",
-                "signature": "Number .<strong>doubleDelegationOne</strong>()",
-                "name": "doubleDelegationOne",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
-                    "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
-                    "status": "Public",
-                    "returnValue": [
-                        {
-                            "type": "Number",
-                            "desc": "Returns a {Number}."
-                        }
-                    ]
-                },
-                "type": "instance",
-                "signature": "Number .<strong>doubleDelegationTwo</strong>()",
-                "name": "doubleDelegationTwo",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
-                    "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
-                    "status": "Public",
-                    "returnValue": [
-                        {
-                            "type": "Number",
-                            "desc": "Returns a {Number}."
-                        }
-                    ]
-                },
-                "type": "class",
-                "signature": "Number @<strong>doubleDelegationThree</strong>()",
-                "name": "doubleDelegationThree",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "status": "Public",
-                    "delegation": "App.CurlyMethodDocumentation@lets_do_it"
-                },
-                "type": "instance",
-                "signature": ".<strong>delegatedInternalRegular</strong>()",
-                "name": "delegatedInternalRegular",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "status": "Public",
-                    "delegation": "TestExample.run"
-                },
-                "type": "class",
-                "signature": "@<strong>delegatedIrregular</strong>()",
-                "name": "delegatedIrregular",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "comment": "<p>Blah</p>",
-                    "summary": "Blah",
-                    "status": "Public"
-                },
-                "type": "class",
-                "signature": "@<strong>undelegatedRegular</strong>()",
-                "name": "undelegatedRegular",
-                "bound": false,
-                "parameters": []
+              "name": "p",
+              "desc": "A {String}",
+              "type": "String"
             }
-        ],
-        "variables": [],
-        "properties": []
-    }
+          ],
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns a {Boolean}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": ".<strong>delegatedClassname</strong>()",
+        "name": "delegatedClassname",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "p",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>I&#39;m being delegated to!</p>",
+          "summary": "I&#39;m being delegated to!",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": ".<strong>delegatedRegular</strong>()",
+        "name": "delegatedRegular",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
+          "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "Number",
+              "desc": "Returns a {Number}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": ".<strong>doubleDelegationOne</strong>()",
+        "name": "doubleDelegationOne",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
+          "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "Number",
+              "desc": "Returns a {Number}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": ".<strong>doubleDelegationTwo</strong>()",
+        "name": "doubleDelegationTwo",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
+          "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "Number",
+              "desc": "Returns a {Number}."
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "Number @<strong>doubleDelegationThree</strong>()",
+        "name": "doubleDelegationThree",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "status": "Public",
+          "delegation": "App.CurlyMethodDocumentation@lets_do_it"
+        },
+        "type": "instance",
+        "signature": ".<strong>delegatedInternalRegular</strong>()",
+        "name": "delegatedInternalRegular",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "comment": "<p>Oh hello.</p>",
+          "summary": "Oh hello.",
+          "status": "Private",
+          "params": [
+            {
+              "name": "p",
+              "desc": "A {String}",
+              "type": "String"
+            }
+          ],
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns a {Boolean}."
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "Boolean @<strong>delegatedClassRegular</strong>(p)",
+        "name": "delegatedClassRegular",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "p",
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "status": "Public",
+          "delegation": "TestExample.run"
+        },
+        "type": "class",
+        "signature": "@<strong>delegatedIrregular</strong>()",
+        "name": "delegatedIrregular",
+        "bound": false,
+        "parameters": []
+      },
+      {
+        "doc": {
+          "comment": "<p>Blah</p>",
+          "summary": "Blah",
+          "status": "Public"
+        },
+        "type": "class",
+        "signature": "@<strong>undelegatedRegular</strong>()",
+        "name": "undelegatedRegular",
+        "bound": false,
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
 ]
