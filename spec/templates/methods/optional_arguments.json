@@ -1,0 +1,52 @@
+[
+  {
+    "file": "spec/templates/methods/optional_arguments.coffee",
+    "doc": {
+      "comment": "",
+      "summary": "",
+      "status": "Public"
+    },
+    "class": {
+      "className": "OptionalArguments",
+      "name": "OptionalArguments",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": ".<strong>method1</strong>()",
+        "name": "method1",
+        "bound": false,
+        "parameters": [
+          {
+            "splat": false
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": ".<strong>method2</strong>(undefined = {})",
+        "name": "method2",
+        "bound": false,
+        "parameters": [
+          {
+            "default": "{}",
+            "splat": false
+          }
+        ]
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]
