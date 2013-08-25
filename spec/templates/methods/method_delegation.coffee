@@ -34,7 +34,6 @@ class MethodDelegation
   # {Delegates to: TestExample.run}
   @delegatedIrregular: ->
 
-
   # Blah
   @undelegatedRegular: ->
 

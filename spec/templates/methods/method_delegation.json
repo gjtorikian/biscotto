@@ -110,14 +110,24 @@
       },
       {
         "doc": {
-          "status": "Public",
-          "delegation": "App.CurlyMethodDocumentation@lets_do_it"
+          "comment": "<p>Do it!</p><p>See {.do} for more information.</p>",
+          "summary": "Do it! See {.do} for more information.",
+          "status": "Public"
         },
         "type": "instance",
         "signature": ".<strong>delegatedInternalRegular</strong>()",
         "name": "delegatedInternalRegular",
         "bound": false,
-        "parameters": []
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ]
       },
       {
         "doc": {
@@ -151,8 +161,12 @@
       },
       {
         "doc": {
-          "status": "Public",
-          "delegation": "TestExample.run"
+          "examples": [
+            "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done\n"
+          ],
+          "comment": "<p>A method to run.</p>",
+          "summary": "A method to run.",
+          "status": "Public"
         },
         "type": "class",
         "signature": "@<strong>delegatedIrregular</strong>()",
