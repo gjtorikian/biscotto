@@ -1,6 +1,6 @@
 [
   {
-    "file":      "spec/templates/classes/simple_class.coffee",
+    "file": "spec/templates/classes/simple_class.coffee",
     "doc": {
           "comment": "",
           "summary": "",
