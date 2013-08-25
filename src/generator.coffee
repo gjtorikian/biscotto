@@ -72,57 +72,60 @@ module.exports = class Generator
   #
   generateClasses: ->
     for clazz in @parser.classes
-      namespaces = _.compact clazz.getNamespace().split('.')
-      assetPath = '../'
-      assetPath += '../' for namespace in namespaces
+      if (!@options.private && clazz.doc.status == "Private") || (!@options.internal && clazz.doc.status == "Internal")
+        # no op
+      else
+        namespaces = _.compact clazz.getNamespace().split('.')
+        assetPath = '../'
+        assetPath += '../' for namespace in namespaces
 
-      breadcrumbs = [
-        {
-          href: "#{ assetPath }class_index.html"
-          name: 'Index'
-        }
-      ]
+        breadcrumbs = [
+          {
+            href: "#{ assetPath }class_index.html"
+            name: 'Index'
+          }
+        ]
 
-      breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
-      breadcrumbs.unshift(@options.homepage) if @options.homepage
+        breadcrumbs.unshift({ href: "#{ assetPath }#{ @options.readme }.html", name: @options.name }) if @options.readme
+        breadcrumbs.unshift(@options.homepage) if @options.homepage
 
-      combined = []
-      for namespace in namespaces
-        combined.push namespace
+        combined = []
+        for namespace in namespaces
+          combined.push namespace
+          breadcrumbs.push
+            href: @referencer.getLink combined.join('.'), assetPath
+            name: namespace
+
         breadcrumbs.push
-          href: @referencer.getLink combined.join('.'), assetPath
-          name: namespace
+          name: clazz.getName()
 
-      breadcrumbs.push
-        name: clazz.getName()
+        methods = clazz.getMethods()
 
-      methods = clazz.getMethods()
-
-      # resolve all delegations in methods
-      for method in methods by 1
-        delegation = method.doc.delegation
-        if delegation
-          originalStatus = method.doc.status
-          [method.doc, method.parameters] = @referencer.resolveDelegation(method, delegation, clazz)
-          method.doc.status = originalStatus
+        # resolve all delegations in methods
+        for method in methods by 1
+          delegation = method.doc.delegation
+          if delegation
+            originalStatus = method.doc.status
+            [method.doc, method.parameters] = @referencer.resolveDelegation(method, delegation, clazz)
+            method.doc.status = originalStatus
 
 
-      @templater.render 'class', {
-        path: assetPath
-        classData: @referencer.resolveDoc(clazz.toJSON(), clazz, assetPath)
-        classMethods: _.map _.filter(methods, (method) => method.type is 'class'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
-        instanceMethods: _.map _.filter(methods, (method) => method.type is 'instance'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
-        properties: _.map clazz.properties, (p) => @referencer.resolveDoc(p.toJSON(), clazz, assetPath)
-        constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
-        subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
-        inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()
-        includedMethods: @referencer.getIncludedMethods(clazz)
-        extendedMethods: @referencer.getExtendedMethods(clazz)
-        concernMethods: @referencer.getConcernMethods(clazz)
-        inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
-        inheritedProperties: _.groupBy @referencer.getInheritedProperties(clazz), (m) -> m.entity.getClassName()
-        breadcrumbs: breadcrumbs
-      }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
+        @templater.render 'class', {
+          path: assetPath
+          classData: @referencer.resolveDoc(clazz.toJSON(), clazz, assetPath)
+          classMethods: _.map _.filter(methods, (method) => method.type is 'class'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
+          instanceMethods: _.map _.filter(methods, (method) => method.type is 'instance'), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
+          properties: _.map clazz.properties, (p) => @referencer.resolveDoc(p.toJSON(), clazz, assetPath)
+          constants: _.map _.filter(clazz.getVariables(), (variable) => variable.isConstant()), (m) => @referencer.resolveDoc(m.toJSON(), clazz, assetPath)
+          subClasses: _.map @referencer.getDirectSubClasses(clazz), (c) -> c.getClassName()
+          inheritedMethods: _.groupBy @referencer.getInheritedMethods(clazz), (m) -> m.entity.getClassName()
+          includedMethods: @referencer.getIncludedMethods(clazz)
+          extendedMethods: @referencer.getExtendedMethods(clazz)
+          concernMethods: @referencer.getConcernMethods(clazz)
+          inheritedConstants: _.groupBy @referencer.getInheritedConstants(clazz), (m) -> m.entity.getClassName()
+          inheritedProperties: _.groupBy @referencer.getInheritedProperties(clazz), (m) -> m.entity.getClassName()
+          breadcrumbs: breadcrumbs
+        }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
 
   # Generate the pages for all the mixins
   #
