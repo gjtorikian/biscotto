@@ -1,39 +1,39 @@
 [
+  {
+    "file": "spec/templates/classes/inner_class.coffee",
+    "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public"
+    },
+    "class": {
+      "className": "Tower.Model.Relation.HasMany",
+      "name": "HasMany",
+      "namespace": "Tower.Model.Relation",
+      "parent": "Tower.Model.Relation"
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  },
+  {
+    "file": "spec/templates/classes/inner_class.coffee",
+    "class": {
+      "className": "Tower.Model.Relation.HasMany.Scope",
+      "name": "Scope",
+      "namespace": "Tower.Model.Relation.HasMany",
+      "parent": "Tower.Model.Relation.Scope"
+    },
+    "methods": [
       {
-        "file": "spec/templates/classes/inner_class.coffee",
-        "doc": {
-              "comment": "",
-              "summary": "",
-              "status": "Public"
-        },
-        "class": {
-          "className": "Tower.Model.Relation.HasMany",
-          "name": "HasMany",
-          "namespace": "Tower.Model.Relation",
-          "parent": "Tower.Model.Relation"
-        },
-        "methods": [],
-        "variables": [],
-        "properties": []
-      },
-      {
-        "file": "spec/templates/classes/inner_class.coffee",
-        "class": {
-          "className": "Tower.Model.Relation.HasMany.Scope",
-          "name": "Scope",
-          "namespace": "Tower.Model.Relation.HasMany",
-          "parent": "Tower.Model.Relation.Scope"
-        },
-        "methods": [
-          {
-            "type": "instance",
-            "signature": ".<strong>create</strong>()",
-            "name": "create",
-            "bound": false,
-            "parameters": []
-          }
-        ],
-        "variables": [],
-        "properties": []
+        "type": "instance",
+        "signature": ".<strong>create</strong>()",
+        "name": "create",
+        "bound": false,
+        "parameters": []
       }
-    ]
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

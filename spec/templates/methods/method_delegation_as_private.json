@@ -1,0 +1,31 @@
+[
+  {
+    "file": "spec/templates/methods/method_delegation_as_private.coffee",
+    "doc": {
+      "comment": "",
+      "summary": "",
+      "status": "Public"
+    },
+    "class": {
+      "className": "MethodDelegationFromPrivate",
+      "name": "MethodDelegationFromPrivate",
+      "namespace": ""
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Delegated method.</p>",
+          "summary": "Delegated method.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": ".<strong>delegatedFromPrivate</strong>()",
+        "name": "delegatedFromPrivate",
+        "bound": false,
+        "parameters": []
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]
