@@ -18,6 +18,13 @@ module.exports = class Generator
   # options - The options (a [Object])
   #
   constructor: (@parser, @options) ->
+    # @parser.classes = _.filter @parser.classes, (node) ->
+    #   if /ublic/.test node.doc.status 
+    #     return node
+    #   if options.private and /rivate/.test node.doc.status
+    #     return node
+    #   if options.internal and /nternal/.test node.doc.status
+    #     return node
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
     @templater = new Templater(@options, @referencer, @parser)
 
@@ -108,7 +115,6 @@ module.exports = class Generator
             originalStatus = method.doc.status
             [method.doc, method.parameters] = @referencer.resolveDelegation(method, delegation, clazz)
             method.doc.status = originalStatus
-
 
         @templater.render 'class', {
           path: assetPath
@@ -286,7 +292,7 @@ module.exports = class Generator
     classes = []
     mixins = []
 
-    traverse = (entity, children, section) ->
+    traverse = (entity, children, section) =>
       if entity.getNamespace()
         namespaces = entity.getNamespace().split('.')
 
@@ -308,6 +314,15 @@ module.exports = class Generator
         href: "#{section}/#{ entity.getFullName().replace(/\./g, '/') }.html"
         parent: entity.getParentClassName?()
         namespace: entity.getNamespace()
+
+    # we need this here, due to delegations from private classes
+    @parser.classes = _.filter @parser.classes, (node) =>
+      if /ublic/.test node.doc.status 
+        return node
+      if @options.private and /rivate/.test node.doc.status
+        return node
+      if @options.internal and /nternal/.test node.doc.status
+        return node
 
     # Create tree structure
     for clazz in @parser.classes
