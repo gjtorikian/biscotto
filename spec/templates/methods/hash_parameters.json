@@ -14,18 +14,6 @@
         "methods": [
             {
                 "doc": {
-                    "comment": "",
-                    "summary": "",
-                    "status": "Public"
-                },
-                "type": "instance",
-                "signature": ".<strong>helper</strong>()",
-                "name": "helper",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
                     "comment": "<p>Does something.</p>",
                     "summary": "Does something.",
                     "status": "Public",
