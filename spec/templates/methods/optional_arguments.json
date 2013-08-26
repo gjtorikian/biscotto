@@ -38,7 +38,6 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method1</strong>({option1, option2})",
         "name": "method1",
         "bound": false,
         "parameters": [
@@ -80,19 +79,61 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method2</strong>({option1, option2})",
+        "signature": ".<strong>method2</strong>({option1, option2}={})",
         "name": "method2",
         "bound": false,
         "parameters": [
           {
             "name": "option1",
-            "default": "{}",
             "splat": false,
             "optionized": true
           },
           {
             "name": "option2",
-            "default": "{}",
+            "splat": false,
+            "optionized": true
+          }
+        ]
+      },
+      {
+        "doc": {
+          "comment": "<p>Does something else.</p>",
+          "summary": "Does something else.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "obj",
+              "desc": "An object with the following defaults:",
+              "type": "",
+              "options": [
+                {
+                  "name": "option1",
+                  "desc": "Does some stuff",
+                  "type": ""
+                },
+                {
+                  "name": "option2",
+                  "desc": "Does some {Integer} stuff",
+                  "type": "Integer"
+                }
+              ]
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": ".<strong>method3</strong>({option1, option2}={3,4})",
+        "name": "method3",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "option1",
+            "default": "3",
+            "splat": false,
+            "optionized": true
+          },
+          {
+            "name": "option2",
+            "default": "4",
             "splat": false,
             "optionized": true
           }

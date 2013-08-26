@@ -88,19 +88,19 @@ module.exports = class Method extends Node
         for param, i in @getParameters()
           if param.optionized
             @inParamOption = true
+            optionizedDefaults = param.getOptionizedDefaults()
             paramOptionized.push param.getName(i)
           else
             if @inParamOption
               @inParamOption = false
-              console.log paramOptionized
-              params.push "{", paramOptionized.join(', '), "}"
+              params.push( "{" + paramOptionized.join(', ') + "}=" + optionizedDefaults )
               paramOptionized = []
             else
               params.push param.getSignature()
 
         # that means there was only one argument, a param'ed one
         if paramOptionized.length > 0
-          params.push( "{" + paramOptionized.join(', ') + "}")
+          params.push( "{" + paramOptionized.join(', ') + "}=" + optionizedDefaults )
 
         @signature += params.join(', ')
         @signature += ')'

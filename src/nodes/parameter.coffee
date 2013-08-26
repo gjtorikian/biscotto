@@ -1,5 +1,8 @@
 Node      = require './node'
 
+_         = require 'underscore'
+_.str     = require 'underscore.string'
+
 # A CoffeeScript method parameter
 #
 module.exports = class Parameter extends Node
@@ -60,15 +63,26 @@ module.exports = class Parameter extends Node
   #
   # Returns the default (a [String])
   #
-  getDefault: ->
+  getDefault: (i = -1) ->
     try
-      @node.value?.compile({ indent: '' })
+      # for optionized arguments
+      if @optionized && i >= 0
+        _.str.strip(@node.value?.compile({ indent: '' })[1..-2].split(",")[i]).split(": ")[1]
+      else
+        @node.value?.compile({ indent: '' })
 
     catch error
       if @node?.value?.base?.value is 'this'
         "@#{ @node.value.properties[0]?.name.compile({ indent: '' }) }"
       else
         console.warn('Get parameter default error:', @node, error) if @options.verbose
+
+  getOptionizedDefaults: ->
+    defaults = []
+    for k in @node.value?.compile({ indent: '' }).split("\n")[1..-2]
+      defaults.push _.str.strip(k.split(":")[0])
+
+    return "{" + defaults.join(",") + "}"
 
   # Tests if the parameters is a splat
   #
@@ -88,7 +102,7 @@ module.exports = class Parameter extends Node
   toJSON: (i = -1) ->
     json =
       name: @getName(i)
-      default: @getDefault()
+      default: @getDefault(i)
       splat: @isSplat()
       optionized: @optionized
 
