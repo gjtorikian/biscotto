@@ -14,9 +14,28 @@
     "methods": [
       {
         "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Public"
+          "comment": "<p>Does something.</p>",
+          "summary": "Does something.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "obj",
+              "desc": "An object with the following defaults:",
+              "type": "",
+              "options": [
+                {
+                  "name": "option1",
+                  "desc": "Does some stuff",
+                  "type": ""
+                },
+                {
+                  "name": "option2",
+                  "desc": "Does some {Integer} stuff",
+                  "type": "Integer"
+                }
+              ]
+            }
+          ]
         },
         "type": "instance",
         "signature": ".<strong>method1</strong>()",
@@ -30,9 +49,28 @@
       },
       {
         "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Public"
+          "comment": "<p>Does something else.</p>",
+          "summary": "Does something else.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "obj",
+              "desc": "An object with the following defaults:",
+              "type": "",
+              "options": [
+                {
+                  "name": "option1",
+                  "desc": "Does some stuff",
+                  "type": ""
+                },
+                {
+                  "name": "option2",
+                  "desc": "Does some {Integer} stuff",
+                  "type": "Integer"
+                }
+              ]
+            }
+          ]
         },
         "type": "instance",
         "signature": ".<strong>method2</strong>(undefined = {})",

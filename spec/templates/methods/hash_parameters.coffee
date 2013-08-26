@@ -1,7 +1,5 @@
 class TestInstanceMethods
 
-  helper: ->
-
   # Public: Does something.
   #
   # obj - An object with the following defaults:

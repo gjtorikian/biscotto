@@ -9,7 +9,7 @@ module.exports = class Parameter extends Node
   # node - the node (a [Object])
   # options - the parser options (a [Object])
   #
-  constructor: (@node, @options) ->
+  constructor: (@node, @options, @optionized) ->
 
   # Get the full parameter signature.
   #
@@ -26,7 +26,7 @@ module.exports = class Parameter extends Node
         value = @getDefault()
         @signature += " = #{ value.replace(/\n\s*/g, ' ') }" if value
 
-      @signature
+      " {" + @signature
 
     catch error
       console.warn('Get parameter signature error:', @node, error) if @options.verbose
@@ -35,8 +35,12 @@ module.exports = class Parameter extends Node
   #
   # Returns the name (a [String])
   #
-  getName: ->
+  getName: (i = -1) ->
     try
+      # params like `method: ({option1, option2}) ->`
+      if i >= 0
+        @name = @node.name.properties[i].base.value
+
       unless @name
 
         # Normal attribute `do: (it) ->`
@@ -45,7 +49,7 @@ module.exports = class Parameter extends Node
         unless @name
           if @node.name.properties
             # Assigned attributes `do: (@it) ->`
-            @name = @node.name.properties[0]?.name.value
+            @name = @node.name.properties[0]?.name?.value
 
       @name
 
@@ -81,10 +85,11 @@ module.exports = class Parameter extends Node
   #
   # Returns the JSON object (a [Object])
   #
-  toJSON: ->
+  toJSON: (i = -1) ->
     json =
-      name: @getName()
+      name: @getName(i)
       default: @getDefault()
       splat: @isSplat()
+      optionized: @optionized
 
     json

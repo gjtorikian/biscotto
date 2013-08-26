@@ -23,7 +23,11 @@ module.exports = class Method extends Node
       @doc = new Doc(comment, @options)
 
       for param in @node.value.params
-        @parameters.push new Parameter(param, @options)
+        if param.name.properties
+          for property in param.name.properties
+            @parameters.push new Parameter(param, @options, true)
+        else 
+          @parameters.push new Parameter(param, @options)
 
       @getName()
 
@@ -79,9 +83,24 @@ module.exports = class Method extends Node
         @signature += '('
 
         params = []
+        paramOptionized = []
 
-        for param in @getParameters()
-          params.push param.getSignature()
+        for param, i in @getParameters()
+          if param.optionized
+            @inParamOption = true
+            paramOptionized.push param.getName(i)
+          else
+            if @inParamOption
+              @inParamOption = false
+              console.log paramOptionized
+              params.push "{", paramOptionized.join(', '), "}"
+              paramOptionized = []
+            else
+              params.push param.getSignature()
+
+        # that means there was only one argument, a param'ed one
+        if paramOptionized.length > 0
+          params.push( "{" + paramOptionized.join(', ') + "}")
 
         @signature += params.join(', ')
         @signature += ')'
@@ -179,7 +198,7 @@ module.exports = class Method extends Node
       bound: @node.value.bound
       parameters: []
 
-    for parameter in @getParameters()
-      json.parameters.push parameter.toJSON()
+    for parameter, i in @getParameters()
+      json.parameters.push(parameter.toJSON(i))
 
     json
