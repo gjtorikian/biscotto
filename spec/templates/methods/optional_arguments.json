@@ -38,12 +38,19 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method1</strong>()",
+        "signature": ".<strong>method1</strong>({option1, option2})",
         "name": "method1",
         "bound": false,
         "parameters": [
           {
-            "splat": false
+            "name": "option1",
+            "splat": false,
+            "optionized": true
+          },
+          {
+            "name": "option2",
+            "splat": false,
+            "optionized": true
           }
         ]
       },
@@ -73,13 +80,21 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method2</strong>(undefined = {})",
+        "signature": ".<strong>method2</strong>({option1, option2})",
         "name": "method2",
         "bound": false,
         "parameters": [
           {
+            "name": "option1",
             "default": "{}",
-            "splat": false
+            "splat": false,
+            "optionized": true
+          },
+          {
+            "name": "option2",
+            "default": "{}",
+            "splat": false,
+            "optionized": true
           }
         ]
       }

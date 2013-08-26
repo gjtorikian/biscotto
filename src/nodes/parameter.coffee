@@ -26,7 +26,7 @@ module.exports = class Parameter extends Node
         value = @getDefault()
         @signature += " = #{ value.replace(/\n\s*/g, ' ') }" if value
 
-      " {" + @signature
+      @signature
 
     catch error
       console.warn('Get parameter signature error:', @node, error) if @options.verbose
@@ -38,7 +38,7 @@ module.exports = class Parameter extends Node
   getName: (i = -1) ->
     try
       # params like `method: ({option1, option2}) ->`
-      if i >= 0
+      if @optionized && i >= 0
         @name = @node.name.properties[i].base.value
 
       unless @name

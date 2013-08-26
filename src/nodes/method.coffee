@@ -23,10 +23,10 @@ module.exports = class Method extends Node
       @doc = new Doc(comment, @options)
 
       for param in @node.value.params
-        if param.name.properties
+        if param.name.properties? and param.name.properties[0].base?
           for property in param.name.properties
             @parameters.push new Parameter(param, @options, true)
-        else 
+        else
           @parameters.push new Parameter(param, @options)
 
       @getName()
