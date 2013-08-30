@@ -1,5 +1,6 @@
 Node      = require './node'
 Doc      = require './doc'
+{SourceMapConsumer} = require 'source-map'
 
 # A CoffeeScript variable
 #
@@ -13,7 +14,7 @@ module.exports = class Variable extends Node
   # classType - whether its a class variable or not (a [Boolean])
   # comment - the comment node (a [Object])
   #
-  constructor: (@entity, @node, @options, @classType = false, comment = null) ->
+  constructor: (@entity, @node, @sourceMap, @options, @classType = false, comment = null) ->
     try
       @doc = new Doc(comment, @options)
       @getName()
@@ -68,6 +69,24 @@ module.exports = class Variable extends Node
     catch error
       console.warn('Get method name error:', @node, error) if @options.verbose
 
+
+  # Public: Get the source line number
+  #
+  # Returns a {Number}
+  #
+  getLocation: ->
+    try
+      unless @location
+        smc = new SourceMapConsumer(@sourceMap)
+        {locationData} = @node.variable
+        originalPosition = smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
+        @location = { line: originalPosition.line, column: originalPosition.column }
+
+      @location
+
+    catch error
+      console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
+      
   # Get the variable value.
   #
   # Returns the value (a [String])
@@ -93,5 +112,6 @@ module.exports = class Variable extends Node
       constant: @isConstant()
       name: @getName()
       value: @getValue()
+      location: @getLocation()
 
     json

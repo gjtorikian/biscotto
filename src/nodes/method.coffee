@@ -4,6 +4,7 @@ Doc       = require './doc'
 
 _         = require 'underscore'
 _.str     = require 'underscore.string'
+{SourceMapConsumer} = require 'source-map'
 
 # A CoffeeScript method
 #
@@ -16,7 +17,7 @@ module.exports = class Method extends Node
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@entity, @node, @options, comment) ->
+  constructor: (@entity, @node, @sourceMap, @options, comment) ->
     try
       @parameters = []
 
@@ -167,6 +168,25 @@ module.exports = class Method extends Node
     catch error
       console.warn('Get method name error:', @node, error) if @options.verbose
 
+  # Public: Get the source line number
+  #
+  # Returns a {Number}
+  #
+  getLocation: ->
+    try
+      unless @location
+        smc = new SourceMapConsumer(@sourceMap)
+        {locationData} = @node.variable
+        console.log locationData
+        originalPosition = smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
+        console.log originalPosition
+        @location = { line: originalPosition.line, column: originalPosition.column }
+
+      @location
+
+    catch error
+      console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
+
   # Get the method parameters
   #
   # @param [Array<Parameter>] the method parameters
@@ -197,6 +217,7 @@ module.exports = class Method extends Node
       name: @getName()
       bound: @node.value.bound
       parameters: []
+      location: @getLocation()
 
     for parameter, i in @getParameters()
       json.parameters.push(parameter.toJSON(i))

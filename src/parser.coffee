@@ -58,6 +58,7 @@ module.exports = class Parser
       content = @convertComments(content)
 
     try
+      @sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
       root = CoffeeScript.nodes(content)
     catch error
       console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
@@ -104,7 +105,7 @@ module.exports = class Parser
               @mixins.push mixin
 
         if entity == 'clazz'
-          clazz = new Class(child, file, @options, doc)
+          clazz = new Class(child, file, @sourceMap, @options, doc)
           @classes.push clazz
 
       @previousNodes.push child

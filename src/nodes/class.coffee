@@ -5,6 +5,7 @@ Variable      = require './variable'
 Property      = require './property'
 Doc           = require './doc'
 _             = require 'underscore'
+{SourceMapConsumer} = require 'source-map'
 
 # A CoffeeScript class
 #
@@ -17,7 +18,7 @@ module.exports = class Class extends Node
   # options - the parser options (a [Object])
   # comment - the comment node (a [Object])
   #
-  constructor: (@node, @fileName, @options, comment) ->
+  constructor: (@node, @fileName, @sourceMap, @options, comment) ->
     try
       @methods = []
       @variables = []
@@ -39,9 +40,9 @@ module.exports = class Class extends Node
 
             switch exp.value?.constructor.name
               when 'Code'
-                @methods.push(new Method(@, exp, @options, doc)) if exp.variable.base.value is 'this'
+                @methods.push(new Method(@, exp, @sourceMap, @options, doc)) if exp.variable.base.value is 'this'
               when 'Value'
-                @variables.push new Variable(@, exp, @options, true, doc)
+                @variables.push new Variable(@, exp, @sourceMap, @options, true, doc)
 
             doc = null
 
@@ -54,9 +55,9 @@ module.exports = class Class extends Node
 
               switch prop.value?.constructor.name
                 when 'Code'
-                  @methods.push new Method(@, prop, @options, doc)
+                  @methods.push new Method(@, prop, @sourceMap, @options, doc)
                 when 'Value'
-                  variable =  new Variable(@, prop, @options, false, doc)
+                  variable =  new Variable(@, prop, @sourceMap, @options, false, doc)
 
                   if variable.doc?.property
                     property = new Property(@, prop, @options, variable.getName(), doc)
@@ -183,6 +184,23 @@ module.exports = class Class extends Node
     catch error
       console.warn("Get class name error at #{@fileName}:", @node, error) if @options.verbose
 
+  # Public: Get the source line number
+  #
+  # Returns a {Number}
+  #
+  getLocation: ->
+    try
+      unless @location
+        smc = new SourceMapConsumer(@sourceMap)
+        {locationData} = @node.ancestor
+        originalPosition = smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
+        @location = { line: originalPosition.line, column: originalPosition.column }
+
+      @location
+
+    catch error
+      console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
+
   # Get the class namespace
   #
   # Returns the namespace (a [String])
@@ -264,6 +282,7 @@ module.exports = class Class extends Node
         name: @getName()
         namespace: @getNamespace()
         parent: @getParentClassName()
+      location: @getLocation()
       methods: []
       variables: []
       properties: []
