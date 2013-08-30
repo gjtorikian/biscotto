@@ -9,6 +9,7 @@ Mixin         = require './nodes/mixin'
 VirtualMethod = require './nodes/virtual_method'
 
 {whitespace} = require('./util/text')
+{SourceMapConsumer} = require 'source-map'
 
 # CoffeeScript parser to convert the files into a
 # documentation domain nodes.
@@ -53,12 +54,15 @@ module.exports = class Parser
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
+
+    sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
+    @smc = new SourceMapConsumer(sourceMap)
+
     # skip the comment conversion if we are in cautious mode
     if not @options.cautious
       content = @convertComments(content)
 
     try
-      @sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
       root = CoffeeScript.nodes(content)
     catch error
       console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
@@ -105,7 +109,7 @@ module.exports = class Parser
               @mixins.push mixin
 
         if entity == 'clazz'
-          clazz = new Class(child, file, @sourceMap, @options, doc)
+          clazz = new Class(child, file, @smc, @options, doc)
           @classes.push clazz
 
       @previousNodes.push child

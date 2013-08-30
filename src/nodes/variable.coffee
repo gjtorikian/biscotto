@@ -1,6 +1,5 @@
 Node      = require './node'
 Doc      = require './doc'
-{SourceMapConsumer} = require 'source-map'
 
 # A CoffeeScript variable
 #
@@ -14,7 +13,7 @@ module.exports = class Variable extends Node
   # classType - whether its a class variable or not (a [Boolean])
   # comment - the comment node (a [Object])
   #
-  constructor: (@entity, @node, @sourceMap, @options, @classType = false, comment = null) ->
+  constructor: (@entity, @node, @smc, @options, @classType = false, comment = null) ->
     try
       @doc = new Doc(comment, @options)
       @getName()
@@ -77,9 +76,8 @@ module.exports = class Variable extends Node
   getLocation: ->
     try
       unless @location
-        smc = new SourceMapConsumer(@sourceMap)
         {locationData} = @node.variable
-        originalPosition = smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
+        originalPosition = @smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
         @location = { line: originalPosition.line, column: originalPosition.column }
 
       @location

@@ -4,7 +4,6 @@ Doc       = require './doc'
 
 _         = require 'underscore'
 _.str     = require 'underscore.string'
-{SourceMapConsumer} = require 'source-map'
 
 # A CoffeeScript method
 #
@@ -17,7 +16,7 @@ module.exports = class Method extends Node
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@entity, @node, @sourceMap, @options, comment) ->
+  constructor: (@entity, @node, @smc, @options, comment) ->
     try
       @parameters = []
 
@@ -175,11 +174,8 @@ module.exports = class Method extends Node
   getLocation: ->
     try
       unless @location
-        smc = new SourceMapConsumer(@sourceMap)
         {locationData} = @node.variable
-        console.log locationData
-        originalPosition = smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
-        console.log originalPosition
+        originalPosition = @smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
         @location = { line: originalPosition.line, column: originalPosition.column }
 
       @location
