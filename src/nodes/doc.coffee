@@ -67,7 +67,6 @@ module.exports = class Doc extends Node
 
   # Parse the given lines as TomDoc and adds the result
   # to the result object.
-  #
   parseBlock: (lines) ->
     comment = []
 
@@ -79,6 +78,7 @@ module.exports = class Doc extends Node
 
     text     = info_block.description
     @status   = info_block.status
+    @generated = info_block.generated
 
     delegationMatch =  text.match(/\{Delegates to: (.+?)\}/)
     if delegationMatch && @delegation = delegationMatch[1]
@@ -119,6 +119,12 @@ module.exports = class Doc extends Node
       return {
         status:      md[1]
         description: _.str.strip(md[2])
+      }
+    else if md = /~([A-Z]\w+)\~(.*)/.exec(section)
+      return {
+        status:      md[1]
+        description: _.str.strip(md[2])
+        generated: true
       }
     else
       return { description: _.str.strip(section) }
@@ -242,6 +248,7 @@ module.exports = class Doc extends Node
         comment: @comment
         summary: @summary
         status: @status
+        generated: @generated
         params: @params
         options: @paramsOptions
         delegation: @delegation

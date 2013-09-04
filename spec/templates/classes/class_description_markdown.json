@@ -11,6 +11,9 @@
       "name": "TestMarkdownDocumentation",
       "namespace": ""
     },
+    "location": {
+      "line": 27
+    },
     "methods": [],
     "variables": [],
     "properties": []

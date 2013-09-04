@@ -125,11 +125,6 @@ module.exports = class Biscotto
             alias     : 'help'
             describe  : 'Show the help'
           )
-          .options('cautious',
-            describe  : 'Don\'t attempt to parse singleline comments'
-            boolean   : true
-            default   : biscottoopts.cautious || false
-          )
           .options('s',
             alias     : 'server'
             describe  : 'Start a documentation server'

@@ -16,7 +16,7 @@ module.exports = class Method extends Node
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@entity, @node, @smc, @options, comment) ->
+  constructor: (@entity, @node, @lineMapping, @options, comment) ->
     try
       @parameters = []
 
@@ -175,8 +175,11 @@ module.exports = class Method extends Node
     try
       unless @location
         {locationData} = @node.variable
-        originalPosition = @smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
-        @location = { line: originalPosition.line, column: originalPosition.column }
+        firstLine = locationData.first_line + 1
+        if !@lineMapping[firstLine]?
+          @lineMapping[firstLine] = @lineMapping[firstLine - 1]
+
+        @location = { line: @lineMapping[firstLine] }
 
       @location
 
@@ -188,18 +191,6 @@ module.exports = class Method extends Node
   # @param [Array<Parameter>] the method parameters
   #
   getParameters: -> @parameters
-
-  # Get the method source in CoffeeScript
-  #
-  # @return [String] the CoffeeScript source
-  #
-  getCoffeeScriptSource: ->
-
-  # Get the method source in JavaScript
-  #
-  # @return [String] the JavaScript source
-  #
-  getJavaScriptSource: ->
 
   # Get a JSON representation of the object
   #

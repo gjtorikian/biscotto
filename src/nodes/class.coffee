@@ -13,11 +13,11 @@ module.exports = class Class extends Node
   # Construct a class
   #
   # node - the class node (a [Object])
-  # the - filename (a [String])
+  # fileName - the filename (a [String])
   # options - the parser options (a [Object])
   # comment - the comment node (a [Object])
   #
-  constructor: (@node, @fileName, @smc, @options, comment) ->
+  constructor: (@node, @fileName, @lineMapping, @options, comment) ->
     try
       @methods = []
       @variables = []
@@ -26,7 +26,7 @@ module.exports = class Class extends Node
       @doc = new Doc(comment, @options)
 
       if @doc.methods
-        @methods.push new VirtualMethod(@, method, @options) for method in @doc?.methods
+        @methods.push new VirtualMethod(@, method, @lineMapping, @options) for method in @doc?.methods
 
       previousExp = null
 
@@ -39,9 +39,9 @@ module.exports = class Class extends Node
 
             switch exp.value?.constructor.name
               when 'Code'
-                @methods.push(new Method(@, exp, @smc, @options, doc)) if exp.variable.base.value is 'this'
+                @methods.push(new Method(@, exp, @lineMapping, @options, doc)) if exp.variable.base.value is 'this'
               when 'Value'
-                @variables.push new Variable(@, exp, @smc, @options, true, doc)
+                @variables.push new Variable(@, exp, @lineMapping, @options, true, doc)
 
             doc = null
 
@@ -54,12 +54,12 @@ module.exports = class Class extends Node
 
               switch prop.value?.constructor.name
                 when 'Code'
-                  @methods.push new Method(@, prop, @smc, @options, doc)
+                  @methods.push new Method(@, prop, @lineMapping, @options, doc)
                 when 'Value'
-                  variable =  new Variable(@, prop, @smc, @options, false, doc)
+                  variable =  new Variable(@, prop, @lineMapping, @options, false, doc)
 
                   if variable.doc?.property
-                    property = new Property(@, prop, @options, variable.getName(), doc)
+                    property = new Property(@, prop, @lineMapping, @options, variable.getName(), doc)
                     property.setter = true
                     property.getter = true
                     @properties.push property
@@ -107,7 +107,7 @@ module.exports = class Class extends Node
               property = _.find(@properties, (p) -> p.name is name)
 
               unless property
-                property = new Property(@, exp, @options, name, doc)
+                property = new Property(@, exp, @smc, @options, name, doc)
                 @properties.push property
 
               property.setter = true if type is 'set'
@@ -191,9 +191,11 @@ module.exports = class Class extends Node
     try
       unless @location
         {locationData} = @node.variable
-        originalPosition = @smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
-        @location = { line: originalPosition.line, column: originalPosition.column }
+        firstLine = locationData.first_line + 1
+        if !@lineMapping[firstLine]?
+          @lineMapping[firstLine] = @lineMapping[firstLine - 1]
 
+        @location = { line: @lineMapping[firstLine] }
       @location
 
     catch error

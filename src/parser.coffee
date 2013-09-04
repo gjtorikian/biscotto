@@ -53,14 +53,11 @@ module.exports = class Parser
     entities =
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
-
+ 
+    [content, lineMapping] = @convertComments(content)
 
     sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
     @smc = new SourceMapConsumer(sourceMap)
-
-    # skip the comment conversion if we are in cautious mode
-    if not @options.cautious
-      content = @convertComments(content)
 
     try
       root = CoffeeScript.nodes(content)
@@ -69,7 +66,7 @@ module.exports = class Parser
       throw error
 
     # Find top-level methods and constants that aren't within a class
-    fileClass = new File(root, file, @options)
+    fileClass = new File(root, file, lineMapping, @options)
     @files.push(fileClass) unless fileClass.isEmpty()
 
     @linkAncestors root
@@ -109,7 +106,7 @@ module.exports = class Parser
               @mixins.push mixin
 
         if entity == 'clazz'
-          clazz = new Class(child, file, @smc, @options, doc)
+          clazz = new Class(child, file, lineMapping, @options, doc)
           @classes.push clazz
 
       @previousNodes.push child
@@ -117,8 +114,7 @@ module.exports = class Parser
 
     root
 
-  # Convert the comments to block comments,
-  # so they appear in the nodes.
+  # Convert the comments to block comments, so they appear in the nodes.
   #
   # content - the CoffeeScript file content (a [String])
   #
@@ -128,9 +124,13 @@ module.exports = class Parser
     inComment      = false
     inBlockComment = false
     indentComment  = 0
+    globalCount = 0
+    lineMapping = {}
 
-    for line in content.split('\n')
+    for line, l in content.split('\n')
       globalStatusBlock = false
+      # key: the translated line number; value: the original number
+      lineMapping[(l + 1) + globalCount] = l + 1
 
       if globalStatusBlock = /^\s*#{3} (\w+).+?#{3}/.exec(line)
         @globalStatus = globalStatusBlock[1]
@@ -152,12 +152,13 @@ module.exports = class Parser
             inComment = true
             indentComment =  commentLine[1].length - 1
 
-            comment.push whitespace(indentComment) + '###'
-            comment.push commentLine[2]?.replace /#/g, "\u0091#"
+            comment.push whitespace(indentComment) + '### ' + commentLine[2]?.replace /#/g, "\u0091#"
         else
           if inComment
             inComment = false
-            comment.push whitespace(indentComment) + '###'
+            if (_.str.isBlank(_.last(comment)))
+              globalCount++
+            comment[comment.length - 1] = _.last(comment) + ' ###'
 
             # Push here comments only before certain lines
             if ///
@@ -178,9 +179,8 @@ module.exports = class Parser
                ///.exec line
 
               result.push c for c in comment
-
             comment = []
-          # A method with no preceding description; apply the global status
+          # A member with no preceding description; apply the global status
           member = ///
                  ( # Class
                    class\s*[$A-Za-z_\x7f-\uffff][$\w\x7f-\uffff]*
@@ -205,12 +205,13 @@ module.exports = class Parser
             else
               indentComment = ""
 
-            result.push("#{indentComment}###")
-            result.push("#{@globalStatus}:")
-            result.push("#{indentComment}###")
+            globalCount++
+            # we place these here to indicate that the method had a global status applied
+            result.push("#{indentComment}###~#{@globalStatus}~###")
+
           result.push line
 
-    result.join('\n')
+    [result.join('\n'), lineMapping]
 
   # Attach each parent to its children, so we are able
   # to traverse the ancestor parse tree. Since the

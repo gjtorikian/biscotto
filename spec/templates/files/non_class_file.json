@@ -1,93 +1,102 @@
 [
-    {
-        "file": "non_class_file.coffee",
-        "path": "spec/templates/files",
-        "methods": [
+  {
+    "file": "non_class_file.coffee",
+    "path": "spec/templates/files",
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Says hello to a person</p>",
+          "summary": "Says hello to a person",
+          "status": "Public",
+          "params": [
             {
-                "doc": {
-                    "comment": "<p>Says hello to a person</p>",
-                    "summary": "Says hello to a person",
-                    "status": "Public",
-                    "params": [
-                        {
-                            "name": "name",
-                            "desc": "The name of the person",
-                            "type": ""
-                        }
-                    ]
-                },
-                "type": "file",
-                "signature": "? <strong>hello</strong>(name)",
-                "name": "hello",
-                "bound": false,
-                "parameters": [
-                    {
-                        "name": "name",
-                        "splat": false
-                    }
-                ]
-            },
-            {
-                "doc": {
-                    "comment": "<p>Says bye to a person</p>",
-                    "summary": "Says bye to a person",
-                    "status": "Public",
-                    "params": [
-                        {
-                            "name": "name",
-                            "desc": "The name of the person",
-                            "type": ""
-                        }
-                    ]
-                },
-                "type": "file",
-                "signature": "? <strong>bye</strong>(name)",
-                "name": "bye",
-                "bound": false,
-                "parameters": [
-                    {
-                        "name": "name",
-                        "splat": false
-                    }
-                ]
-            },
-            {
-                "doc": {
-                    "comment": "<p>Say hi to a person</p>",
-                    "summary": "Say hi to a person",
-                    "status": "Public",
-                    "params": [
-                        {
-                            "name": "name",
-                            "desc": "The name of the person",
-                            "type": ""
-                        }
-                    ]
-                },
-                "type": "class",
-                "signature": "@<strong>sayHi</strong>(hi)",
-                "name": "sayHi",
-                "bound": false,
-                "parameters": [
-                    {
-                        "name": "hi",
-                        "splat": false
-                    }
-                ]
+              "name": "name",
+              "desc": "The name of the person ",
+              "type": ""
             }
+          ]
+        },
+        "type": "file",
+        "signature": "? <strong>hello</strong>(name)",
+        "name": "hello",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "name",
+            "splat": false
+          }
         ],
-        "variables": [
+        "location": {
+          "line": 8
+        }
+      },
+      {
+        "doc": {
+          "comment": "<p>Says bye to a person</p>",
+          "summary": "Says bye to a person",
+          "status": "Public",
+          "params": [
             {
-                "doc": {
-                    "comment": "<p>The greeting</p>",
-                    "summary": "The greeting",
-                    "status": "Public"
-                },
-                "type": "class",
-                "constant": true,
-                "name": "GREETING",
-                "value": "'Hay'"
+              "name": "name",
+              "desc": "The name of the person ",
+              "type": ""
             }
-        ]
-    }
+          ]
+        },
+        "type": "file",
+        "signature": "? <strong>bye</strong>(name)",
+        "name": "bye",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "name",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 14
+        }
+      },
+      {
+        "doc": {
+          "comment": "<p>Say hi to a person</p>",
+          "summary": "Say hi to a person",
+          "status": "Public",
+          "params": [
+            {
+              "name": "name",
+              "desc": "The name of the person ",
+              "type": ""
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "@<strong>sayHi</strong>(hi)",
+        "name": "sayHi",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "hi",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 20
+        }
+      }
+    ],
+    "variables": [
+      {
+        "doc": {
+          "comment": "<p>The greeting</p>",
+          "summary": "The greeting",
+          "status": "Public"
+        },
+        "type": "class",
+        "constant": true,
+        "name": "GREETING",
+        "value": "'Hay'"
+      }
+    ]
+  }
 ]

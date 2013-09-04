@@ -11,6 +11,9 @@
       "name": "TestExportClass",
       "namespace": ""
     },
+    "location": {
+      "line": 2
+    },
     "methods": [],
     "variables": [],
     "properties": []

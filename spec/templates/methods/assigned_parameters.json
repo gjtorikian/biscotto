@@ -4,12 +4,16 @@
     "doc": {
           "comment": "",
           "summary": "",
-          "status": "Public"
+          "status": "Public",
+          "generated": true
     },
     "class":     {
       "className": "TestAssignedParameters",
       "name":      "TestAssignedParameters",
       "namespace": ""
+    },
+    "location": {
+      "line": 1
     },
     "methods":   [
       {
@@ -22,7 +26,10 @@
             "name": "me",
             "splat": false
           }
-        ]
+        ],
+        "location": {
+          "line": 2
+        }
       }
     ],
     "variables": [],
