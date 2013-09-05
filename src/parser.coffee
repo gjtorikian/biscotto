@@ -53,7 +53,7 @@ module.exports = class Parser
     entities =
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
- 
+
     [content, lineMapping] = @convertComments(content)
 
     sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
@@ -129,10 +129,12 @@ module.exports = class Parser
 
     for line, l in content.split('\n')
       globalStatusBlock = false
+
       # key: the translated line number; value: the original number
       lineMapping[(l + 1) + globalCount] = l + 1
 
       if globalStatusBlock = /^\s*#{3} (\w+).+?#{3}/.exec(line)
+        result.push ''
         @globalStatus = globalStatusBlock[1]
 
       blockComment = /^\s*#{3,}/.exec(line) && !/^\s*#{3,}.+#{3,}/.exec(line)
@@ -156,9 +158,14 @@ module.exports = class Parser
         else
           if inComment
             inComment = false
-            if (_.str.isBlank(_.last(comment)))
+            lastComment = _.last(comment)
+
+            # slight fix for an empty line as the last item
+            if _.str.isBlank(lastComment)
               globalCount++
-            comment[comment.length - 1] = _.last(comment) + ' ###'
+              comment[comment.length] = lastComment + ' ###'
+            else
+              comment[comment.length - 1] = lastComment + ' ###'
 
             # Push here comments only before certain lines
             if ///

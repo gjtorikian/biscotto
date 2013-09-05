@@ -56,7 +56,7 @@
         "bound": false,
         "parameters": [],
         "location": {
-          "line": 15
+          "line": 16
         }
       },
       {
@@ -81,7 +81,7 @@
         "bound": false,
         "parameters": [],
         "location": {
-          "line": 20
+          "line": 22
         }
       }
     ],
