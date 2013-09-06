@@ -35,7 +35,7 @@ module.exports = class Templater
       mixinCount: @parser.mixins.length
       methodCount: @parser.getAllMethods().length
       extraCount: _.union([@options.readme], @options.extras).length
-      repo: @gitHubUrl()
+      repo: @gitHubUrl(_.str.strip(@options.tag))
 
     for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
@@ -77,7 +77,7 @@ module.exports = class Templater
 
     html
 
-  gitHubUrl: () ->
+  gitHubUrl: (tag) ->
     repo = GitUtils.open('/Users/garentorikian/Development/biscotto/.git')
 
     return null unless repo?
@@ -91,6 +91,4 @@ module.exports = class Templater
         replace(/^git@github.com:/, 'https://github.com/').
         replace(/\.git$/, '')
 
-    branch = repo.getShortHead()
-
-    "#{githubRepoUrl}/blob/#{branch}"
+    "#{githubRepoUrl}/blob/#{tag}"

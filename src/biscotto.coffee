@@ -7,6 +7,7 @@ _         = require 'underscore'
 
 Parser    = require './parser'
 Generator = require './generator'
+exec = require('child_process').exec
 
 # Biscotto - the TomDoc-CoffeeScript API documentation generator
 #
@@ -73,6 +74,7 @@ module.exports = class Biscotto
         readme:  @detectReadme
         extras:  @detectExtras
         name:    @detectName
+        tag:     @detectTag
       },
       (err, defaults) ->
 
@@ -187,6 +189,7 @@ module.exports = class Biscotto
             cautious: argv.cautious
             homepage: homepage
             analytics: analytics || argv.a
+            tag: defaults.tag
 
           extra = false
 
@@ -303,3 +306,9 @@ module.exports = class Biscotto
       name = path.basename(process.cwd())
 
     done null, name.charAt(0).toUpperCase() + name.slice(1)
+
+  @detectTag: (done) ->
+    exec 'git describe --abbrev=0 --tags', (error, stdout, stderr) ->
+      currentTag = stdout || "master"
+
+      done null, currentTag
