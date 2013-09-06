@@ -15,7 +15,7 @@ module.exports = class File extends Class
   # the - filename (a [String])
   # options - the parser options (a [Object])
   #
-  constructor: (@node, @fileName, @options) ->
+  constructor: (@node, @fileName, @lineMapping, @options) ->
     try
       @methods = []
       @variables = []
@@ -30,10 +30,10 @@ module.exports = class File extends Class
 
             switch exp.value?.constructor.name
               when 'Code'
-                @methods.push(new Method(@, exp, @options, doc))
+                @methods.push(new Method(@, exp, @lineMapping, @options, doc))
               when 'Value'
                 if exp.value.base.value
-                  @variables.push new Variable(@, exp, @options, true, doc)
+                  @variables.push new Variable(@, exp, @lineMapping, @options, true, doc)
 
             doc = null
 
@@ -44,7 +44,7 @@ module.exports = class File extends Class
               doc = previousProp if previousProp?.constructor.name is 'Comment'
 
               if prop.value?.constructor.name is 'Code'
-                @methods.push new Method(@, prop, @options, doc)
+                @methods.push new Method(@, prop, @lineMapping, @options, doc)
 
               doc = null
               previousProp = prop

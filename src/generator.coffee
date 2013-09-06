@@ -19,7 +19,7 @@ module.exports = class Generator
   #
   constructor: (@parser, @options) ->
     # @parser.classes = _.filter @parser.classes, (node) ->
-    #   if /ublic/.test node.doc.status 
+    #   if /ublic/.test node.doc.status
     #     return node
     #   if options.private and /rivate/.test node.doc.status
     #     return node
@@ -317,7 +317,7 @@ module.exports = class Generator
 
     # we need this here, due to delegations from private classes
     @parser.classes = _.filter @parser.classes, (node) =>
-      if /ublic/.test node.doc.status 
+      if /ublic/.test node.doc.status
         return node
       if @options.private and /rivate/.test node.doc.status
         return node

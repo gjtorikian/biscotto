@@ -2,14 +2,18 @@
   {
     "file": "spec/templates/classes/empty_class.coffee",
     "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Public"
+      "comment": "",
+      "summary": "",
+      "status": "Public",
+      "generated": true
     },
     "class": {
       "className": "A",
       "name": "A",
       "namespace": ""
+    },
+    "location": {
+      "line": 1
     },
     "methods": [
       {
@@ -17,7 +21,10 @@
         "signature": ".<strong>foo</strong>()",
         "name": "foo",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 2
+        }
       }
     ],
     "variables": [],

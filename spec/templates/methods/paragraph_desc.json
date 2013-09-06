@@ -2,19 +2,23 @@
   {
     "file": "spec/templates/methods/paragraph_desc.coffee",
     "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Public"
+      "comment": "",
+      "summary": "",
+      "status": "Public",
+      "generated": true
     },
     "class": {
       "className": "TestParagraphs",
       "name": "TestParagraphs",
       "namespace": ""
     },
+    "location": {
+      "line": 1
+    },
     "methods": [
       {
         "doc": {
-          "comment": "<p>This should be one paragraph.</p><p>If soft tabs are enabled, this is a space (<code>&quot; &quot;</code>) times the <code>{.getTabLength}</code> value.\nOtherwise, it&#39;s a tab (<code>\\t</code>).</p>",
+          "comment": "<p>This should be one paragraph.</p><p>If soft tabs are enabled, this is a space (<code>&quot; &quot;</code>) times the <code>{.getTabLength}</code> value.\nOtherwise, it&#39;s a tab (<code>\\t</code>). </p>",
           "summary": "This should be one paragraph.",
           "status": "Public"
         },
@@ -22,11 +26,14 @@
         "signature": ".<strong>spacing</strong>()",
         "name": "spacing",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 7
+        }
       },
       {
         "doc": {
-          "comment": "<p>This is a paragraph with a br.</p><p>Equality is based on some condition.<br>Oh look, a BR!</p>",
+          "comment": "<p>This is a paragraph with a br.</p><p>Equality is based on some condition.<br>Oh look, a BR! </p>",
           "summary": "This is a paragraph with a br.",
           "status": "Public"
         },
@@ -34,11 +41,14 @@
         "signature": ".<strong>br</strong>()",
         "name": "br",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 13
+        }
       },
       {
         "doc": {
-          "comment": "<p>This is two seperate paragraphs.</p><p>Equality is based on some condition.</p><p>Here I am, still yapping.</p><p>And I&#39;m done.</p>",
+          "comment": "<p>This is two seperate paragraphs.</p><p>Equality is based on some condition.</p><p>Here I am, still yapping.</p><p>And I&#39;m done. </p>",
           "summary": "This is two seperate paragraphs.",
           "status": "Public"
         },
@@ -46,7 +56,10 @@
         "signature": ".<strong>twoParagraphs</strong>()",
         "name": "twoParagraphs",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 22
+        }
       },
       {
         "doc": {
@@ -58,7 +71,10 @@
         "signature": ".<strong>ulList</strong>()",
         "name": "ulList",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 33
+        }
       },
       {
         "doc": {
@@ -70,7 +86,10 @@
         "signature": ".<strong>olList</strong>()",
         "name": "olList",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 44
+        }
       }
     ],
     "variables": [],

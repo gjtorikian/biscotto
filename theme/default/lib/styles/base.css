@@ -17,7 +17,7 @@ h1 {
 h2 {
   padding: 0;
   padding-bottom: 3px;
-  border-bottom: 1px #aaa solid;
+  border-bottom: 1px #aaaaaa solid;
   font-size: 1.4em;
   margin: 1.8em 0 0.5em;
 }
@@ -57,7 +57,7 @@ h2 {
   -o-border-radius: 5px;
   border-radius: 5px;
   width: 485px;
-  border: 2px solid #05a;
+  border: 2px solid #0055aa;
   font-size: 20px;
   padding: 5px;
 }
@@ -198,14 +198,14 @@ h2 {
 }
 /* line 195, ../../src/styles/base.scss */
 #content #filecontents table tr {
-  border-top: 1px solid #CCC;
+  border-top: 1px solid #cccccc;
   background-color: white;
   margin: 0;
   padding: 0;
 }
 /* line 201, ../../src/styles/base.scss */
 #content #filecontents table tr td {
-  border: 1px solid #CCC;
+  border: 1px solid #cccccc;
   text-align: left;
   margin: 0;
   padding: 6px 13px;

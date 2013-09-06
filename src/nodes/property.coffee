@@ -26,11 +26,27 @@ module.exports = class Property extends Node
   # name - The name of the property (a [String])
   # comment - The comment node (a [Object])
   #
-  constructor: (@entity, @node, @options, @name, comment) ->
+  constructor: (@entity, @node, @lineMapping, @options, @name, comment) ->
     @doc = new Doc(comment, @options)
 
     @setter  = false
     @getter  = false
+
+  # Public: Get the source line number
+  #
+  # Returns a {Number}
+  #
+  getLocation: ->
+    try
+      unless @location
+        {locationData} = @node.variable
+        firstLine = locationData.first_line
+        @location = { line: firstLine - @lineMapping[firstLine] + 1 }
+
+      @location
+
+    catch error
+      console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
 
   # Get the property signature.
   #
@@ -59,6 +75,7 @@ module.exports = class Property extends Node
     {
       name: @name
       signature: @getSignature()
+      location: @getLocation()
       setter: @setter
       getter: @getter
       doc: @doc

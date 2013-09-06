@@ -4,12 +4,16 @@
     "doc": {
       "comment": "",
       "summary": "",
-      "status": "Public"
+      "status": "Public",
+      "generated": true
     },
     "class": {
       "className": "OptionalArguments",
       "name": "OptionalArguments",
       "namespace": ""
+    },
+    "location": {
+      "line": 1
     },
     "methods": [
       {
@@ -51,7 +55,10 @@
             "splat": false,
             "optionized": true
           }
-        ]
+        ],
+        "location": {
+          "line": 8
+        }
       },
       {
         "doc": {
@@ -93,7 +100,10 @@
             "splat": false,
             "optionized": true
           }
-        ]
+        ],
+        "location": {
+          "line": 16
+        }
       },
       {
         "doc": {
@@ -137,7 +147,10 @@
             "splat": false,
             "optionized": true
           }
-        ]
+        ],
+        "location": {
+          "line": 25
+        }
       }
     ],
     "variables": [],
