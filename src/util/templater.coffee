@@ -78,7 +78,7 @@ module.exports = class Templater
     html
 
   gitHubUrl: (tag) ->
-    repo = GitUtils.open('/Users/garentorikian/Development/biscotto/.git')
+    repo = GitUtils.open(process.cwd())
 
     return null unless repo?
 
