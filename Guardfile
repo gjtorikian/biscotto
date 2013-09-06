@@ -1,7 +1,7 @@
 notification :gntp
 
-group :codo do
-  # CoffeeScript for the codo library
+group :biscotto do
+  # CoffeeScript for the biscotto library
   guard :coffeescript, input: 'src', output: 'lib', noop: true
 
   # Run Jasmine specs
@@ -10,9 +10,9 @@ group :codo do
     watch(%r{src|spec}) { `#{jasmine_node} --coffee --color spec/parser_spec.coffee` }
   end
 
-  # Generate codo doc
+  # Generate biscotto doc
   guard :shell do
-    watch(%r{src|theme}) { `./bin/codo` }
+    watch(%r{src|theme}) { `./bin/biscotto` }
   end
 end
 

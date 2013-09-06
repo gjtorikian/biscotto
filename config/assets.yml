@@ -3,15 +3,15 @@ compress_assets: on
 gzip_assets: off
 
 javascripts:
-  codo:
+  biscotto:
     - theme/default/lib/scripts/jquery.js
     - theme/default/lib/scripts/keymaster.js
     - theme/default/lib/scripts/underscore.js
-    - theme/default/lib/scripts/codo.js
+    - theme/default/lib/scripts/biscotto.js
     - theme/default/lib/scripts/fuzzy.js
     - theme/default/lib/scripts/highlight.js
     - theme/default/lib/scripts/languages/*.js
 
 stylesheets:
-  codo:
+  biscotto:
     - theme/default/lib/styles/*.css
