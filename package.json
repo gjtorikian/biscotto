@@ -8,7 +8,7 @@
       "name" : "Garen J. Torikian"
     }
   ],
-  "version" : "0.0.15",
+  "version" : "0.0.16",
   "engines" : {
     "node" : ">=0.10.0"
   },
