@@ -5,6 +5,7 @@ _       = require 'underscore'
 _.str   = require 'underscore.string'
 walkdir = require 'walkdir'
 hamlc   = require 'haml-coffee'
+GitUtils = require 'git-utils'
 
 # Haml Coffee template compiler.
 #
@@ -34,6 +35,7 @@ module.exports = class Templater
       mixinCount: @parser.mixins.length
       methodCount: @parser.getAllMethods().length
       extraCount: _.union([@options.readme], @options.extras).length
+      repo: @gitHubUrl()
 
     for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
@@ -74,3 +76,21 @@ module.exports = class Templater
               fs.writeFile file, html
 
     html
+
+  gitHubUrl: () ->
+    repo = GitUtils.open('/Users/garentorikian/Development/biscotto/.git')
+
+    return null unless repo?
+
+    url = repo.getConfigValue("remote.origin.url")
+
+    if url.match /https:\/\/github.com\// # e.g., https://github.com/foo/bar.git
+      githubRepoUrl = url.replace(/\.git$/, '')
+    else if url.match /git@github.com/    # e.g., git@github.com:foo/bar.git
+      githubRepoUrl = url.
+        replace(/^git@github.com:/, 'https://github.com/').
+        replace(/\.git$/, '')
+
+    branch = repo.getShortHead()
+
+    "#{githubRepoUrl}/blob/#{branch}"
