@@ -4,12 +4,16 @@
     "doc": {
           "comment": "",
           "summary": "",
-          "status": "Public"
+          "status": "Public",
+          "generated": true
     },
     "class":     {
       "className": "MyTestClass",
       "name":      "MyTestClass",
       "namespace": ""
+    },
+    "location": {
+      "line": 1
     },
     "methods":   [],
     "variables": [],

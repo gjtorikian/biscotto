@@ -1,43 +1,54 @@
-    [
+[
+  {
+    "file": "spec/templates/methods/method_shortdesc.coffee",
+    "doc": {
+      "comment": "",
+      "summary": "",
+      "status": "Public",
+      "generated": true
+    },
+    "class": {
+      "className": "ShortDesc",
+      "name": "ShortDesc",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
       {
-        "file": "spec/templates/methods/method_shortdesc.coffee",
         "doc": {
-              "comment": "",
-              "summary": "",
-              "status": "Public"
+          "comment": "",
+          "summary": "",
+          "status": "Public"
         },
-        "class": {
-          "className": "ShortDesc",
-          "name": "ShortDesc",
-          "namespace": ""
+        "type": "instance",
+        "signature": ".<strong>helper</strong>()",
+        "name": "helper",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 4
+        }
+      },
+      {
+        "doc": {
+          "comment": "",
+          "summary": "",
+          "status": "Public",
+          "generated": true
         },
-        "methods": [
-          {
-            "doc": {
-              "comment": "",
-              "summary": "",
-              "status": "Public"
-            },
-            "type": "instance",
-            "signature": ".<strong>helper</strong>()",
-            "name": "helper",
-            "bound": false,
-            "parameters": []
-          },
-          {
-           "doc": {
-              "comment": "",
-              "summary": "",
-              "status": "Public"
-            },
-            "type": "instance",
-            "signature": ".<strong>bound</strong>()",
-            "name": "bound",
-            "bound": true,
-            "parameters": []
-          }
-        ],
-        "variables": [],
-        "properties": []
+        "type": "instance",
+        "signature": ".<strong>bound</strong>()",
+        "name": "bound",
+        "bound": true,
+        "parameters": [],
+        "location": {
+          "line": 6
+        }
       }
-    ]
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

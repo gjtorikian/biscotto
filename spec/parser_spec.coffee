@@ -80,3 +80,5 @@ for filename in walkdir.sync './spec/templates'
                 console.log "Added: \n#{_.str.strip(diff.value)}"
               if diff.removed
                 console.log "Removed: \n#{_.str.strip(diff.value)}"
+            console.log generated
+            process.exit()

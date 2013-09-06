@@ -1,155 +1,171 @@
 [
-    {
-        "file": "spec/templates/methods/curly_method_documentation.coffee",
+  {
+    "file": "spec/templates/methods/curly_method_documentation.coffee",
+    "doc": {
+      "comment": "",
+      "summary": "",
+      "status": "Public",
+      "generated": true
+    },
+    "class": {
+      "className": "App.CurlyMethodDocumentation",
+      "name": "CurlyMethodDocumentation",
+      "namespace": "App",
+      "parent": "App.Doc"
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
         "doc": {
-              "comment": "",
-              "summary": "",
-              "status": "Public"
-        },
-        "class": {
-            "className": "App.CurlyMethodDocumentation",
-            "name": "CurlyMethodDocumentation",
-            "namespace": "App",
-            "parent": "App.Doc"
-        },
-        "methods": [
+          "comment": "<p>Should be overloaded to change fetch limit.</p>",
+          "summary": "Should be overloaded to change fetch limit.",
+          "status": "Public",
+          "returnValue": [
             {
-                "doc": {
-                    "comment": "<p>Should be overloaded to change fetch limit.</p>",
-                    "summary": "Should be overloaded to change fetch limit.",
-                    "status": "Public",
-                    "returnValue": [
-                        {
-                            "type": "Number",
-                            "desc": "Returns the {Number} of items per fetch"
-                        }
-                    ]
-                },
-                "type": "instance",
-                "signature": "Number .<strong>fetchLimit</strong>()",
-                "name": "fetchLimit",
-                "bound": false,
-                "parameters": []
-            },
-            {
-                "doc": {
-                    "comment": "<p>Do it!</p><p>See {#undo} for more information.</p>",
-                    "summary": "Do it! See {#undo} for more information.",
-                    "status": "Private",
-                    "params": [
-                        {
-                            "name": "it",
-                            "desc": "The {String} thing to do",
-                            "type": "String"
-                        },
-                        {
-                            "name": "again",
-                            "desc": "A {Boolean} for do it again",
-                            "type": "Boolean"
-                        },
-                        {
-                            "name": "options",
-                            "desc": "The do options",
-                            "type": "",
-                            "options": [
-                                {
-                                    "name": "speed",
-                                    "desc": "The {String} speed",
-                                    "type": "String"
-                                },
-                                {
-                                    "name": "repeat",
-                                    "desc": "How many {Number} times to repeat",
-                                    "type": "Number"
-                                },
-                                {
-                                    "name": "tasks",
-                                    "desc": "The {[Tasks]} tasks to do",
-                                    "type": "[Tasks]"
-                                }
-                            ]
-                        }
-                    ],
-                    "returnValue": [
-                        {
-                            "type": "Boolean",
-                            "desc": "Returns {Boolean} when successfully executed"
-                        }
-                    ]
-                },
-                "type": "instance",
-                "signature": "Boolean .<strong>do</strong>(it, again, options)",
-                "name": "do",
-                "bound": false,
-                "parameters": [
-                    {
-                        "name": "it",
-                        "splat": false
-                    },
-                    {
-                        "name": "again",
-                        "splat": false
-                    },
-                    {
-                        "name": "options",
-                        "splat": false
-                    }
-                ]
-            },
-            {
-                "doc": {
-                    "comment": "<p>Do it without spaces!</p><p>See {@lets_do_it} for more information.</p>",
-                    "summary": "Do it without spaces! See {@lets_do_it} for more information.",
-                    "status": "Private",
-                    "returnValue": [
-                        {
-                            "type": "Boolean",
-                            "desc": "Returns {Boolean} when successfully executed"
-                        }
-                    ]
-                },
-                "type": "instance",
-                "signature": "Boolean .<strong>doWithoutSpace</strong>(it, again, options)",
-                "name": "doWithoutSpace",
-                "bound": false,
-                "parameters": [
-                    {
-                        "name": "it",
-                        "splat": false
-                    },
-                    {
-                        "name": "again",
-                        "splat": false
-                    },
-                    {
-                        "name": "options",
-                        "splat": false
-                    }
-                ]
-            },
-            {
-                "doc": {
-                  "comment": "<p>Do it!</p><p>See {.do} for more information.</p>",
-                  "summary": "Do it! See {.do} for more information.",
-                  "status": "Private"
-                },
-                "type": "class",
-                "signature": "@<strong>lets_do_it</strong>(it, options)",
-                "name": "lets_do_it",
-                "bound": false,
-                "parameters": [
-                    {
-                        "name": "it",
-                        "splat": false
-                    },
-                    {
-                        "name": "options",
-                        "splat": false
-                    }
-                ]
+              "type": "Number",
+              "desc": "Returns the {Number} of items per fetch"
             }
+          ]
+        },
+        "type": "instance",
+        "signature": "Number .<strong>fetchLimit</strong>()",
+        "name": "fetchLimit",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 7
+        }
+      },
+      {
+        "doc": {
+          "comment": "<p>Do it!</p><p>See {#undo} for more information.</p>",
+          "summary": "Do it! See {#undo} for more information.",
+          "status": "Private",
+          "params": [
+            {
+              "name": "it",
+              "desc": "The {String} thing to do",
+              "type": "String"
+            },
+            {
+              "name": "again",
+              "desc": "A {Boolean} for do it again",
+              "type": "Boolean"
+            },
+            {
+              "name": "options",
+              "desc": "The do options",
+              "type": "",
+              "options": [
+                {
+                  "name": "speed",
+                  "desc": "The {String} speed",
+                  "type": "String"
+                },
+                {
+                  "name": "repeat",
+                  "desc": "How many {Number} times to repeat",
+                  "type": "Number"
+                },
+                {
+                  "name": "tasks",
+                  "desc": "The {[Tasks]} tasks to do",
+                  "type": "[Tasks]"
+                }
+              ]
+            }
+          ],
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns {Boolean} when successfully executed"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "Boolean .<strong>do</strong>(it, again, options)",
+        "name": "do",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "again",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
         ],
-        "variables": [],
-        "properties": []
-    }
+        "location": {
+          "line": 22
+        }
+      },
+      {
+        "doc": {
+          "comment": "<p>Do it without spaces!</p><p>See {@lets_do_it} for more information.</p>",
+          "summary": "Do it without spaces! See {@lets_do_it} for more information.",
+          "status": "Private",
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns {Boolean} when successfully executed"
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "Boolean .<strong>doWithoutSpace</strong>(it, again, options)",
+        "name": "doWithoutSpace",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "again",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 30
+        }
+      },
+      {
+        "doc": {
+          "comment": "<p>Do it!</p><p>See {.do} for more information.</p>",
+          "summary": "Do it! See {.do} for more information.",
+          "status": "Private"
+        },
+        "type": "class",
+        "signature": "@<strong>lets_do_it</strong>(it, options)",
+        "name": "lets_do_it",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 36
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
 ]

@@ -16,7 +16,7 @@ module.exports = class Method extends Node
   # @param [Object] options the parser options
   # @param [Object] comment the comment node
   #
-  constructor: (@entity, @node, @options, comment) ->
+  constructor: (@entity, @node, @lineMapping, @options, comment) ->
     try
       @parameters = []
 
@@ -167,23 +167,30 @@ module.exports = class Method extends Node
     catch error
       console.warn('Get method name error:', @node, error) if @options.verbose
 
+  # Public: Get the source line number
+  #
+  # Returns a {Number}
+  #
+  getLocation: ->
+    try
+      unless @location
+        {locationData} = @node.variable
+        firstLine = locationData.first_line + 1
+        if !@lineMapping[firstLine]?
+          @lineMapping[firstLine] = @lineMapping[firstLine - 1]
+
+        @location = { line: @lineMapping[firstLine] }
+
+      @location
+
+    catch error
+      console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
+
   # Get the method parameters
   #
   # @param [Array<Parameter>] the method parameters
   #
   getParameters: -> @parameters
-
-  # Get the method source in CoffeeScript
-  #
-  # @return [String] the CoffeeScript source
-  #
-  getCoffeeScriptSource: ->
-
-  # Get the method source in JavaScript
-  #
-  # @return [String] the JavaScript source
-  #
-  getJavaScriptSource: ->
 
   # Get a JSON representation of the object
   #
@@ -197,6 +204,7 @@ module.exports = class Method extends Node
       name: @getName()
       bound: @node.value.bound
       parameters: []
+      location: @getLocation()
 
     for parameter, i in @getParameters()
       json.parameters.push(parameter.toJSON(i))

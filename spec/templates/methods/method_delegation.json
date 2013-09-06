@@ -4,12 +4,16 @@
     "doc": {
       "comment": "",
       "summary": "",
-      "status": "Public"
+      "status": "Public",
+      "generated": true
     },
     "class": {
       "className": "MethodDelegation",
       "name": "MethodDelegation",
       "namespace": ""
+    },
+    "location": {
+      "line": 1
     },
     "methods": [
       {
@@ -40,7 +44,10 @@
             "name": "p",
             "splat": false
           }
-        ]
+        ],
+        "location": {
+          "line": 6
+        }
       },
       {
         "doc": {
@@ -52,7 +59,10 @@
         "signature": ".<strong>delegatedRegular</strong>()",
         "name": "delegatedRegular",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 9
+        }
       },
       {
         "doc": {
@@ -70,7 +80,10 @@
         "signature": ".<strong>doubleDelegationOne</strong>()",
         "name": "doubleDelegationOne",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 12
+        }
       },
       {
         "doc": {
@@ -88,7 +101,10 @@
         "signature": ".<strong>doubleDelegationTwo</strong>()",
         "name": "doubleDelegationTwo",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 15
+        }
       },
       {
         "doc": {
@@ -106,7 +122,10 @@
         "signature": "Number @<strong>doubleDelegationThree</strong>()",
         "name": "doubleDelegationThree",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 22
+        }
       },
       {
         "doc": {
@@ -127,7 +146,10 @@
             "name": "options",
             "splat": false
           }
-        ]
+        ],
+        "location": {
+          "line": 25
+        }
       },
       {
         "doc": {
@@ -157,12 +179,15 @@
             "name": "p",
             "splat": false
           }
-        ]
+        ],
+        "location": {
+          "line": 32
+        }
       },
       {
         "doc": {
           "examples": [
-            "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done\n"
+            "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done "
           ],
           "comment": "<p>A method to run.</p>",
           "summary": "A method to run.",
@@ -172,7 +197,10 @@
         "signature": "@<strong>delegatedIrregular</strong>()",
         "name": "delegatedIrregular",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 35
+        }
       },
       {
         "doc": {
@@ -184,7 +212,10 @@
         "signature": "@<strong>undelegatedRegular</strong>()",
         "name": "undelegatedRegular",
         "bound": false,
-        "parameters": []
+        "parameters": [],
+        "location": {
+          "line": 38
+        }
       }
     ],
     "variables": [],
