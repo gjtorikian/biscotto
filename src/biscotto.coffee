@@ -75,6 +75,7 @@ module.exports = class Biscotto
         extras:  @detectExtras
         name:    @detectName
         tag:     @detectTag
+        origin:  @detectOrigin
       },
       (err, defaults) ->
 
@@ -190,6 +191,7 @@ module.exports = class Biscotto
             homepage: homepage
             analytics: analytics || argv.a
             tag: defaults.tag
+            origin: defaults.origin
 
           extra = false
 
@@ -312,3 +314,14 @@ module.exports = class Biscotto
       currentTag = stdout || "master"
 
       done null, currentTag
+
+  @detectOrigin: (done) ->
+    exec 'git config --get remote.origin.url', (error, stdout, stderr) ->
+      url = stdout
+      if url
+        if url.match /https:\/\/github.com\// # e.g., https://github.com/foo/bar.git
+          url = url.replace(/\.git/, '')
+        else if url.match /git@github.com/    # e.g., git@github.com:foo/bar.git
+          url = url.replace(/^git@github.com:/, 'https://github.com/').replace(/\.git/, '')
+      
+      done null, url
