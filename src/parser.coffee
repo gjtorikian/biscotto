@@ -26,7 +26,7 @@ module.exports = class Parser
     @mixins  = []
 
     @fileCount = 0
-    @globalStatus = "Public"
+    @globalStatus = "Private"
 
     @classMemberRegex = """
 
@@ -47,7 +47,7 @@ module.exports = class Parser
   #
   parseContent: (content, file = '') ->
     @previousNodes = []
-    @globalStatus = "Public"
+    @globalStatus = "Private"
 
     # Defines typical conditions for entities we are looking through nodes
     entities =
