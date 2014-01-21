@@ -333,7 +333,7 @@ module.exports = class Generator
 
     @templater.render 'class_list', {
       path: ''
-      classes: classes
+      classes: _.sortBy classes, 'name'
     }, 'class_list.html'
 
     @templater.render 'mixin_list', {
