@@ -248,8 +248,8 @@ module.exports = class Referencer
       if data.doc.comment
         data.doc.comment = @resolveTextReferences(data.doc.comment, entity, path)
 
-      if data.doc.returnValue?.desc
-        data.doc.returnValue.desc = @resolveTextReferences(data.doc.returnValue.desc, entity, path)
+      for returnValue in data.doc.returnValue ? []
+        returnValue.desc = @resolveTextReferences(returnValue.desc, entity, path)
 
       if data.doc.throwValue
         for throws, index in data.doc.throwValue
