@@ -115,19 +115,19 @@ module.exports = class Doc extends Node
   #
   # Returns nothing.
   parse_description: (section) ->
-    if md = /([A-Z]\w+)\:(.*)/.exec(section)
+    if md = /([A-Z]\w+)\:((.|[\r\n])*)/g.exec(section)
       return {
         status:      md[1]
-        description: _.str.strip(md[2])
+        description: _.str.strip(md[2]).replace(/\r?\n/g, ' ')
       }
-    else if md = /~([A-Z]\w+)\~(.*)/.exec(section)
+    else if md = /~([A-Z]\w+)\~((.|[\r\n])*)/g.exec(section)
       return {
         status:      md[1]
-        description: _.str.strip(md[2])
+        description: _.str.strip(md[2]).replace(/\r?\n/g, ' ')
         generated: true
       }
     else
-      return { description: _.str.strip(section) }
+      return { description: _.str.strip(section).replace(/\r?\n/g, ' ') }
 
   # Parse examples.
   #
