@@ -269,7 +269,7 @@ module.exports = class Referencer
   #
   resolveTextReferences: (text = '', entity, path) ->
     # Make curly braces within code blocks undetectable
-    text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
+    text = text.replace /<code(\s+[^>]*)?>(.|\n)+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
 
     # Search for references and replace them
     text = text.replace /(?:\[((?:\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*)\])?\{([^\}]*)\}/gm, (match, label, link) =>
@@ -289,7 +289,7 @@ module.exports = class Referencer
         match
 
     # Restore curly braces within code blocks
-    text = text.replace /<code>.+?<\/code>/mg, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
+    text = text.replace /<code(\s+[^>]*)?>(.|\n)+?<\/code>/mg, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
 
   # Resolves delegations; that is, methods whose source content come from
   # another file.
@@ -298,11 +298,11 @@ module.exports = class Referencer
   #
   #
   resolveDelegation: (origin, ref, entity) ->
-    
+
     # Link to direct class methods
     if /^\@/.test(ref)
       methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
-      
+
       match = _.find methods, (m) ->
         return ref.substring(1) == m.getName()
 
@@ -320,7 +320,7 @@ module.exports = class Referencer
       methods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
 
       match = _.find methods, (m) ->
-        return ref.substring(1) == m.getName()  
+        return ref.substring(1) == m.getName()
 
       if match
         if match.doc.delegation
@@ -354,7 +354,7 @@ module.exports = class Referencer
           # Link to other class' class methods
           else if /^\@/.test(refMethod)
             methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m)
-            
+
             match = _.find methods, (m) ->
               return refMethod.substring(1) == m.getName()
 
@@ -372,7 +372,7 @@ module.exports = class Referencer
             methods = _.map(_.filter(otherEntity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m)
 
             match = _.find methods, (m) ->
-              return refMethod.substring(1) == m.getName()  
+              return refMethod.substring(1) == m.getName()
 
             if match
               if match.doc.delegation
