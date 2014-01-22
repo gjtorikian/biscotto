@@ -484,7 +484,7 @@ module.exports = class Referencer
             # controls external reference links
             if @verifyExternalObjReference(see.reference)
               see.label = see.reference unless see.label
-              see.reference = undefined
+              see.reference = @standardObjs[see.reference]
             else
               see.label = see.reference
               see.reference = undefined
