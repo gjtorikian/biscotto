@@ -93,14 +93,18 @@ module.exports = class Method extends Node
           else
             if @inParamOption
               @inParamOption = false
-              params.push( "{" + paramOptionized.join(', ') + "}=" + optionizedDefaults )
+              paramValue = "{#{paramOptionized.join(', ')}}"
+              paramValue += "=#{optionizedDefaults}" if optionizedDefaults
+              params.push(paramValue)
               paramOptionized = []
             else
               params.push param.getSignature()
 
         # that means there was only one argument, a param'ed one
         if paramOptionized.length > 0
-          params.push( "{" + paramOptionized.join(', ') + "}=" + optionizedDefaults )
+          paramValue = "{#{paramOptionized.join(', ')}}"
+          paramValue += "=#{optionizedDefaults}" if optionizedDefaults
+          params.push(paramValue)
 
         @signature += params.join(', ')
         @signature += ')'

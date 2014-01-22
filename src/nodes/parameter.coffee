@@ -78,8 +78,10 @@ module.exports = class Parameter extends Node
         console.warn('Get parameter default error:', @node, error) if @options.verbose
 
   getOptionizedDefaults: ->
+    return '' unless @node.value?
+
     defaults = []
-    for k in @node.value?.compile({ indent: '' }).split("\n")[1..-2] ? []
+    for k in @node.value.compile({ indent: '' }).split("\n")[1..-2]
       defaults.push _.str.strip(k.split(":")[0])
 
     return "{" + defaults.join(",") + "}"
