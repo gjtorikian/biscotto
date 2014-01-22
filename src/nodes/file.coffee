@@ -85,13 +85,12 @@ module.exports = class File extends Class
     path = '' if path is '.'
     path
 
-  # Test if the file doesn't contain any top-level
-  # methods and variables.
+  # Test if the file doesn't contain any top-level public methods.
   #
   # Returns true if empty (a [Boolean])
   #
   isEmpty: ->
-    @getMethods().length is 0 and @getVariables().length is 0
+    @getMethods().every (method) -> not /^public$/i.test(method.doc.status)
 
   # Get a JSON representation of the object
   #
