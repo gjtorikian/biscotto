@@ -322,6 +322,8 @@ module.exports = class Parser
 
       noDocMethodNames = []
       prevFileName = ""
+      noDocMethods.sort (method1, method2) ->
+        method1.getShortSignature().localeCompare(method2.getShortSignature())
       for noDocMethod in noDocMethods
         if prevFileName != noDocMethod.entity.fileName
           prevFileName = noDocMethod.entity.fileName
