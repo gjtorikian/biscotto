@@ -321,15 +321,13 @@ module.exports = class Parser
         noDocClassNames.push noDocClass.className.cyan
 
       noDocMethodNames = []
-      prevFileName = ""
       noDocMethods.sort (method1, method2) ->
         method1.getShortSignature().localeCompare(method2.getShortSignature())
-      for noDocMethod in noDocMethods
-        if prevFileName != noDocMethod.entity.fileName
-          prevFileName = noDocMethod.entity.fileName
-          noDocMethodNames.push "\n#{prevFileName}".cyan
-
-        noDocMethodNames.push "  #{noDocMethod.getShortSignature()}"
+      noDocMethods = _.groupBy noDocMethods, ({entity}) -> entity.fileName
+      for fileName, methods of noDocMethods
+        noDocMethodNames.push "\n#{fileName}".cyan
+        for noDocMethod in methods
+          noDocMethodNames.push "  #{noDocMethod.getShortSignature()}"
 
       stats += "\nClasses missing docs:\n\n#{noDocClassNames.join('\n')}" if noDocClassNames.length > 0
       stats += "\n\nMethods missing docs:\n#{noDocMethodNames.join('\n')}" if noDocMethodNames.length > 0
