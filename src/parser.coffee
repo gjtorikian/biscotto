@@ -1,4 +1,5 @@
 fs           = require 'fs'
+colors       = require 'colors'
 _            = require 'underscore'
 _.str        = require 'underscore.string'
 CoffeeScript = require 'coffee-script'
@@ -324,11 +325,10 @@ module.exports = class Parser
       for noDocMethod in noDocMethods
         if prevFileName != noDocMethod.entity.fileName
           prevFileName = noDocMethod.entity.fileName
-          noDocMethodNames.push "\nIn #{prevFileName}:"
+          noDocMethodNames.push "\n#{prevFileName}".cyan
 
-        noDocMethodNames.push noDocMethod.getShortSignature()
+        noDocMethodNames.push "  #{noDocMethod.getShortSignature()}"
 
-      stats += "\n"
       stats += "\nClasses missing docs:\n\n#{noDocClassNames.join('\n')}" if noDocClassNames.length > 0
       stats += "\n\nMethods missing docs:\n#{noDocMethodNames.join('\n')}" if noDocMethodNames.length > 0
 
