@@ -318,7 +318,7 @@ module.exports = class Parser
     if @options.missing
       noDocClassNames = []
       for noDocClass in noDocClasses
-        noDocClassNames.push noDocClass.className
+        noDocClassNames.push noDocClass.className.cyan
 
       noDocMethodNames = []
       prevFileName = ""
