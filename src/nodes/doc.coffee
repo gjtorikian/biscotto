@@ -31,6 +31,12 @@ module.exports = class Doc extends Node
   hasComment: ->
     !_.str.isBlank(@comment)
 
+  # Is this doc public?
+  #
+  # Returns a {Boolean}.
+  isPublic: ->
+    /public/i.test(@status)
+
   # Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #

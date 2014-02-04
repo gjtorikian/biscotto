@@ -283,7 +283,12 @@ module.exports = class Parser
 
     methodsToCount = _.filter(@getAllMethods(), (method) -> method not instanceof VirtualMethod)
     methodCount    = methodsToCount.length
-    noDocMethods   = _.filter(methodsToCount, (method) -> !method.getDoc().hasComment())
+    noDocMethods   = _.filter methodsToCount, (method) ->
+      if method.entity?.doc?
+        method.entity.doc.isPublic() and method.doc.isPublic() and not method.doc.hasComment()
+      else
+        method.doc.isPublic() and not method.doc.hasComment()
+
     noDocMethodsLength = noDocMethods.length
 
     constants      = _.filter(@getAllVariables(), (variable) -> variable.isConstant())
@@ -321,7 +326,7 @@ module.exports = class Parser
           prevFileName = noDocMethod.entity.fileName
           noDocMethodNames.push "\nIn #{prevFileName}:"
 
-        noDocMethodNames.push noDocMethod.shortSignature
+        noDocMethodNames.push noDocMethod.getShortSignature()
 
       stats += "\n"
       stats += "\nClasses missing docs:\n\n#{noDocClassNames.join('\n')}" if noDocClassNames.length > 0
