@@ -1,5 +1,7 @@
 Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying architecture is based on [codo](https://github.com/netzpirat/codo); however, this uses [TomDoc](http://tomdoc.org/) notation, instead of JSDoc.
 
+[![Build Status](https://travis-ci.org/atom/biscotto.png?branch=master)](https://travis-ci.org/atom/biscotto)
+
 ## Features
 
 * Detects classes, methods, constants, mixins & concerns.
