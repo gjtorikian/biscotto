@@ -5,17 +5,17 @@ Doc       = require './doc'
 _         = require 'underscore'
 _.str     = require 'underscore.string'
 
-# A CoffeeScript method
-#
+# Public: The Node representation of a CoffeeScript method.
 module.exports = class Method extends Node
 
-  # Construct a method
+  # Public: Constructs the documentaion node.
   #
-  # @param [Class] entity the methods class
-  # @param [Object] node the node
-  # @param [Object] options the parser options
-  # @param [Object] comment the comment node
-  #
+  # entity - The method's {Class}
+  # node - The method node (a {Object})
+  # fileName - The filename (a {String})
+  # lineMapping - An object mapping the actual position of a member to its Biscotto one
+  # options - The parser options (a {Object})
+  # comment - The comment node (a {Object})
   constructor: (@entity, @node, @lineMapping, @options, comment) ->
     try
       @parameters = []
@@ -36,7 +36,7 @@ module.exports = class Method extends Node
 
   # Get the method type, either `class` or `instance`
   #
-  # @return [String] the method type
+  # @return {String} the method type
   #
   getType: ->
     unless @type
@@ -58,7 +58,7 @@ module.exports = class Method extends Node
 
   # Get the full method signature.
   #
-  # @return [String] the signature
+  # @return {String} the signature
   #
   getSignature: ->
     try
@@ -116,7 +116,7 @@ module.exports = class Method extends Node
 
   # Get the short method signature.
   #
-  # @return [String] the short signature
+  # @return {String} the short signature
   #
   getShortSignature: ->
     try
@@ -137,7 +137,7 @@ module.exports = class Method extends Node
 
   # Get the method name
   #
-  # @return [String] the method name
+  # @return {String} the method name
   #
   getName: ->
     try
@@ -198,7 +198,7 @@ module.exports = class Method extends Node
 
   # Get a JSON representation of the object
   #
-  # @return [Object] the JSON object
+  # @return {Object} the JSON object
   #
   toJSON: ->
     json =

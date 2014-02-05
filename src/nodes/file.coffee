@@ -4,17 +4,17 @@ Method   = require './method'
 Variable = require './variable'
 Doc      = require './doc'
 
-# The file class is a `fake` class that wraps the
+# Public: The file class is a `fake` class that wraps the
 # file body to capture top-level assigned methods.
 #
 module.exports = class File extends Class
 
-  # Construct a File
+  # Public: Construct a `File` object.
   #
-  # node - the class node (a [Object])
-  # the - filename (a [String])
-  # options - the parser options (a [Object])
-  #
+  # node - The class node (a {Object})
+  # filename - A {String} representing the current filename
+  # lineMapping - An object mapping the actual position of a member to its Biscotto one
+  # options - Any additional parser options
   constructor: (@node, @fileName, @lineMapping, @options) ->
     try
       @methods = []
@@ -54,10 +54,9 @@ module.exports = class File extends Class
       console.warn('File class error:', @node, error) if @options.verbose
 
 
-  # Get the full file name with path
+  # Public: Get the full file name with path
   #
-  # Returns the file name with path (a [String])
-  #
+  # Returns the file name with path as a {String}.
   getFullName: ->
     fullName = @fileName
 
@@ -69,33 +68,29 @@ module.exports = class File extends Class
 
     fullName.replace(Path.sep, '/')
 
-  # Returns the file class name
+  # Public: Returns the file class name.
   #
-  # Returns the file name without path (a [String])
-  #
+  # Returns the file name without path as a {String}.
   getFileName: ->
     Path.basename @getFullName()
 
-  # Get the file path
+  # Public: Get the file path
   #
-  # Returns the file path (a [String])
-  #
+  # Returns the file path as a {String}.
   getPath: ->
     path = Path.dirname @getFullName()
     path = '' if path is '.'
     path
 
-  # Test if the file doesn't contain any top-level public methods.
+  # Public: Test if the file doesn't contain any top-level public methods.
   #
-  # Returns true if empty (a [Boolean])
-  #
+  # Returns `true` if empty.
   isEmpty: ->
     @getMethods().every (method) -> not /^public$/i.test(method.doc.status)
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object
   #
-  # Returns the JSON object (a [Object])
-  #
+  # Returns the JSON object (a {Object}).
   toJSON: ->
     json =
       file: @getFileName()

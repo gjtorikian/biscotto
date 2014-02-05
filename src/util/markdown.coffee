@@ -1,10 +1,7 @@
 marked = require 'marked'
 
-# It looks like all the markdown libraries for node doesn't get
-# GitHub flavored markdown right. This helper class post-processes
-# the best available output from the marked library to conform to
-# GHM. In addition the allowed tags can be limited.
-#
+# Internal: A class to post-process the best available output from the marked
+# library to conform to GHM. In addition the allowed tags can be limited.
 module.exports = class Markdown
 
   # Tags to keep when parsing is limited
@@ -14,8 +11,8 @@ module.exports = class Markdown
   # is true, then all unwanted elements are stripped from the
   # result and also all existing newlines.
   #
-  # markdown - the markdown markup (a [String])
-  # limit - if elements should be limited (a [Boolean])
+  # markdown - the markdown markup (a {String})
+  # limit - if elements should be limited (a {Boolean})
   #
   @convert: (markdown, limit = false, allowed = Markdown.limitedTags) ->
     return if markdown is undefined
@@ -33,9 +30,9 @@ module.exports = class Markdown
 
   # Strips all unwanted tag from the html
   #
-  # html - the Html to clean (a [String])
-  # allowed - the comma separated list of allowed tags (a [String])
-  # Returns the cleaned Html (a [String])
+  # html - the Html to clean (a {String})
+  # allowed - the comma separated list of allowed tags (a {String})
+  # Returns the cleaned Html (a {String})
   #
   @limit: (html, allowed) ->
     allowed = allowed.split ','

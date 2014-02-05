@@ -3,17 +3,16 @@ Method   = require './method'
 Variable = require './variable'
 Doc      = require './doc'
 
-# A CoffeeScript mixins
+# Public: The Node representation of a CoffeeScript mixins
 #
 module.exports = class Mixin extends Node
 
-  # Construct a mixin
+  # Public: Construct a mixin
   #
-  # node - the mixin node (a [Object])
-  # the - filename (a [String])
-  # options - the parser options (a [Object])
-  # comment - the comment node (a [Object])
-  #
+  # node - The mixin node (a {Object})
+  # fileName - The filename (a {String})
+  # options - The parser options (a {Object})
+  # comment - The comment node (a {Object})
   constructor: (@node, @fileName, @options, comment) ->
     try
       @methods = []
@@ -60,22 +59,19 @@ module.exports = class Mixin extends Node
     catch error
       console.warn('Create mixin error:', @node, error) if @options.verbose
 
-  # Get the source file name.
+  # Public: Get the source file name.
   #
-  # Returns the filename of the mixin (a [String])
-  #
+  # Returns the filename of the mixin (a {String}).
   getFileName: -> @fileName
 
-  # Get the mixin doc
+  # Public: Get the mixin doc
   #
   # Returns the mixin doc (a [Doc])
-  #
   getDoc: -> @doc
 
-  # Get the full mixin name
+  # Public: Get the full mixin name
   #
-  # Returns full mixin name (a [String])
-  #
+  # Returns full mixin name (a {String}).
   getMixinName: ->
     try
       unless @mixinName
@@ -89,15 +85,13 @@ module.exports = class Mixin extends Node
     catch error
       console.warn('Get mixin full name error:', @node, error) if @options.verbose
 
-  # Alias for {Mixin#getMixinName}
-  #
+  # Public: Alias for {.getMixinName}
   getFullName: ->
     @getMixinName()
 
-  # Get the mixin name
+  # Public: Gets the mixin name
   #
-  # Returns the name (a [String])
-  #
+  # Returns the name (a {String}).
   getName: ->
     try
       unless @name
@@ -108,10 +102,9 @@ module.exports = class Mixin extends Node
     catch error
       console.warn('Get mixin name error:', @node, error) if @options.verbose
 
-  # Get the mixin namespace
+  # Public: Get the mixin namespace
   #
-  # Returns the namespace (a [String])
-  #
+  # Returns the namespace (a {String}).
   getNamespace: ->
     try
       unless @namespace
@@ -125,22 +118,19 @@ module.exports = class Mixin extends Node
     catch error
       console.warn('Get mixin namespace error:', @node, error) if @options.verbose
 
-  # Get all methods.
+  # Public: Get all methods.
   #
-  # Returns  (a ) [Array<Method>] the methods
-  #
+  # Returns an {Array} of all the {Method}s.
   getMethods: -> @methods
 
   # Get all variables.
   #
-  # Returns  (a ) [Array<Variable>] the variables
-  #
+  # Returns an {Array} of all the {Variable}s.
   getVariables: -> @variables
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object
   #
-  # Returns the JSON object (a [Object])
-  #
+  # Returns the JSON object (a {Object}).
   toJSON: ->
     json =
       file: @getFileName()

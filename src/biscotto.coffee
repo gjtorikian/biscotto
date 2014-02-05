@@ -9,43 +9,42 @@ Parser    = require './parser'
 Generator = require './generator'
 exec = require('child_process').exec
 
-# Biscotto - the TomDoc-CoffeeScript API documentation generator
-#
+# Public: Biscotto - the TomDoc-CoffeeScript API documentation generator
 module.exports = class Biscotto
 
-  # Get the current Biscotto version
+  # Public: Get the current Biscotto version
   #
-  # Returns a [String] representing the Biscotto version
-  #
+  # Returns a {String} representing the Biscotto version
   @version: ->
     'v' + JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['version']
 
-  # Run the documentation generator. This is usually done through
+  # Public: Run the documentation generator. This is usually done through
   # the command line utility `biscotto` that is provided by this package.
+  #
+  # This function sets up all of the configuration options used by Biscotto.
   #
   # You can also run the documentation generation without writing files
   # to the file system, by supplying a callback function.
   #
-  # done - The documentation done callback (a [Function])
-  # file - The new file callback (a [Function])
-  # analytics - The Google analytics tracking code (a [String])
-  # homepage - The homepage in the breadcrumbs (a [String])
+  # done - A {Function} to callback once the function is done
+  # file - A {Function} to callback on every file
+  # analytics - A {String} representing Google analytics tracking code
+  # homepage - The {String} homepage in the breadcrumbs
   #
   # Examples
   #
-  #   biscotto = require 'biscotto'
+  #    biscotto = require 'biscotto'
   #
-  #   file = (filename, content) ->
-  #     console.log "New file %s with content %s", filename, content
+  #    file = (filename, content) ->
+  #      console.log "New file %s with content %s", filename, content
   #
-  #   done = (err) ->
-  #     if err
-  #       console.log "Cannot generate documentation:", err
-  #     else
-  #       console.log "Documentation generated"
+  #    done = (err) ->
+  #      if err
+  #        console.log "Cannot generate documentation:", err
+  #      else
+  #        console.log "Documentation generated"
   #
-  #   biscotto.run file, done
-  #
+  #    biscotto.run file, done
   #
   @run: (done, file, analytics = false, homepage = false) ->
 
@@ -244,22 +243,19 @@ module.exports = class Biscotto
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
 
-  # Get the Biscotto script content that is used in the webinterface
+  # Public: Get the Biscotto script content that is used in the webinterface
   #
-  # Returns the script content (a [String])
-  #
+  # Returns the script contents as a {String}.
   @script: ->
     @biscottoScript or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.js'), 'utf-8'
 
-  # Get the Biscotto style content that is used in the webinterface
+  # Public: Get the Biscotto style content that is used in the webinterface
   #
-  # Returns the style content (a [String])
-  #
+  # Returns the style content as a {String}.
   @style: ->
     @biscottoStyle or= fs.readFileSync path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.css'), 'utf-8'
 
-  # Find the source directories.
-  #
+  # Public: Find the source directories.
   @detectSources: (done) ->
     Async.filter [
       'src'
@@ -269,8 +265,7 @@ module.exports = class Biscotto
       results.push '.' if results.length is 0
       done null, results
 
-  # Find the project README.
-  #
+  # Public: Find the project's README.
   @detectReadme: (done) ->
     Async.filter [
       'README.markdown'
@@ -281,8 +276,7 @@ module.exports = class Biscotto
       'readme'
     ], (fs.exists || path.exists), (results) -> done null, _.first(results) || ''
 
-  # Find extra project files.
-  #
+  # Public: Find extra project files in the repository.
   @detectExtras: (done) ->
     Async.filter [
       'CHANGELOG.markdown'
@@ -297,10 +291,10 @@ module.exports = class Biscotto
       'LICENSE.GPL'
     ], (fs.exists || path.exists), (results) -> done null, results
 
-  # Find the project name by either parse `package.json`
-  # or get the current working directory name.
+  # Public: Find the project name by either parsing `package.json`,
+  # or getting the current working directory name.
   #
-  # done - The callback to call
+  # done - The {Function} callback to call once this is done
   @detectName: (done) ->
     if (fs.exists || path.exists)('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
@@ -309,12 +303,18 @@ module.exports = class Biscotto
 
     done null, name.charAt(0).toUpperCase() + name.slice(1)
 
+  # Public: Find the project's latest Git tag.
+  #
+  # done - The {Function} callback to call once this is done
   @detectTag: (done) ->
     exec 'git describe --abbrev=0 --tags', (error, stdout, stderr) ->
       currentTag = stdout || "master"
 
       done null, currentTag
 
+  # Public: Find the project's Git remote.origin URL.
+  #
+  # done - The {Function} callback to call once this is done
   @detectOrigin: (done) ->
     exec 'git config --get remote.origin.url', (error, stdout, stderr) ->
       url = stdout
@@ -323,5 +323,5 @@ module.exports = class Biscotto
           url = url.replace(/\.git/, '')
         else if url.match /git@github.com/    # e.g., git@github.com:foo/bar.git
           url = url.replace(/^git@github.com:/, 'https://github.com/').replace(/\.git/, '')
-      
+
       done null, url
