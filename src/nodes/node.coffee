@@ -1,12 +1,11 @@
-# Base class for all nodes.
+# Public: The base class for all nodes.
 #
 module.exports = class Node
 
-  # Find an ancestor node by type.
+  # Public: Find an ancestor node by type.
   #
-  # type - the class name (a [String])
-  # node - the CoffeeScript node (a [Base])
-  #
+  # type - The type name (a {String})
+  # node - The CoffeeScript node to search on (a {Base})
   findAncestor: (type, node = @node) ->
     if node.ancestor
       if node.ancestor.constructor.name is type

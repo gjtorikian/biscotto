@@ -6,17 +6,15 @@ Property      = require './property'
 Doc           = require './doc'
 _             = require 'underscore'
 
-# A CoffeeScript class
-#
+# Public: The Node representation of a CoffeeScript class.
 module.exports = class Class extends Node
 
-  # Construct a class
+  # Constructs a class.
   #
-  # node - the class node (a [Object])
-  # fileName - the filename (a [String])
-  # options - the parser options (a [Object])
-  # comment - the comment node (a [Object])
-  #
+  # node - The class node (a {Object})
+  # fileName - The filename (a {String})
+  # options - The parser options (a {Object})
+  # comment - The comment node (a {Object})
   constructor: (@node, @fileName, @lineMapping, @options, comment) ->
     try
       @methods = []
@@ -120,29 +118,25 @@ module.exports = class Class extends Node
     catch error
       console.warn('Create class error:', @node, error) if @options.verbose
 
-  # Get the source file name.
+  # Public: Get the source file name.
   #
-  # Returns the filename of the class (a [String])
-  #
+  # Returns the filename of the class (a {String})
   getFileName: -> @fileName
 
-  # Get the class doc
+  # Public: Get the class doc
   #
   # Returns the class doc (a [Doc])
-  #
   getDoc: -> @doc
 
-  # Alias for {#getClassName}
+  # Public: Alias for {.getClassName}
   #
-  # Returns the full class name (a [String])
-  #
+  # Returns the full class name (a {String})
   getFullName: ->
     @getClassName()
 
-  # Get the full class name
+  # Public: Get the full class name
   #
-  # Returns the class (a [String])
-  #
+  # Returns the class (a {String})
   getClassName: ->
     try
       unless @className || !@node.variable
@@ -169,10 +163,9 @@ module.exports = class Class extends Node
     catch error
       console.warn("Get class classname error at #{@fileName}:", @node, error) if @options.verbose
 
-  # Get the class name
+  # Public: Get the class name
   #
-  # Returns the name (a [String])
-  #
+  # Returns the name (a {String})
   getName: ->
     try
       unless @name
@@ -185,8 +178,7 @@ module.exports = class Class extends Node
 
   # Public: Get the source line number
   #
-  # Returns a {Number}
-  #
+  # Returns a {Number}.
   getLocation: ->
     try
       unless @location
@@ -201,10 +193,9 @@ module.exports = class Class extends Node
     catch error
       console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
 
-  # Get the class namespace
+  # Public: Get the class namespace
   #
-  # Returns the namespace (a [String])
-  #
+  # Returns the namespace (a {String}).
   getNamespace: ->
     try
       unless @namespace
@@ -218,10 +209,9 @@ module.exports = class Class extends Node
     catch error
       console.warn("Get class namespace error at #{@fileName}:", @node, error) if @options.verbose
 
-  # Get the full parent class name
+  # Public: Get the full parent class name
   #
-  # Returns the parent class name (a [String])
-  #
+  # Returns the parent class name (a {String}).
   getParentClassName: ->
     try
       unless @parentClassName
@@ -249,12 +239,11 @@ module.exports = class Class extends Node
     catch error
       console.warn("Get class parent classname error at #{@fileName}:", @node, error) if @options.verbose
 
-  # Get all methods.
+  # Public: Get all methods.
   #
-  # Returns the methods
-  #
+  # Returns the methods as an {Array}.
   getMethods: ->
-    _.filter(@methods, (method) => 
+    _.filter(@methods, (method) =>
       if !@options.private && method.doc.status == "Private"
         return false
       else if !@options.internal && method.doc.status == "Internal"
@@ -263,16 +252,14 @@ module.exports = class Class extends Node
         return true
     )
 
-  # Get all variables.
+  # Public: Get all variables.
   #
-  # Returns the variables
-  #
+  # Returns the variables as an {Array}.
   getVariables: -> @variables
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object
   #
   # Returns the JSON object (an {Object})
-  #
   toJSON: ->
     json =
       file: @getFileName()

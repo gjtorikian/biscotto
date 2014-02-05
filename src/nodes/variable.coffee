@@ -1,18 +1,17 @@
 Node      = require './node'
 Doc      = require './doc'
 
-# A CoffeeScript variable
-#
+# Public: The Node representation of a CoffeeScript variable.
 module.exports = class Variable extends Node
 
-  # Construct a variable
+  # Public: Construct a variable node.
   #
-  # entity - the variables class (a [Class])
-  # node - the node (a [Object])
-  # options - the parser options (a [Object])
-  # classType - whether its a class variable or not (a [Boolean])
-  # comment - the comment node (a [Object])
-  #
+  # entity - The variable's {Class}
+  # node - The variable node (a {Object})
+  # smc - An object mapping the actual position of a member to its Biscotto one
+  # options - The parser options (a {Object})
+  # classType - A {Boolean} indicating if the class is a `class` or an `instance`
+  # comment - The comment node (a {Object})
   constructor: (@entity, @node, @smc, @options, @classType = false, comment = null) ->
     try
       @doc = new Doc(comment, @options)
@@ -21,19 +20,18 @@ module.exports = class Variable extends Node
     catch error
       console.warn('Create variable error:', @node, error) if @options.verbose
 
-  # Get the variable type, either `class` or `constant`
+  # Public: Get the variable type, either `class` or `constant`
   #
-  # Returns the variable type (a [String])
-  #
+  # Returns the variable type (a {String}).
   getType: ->
     unless @type
       @type = if @classType then 'class' else 'instance'
 
     @type
 
-  # Test if the given value should be treated ad constant.
+  # Public: Test if the given value should be treated ad constant.
   #
-  # Returns true if a constant (a [Boolean])
+  # Returns true if a constant (a {Boolean})
   #
   isConstant: ->
     unless @constant
@@ -41,16 +39,14 @@ module.exports = class Variable extends Node
 
     @constant
 
-  # Get the class doc
+  # Public: Get the class doc
   #
-  # Returns the class doc (a [Doc])
-  #
+  # Returns the class doc (a [Doc]).
   getDoc: -> @doc
 
-  # Get the variable name
+  # Public: Get the variable name
   #
-  # Returns the variable name (a [String])
-  #
+  # Returns the variable name (a {String}).
   getName: ->
     try
       unless @name
@@ -71,8 +67,7 @@ module.exports = class Variable extends Node
 
   # Public: Get the source line number
   #
-  # Returns a {Number}
-  #
+  # Returns a {Number}.
   getLocation: ->
     try
       unless @location
@@ -84,11 +79,10 @@ module.exports = class Variable extends Node
 
     catch error
       console.warn("Get location error at #{@fileName}:", @node, error) if @options.verbose
-      
-  # Get the variable value.
+
+  # Public: Get the variable value.
   #
-  # Returns the value (a [String])
-  #
+  # Returns the value (a {String}).
   getValue: ->
     try
       unless @value
@@ -99,10 +93,9 @@ module.exports = class Variable extends Node
     catch error
       console.warn('Get method value error:', @node, error) if @options.verbose
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object
   #
-  # Returns the JSON object (a [Object])
-  #
+  # Returns the JSON object (a {Object}).
   toJSON: ->
     json =
       doc: @doc

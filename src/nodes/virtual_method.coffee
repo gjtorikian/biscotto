@@ -5,22 +5,20 @@ Doc       = require './doc'
 _         = require 'underscore'
 _.str     = require 'underscore.string'
 
-# A virtual method that has been declared by the `@method` tag.
-#
+# Public: The Node representation of a CoffeeScript  virtual method that has
+# been declared by the `@method` tag.
 module.exports = class VirtualMethod extends Node
 
-  # Construct a virtual method
+  # Public: Construct a virtual method node.
   #
-  # entity - the methods class (a [Class])
-  # doc - the virtual doc (a [Doc])
-  # options - the parser options (a [Object])
-  #
+  # entity - The method's {Class}
+  # doc - The property node (a {Object})
+  # options - The parser options (a {Object})
   constructor: (@entity, @doc, @options) ->
 
-  # Get the method type, either `class`, `instance` or `mixin`.
+  # Public: Get the method type, either `class`, `instance` or `mixin`.
   #
-  # Returns the method type (a [String])
-  #
+  # Returns the method type (a {String}).
   getType: ->
     unless @type
       if @doc.signature.substring(0, 1) is '.'
@@ -32,16 +30,14 @@ module.exports = class VirtualMethod extends Node
 
     @type
 
-  # Get the class doc
+  # Public: Get the class doc
   #
-  # Returns the class doc (a [Doc])
-  #
+  # Returns the class doc (a {Doc}).
   getDoc: -> @doc
 
-  # Get the full method signature.
+  # Public: Get the full method signature.
   #
-  # Returns the signature (a [String])
-  #
+  # Returns the signature (a {String}).
   getSignature: ->
     try
       unless @signature
@@ -72,10 +68,9 @@ module.exports = class VirtualMethod extends Node
     catch error
       console.warn('Get method signature error:', @node, error) if @options.verbose
 
-  # Get the short method signature.
+  # Public: Get the short method signature.
   #
-  # Returns the short signature (a [String])
-  #
+  # Returns the short signature (a {String}).
   getShortSignature: ->
     try
       unless @shortSignature
@@ -93,10 +88,9 @@ module.exports = class VirtualMethod extends Node
     catch error
       console.warn('Get method short signature error:', @node, error) if @options.verbose
 
-  # Get the method name
+  # Public: Get the method name
   #
-  # Returns the method name (a [String])
-  #
+  # Returns the method name (a {String}).
   getName: ->
     try
       unless @name
@@ -110,28 +104,24 @@ module.exports = class VirtualMethod extends Node
     catch error
       console.warn('Get method name error:', @node, error) if @options.verbose
 
-  # Get the method parameters
+  # Public: Get the method parameters
   #
   # params - The method parameters
-  #
   getParameters: -> @doc.params or []
 
-  # Get the method source in CoffeeScript
+  # Public: Get the method source in CoffeeScript
   #
-  # Returns the CoffeeScript source (a [String])
-  #
+  # Returns the CoffeeScript source (a {String}).
   getCoffeeScriptSource: ->
 
-  # Get the method source in JavaScript
+  # Public: Get the method source in JavaScript
   #
-  # Returns the JavaScript source (a [String])
-  #
+  # Returns the JavaScript source (a {String}).
   getJavaScriptSource: ->
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object
   #
-  # Returns the JSON object (a [Object])
-  #
+  # Returns the JSON object (a {Object}).
   toJSON: ->
     json =
       doc: @doc
@@ -140,8 +130,5 @@ module.exports = class VirtualMethod extends Node
       name: @getName()
       bound: false
       parameters: []
-
-    #for parameter in @getParameters()
-    #  json.parameters.push parameter.toJSON()
 
     json

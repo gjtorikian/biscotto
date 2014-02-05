@@ -7,37 +7,30 @@ Templater  = require './util/templater'
 Referencer = require './util/referencer'
 Markdown   = require './util/markdown'
 
-# The documentation generator uses the parser JSON
-# to generate the final biscotto documentation.
+# Public: The documentation generator uses the intermediate JSON from {Parser},
+# and generates the final HTML Biscotto documentation.
 #
 module.exports = class Generator
 
-  # Construct a generator
+  # Public: Constructs a generator
   #
-  # parser - The parser (a [Parser])
-  # options - The options (a [Object])
+  # parser - A {Parser} object
+  # options - An {Object} of options
   #
   constructor: (@parser, @options) ->
-    # @parser.classes = _.filter @parser.classes, (node) ->
-    #   if /ublic/.test node.doc.status
-    #     return node
-    #   if options.private and /rivate/.test node.doc.status
-    #     return node
-    #   if options.internal and /nternal/.test node.doc.status
-    #     return node
     @referencer = new Referencer(@parser.classes, @parser.mixins, @options)
     @templater = new Templater(@options, @referencer, @parser)
 
-  # Generate the documentation. Without callback, the documentation
-  # is written to the file system, with callback, the file content
-  # will be passed to the callback.
+  # Public: Generate the documentation. Without the `file` callback, the documentation
+  # is written to the file system. With the callback, the file's contents is passed
+  # to the callback.
   #
-  # With a provided file generation callback, the assets will not be copied,
-  # use {Biscotto.script} and {Biscotto.style} to get them.
+  # With a provided file generation callback, the assets will not be copied. You
+  # can use {Biscotto@script} and {Biscotto@style} to get them.
   #
-  # fileTthe - optional file generation callback (a [Function])
+  # file - A {Function} that acts as a file generation callback
   #
-  generate: (file) ->
+  generate: (file = null) ->
     @templater.redirect(file) if file
 
     @generateIndex()
@@ -57,8 +50,7 @@ module.exports = class Generator
     @generateSearchData file
     @copyAssets() unless file or @options.noOutput
 
-  # Generate the frame source.
-  #
+  # Public: Generates the frame source.
   generateIndex: ->
     index = @options.readme || 'class_index'
 
@@ -75,8 +67,7 @@ module.exports = class Generator
 
     @templater.render 'frames', { list: list, index: index, path: '' }, 'index.html'
 
-  # Generates the pages for all the classes.
-  #
+  # Public: Generates the pages for all the classes.
   generateClasses: ->
     for clazz in @parser.classes
       if (!@options.private && clazz.doc.status == "Private") || (!@options.internal && clazz.doc.status == "Internal")
@@ -133,8 +124,7 @@ module.exports = class Generator
           breadcrumbs: breadcrumbs
         }, "classes/#{ clazz.getClassName().replace(/\./g, '/') }.html"
 
-  # Generate the pages for all the mixins
-  #
+  # Public: Generate the pages for all the mixins.
   generateMixins: ->
     for mixin in @parser.mixins
       namespaces = _.compact mixin.getNamespace().split('.')
@@ -179,8 +169,7 @@ module.exports = class Generator
         breadcrumbs: breadcrumbs
       }, "mixins/#{ mixin.getFullName().replace(/\./g, '/') }.html"
 
-  # Generate the pages for all the (non-class) files that contains methods
-  #
+  # Public: Generate the pages for all the (non-class) files that contains methods.
   generateFiles: ->
     for file in @parser.files
       p = _.compact file.getPath().split('/')
@@ -217,9 +206,7 @@ module.exports = class Generator
         breadcrumbs: breadcrumbs
       }, "files/#{ file.getFullName() }.html"
 
-  #
-  # Generates the pages for all the extra files.
-  #
+  # Public: Generates the pages for all the extra files.
   generateExtras: ->
     for extra in _.union [@options.readme], @options.extras
       try
@@ -255,8 +242,7 @@ module.exports = class Generator
       catch error
         console.log "[ERROR] Cannot generate extra file #{ extra }: #{ error }"
 
-  # Generate the alphabetical index of all classes and mixins.
-  #
+  # Public: Generate the alphabetical index of all classes and mixins.
   generateClassMixinFileExtraIndex: ->
     sortedClasses = {}
     sortedFiles = {}
@@ -286,8 +272,7 @@ module.exports = class Generator
       breadcrumbs: []
     }, 'class_index.html'
 
-  # Generates the drop down class list
-  #
+  # Public: Generates the drop down class list
   generateClassAndMixinLists: ->
     classes = []
     mixins = []
@@ -341,8 +326,7 @@ module.exports = class Generator
       mixins: mixins
     }, 'mixin_list.html'
 
-  # Generates the drop down method list
-  #
+  # Public: Generates the drop down method list.
   generateMethodList: ->
     nonconstructors = _.filter @parser.getAllMethods(), (m) -> m.getName() isnt 'constructor'
     methods = _.map nonconstructors, (method) ->
@@ -366,8 +350,7 @@ module.exports = class Generator
       methods: _.sortBy methods, (method) -> method.name
     }, 'method_list.html'
 
-  # Generates the drop down file list
-  #
+  # Public: Generates the drop down file list.
   generateFileList: ->
     files = []
 
@@ -402,25 +385,22 @@ module.exports = class Generator
       files: files
     }, 'file_list.html'
 
-  # Generates the drop down extra list
-  #
+  # Public: Generates the drop down extra list.
   generateExtraList: ->
     @templater.render 'extra_list', {
       path: ''
       extras: _.union [@options.readme], @options.extras.sort()
     }, 'extra_list.html'
 
-  # Copy the styles and scripts.
-  #
+  # Public: Copy the styles and scripts.
   copyAssets: ->
     @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.css'), path.join(@options.output, 'assets', 'biscotto.css')
     @copy path.join(__dirname, '..', 'theme', 'default', 'assets', 'biscotto.js'), path.join(@options.output, 'assets', 'biscotto.js')
 
-  # Copy a file
+  # Public: Copy a file from its temporary location to a more permanent one.
   #
-  # from - the source file name (a [String])
-  # to - the destination file name (a [String])
-  #
+  # from - The source filename as a {String}
+  # to - The destination filename as a {String}
   copy: (from, to) ->
     dir = path.dirname(to)
     mkdirp dir, (err) ->
@@ -431,11 +411,9 @@ module.exports = class Generator
         to = fs.createWriteStream to
         from.pipe to
 
-  # Write the data used in search into
-  # a JSON file used by the frontend.
+  # Public: Writs the data used by search into a JSON file used by the frontend.
   #
-  # file - the file callback (a [Function])
-  #
+  # file - A {Function} callback after every file is read
   generateSearchData: (file) ->
     search = []
 

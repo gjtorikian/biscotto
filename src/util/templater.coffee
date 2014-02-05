@@ -6,17 +6,16 @@ _.str   = require 'underscore.string'
 walkdir = require 'walkdir'
 hamlc   = require 'haml-coffee'
 
-# Haml Coffee template compiler.
+# Public: Haml Coffee template compiler.
 #
 module.exports = class Templater
 
-  # Construct the templater. Reads all templates and constructs
+  # Public: Construct the templater. Reads all templates and constructs
   # the global template context.
   #
-  # options - the options (a [Object])
-  # referencer - the link type referencer (a [Referencer])
-  # parser - the biscotto parser (a [Parser])
-  #
+  # options - The options (a {Object})
+  # referencer - The link type referencer (a {Referencer})
+  # parser - The biscotto parser (a {Parser})
   constructor: (@options, @referencer, @parser) ->
     @JST = []
 
@@ -40,20 +39,18 @@ module.exports = class Templater
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
         @JST[match[1]] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
 
-  # Redirect template generation to a callback.
+  # Public: Redirect template generation to a callback.
   #
-  # file - the file callback function (a [Function])
-  #
+  # file - The file callback {Function}
   redirect: (file) -> @file = file
 
-  # Render the given template with the context and the
+  # Public: Render the given template with the context and the
   # global context object merged as template data. Writes
   # the file as the output filename.
   #
-  # template - the template name (a [String])
-  # context - the context object (a [Object])
-  # filename - the output file name (a [String])
-  #
+  # template - The template name (a {String})
+  # context - The context object (a {Object})
+  # filename - The output file name (a {String})
   render: (template, context = {}, filename = '') ->
     html = @JST[template](_.extend(@globalContext, context))
 

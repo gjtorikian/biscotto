@@ -12,15 +12,14 @@ VirtualMethod = require './nodes/virtual_method'
 {whitespace} = require('./util/text')
 {SourceMapConsumer} = require 'source-map'
 
-# CoffeeScript parser to convert the files into a
-# documentation domain nodes.
+# Public: This parser is responsible for converting each file into the intermediate /
+# AST representation as a JSON node.
 #
 module.exports = class Parser
 
-  # Construct the parser
+  # Public: Construct the parser
   #
-  # options - the parser options (a [Object])
-  #
+  # options - An {Object} of options
   constructor: (@options) ->
     @files   = []
     @classes = []
@@ -33,18 +32,17 @@ module.exports = class Parser
 
                         """
 
-  # Parse the given CoffeeScript file
+  # Public: Parse the given CoffeeScript file.
   #
-  # file - the CoffeeScript file name (a [String])
-  #
+  # file - A {String} representing the the CoffeeScript filename
   parseFile: (file) ->
     @parseContent fs.readFileSync(file, 'utf8'), file
     @fileCount += 1
 
-  # Parse the given CoffeeScript content
+  # Public: Parse the given CoffeeScript content.
   #
-  # content - the CoffeeScript file content (a [String])
-  # file - the CoffeeScript file name (a [String])
+  # content - A {String} representing the CoffeeScript file content
+  # file - A {String} representing the CoffeeScript file name
   #
   parseContent: (content, file = '') ->
     @previousNodes = []
@@ -115,10 +113,10 @@ module.exports = class Parser
 
     root
 
-  # Convert the comments to block comments, so they appear in the nodes.
+  # Public: Converts the comments to block comments, so they appear in the node structure.
+  # Only block comments are considered by Biscotto.
   #
-  # content - the CoffeeScript file content (a [String])
-  #
+  # content - A {String} representing the CoffeeScript file content
   convertComments: (content) ->
     result         = []
     comment        = []
@@ -221,22 +219,21 @@ module.exports = class Parser
 
     [result.join('\n'), lineMapping]
 
-  # Attach each parent to its children, so we are able
+  # Public: Attach each parent to its children, so we are able
   # to traverse the ancestor parse tree. Since the
   # parent attribute is already used in the class node,
   # the parent is stored as `ancestor`.
   #
-  # nodes - the CoffeeScript nodes (a [Base])
+  # nodes - A {Base} representing the CoffeeScript nodes
   #
   linkAncestors: (node) ->
     node.eachChild (child) =>
       child.ancestor = node
       @linkAncestors child
 
-  # Get all parsed methods
+  # Public: Get all the parsed methods.
   #
-  # Returns  (a ) [Array<Method>] all methods
-  #
+  # Returns an {Array} of {Method}s.
   getAllMethods: ->
     unless @methods
       @methods = []
@@ -252,10 +249,9 @@ module.exports = class Parser
 
     @methods
 
-  # Get all parsed variables
+  # Public: Get all parsed variables.
   #
-  # Returns  (a ) [Array<Variable>] all variables
-  #
+  # Returns an {Array} of {Variable}s.
   getAllVariables: ->
     unless @variables
       @variables = []
@@ -271,8 +267,7 @@ module.exports = class Parser
 
     @variables
 
-  # Show the parsing statistics
-  #
+  # Public: Show the final parsing statistics.
   showResult: (generator) ->
     fileCount      = @files.length
 
@@ -337,10 +332,9 @@ module.exports = class Parser
     if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object.
   #
-  # Returns the JSON object (a [Object])
-  #
+  # Returns the JSON {Object}.
   toJSON: ->
     json = []
 

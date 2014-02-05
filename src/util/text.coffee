@@ -1,13 +1,12 @@
-# Global text helpers
+# Public: Global text helpers.
 #
 module.exports =
 
-  # Whitespace helper function
+  # Public: Whitespace helper function
   #
-  # n - the number of spaces (a [Number])
+  # n - The number of spaces to create (a {Number})
   #
-  # Returns the space string (a [String])
-  #
+  # Returns the space string (a {String}).
   whitespace: (n) ->
     a = []
     while a.length < n

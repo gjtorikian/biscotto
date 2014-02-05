@@ -17,5 +17,6 @@
 	"Number" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number",
 	"Object" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object",
 	"RegExp" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp",
-	"String" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String"
+	"String" : "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String",
+	"Base": "http://coffeescript.org/documentation/docs/nodes.html#section-7"
 }

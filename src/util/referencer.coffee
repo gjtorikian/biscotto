@@ -2,36 +2,33 @@ _ = require 'underscore'
 path = require 'path'
 fs = require 'fs'
 
-# Class reference resolver.
+# Public: Responsible for resolving class references.
 #
 module.exports = class Referencer
 
-  # Construct a referencer.
+  # Public: Construct a referencer.
   #
   # classes - All known classes
   # mixins - All known mixins
-  # options - the parser options (a [Object])
-  #
+  # options - the parser options (a {Object})
   constructor: (@classes, @mixins, @options) ->
     @readStandardJSON()
     @resolveParamReferences()
     @errors = 0
 
-  # Get all direct subclasses.
+  # Public: Get all direct subclasses.
   #
-  # clazz - the parent class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the classes
-  #
+  # Returns an {Array} of {Class}es.
   getDirectSubClasses: (clazz) ->
     _.filter @classes, (cl) -> cl.getParentClassName() is clazz.getFullName()
 
-  # Get all inherited methods.
+  # Public: Get all inherited methods.
   #
-  # clazz - the parent class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the classes
-  #
+  # Returns the inherited methods.
   getInheritedMethods: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
@@ -40,12 +37,11 @@ module.exports = class Referencer
     else
       []
 
-  # Get all included mixins in the class hierarchy.
+  # Public: Get all included mixins in the class hierarchy.
   #
-  # clazz - the class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the mixins (a [Object])
-  #
+  # Returns an {Array} of {Mixin}s.
   getIncludedMethods: (clazz) ->
     result = {}
 
@@ -60,12 +56,11 @@ module.exports = class Referencer
 
     result
 
-  # Get all extended mixins in the class hierarchy.
+  # Public: Get all extended mixins in the class hierarchy.
   #
-  # clazz - the class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the mixins (a [Object])
-  #
+  # Returns an {Array} of {Mixin}s.
   getExtendedMethods: (clazz) ->
     result = {}
 
@@ -80,12 +75,11 @@ module.exports = class Referencer
 
     result
 
-  # Get all concerns
+  # Public: Get all concerns methods.
   #
-  # clazz - the class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the concerns (a [Object])
-  #
+  # Returns an {Array} of concern {Method}s.
   getConcernMethods: (clazz) ->
     result = {}
 
@@ -100,12 +94,11 @@ module.exports = class Referencer
 
     result
 
-  # Get a list of all methods from the given mixin name
+  # Public: Get a list of all methods from the given mixin name
   #
-  # name - The full name of the mixin
+  # name - The full name of the {Mixin}
   #
-  # Returns the mixin methods
-  #
+  # Returns the mixin methods as an {Array}.
   resolveMixinMethods: (name) ->
     mixin = _.find @mixins, (m) -> m.getMixinName() is name
 
@@ -116,12 +109,11 @@ module.exports = class Referencer
       @errors++
       []
 
-  # Get all inherited variables.
+  # Public: Get all inherited variables.
   #
-  # clazz - the parent class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the variables
-  #
+  # Returns an {Array} of {Variable}s.
   getInheritedVariables: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
@@ -130,21 +122,19 @@ module.exports = class Referencer
     else
       []
 
-  # Get all inherited constants.
+  # Public: Get all inherited constants.
   #
-  # clazz - the parent class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the constants
-  #
+  # Returns an {Array} of {Variable}s that are constants.
   getInheritedConstants: (clazz) ->
     _.filter @getInheritedVariables(clazz), (v) -> v.isConstant()
 
-  # Get all inherited properties.
+  # Public: Get all inherited properties.
   #
-  # clazz - the parent class (a [Class])
+  # clazz - The parent class (a {Class})
   #
-  # Returns the properties
-  #
+  # Returns an {Array} of {Property} types.
   getInheritedProperties: (clazz) ->
     unless _.isEmpty clazz.getParentClassName()
       parentClass = _.find @classes, (c) -> c.getFullName() is clazz.getParentClassName()
@@ -153,15 +143,14 @@ module.exports = class Referencer
     else
       []
 
-  # Create browsable links for known entities.
+  # Public: Creates browsable links for known entities.
   #
-  # See {#getLink}.
+  # See {.getLink}.
   #
-  # text - the text to parse. (a [String])
-  # path - the path prefix (a [String])
+  # text - The text to parse (a {String})
+  # path - The path prefix (a {String})
   #
-  # Returns the processed text (a [String])
-  #
+  # Returns the processed text (a {String})
   linkTypes: (text = '', path) ->
     text = text.split ','
 
@@ -170,15 +159,14 @@ module.exports = class Referencer
 
     text.join(', ')
 
-  # Create browsable links to a known entity.
+  # Public: Create browsable links to a known entity.
   #
-  # See {#getLink}.
+  # See {.getLink}.
   #
-  # text - the text to parse. (a {String})
-  # path - the path prefix (a {Number string string string.})
+  # text - The text to parse (a {String})
+  # path - The path prefix (a {String})
   #
-  # Returns the processed text (a [String])
-  #
+  # Returns the processed text (a {String})
   linkType: (text = '', path) ->
     text = _.str.escapeHTML text
 
@@ -188,29 +176,27 @@ module.exports = class Referencer
 
     text
 
-  # Get the link to classname.
+  # Public: Get the link to classname.
   #
-  # See {#linkTypes}.
+  # See {.linkTypes}.
   #
-  # classname - the class name (a [String])
-  # path - the path prefix (a [String])
+  # classname - The class name (a {String})
+  # path - The path prefix (a {String})
   #
   # Returns the link (if any)
-  #
   getLink: (classname, path) ->
     for clazz in @classes
       if classname is clazz.getFullName() then return "#{ path }classes/#{ clazz.getFullName().replace(/\./g, '/') }.html"
 
     undefined
 
-  # Resolve all tags on class and method json output.
+  # Public: Resolve all tags on class and method json output.
   #
-  # data - the json data (a [Object])
-  # entity - the entity context (a [Class])
-  # path - the path to the asset root (a [String])
+  # data - The JSON data (a {Object})
+  # entity - The entity context (a {Class})
+  # path - The path to the asset root (a {String})
   #
-  # Returns the json data with resolved references (a [Object])
-  #
+  # Returns the JSON data with resolved references (a {Object})
   resolveDoc: (data, entity, path) ->
     if data.doc
       if data.doc.see
@@ -257,7 +243,7 @@ module.exports = class Referencer
 
     data
 
-  # Search a text to find see links wrapped in curly braces.
+  # Public: Search a text to find see links wrapped in curly braces.
   #
   # Examples
   #
@@ -266,7 +252,6 @@ module.exports = class Referencer
   # text - The text to search (a {String})
   #
   # Returns the text with hyperlinks (a {String})
-  #
   resolveTextReferences: (text = '', entity, path) ->
     # Make curly braces within code blocks undetectable
     text = text.replace /<code(\s+[^>]*)?>(.|\n)+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
@@ -291,12 +276,10 @@ module.exports = class Referencer
     # Restore curly braces within code blocks
     text = text.replace /<code(\s+[^>]*)?>(.|\n)+?<\/code>/mg, (match) -> match.replace(/\u0091/mg, '{').replace(/\u0092/mg, '}')
 
-  # Resolves delegations; that is, methods whose source content come from
+  # Public: Resolves delegations; that is, methods whose source content come from
   # another file.
   #
-  # Conrefs, basically.
-  #
-  #
+  # These are basically conrefs.
   resolveDelegation: (origin, ref, entity) ->
 
     # Link to direct class methods
@@ -391,14 +374,13 @@ module.exports = class Referencer
 
     return [ origin.doc, origin.parameters ]
 
-  # Resolves curly-bracket reference links.
+  # Public: Resolves curly-bracket reference links.
   #
-  # see - the reference object (a [Object])
-  # entity - the entity context (a [Class])
-  # path - the path to the asset root (a [String])
+  # see - The reference object (a {Object})
+  # entity - The entity context (a {Class})
+  # path - The path to the asset root (a {String})
   #
-  # Returns the resolved see (a [Object])
-  #
+  # Returns the resolved see (a {Object}).
   resolveSee: (see, entity, path) ->
     # If a reference starts with a space like `{ a: 1 }`, then it's not a valid reference
     return see if see.reference.substring(0, 1) is ' '
@@ -503,16 +485,21 @@ module.exports = class Referencer
     else
       return ""
 
+  # Public: Constructs the documentation links for the standard JS objects.
+  #
+  # Returns a JSON {Object}.
   readStandardJSON: ->
     @standardObjs = JSON.parse(fs.readFileSync(path.join(__dirname, 'standardObjs.json'), 'utf-8'))
 
+  # Public: Checks to make sure that an object that's referenced exists in *standardObjs.json*.
+  #
+  # Returns a {Boolean}.
   verifyExternalObjReference: (name) ->
     @standardObjs[name] != undefined
 
-  # Resolve parameter references. This goes through all
+  # Public: Resolve parameter references. This goes through all
   # method parameter and see if a param doc references another
   # method. If so, copy over the doc meta data.
-  #
   resolveParamReferences: ->
     entities = _.union @classes, @mixins
 

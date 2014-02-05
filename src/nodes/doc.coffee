@@ -6,16 +6,15 @@ marked = require 'marked'
 _      = require 'underscore'
 _.str  = require 'underscore.string'
 
-# A documentation node is responsible for parsing
+# Public: A documentation node is responsible for parsing
 # the comments for known tags.
 #
 module.exports = class Doc extends Node
 
-  # Construct a documentation
+  # Public: Construct a documentation node.
   #
-  # node - the comment node (a [Object])
-  # options - the parser options (a [Object])
-  #
+  # node - The comment node (a {Object})
+  # options - The parser options (a {Object})
   constructor: (@node, @options) ->
     try
       if @node
@@ -24,23 +23,22 @@ module.exports = class Doc extends Node
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
 
-  # Determines if the current doc has some comments
+  # Public: Determines if the current doc has some comments
   #
-  # Returns the comment status (a [Boolean])
-  #
+  # Returns the comment status (a {Boolean}).
   hasComment: ->
     !_.str.isBlank(@comment)
 
-  # Is this doc public?
+  # Public: Is this doc public?
   #
   # Returns a {Boolean}.
   isPublic: ->
     /public/i.test(@status)
 
-  # Detect whitespace on the left and removes
+  # Public: Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
-  # lines - The comment lines [[String]]
+  # lines - The comment lines [{String}]
   #
   # Examples
   #
@@ -49,8 +47,7 @@ module.exports = class Doc extends Node
   #
   # This will keep indention for examples intact.
   #
-  # Returns the left trimmed lines as an array of Strings
-  #
+  # Returns the left trimmed lines as an {Array} of {String}s.
   leftTrimBlock: (lines) ->
     # Detect minimal left trim amount
     trimMap = _.map lines, (line) ->
@@ -71,7 +68,7 @@ module.exports = class Doc extends Node
 
     lines
 
-  # Parse the given lines as TomDoc and adds the result
+  # Public: Parse the given lines as TomDoc and adds the result
   # to the result object.
   parseBlock: (lines) ->
     comment = []
@@ -115,9 +112,9 @@ module.exports = class Doc extends Node
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
     @summary = Markdown.convert(_.str.clean(sentence || text), true)
 
-  # Parse description.
+  # Public: Parse the member description.
   #
-  # section - String containing description.
+  # section - The section {String} containing a description.
   #
   # Returns nothing.
   parse_description: (section) ->
@@ -135,10 +132,10 @@ module.exports = class Doc extends Node
     else
       return { description: _.str.strip(section).replace(/\r?\n/g, ' ') }
 
-  # Parse examples.
+  # Public: Parse the member examples.
   #
-  # section  - String starting with `Examples`.
-  # sections - All sections subsequent to section.
+  # section  - The section {String} starting with "Examples"
+  # sections - All sections subsequent to `section`.
   #
   # Returns nothing.
   parse_examples: (section, sections) ->
@@ -153,9 +150,9 @@ module.exports = class Doc extends Node
 
     examples
 
-  # Parse returns section.
+  # Public: Parse the member's return values.
   #
-  # section - String containing Returns lines.
+  # section - The section {String} starting with "Returns"
   #
   # Returns nothing.
   parse_returns: (section) ->
@@ -177,10 +174,10 @@ module.exports = class Doc extends Node
 
     returns
 
-  # Parse arguments section. Arguments occur subsequent to
+  # Public: Parse the member's arguments. Arguments occur subsequent to
   # the description.
   #
-  # section - String containing agument definitions.
+  # section - A {String} containing the argument definitions.
   #
   # Returns nothing.
   parse_arguments: (section) ->
@@ -214,6 +211,11 @@ module.exports = class Doc extends Node
 
     args
 
+  # Internal: Deindents excess whitespace from the sections.
+  #
+  # lines - An {Array} of {String}s
+  #
+  # Returns `lines` with the leftmost whitespace removed.
   deindent: (lines) ->
     # remove indention
     spaces = _.map lines, (line) ->
@@ -231,10 +233,9 @@ module.exports = class Doc extends Node
       else
         line[space..-1]
 
-  # Get a JSON representation of the object
+  # Public: Get a JSON representation of the object.
   #
-  # Returns the JSON object (a [Object])
-  #
+  # Returns the JSON object (a {Object}).
   toJSON: ->
     if @node
       json =
