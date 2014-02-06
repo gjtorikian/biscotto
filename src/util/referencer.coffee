@@ -237,6 +237,9 @@ module.exports = class Referencer
       for returnValue in data.doc.returnValue ? []
         returnValue.desc = @resolveTextReferences(returnValue.desc, entity, path)
 
+        for options in returnValue.options ? []
+          options.desc = @resolveTextReferences(options.desc, entity, path)
+
       if data.doc.throwValue
         for throws, index in data.doc.throwValue
           data.doc.throwValue[index].desc = @resolveTextReferences(throws.desc, entity, path)
