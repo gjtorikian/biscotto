@@ -22,6 +22,9 @@ test = (cb) ->
   exec 'jasmine-node --coffee spec', (err, stdout, stderr) ->
     log stdout
     log stderr
+    if stderr?.length > 0
+      console.error "Errors found!"
+      process.exit(1)
 
 task 'test', 'Run all tests', -> test onerror
 
