@@ -158,19 +158,30 @@ module.exports = class Doc extends Node
   parse_returns: (section) ->
     returns = []
     current = []
+    in_hash = false
 
     lines = section.split("\n")
     _.each lines, (line) ->
       line = _.str.trim(line)
 
       if /^Returns/.test(line)
+        in_hash = false
         returns.push(
           type: Referencer.getLinkMatch(line)
           desc: Markdown.convert(line).replace /<\/?p>/g, ""
         )
         current = returns
+      else if _.last(returns) and hash_match = line.match(/^:(\w+)\s*-\s*(.*)/)
+        in_hash = true
+        _.last(returns).options ?= []
+        name = hash_match[1]
+        desc = hash_match[2]
+        _.last(returns).options.push({name, desc, type: Referencer.getLinkMatch(line)})
       else if /^\S+/.test(line)
-        _.last(returns).desc = _.last(returns).desc.concat "\n" + _.str.strip(line)
+        if in_hash
+          _.last(_.last(returns).options).desc += " #{line}"
+        else
+          _.last(returns).desc += " #{line}"
 
     returns
 
@@ -183,6 +194,7 @@ module.exports = class Doc extends Node
   parse_arguments: (section) ->
     args = []
     last_indent = null
+    in_hash = false
 
     _.each section.split("\n"), (line) ->
       unless _.isEmpty(line)
@@ -191,20 +203,26 @@ module.exports = class Doc extends Node
         stripped_line = _.str.strip(line)
 
         if last_indent != null && indent >= last_indent && (indent != 0) && stripped_line.match(/^\w+:/) == null
-          _.last(args).desc += " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
+          desc = " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
+          if in_hash
+            _.last(_.last(args).options).desc += desc
+          else
+            _.last(args).desc += desc
         else
           arg = line.split(" - ")
           param = _.str.strip(arg[0])
           desc = Markdown.convert(_.str.strip(arg[1])).replace /<\/?p>/g, ""
 
-          param_match = param.match(/^\w+:/)
           # it's a hash description
-          if param_match && _.str.endsWith(param_match[0], ":")
-            _.last(args).options ||= []
-            key = param.split(":")
-            keyDesc = _.str.strip(key[1])
-            _.last(args).options.push( {name: key[0], desc: Markdown.convert(keyDesc).replace(/<\/?p>/g, ""), type: Referencer.getLinkMatch(line)} )
+          param_match = param.match(/^:(\w+)$/)
+
+          if not in_hash and param_match and _.last(args)?
+            in_hash = true
+            _.last(args).options ?= []
+            name = param_match[1]
+            _.last(args).options.push({name, desc, type: Referencer.getLinkMatch(line)})
           else
+            in_hash = false
             args.push( {name: param, desc: desc, type: Referencer.getLinkMatch(line)} )
 
         last_indent = indent
