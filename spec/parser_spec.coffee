@@ -47,9 +47,8 @@ for filename in walkdir.sync './spec/templates'
             parser.parseFile "./spec/templates/methods/curly_method_documentation.coffee"
             parser.parseFile "./spec/templates/methods/fixtures/private_class.coffee"
 
-          # since delegation happens in the generator, we need to force that 
-          # magic here
-          if /delegation/.test filename
+            # since delegation happens in the generator, we need to force that
+            # magic here
             generator = new Generator(parser,
                                       noOutput: true
                                       stats: true
@@ -71,8 +70,10 @@ for filename in walkdir.sync './spec/templates'
             # [0], because we don't want the parsed files in the resulting JSON
             generated = JSON.stringify([parser.toJSON()[0]], null, 2)
 
-          delta = diff.diffLines expected, generated
-          expect(delta.length).toEqual(1)
+
+          # if the tests complain about "Object #<Object> has no method 'diffLines'"
+          # you can safely ignore it; an earlier test error is causing it
+          delta = diff.diffLines(expected, generated)
           if (delta.length > 1)
             console.log "\nFor #{filename}:"
             for diff in delta
@@ -80,5 +81,4 @@ for filename in walkdir.sync './spec/templates'
                 console.log "Added: \n#{_.str.strip(diff.value)}"
               if diff.removed
                 console.log "Removed: \n#{_.str.strip(diff.value)}"
-            console.log generated
-            process.exit()
+            expect(expected).toEqual(generated)
