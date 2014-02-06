@@ -36,8 +36,8 @@ Hash options are placed on a newline and end with a colon:
 
 ```
 options - These are the options:
-          key1: Blah blah.
-          key2: Blah
+          :key1 - Blah blah.
+          :key2 - Blah
 ```
 
 If a description has a default value, define it at the end of the
@@ -113,7 +113,7 @@ choose to copy over the documentation via _delegation_. For example:
 delegatedMethod: ->
 
 # Public: I'm being delegated to!
-# 
+#
 # a - A {Number}
 # b - A {String}
 #
@@ -121,7 +121,7 @@ delegatedMethod: ->
 delegatedRegular: (a, b) ->
 ```
 
-`delegatedMethod` has the same arguments, return type, and documentation as 
+`delegatedMethod` has the same arguments, return type, and documentation as
 `delegatedRegular`. You can also choose to delegate to a different class:
 
 ```coffee
