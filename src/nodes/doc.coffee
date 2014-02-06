@@ -216,7 +216,7 @@ module.exports = class Doc extends Node
           # it's a hash description
           param_match = param.match(/^:(\w+)$/)
 
-          if not in_hash and param_match and _.last(args)?
+          if param_match and _.last(args)?
             in_hash = true
             _.last(args).options ?= []
             name = param_match[1]
