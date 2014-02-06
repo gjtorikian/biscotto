@@ -257,7 +257,7 @@ module.exports = class Referencer
     text = text.replace /<code(\s+[^>]*)?>(.|\n)+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
 
     # Search for references and replace them
-    text = text.replace /(?:\[((?:\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*)\])?\{([^\}]*)\}/gm, (match, label, link) =>
+    text = text.replace /(?:\[((?:\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*)\])?\{([^\}]+)\}/gm, (match, label, link) =>
       # Remove the markdown generated autolinks
       link = link.replace(/<.+?>/g, '').split(' ')
       href = link.shift()
