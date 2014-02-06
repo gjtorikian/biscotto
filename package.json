@@ -39,10 +39,10 @@
     "jasmine-node": ">= 1.0.13",
     "diff": "1.0.4"
   },
-  "homepage": "https://github.com/gjtorikian/biscotto",
+  "homepage": "https://github.com/atom/biscotto",
   "repository": {
     "type": "git",
-    "url": "git://github.com/gjtorikian/biscotto.git"
+    "url": "git://github.com/atom/biscotto.git"
   },
   "scripts": {
     "test": "./node_modules/.bin/cake test"
