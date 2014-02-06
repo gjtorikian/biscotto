@@ -218,7 +218,7 @@ module.exports = class Doc extends Node
 
           if not in_hash and param_match and _.last(args)?
             in_hash = true
-            _.last(args).options ||= []
+            _.last(args).options ?= []
             name = param_match[1]
             _.last(args).options.push({name, desc, type: Referencer.getLinkMatch(line)})
           else
