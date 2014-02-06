@@ -158,19 +158,30 @@ module.exports = class Doc extends Node
   parse_returns: (section) ->
     returns = []
     current = []
+    in_hash = false
 
     lines = section.split("\n")
     _.each lines, (line) ->
       line = _.str.trim(line)
 
       if /^Returns/.test(line)
+        in_hash = false
         returns.push(
           type: Referencer.getLinkMatch(line)
           desc: Markdown.convert(line).replace /<\/?p>/g, ""
         )
         current = returns
+      else if _.last(returns) and hash_match = line.match(/^:(\w+)\s*-\s*(.*)/)
+        in_hash = true
+        _.last(returns).options ?= []
+        name = hash_match[1]
+        desc = hash_match[2]
+        _.last(returns).options.push({name, desc, type: Referencer.getLinkMatch(line)})
       else if /^\S+/.test(line)
-        _.last(returns).desc = _.last(returns).desc.concat "\n" + _.str.strip(line)
+        if in_hash
+          _.last(_.last(returns).options).desc += " #{line}"
+        else
+          _.last(returns).desc += " #{line}"
 
     returns
 

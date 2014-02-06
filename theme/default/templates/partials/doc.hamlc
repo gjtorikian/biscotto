@@ -96,6 +96,17 @@
             - else
               %span.desc!= returnVal.desc
 
+            - if returnVal.options
+              %ul.options
+                - for hash, option of returnVal.options
+                  %li
+                    - if option.type
+                      %span.type= '(' + option.type + ')'
+                    %span.name= option.name
+                    - if option.desc
+                      &mdash;
+                      %span.desc!= option.desc
+
   - if @doc?.authors
     %h3 Author:
     %ul.author
