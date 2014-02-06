@@ -1,5 +1,4 @@
 fs           = require 'fs'
-colors       = require 'colors'
 _            = require 'underscore'
 _.str        = require 'underscore.string'
 CoffeeScript = require 'coffee-script'
@@ -311,6 +310,7 @@ module.exports = class Parser
       """
 
     if @options.missing
+      require 'colors'
       noDocClassNames = []
       for noDocClass in noDocClasses
         noDocClassNames.push noDocClass.className.cyan
