@@ -75,10 +75,11 @@ for filename in walkdir.sync './spec/templates'
           # you can safely ignore it; an earlier test error is causing it
           delta = diff.diffLines(expected, generated)
           if (delta.length > 1)
-            console.log "\nFor #{filename}:"
+            console.error "\nFor #{filename}:"
             for diff in delta
               if diff.added
-                console.log "Added: \n#{_.str.strip(diff.value)}"
+                console.error "Added: \n#{_.str.strip(diff.value)}"
               if diff.removed
-                console.log "Removed: \n#{_.str.strip(diff.value)}"
+                console.error "Removed: \n#{_.str.strip(diff.value)}"
+            console.error delta
             process.exit(1)
