@@ -183,6 +183,7 @@ module.exports = class Doc extends Node
   parse_arguments: (section) ->
     args = []
     last_indent = null
+    in_hash = false
 
     _.each section.split("\n"), (line) ->
       unless _.isEmpty(line)
@@ -191,20 +192,26 @@ module.exports = class Doc extends Node
         stripped_line = _.str.strip(line)
 
         if last_indent != null && indent >= last_indent && (indent != 0) && stripped_line.match(/^\w+:/) == null
-          _.last(args).desc += " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
+          desc = " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
+          if in_hash
+            _.last(_.last(args).options).desc += desc
+          else
+            _.last(args).desc += desc
         else
           arg = line.split(" - ")
           param = _.str.strip(arg[0])
           desc = Markdown.convert(_.str.strip(arg[1])).replace /<\/?p>/g, ""
 
-          param_match = param.match(/^\w+:/)
           # it's a hash description
-          if param_match && _.str.endsWith(param_match[0], ":")
+          param_match = param.match(/^:(\w+)$/)
+
+          if not in_hash and param_match and _.last(args)?
+            in_hash = true
             _.last(args).options ||= []
-            key = param.split(":")
-            keyDesc = _.str.strip(key[1])
-            _.last(args).options.push( {name: key[0], desc: Markdown.convert(keyDesc).replace(/<\/?p>/g, ""), type: Referencer.getLinkMatch(line)} )
+            name = param_match[1]
+            _.last(args).options.push({name, desc, type: Referencer.getLinkMatch(line)})
           else
+            in_hash = false
             args.push( {name: param, desc: desc, type: Referencer.getLinkMatch(line)} )
 
         last_indent = indent
