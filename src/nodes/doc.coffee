@@ -202,7 +202,7 @@ module.exports = class Doc extends Node
 
         stripped_line = _.str.strip(line)
 
-        if last_indent != null && indent >= last_indent && (indent != 0) && stripped_line.match(/^\w+:/) == null
+        if last_indent != null && indent >= last_indent && (indent != 0) && stripped_line.match(/^:\w+/) == null
           desc = " " + Markdown.convert(stripped_line).replace /<\/?p>/g, ""
           if in_hash
             _.last(_.last(args).options).desc += desc
