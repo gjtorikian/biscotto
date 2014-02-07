@@ -95,6 +95,12 @@ You can list more than one `Returns` per method by separating each type on a dif
 #
 # Returns {Boolean} when it works.
 returnSingleType: ->
+
+# Internal: Does some thing.
+#
+# Returns an object with the keys:
+#   :duration - A {Number} of millseconds.
+returnAHash: =>
 ```
 
 ### Deviation from TomDoc
