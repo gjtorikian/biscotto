@@ -13,9 +13,9 @@ class App.CurlyMethodDocumentation extends App.Doc
   # it - The {String} thing to do
   # again - A {Boolean} for do it again
   # options - The do options
-  #           speed: The {String} speed
-  #           repeat: How many {Number} times to repeat
-  #           tasks: The {[Tasks]} tasks to do
+  #           :speed - The {String} speed
+  #           :repeat - How many {Number} times to repeat
+  #           :tasks - The {Tasks} tasks to do
   #
   # Returns {Boolean} when successfully executed
   #

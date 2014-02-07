@@ -76,8 +76,8 @@
                 },
                 {
                   "name": "tasks",
-                  "desc": "The {[Tasks]} tasks to do",
-                  "type": "[Tasks]"
+                  "desc": "The {Tasks} tasks to do",
+                  "type": "Tasks"
                 }
               ]
             }
@@ -134,8 +134,8 @@
                 },
                 {
                   "name": "tasks",
-                  "desc": "The {[Tasks]} tasks to do",
-                  "type": "[Tasks]"
+                  "desc": "The {Tasks} tasks to do",
+                  "type": "Tasks"
                 }
               ]
             }
