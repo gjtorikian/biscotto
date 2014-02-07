@@ -32,7 +32,7 @@ for filename in walkdir.sync './spec/templates'
             readme: ''
             title: ''
             quiet: false
-            private: !(/as_private/.test filename)
+            private: true
             github: ''
           })
 
@@ -69,7 +69,6 @@ for filename in walkdir.sync './spec/templates'
 
             # [0], because we don't want the parsed files in the resulting JSON
             generated = JSON.stringify([parser.toJSON()[0]], null, 2)
-
 
           # if the tests complain about "Object #<Object> has no method 'diffLines'"
           # you can safely ignore it; an earlier test error is causing it
