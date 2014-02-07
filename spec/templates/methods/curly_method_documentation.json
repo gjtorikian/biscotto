@@ -4,7 +4,7 @@
     "doc": {
       "comment": "",
       "summary": "",
-      "status": "Public",
+      "status": "Private",
       "generated": true
     },
     "class": {
@@ -21,7 +21,7 @@
         "doc": {
           "comment": "<p>Should be overloaded to change fetch limit.</p>",
           "summary": "Should be overloaded to change fetch limit.",
-          "status": "Public",
+          "status": "Private",
           "returnValue": [
             {
               "type": "Number",
@@ -85,8 +85,8 @@
           ]
         },
         "type": "instance",
-        "signature": "Boolean .<strong>do</strong>(it, again, options)",
-        "name": "do",
+        "signature": "Boolean .<strong>doIt</strong>(it, again, options)",
+        "name": "doIt",
         "bound": false,
         "parameters": [
           {

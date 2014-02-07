@@ -19,7 +19,7 @@ class App.CurlyMethodDocumentation extends App.Doc
   #
   # Returns {Boolean} when successfully executed
   #
-  do: (it, again, options) ->
+  doIt: (it, again, options) ->
 
   # Private: Do it without spaces!
   #

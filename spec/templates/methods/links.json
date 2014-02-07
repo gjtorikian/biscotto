@@ -4,7 +4,7 @@
     "doc": {
       "comment": "",
       "summary": "",
-      "status": "Public",
+      "status": "Private",
       "generated": true
     },
     "class": {
@@ -20,7 +20,7 @@
         "doc": {
           "comment": "<p>External link short.</p><p><a href=\"http://coffeescript.org/\">http://coffeescript.org/</a></p>",
           "summary": "External link short.",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>externalLinkShort</strong>()",
@@ -35,7 +35,7 @@
         "doc": {
           "comment": "<p>External link <a href=\"http://coffeescript.org/\">long</a>.</p>",
           "summary": "External link <a href=\"http://coffeescript.org/\">long</a>.",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>externalLinkLong</strong>()",
@@ -50,7 +50,7 @@
         "doc": {
           "comment": "<p>internalClassLinkShort</p><p>{.internalLinkLong}</p>",
           "summary": "internalClassLinkShort {.internalLinkLong}",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>internalLinkShort</strong>()",
@@ -65,7 +65,7 @@
         "doc": {
           "comment": "<p>internalClass [Link Long]{App.TestLinks}</p>",
           "summary": "internalClass [Link Long]{App.TestLinks}",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>internalLinkLong</strong>()",
@@ -80,7 +80,7 @@
         "doc": {
           "comment": "<p>internalInstanceLinkShort {.externalLinkShort}</p>",
           "summary": "internalInstanceLinkShort {.externalLinkShort}",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>internalInstanceLinkShort</strong>()",
@@ -95,7 +95,7 @@
         "doc": {
           "comment": "<p>internalInstance [Link Long]{.externalLinkLong}</p>",
           "summary": "internalInstance [Link Long]{.externalLinkLong}",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>internalInstanceLinkLong</strong>()",
@@ -110,7 +110,7 @@
         "doc": {
           "comment": "<p>internalClassLinkShort {@internalClassLinkLong}</p>",
           "summary": "internalClassLinkShort {@internalClassLinkLong}",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "class",
         "signature": "@<strong>internalClassLinkShort</strong>()",
@@ -125,7 +125,7 @@
         "doc": {
           "comment": "<p>internalClass [LinkLong]{@internalClassLinkShort}</p>",
           "summary": "internalClass [LinkLong]{@internalClassLinkShort}",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "class",
         "signature": "@<strong>internalClassLinkLong</strong>()",

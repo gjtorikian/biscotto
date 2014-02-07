@@ -4,7 +4,7 @@
     "doc": {
       "comment": "",
       "summary": "",
-      "status": "Public",
+      "status": "Private",
       "generated": true
     },
     "class": {
@@ -23,7 +23,7 @@
           ],
           "comment": "<p>A method to run.</p>",
           "summary": "A method to run.",
-          "status": "Public"
+          "status": "Private"
         },
         "type": "instance",
         "signature": ".<strong>run</strong>()",
