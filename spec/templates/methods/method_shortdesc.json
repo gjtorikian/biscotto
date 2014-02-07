@@ -4,7 +4,7 @@
     "doc": {
       "comment": "",
       "summary": "",
-      "status": "Public",
+      "status": "Private",
       "generated": true
     },
     "class": {
@@ -35,7 +35,7 @@
         "doc": {
           "comment": "",
           "summary": "",
-          "status": "Public",
+          "status": "Private",
           "generated": true
         },
         "type": "instance",

@@ -4,7 +4,7 @@
     "doc": {
       "comment": "<p>Yep, this should be assigned to the class</p>",
       "summary": "Yep, this should be assigned to the class",
-      "status": "Public"
+      "status": "Private"
     },
     "class": {
       "className": "TestExportClass",
