@@ -181,7 +181,7 @@ module.exports = class Doc extends Node
         if in_hash
           _.last(_.last(returns).options).desc += " #{line}"
         else
-          _.last(returns).desc += " #{line}"
+          _.last(returns).desc += "\n#{line}"
 
     returns
 
