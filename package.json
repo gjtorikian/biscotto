@@ -36,6 +36,9 @@
     "colors": "~0.6.2"
   },
   "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.6.0",
+    "grunt-exec": "0.4.3",
     "jasmine-node": ">= 1.0.13",
     "diff": "1.0.4"
   },
@@ -45,6 +48,6 @@
     "url": "git://github.com/atom/biscotto.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/cake test"
+    "test": "grunt test"
   }
 }
