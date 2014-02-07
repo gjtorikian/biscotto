@@ -1,4 +1,4 @@
-Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying architecture is based on [codo](https://github.com/netzpirat/codo); however, this uses [TomDoc](http://tomdoc.org/) notation, instead of JSDoc.
+Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generator. The underlying architecture is based on [codo](https://github.com/coffeedoc/codo); however, this uses a variant of the excellent [TomDoc](http://tomdoc.org/) notation, instead of verbose JSDoc.
 
 [![Build Status](https://travis-ci.org/atom/biscotto.png?branch=master)](https://travis-ci.org/atom/biscotto)
 
@@ -6,33 +6,43 @@ Biscotto is a [CoffeeScript](http://coffeescript.org/) API documentation generat
 
 * Detects classes, methods, constants, mixins & concerns.
 * Generates a nice site to browse your code documentation in various ways.
-# JSON output
+* Intermediate JSON output to transform into any output
 
-## Text processing
+## Comment Parsing
 
-### TomDoc Notation
+The following section outlines how comments in your files are processed.
 
-API documentation should be written in the [TomDoc](http://tomdoc.org/) notation.  
-Originally conceived for Ruby, TomDoc lends itself pretty nicely to Coffeescript.
-There are some slight changes in the parse rules to match Coffeescript.
-Briefly, here's a list of how you should format your documentation:
+### TomDoc
 
-#### Status types
+API documentation should be written in the [TomDoc](http://tomdoc.org/)
+notation. Originally conceived for Ruby, TomDoc lends itself pretty nicely to
+Coffeescript. There are some slight changes in the parse rules to match
+Coffeescript. Briefly, here's a list of how you should format your
+documentation.
 
-Every class and method should start with one of three phrases: `Public:`, `Internal:`,
-and `Private:`. You can flag whether or not to include Internal and Private members
-via the options.
+#### Visibility
+
+Every class and method should start with one of three phrases: `Public:`,
+`Internal:`, and `Private:`. During the documentation generation process, you
+can flag whether or not to include Internal and Private members via the options
+passed in. If you don't have one of these status indicators, Biscotto will assume the
+global visibility (more on this below).
+
+```coffeescript
+# Public: This is a test class with `inline.dot`. Beware.
+class TestClassDocumentation
+```
 
 #### Method arguments
 
-Each method argument starts with the argument name, followed by a dash (`-`), and
+Each method argument must start with the argument name, followed by a dash (`-`), and
 the description of the argument:
 
 ```
-argument - Some word about the arg!
+argument - Some words about the arg!
 ```
 
-Hash options are placed on a newline and end with a colon:
+Hash options are placed on a newline and begin with a colon:
 
 ```
 options - These are the options:
@@ -40,27 +50,105 @@ options - These are the options:
           :key2 - Blah
 ```
 
-If a description has a default value, define it at the end of the
-description with `(default: <desc>)`.
+```coffeescript
+# Public: Does some stuff.
+#
+# something - Blah blah blah. Fah fah fah? Foo foo foo!
+# something2 - Bar bar bar. Cha cha cha!!
+# opts - The options
+#        :speed - The {String} speed
+#        :repeat -  How many {Number} times to repeat
+#        :tasks - The {Tasks} tasks to do
+bound: (something, something2, opts) =>
+```
+
+#### Examples
+
+The examples section must start with the word "Examples" on a line by itself. The
+next line should be blank. Every line thereafter should be indented by two spaces
+from the initial comment marker:
+
+``` coffeescript
+# A method to run.
+#
+# Examples
+#
+#  biscotto = require 'biscotto'
+#  file = (filename, content) ->
+#    console.log "New file %s with content %s", filename, content
+#  done = (err) ->
+#    if err
+#      console.log "Cannot generate documentation:", err
+#    else
+#      console.log "Documentation generated"
+#  biscotto.run file, done
+run: ->
+```
 
 #### Return types
 
-When returning from a method, your line should start with the word `Returns`. When
-describing the return type, wrap it in the link reference notation (two curly braces,
-like this: `{ }`). This ensures that the generated methods correlates a return type.
-Methods without return types returned `undefined`. You can list more than one `Returns`
-per method by separating each type on a different line.
+When returning from a method, your line must start with the word `Returns`.
+You can list more than one `Returns` per method by separating each type on a different line.
 
-### Status Blocks
+```coffeescript
+# Private: Do it!
+#
+# Returns {Boolean} when it works.
+returnSingleType: ->
+```
 
-You can flag methods in a file with the following syntax:
+### Deviation from TomDoc
+
+#### GitHub Flavored Markdown
+
+Biscotto documentation is processed with [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown).
+
+#### Automatic link references
+
+Biscotto comments are parsed for references to other classes, methods, and mixins, and are automatically
+linked together.
+
+There are several different link types supported:
+
+* Normal URL links: `{http://coffeescript.org/}` or `[Try CoffeeScript](http://coffeescript.org/)`
+* Link to a class or a mixin: `{Animal.Lion}` or `[The mighty lion]{Animal.Lion}`
+* Direct link to an instance method: `{Animal.Lion.walk}` or `[The lion walks]{Animal.Lion.walk}`
+* Direct link to a class method: `{Animal.Lion@constructor}` or `[A new king was born]{Animal.Lion@constructor}`
+
+If you are referring to a method within the same class, you can omit the class name: `{.walk}` or `{@constructor}`.
+
+As an added bonus, default JavaScript "types," like String, Number, Boolean, *e.t.c.*,
+have automatic links generated to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+
+Here's an example of using links:
+
+```coffeescript
+# This links out to the `long` method of the same class.
+#
+# See {.internalLinkLong} for more info.
+#
+internalLinkShort: ->
+
+# This links out to MDN.
+#
+# Returns a {Number} greater than zero.
+internalLinkLong: ->
+```
+
+Note: reference resolution does not take place within code blocks.
+
+#### Status Blocks
+
+As noted above, classes and methods can be `Public,` `Private`, or `Internal`.
+
+You can flag multiple methods in a file with the following syntax:
 
 ```coffee
 ### Public ###
 ```
 
 That will mark every method underneath that block as `Public`. You can follow the
-same notion for `Internal` as well.
+same notion for `Internal` and `Private` as well.
 
 You can have as many block status flags as you want. The amount of `#`s must be at
 least three, and you can have any text inside the block you want. For example:
@@ -69,7 +157,7 @@ least three, and you can have any text inside the block you want. For example:
 ### Internal: This does some secret stuff. ###
 ```
 
-If you specify a status for a method within a block, the status is respected.
+If you explicitly specify a status for a method within a block, the status is respected.
 For example:
 
 
@@ -84,26 +172,7 @@ shown: ->
 
 `shown` is kept as Public because of the status block, while `notShown` is indeed Internal.
 
-### GitHub Flavored Markdown
-
-Biscotto documentation is processed with [GitHub Flavored Markdown](http://github.github.com/github-flavored-markdown/).
-
-### Automatically link references
-
-Biscotto comments and all tag texts will be parsed for references to other classes, methods and mixins, and are automatically
-linked. The reference searching will not take place within code blocks, thus you can avoid reference searching errors
-by surround your code block that contains curly braces with backticks.
-
-There are several ways of link types supported and all can take an optional label after the link.
-
-* Normal URL links: `{http://coffeescript.org/}` or `[Try CoffeeScript](http://coffeescript.org/)`
-* Link to a class or mixin: `{Animal.Lion}` or `[The mighty lion]{Animal.Lion}`
-* Direct link to an instance method: `{Animal.Lion.walk}` or `[The lion walks]{Animal.Lion.walk}`
-* Direct link to a class method: `{Animal.Lion@constructor}` or `[A new king was born]{Animal.Lion@constructor}`
-
-If you are referring to a method within the same class, you can omit the class name: `{#walk}` or `{.constructor}`.
-
-### Delegation
+#### Delegation
 
 If you're writing methods that do the exact same thing as another method, you can
 choose to copy over the documentation via _delegation_. For example:
@@ -129,11 +198,15 @@ delegatedRegular: (a, b) ->
 delegatedMethod: ->
 ```
 
-Classes that are delegated should still set their own statuses. For example, if
+Classes that are delegated should still set their own statuses. For example, even though
 `Another.Class@somewhere` is Public, `delegatedMethod` is still marked as `Private`.
 The same documentation remains.
 
-### Examples
+#### Defaults
+
+Unlike TomDoc, there is no notation for `default` values. Biscotto will take care of it for you.
+
+## More Examples
 
 For more technical examples, peruse the [spec](./spec) folder, which contains all
 the tests for Biscotto.
