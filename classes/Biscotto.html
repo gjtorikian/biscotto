@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/biscotto.css' type='text/css'>
+  <script src='..&#47;assets/biscotto.js'></script>
+  <script src='..&#47;assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='..&#47;README.md.html' title='Biscotto'>Biscotto</a>
+    &raquo;
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Biscotto</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Classes</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Methods</a>
+      <a id='extra_list_link' href='..&#47;extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Biscotto
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;biscotto.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>Biscotto - the TomDoc-CoffeeScript API documentation generator</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#detectExtras-class'>
+        @<strong>detectExtras</strong>(done)
+      </a>
+    </span>
+    <span class='desc'>
+      Find extra project files in the repository.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#detectName-class'>
+        @<strong>detectName</strong>(done)
+      </a>
+    </span>
+    <span class='desc'>
+      Find the project name by either parsing <code>package.json</code>, or getting the current working directory name.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#detectOrigin-class'>
+        @<strong>detectOrigin</strong>(done)
+      </a>
+    </span>
+    <span class='desc'>
+      Find the project&#39;s Git remote.origin URL.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#detectReadme-class'>
+        @<strong>detectReadme</strong>(done)
+      </a>
+    </span>
+    <span class='desc'>
+      Find the project&#39;s README.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#detectSources-class'>
+        @<strong>detectSources</strong>(done)
+      </a>
+    </span>
+    <span class='desc'>
+      Find the source directories.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#detectTag-class'>
+        @<strong>detectTag</strong>(done)
+      </a>
+    </span>
+    <span class='desc'>
+      Find the project&#39;s latest Git tag.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#run-class'>
+        @<strong>run</strong>(done, file, analytics = false, homepage = false)
+      </a>
+    </span>
+    <span class='desc'>
+      Run the documentation generator.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#script-class'>
+        String @<strong>script</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the Biscotto script content that is used in the webinterface
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#style-class'>
+        String @<strong>style</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the Biscotto style content that is used in the webinterface
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#version-class'>
+        String @<strong>version</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the current Biscotto version
+    </span>
+  </li>
+</ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='detectExtras-class'>
+      @<strong>detectExtras</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L276'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find extra project files in the repository.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='detectName-class'>
+      @<strong>detectName</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L294'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find the project name by either parsing <code>package.json</code>, or getting the current working directory name.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>done</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='detectOrigin-class'>
+      @<strong>detectOrigin</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L314'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find the project&#39;s Git remote.origin URL.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>done</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='detectReadme-class'>
+      @<strong>detectReadme</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L265'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find the project&#39;s README.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='detectSources-class'>
+      @<strong>detectSources</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L255'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find the source directories.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='detectTag-class'>
+      @<strong>detectTag</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L305'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find the project&#39;s latest Git tag.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>done</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='run-class'>
+      @<strong>run</strong>(done, file, analytics = false, homepage = false)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L49'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Run the documentation generator. This is usually done through the command line utility <code>biscotto</code> that is provided by this package.</p><p>This function sets up all of the configuration options used by Biscotto.</p><p>You can also run the documentation generation without writing files
+to the file system, by supplying a callback function.</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'></code></pre>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'></code></pre>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'></code></pre>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'></code></pre>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'></code></pre>
+  </div>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>done</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to callback once the function is done</span>
+    </li>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>file</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to callback on every file</span>
+    </li>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>analytics</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing Google analytics tracking code</span>
+    </li>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>homepage</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> homepage in the breadcrumbs</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='script-class'>
+      String @<strong>script</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L245'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the Biscotto script content that is used in the webinterface</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns the script contents as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='style-class'>
+      String @<strong>style</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L251'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the Biscotto style content that is used in the webinterface</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns the style content as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='version-class'>
+      String @<strong>version</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;biscotto.coffee#L18'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the current Biscotto version</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the Biscotto version</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Fri Feb 07 2014 16:42:24 GMT-0800 (PST)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v0.6.0
+  (Node.js v0.10.3).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+</html>

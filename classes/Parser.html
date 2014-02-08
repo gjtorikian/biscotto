@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/biscotto.css' type='text/css'>
+  <script src='..&#47;assets/biscotto.js'></script>
+  <script src='..&#47;assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='..&#47;README.md.html' title='Biscotto'>Biscotto</a>
+    &raquo;
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Parser</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Classes</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Methods</a>
+      <a id='extra_list_link' href='..&#47;extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Parser
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;parser.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>This parser is responsible for converting each file into the intermediate / AST representation as a JSON node.</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        .<strong>constructor</strong>(options)
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      Construct the parser
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#convertComments-instance'>
+        .<strong>convertComments</strong>(content)
+      </a>
+    </span>
+    <span class='desc'>
+      Converts the comments to block comments, so they appear in the node structure.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getAllMethods-instance'>
+        Array .<strong>getAllMethods</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get all the parsed methods.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getAllVariables-instance'>
+        Array .<strong>getAllVariables</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get all parsed variables.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#linkAncestors-instance'>
+        .<strong>linkAncestors</strong>(node)
+      </a>
+    </span>
+    <span class='desc'>
+      Attach each parent to its children, so we are able to traverse the ancestor parse tree.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#parseContent-instance'>
+        .<strong>parseContent</strong>(content, file = '')
+      </a>
+    </span>
+    <span class='desc'>
+      Parse the given CoffeeScript content.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#parseFile-instance'>
+        .<strong>parseFile</strong>(file)
+      </a>
+    </span>
+    <span class='desc'>
+      Parse the given CoffeeScript file.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#showResult-instance'>
+        .<strong>showResult</strong>(generator)
+      </a>
+    </span>
+    <span class='desc'>
+      Show the final parsing statistics.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toJSON-instance'>
+        Object .<strong>toJSON</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get a JSON representation of the object.
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      .<strong>constructor</strong>(options)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L22'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Construct the parser</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> of options</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='convertComments-instance'>
+      .<strong>convertComments</strong>(content)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L115'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Converts the comments to block comments, so they appear in the node structure. Only block comments are considered by Biscotto.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>content</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file content</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getAllMethods-instance'>
+      Array .<strong>getAllMethods</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L228'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get all the parsed methods.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Method.html'>Method</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getAllVariables-instance'>
+      Array .<strong>getAllVariables</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L245'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get all parsed variables.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Variable.html'>Variable</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='linkAncestors-instance'>
+      .<strong>linkAncestors</strong>(node)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L220'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Attach each parent to its children, so we are able to traverse the ancestor parse tree. Since the parent attribute is already used in the class node, the parent is stored as <code>ancestor</code>.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Base)</span>
+      <span class='name'>nodes</span>
+      &mdash;
+      <span class='desc'>A <a href='http://coffeescript.org/documentation/docs/nodes.html#section-7'>Base</a> representing the CoffeeScript nodes</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='parseContent-instance'>
+      .<strong>parseContent</strong>(content, file = '')
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L46'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Parse the given CoffeeScript content.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>content</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file content</span>
+    </li>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>file</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file name</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='parseFile-instance'>
+      .<strong>parseFile</strong>(file)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L37'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Parse the given CoffeeScript file.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>file</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the the CoffeeScript filename</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='showResult-instance'>
+      .<strong>showResult</strong>(generator)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L261'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Show the final parsing statistics.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toJSON-instance'>
+      Object .<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;0.6.0
+/src&#47;parser.coffee#L327'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get a JSON representation of the object.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Object</tt>)
+      &mdash;
+      <span class='desc'>Returns the JSON <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Fri Feb 07 2014 16:42:24 GMT-0800 (PST)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v0.6.0
+  (Node.js v0.10.3).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+</html>
