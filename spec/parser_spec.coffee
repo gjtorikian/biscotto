@@ -81,4 +81,3 @@ for filename in walkdir.sync './spec/templates'
               if diff.removed
                 console.error "Removed: \n#{_.str.strip(diff.value)}"
             console.error delta
-            process.exit(1)
