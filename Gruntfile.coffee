@@ -7,8 +7,8 @@ module.exports = (grunt) ->
       options:
         bump: false
         add: false
-        commit: false
         push: false
+        tagName: "v<%= version %>"
     exec:
       test:
         command: "./node_modules/jasmine-node/bin/jasmine-node --coffee spec"
