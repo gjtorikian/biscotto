@@ -257,7 +257,7 @@ You can quickly search and jump through the documentation by using the fuzzy fin
 
 * Open fuzzy finder dialog: `Ctrl-T`
 
-In frame mode you can toggle the list naviation frame on the left side:
+In frame mode you can toggle the list navigation frame on the left side:
 
 * Toggle list view: `Ctrl-L`
 
