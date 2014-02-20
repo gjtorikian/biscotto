@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>This should be one paragraph.</p><p>If soft tabs are enabled, this is a space (<code>&quot; &quot;</code>) times the <code>{.getTabLength}</code> value.\nOtherwise, it&#39;s a tab (<code>\\t</code>). </p>",
+          "comment": "<p>This should be one paragraph.</p><p>If soft tabs are enabled, this is a space (<code>&quot; &quot;</code>) times the <code>{::getTabLength}</code> value.\nOtherwise, it&#39;s a tab (<code>\\t</code>). </p>",
           "summary": "This should be one paragraph.",
           "status": "Public"
         },

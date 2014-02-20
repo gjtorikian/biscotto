@@ -16,7 +16,7 @@ class MethodDelegation
 
   # At last, we have the same content!
   #
-  # You might also like {@undelegatedRegular}.
+  # You might also like {.undelegatedRegular}.
   #
   # Returns a {Number}.
   @doubleDelegationThree: ->
@@ -36,4 +36,3 @@ class MethodDelegation
 
   # Blah
   @undelegatedRegular: ->
-

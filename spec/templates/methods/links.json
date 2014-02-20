@@ -48,8 +48,8 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClassLinkShort</p><p>{.internalLinkLong}</p>",
-          "summary": "internalClassLinkShort {.internalLinkLong}",
+          "comment": "<p>internalClassLinkShort</p><p>{::internalLinkLong}</p>",
+          "summary": "internalClassLinkShort {::internalLinkLong}",
           "status": "Private"
         },
         "type": "instance",
@@ -78,8 +78,8 @@
       },
       {
         "doc": {
-          "comment": "<p>internalInstanceLinkShort {.externalLinkShort}</p>",
-          "summary": "internalInstanceLinkShort {.externalLinkShort}",
+          "comment": "<p>internalInstanceLinkShort {::externalLinkShort}</p>",
+          "summary": "internalInstanceLinkShort {::externalLinkShort}",
           "status": "Private"
         },
         "type": "instance",
@@ -93,8 +93,8 @@
       },
       {
         "doc": {
-          "comment": "<p>internalInstance [Link Long]{.externalLinkLong}</p>",
-          "summary": "internalInstance [Link Long]{.externalLinkLong}",
+          "comment": "<p>internalInstance [Link Long]{::externalLinkLong}</p>",
+          "summary": "internalInstance [Link Long]{::externalLinkLong}",
           "status": "Private"
         },
         "type": "instance",
@@ -108,8 +108,8 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClassLinkShort {@internalClassLinkLong}</p>",
-          "summary": "internalClassLinkShort {@internalClassLinkLong}",
+          "comment": "<p>internalClassLinkShort {.internalClassLinkLong}</p>",
+          "summary": "internalClassLinkShort {.internalClassLinkLong}",
           "status": "Private"
         },
         "type": "class",
@@ -123,8 +123,8 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClass [LinkLong]{@internalClassLinkShort}</p>",
-          "summary": "internalClass [LinkLong]{@internalClassLinkShort}",
+          "comment": "<p>internalClass [LinkLong]{.internalClassLinkShort}</p>",
+          "summary": "internalClass [LinkLong]{.internalClassLinkShort}",
           "status": "Private"
         },
         "type": "class",

@@ -10,9 +10,9 @@ class App.TestLinks
   #
   externalLinkLong: ->
 
-  # internalClassLinkShort 
+  # internalClassLinkShort
   #
-  # {.internalLinkLong}
+  # {::internalLinkLong}
   #
   internalLinkShort: ->
 
@@ -20,18 +20,18 @@ class App.TestLinks
   #
   internalLinkLong: ->
 
-  # internalInstanceLinkShort {.externalLinkShort}
+  # internalInstanceLinkShort {::externalLinkShort}
   #
   internalInstanceLinkShort: ->
 
-  # internalInstance [Link Long]{.externalLinkLong}
+  # internalInstance [Link Long]{::externalLinkLong}
   #
   internalInstanceLinkLong: ->
 
-  # internalClassLinkShort {@internalClassLinkLong}
+  # internalClassLinkShort {.internalClassLinkLong}
   #
   @internalClassLinkShort: ->
 
-  # internalClass [LinkLong]{@internalClassLinkShort}
+  # internalClass [LinkLong]{.internalClassLinkShort}
   #
   @internalClassLinkLong: ->

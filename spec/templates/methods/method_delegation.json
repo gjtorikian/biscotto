@@ -66,8 +66,8 @@
       },
       {
         "doc": {
-          "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
-          "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
+          "comment": "<p>At last, we have the same content!</p><p>You might also like {.undelegatedRegular}.</p>",
+          "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
           "status": "Public",
           "returnValue": [
             {
@@ -87,8 +87,8 @@
       },
       {
         "doc": {
-          "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
-          "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
+          "comment": "<p>At last, we have the same content!</p><p>You might also like {.undelegatedRegular}.</p>",
+          "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
           "status": "Public",
           "returnValue": [
             {
@@ -108,8 +108,8 @@
       },
       {
         "doc": {
-          "comment": "<p>At last, we have the same content!</p><p>You might also like {@undelegatedRegular}.</p>",
-          "summary": "At last, we have the same content! You might also like {@undelegatedRegular}.",
+          "comment": "<p>At last, we have the same content!</p><p>You might also like {.undelegatedRegular}.</p>",
+          "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
           "status": "Public",
           "returnValue": [
             {
@@ -129,8 +129,8 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it!</p><p>See {.do} for more information.</p>",
-          "summary": "Do it! See {.do} for more information.",
+          "comment": "<p>Do it!</p><p>See {::do} for more information.</p>",
+          "summary": "Do it! See {::do} for more information.",
           "status": "Public"
         },
         "type": "instance",
