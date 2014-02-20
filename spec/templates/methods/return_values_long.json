@@ -37,7 +37,7 @@
           ]
         },
         "type": "instance",
-        "signature": "Number .<strong>compare</strong>(other)",
+        "signature": "Number ::<strong>compare</strong>(other)",
         "name": "compare",
         "bound": false,
         "parameters": [

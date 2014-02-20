@@ -23,7 +23,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>externalLinkShort</strong>()",
+        "signature": "::<strong>externalLinkShort</strong>()",
         "name": "externalLinkShort",
         "bound": false,
         "parameters": [],
@@ -38,7 +38,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>externalLinkLong</strong>()",
+        "signature": "::<strong>externalLinkLong</strong>()",
         "name": "externalLinkLong",
         "bound": false,
         "parameters": [],
@@ -53,7 +53,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>internalLinkShort</strong>()",
+        "signature": "::<strong>internalLinkShort</strong>()",
         "name": "internalLinkShort",
         "bound": false,
         "parameters": [],
@@ -68,7 +68,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>internalLinkLong</strong>()",
+        "signature": "::<strong>internalLinkLong</strong>()",
         "name": "internalLinkLong",
         "bound": false,
         "parameters": [],
@@ -83,7 +83,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>internalInstanceLinkShort</strong>()",
+        "signature": "::<strong>internalInstanceLinkShort</strong>()",
         "name": "internalInstanceLinkShort",
         "bound": false,
         "parameters": [],
@@ -98,7 +98,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>internalInstanceLinkLong</strong>()",
+        "signature": "::<strong>internalInstanceLinkLong</strong>()",
         "name": "internalInstanceLinkLong",
         "bound": false,
         "parameters": [],
@@ -113,7 +113,7 @@
           "status": "Private"
         },
         "type": "class",
-        "signature": "@<strong>internalClassLinkShort</strong>()",
+        "signature": ".<strong>internalClassLinkShort</strong>()",
         "name": "internalClassLinkShort",
         "bound": false,
         "parameters": [],
@@ -128,7 +128,7 @@
           "status": "Private"
         },
         "type": "class",
-        "signature": "@<strong>internalClassLinkLong</strong>()",
+        "signature": ".<strong>internalClassLinkLong</strong>()",
         "name": "internalClassLinkLong",
         "bound": false,
         "parameters": [],

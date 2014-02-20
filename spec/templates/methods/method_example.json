@@ -26,7 +26,7 @@
           "status": "Private"
         },
         "type": "instance",
-        "signature": ".<strong>run</strong>()",
+        "signature": "::<strong>run</strong>()",
         "name": "run",
         "bound": false,
         "parameters": [],

@@ -22,7 +22,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>help</strong>(me)",
+        "signature": "::<strong>help</strong>(me)",
         "name": "help",
         "bound": false,
         "parameters": [
@@ -42,7 +42,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>test</strong>()",
+        "signature": "::<strong>test</strong>()",
         "name": "test",
         "bound": false,
         "parameters": [],
@@ -57,7 +57,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>internal2</strong>()",
+        "signature": "::<strong>internal2</strong>()",
         "name": "internal2",
         "bound": false,
         "parameters": [],
@@ -72,7 +72,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>public1</strong>()",
+        "signature": "::<strong>public1</strong>()",
         "name": "public1",
         "bound": false,
         "parameters": [],

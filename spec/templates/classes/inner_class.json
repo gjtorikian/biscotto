@@ -34,7 +34,7 @@
     "methods": [
       {
         "type": "instance",
-        "signature": ".<strong>create</strong>()",
+        "signature": "::<strong>create</strong>()",
         "name": "create",
         "bound": false,
         "parameters": [],

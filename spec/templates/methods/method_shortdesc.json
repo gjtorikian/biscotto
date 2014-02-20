@@ -23,7 +23,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>helper</strong>()",
+        "signature": "::<strong>helper</strong>()",
         "name": "helper",
         "bound": false,
         "parameters": [],
@@ -39,7 +39,7 @@
           "generated": true
         },
         "type": "instance",
-        "signature": ".<strong>bound</strong>()",
+        "signature": "::<strong>bound</strong>()",
         "name": "bound",
         "bound": true,
         "parameters": [],
