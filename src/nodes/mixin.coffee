@@ -85,7 +85,7 @@ module.exports = class Mixin extends Node
     catch error
       console.warn('Get mixin full name error:', @node, error) if @options.verbose
 
-  # Public: Alias for {.getMixinName}
+  # Public: Alias for {::getMixinName}
   getFullName: ->
     @getMixinName()
 

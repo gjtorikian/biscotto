@@ -128,7 +128,7 @@ module.exports = class Class extends Node
   # Returns the class doc (a [Doc])
   getDoc: -> @doc
 
-  # Public: Alias for {.getClassName}
+  # Public: Alias for {::getClassName}
   #
   # Returns the full class name (a {String})
   getFullName: ->

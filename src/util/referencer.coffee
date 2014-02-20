@@ -145,7 +145,7 @@ module.exports = class Referencer
 
   # Public: Creates browsable links for known entities.
   #
-  # See {.getLink}.
+  # See {::getLink}.
   #
   # text - The text to parse (a {String})
   # path - The path prefix (a {String})
@@ -161,7 +161,7 @@ module.exports = class Referencer
 
   # Public: Create browsable links to a known entity.
   #
-  # See {.getLink}.
+  # See {::getLink}.
   #
   # text - The text to parse (a {String})
   # path - The path prefix (a {String})
@@ -178,7 +178,7 @@ module.exports = class Referencer
 
   # Public: Get the link to classname.
   #
-  # See {.linkTypes}.
+  # See {::linkTypes}.
   #
   # classname - The class name (a {String})
   # path - The path prefix (a {String})

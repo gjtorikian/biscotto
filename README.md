@@ -117,11 +117,11 @@ linked together.
 There are several different link types supported:
 
 * Normal URL links: `{http://coffeescript.org/}` or `[Try CoffeeScript](http://coffeescript.org/)`
-* Link to a class or a mixin: `{Animal.Lion}` or `[The mighty lion]{Animal.Lion}`
-* Direct link to an instance method: `{Animal.Lion.walk}` or `[The lion walks]{Animal.Lion.walk}`
-* Direct link to a class method: `{Animal.Lion@constructor}` or `[A new king was born]{Animal.Lion@constructor}`
+* Link to a class or a mixin: `{Animal::Lion}` or `[The mighty lion]{Animal::Lion}`
+* Direct link to an instance method: `{Animal.Lion::walk}` or `[The lion walks]{Animal.Lion::walk}`
+* Direct link to a class method: `{Animal.Lion.constructor}` or `[A new king was born]{Animal.Lion.constructor}`
 
-If you are referring to a method within the same class, you can omit the class name: `{.walk}` or `{@constructor}`.
+If you are referring to a method within the same class, you can omit the class name: `{::walk}` or `{.constructor}`.
 
 As an added bonus, default JavaScript "types," like String, Number, Boolean, *e.t.c.*,
 have automatic links generated to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
@@ -131,7 +131,7 @@ Here's an example of using links:
 ```coffeescript
 # This links out to the `long` method of the same class.
 #
-# See {.internalLinkLong} for more info.
+# See {::internalLinkLong} for more info.
 #
 internalLinkShort: ->
 
