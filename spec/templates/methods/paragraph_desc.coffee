@@ -8,7 +8,7 @@ class TestParagraphs
 
   # Public: This is a paragraph with a br.
   #
-  # Equality is based on some condition.
+  # Equality is based on some condition.  
   # Oh look, a BR!
   br: ->
 
