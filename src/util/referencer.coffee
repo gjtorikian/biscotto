@@ -394,7 +394,7 @@ module.exports = class Referencer
     ref = see.reference
 
     # Link to direct class methods
-    if /^\@/.test(ref)
+    if /^\./.test(ref)
       methods = _.map(_.filter(entity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
       if _.include methods, ref.substring(1)
@@ -407,10 +407,10 @@ module.exports = class Referencer
         @errors++
 
     # Link to direct instance methods
-    else if /^\./.test(ref)
+    else if /^::/.test(ref)
       instanceMethods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m.getName())
 
-      if _.include instanceMethods, ref.substring(1)
+      if _.include instanceMethods, ref.substring(2)
         see.reference = "#{ path }classes/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(1) }-instance"
         see.label = ref unless see.label
       else
@@ -423,9 +423,8 @@ module.exports = class Referencer
     else
       # Ignore normal links
       unless /^https?:\/\//.test ref
-
         # Get class and method reference
-        if match = /^(.*?)([.@][$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
+        if match = /^(.*?)((\.|::)[$a-z_\x7f-\uffff][$\w\x7f-\uffff]*)?$/.exec ref
           refClass = match[1]
           refMethod = match[2]
           otherEntity   = _.find @classes, (c) -> c.getFullName() is refClass
@@ -444,7 +443,7 @@ module.exports = class Referencer
                 @errors++
 
             # Link to other class' class methods
-            else if /^\@/.test(refMethod)
+            else if /^\./.test(refMethod)
               methods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['class', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
               if _.include methods, refMethod.substring(1)
@@ -457,10 +456,10 @@ module.exports = class Referencer
                 @errors++
 
             # Link to other class instance methods
-            else if /^\./.test(refMethod)
+            else if /^::/.test(refMethod)
               instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['instance', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
-              if _.include instanceMethods, refMethod.substring(1)
+              if _.include instanceMethods, refMethod.substring(2)
                 see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
                 see.label = ref unless see.label
               else
