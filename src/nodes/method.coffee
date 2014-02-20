@@ -65,9 +65,9 @@ module.exports = class Method extends Node
       unless @signature
         @signature = switch @getType()
                      when 'class'
-                       '@'
-                     when 'instance'
                        '.'
+                     when 'instance'
+                       '::'
                      else
                        '? '
         doc = @getDoc()

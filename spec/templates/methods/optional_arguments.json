@@ -42,7 +42,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method1</strong>({option1, option2})",
+        "signature": "::<strong>method1</strong>({option1, option2})",
         "name": "method1",
         "bound": false,
         "parameters": [
@@ -87,7 +87,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method2</strong>({option1, option2}={})",
+        "signature": "::<strong>method2</strong>({option1, option2}={})",
         "name": "method2",
         "bound": false,
         "parameters": [
@@ -132,7 +132,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>method3</strong>({option1, option2}={3,4})",
+        "signature": "::<strong>method3</strong>({option1, option2}={3,4})",
         "name": "method3",
         "bound": false,
         "parameters": [

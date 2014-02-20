@@ -23,7 +23,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>delegatedFromPrivate</strong>()",
+        "signature": "::<strong>delegatedFromPrivate</strong>()",
         "name": "delegatedFromPrivate",
         "bound": false,
         "parameters": [],

@@ -23,7 +23,7 @@ class App.CurlyMethodDocumentation extends App.Doc
 
   # Private: Do it without spaces!
   #
-  # See {@lets_do_it} for more information.
+  # See {.lets_do_it} for more information.
   #
   # Returns {Boolean} when successfully executed
   #
@@ -31,6 +31,6 @@ class App.CurlyMethodDocumentation extends App.Doc
 
   # Private: Do it!
   #
-  # See {.do} for more information.
+  # See {::do} for more information.
   #
   @lets_do_it = (it, options) ->

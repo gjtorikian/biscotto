@@ -70,14 +70,12 @@ for filename in walkdir.sync './spec/templates'
             # [0], because we don't want the parsed files in the resulting JSON
             generated = JSON.stringify([parser.toJSON()[0]], null, 2)
 
-          # if the tests complain about "Object #<Object> has no method 'diffLines'"
-          # you can safely ignore it; an earlier test error is causing it
           delta = diff.diffLines(expected, generated)
           if (delta.length > 1)
             console.error "\nFor #{filename}:"
-            for diff in delta
-              if diff.added
+            for hunk in delta
+              if hunk.added
                 console.error "Added: \n#{_.str.strip(diff.value)}"
-              if diff.removed
+              if hunk.removed
                 console.error "Removed: \n#{_.str.strip(diff.value)}"
             console.error delta

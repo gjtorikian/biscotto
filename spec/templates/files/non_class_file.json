@@ -71,7 +71,7 @@
           ]
         },
         "type": "class",
-        "signature": "@<strong>sayHi</strong>(hi)",
+        "signature": ".<strong>sayHi</strong>(hi)",
         "name": "sayHi",
         "bound": false,
         "parameters": [

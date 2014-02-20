@@ -30,7 +30,7 @@
           ]
         },
         "type": "instance",
-        "signature": "Boolean .<strong>returnSingleType</strong>()",
+        "signature": "Boolean ::<strong>returnSingleType</strong>()",
         "name": "returnSingleType",
         "bound": false,
         "parameters": [],
@@ -51,7 +51,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>returnNoType</strong>()",
+        "signature": "::<strong>returnNoType</strong>()",
         "name": "returnNoType",
         "bound": false,
         "parameters": [],
@@ -76,7 +76,7 @@
           ]
         },
         "type": "instance",
-        "signature": "String|Number .<strong>returnTwoReturns</strong>()",
+        "signature": "String|Number ::<strong>returnTwoReturns</strong>()",
         "name": "returnTwoReturns",
         "bound": false,
         "parameters": [],

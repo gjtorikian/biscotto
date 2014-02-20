@@ -47,7 +47,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>someMethod</strong>(obj = {})",
+        "signature": "::<strong>someMethod</strong>(obj = {})",
         "name": "someMethod",
         "bound": false,
         "parameters": [
@@ -92,7 +92,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>someMethod</strong>(obj = {})",
+        "signature": "::<strong>someMethod</strong>(obj = {})",
         "name": "someMethod",
         "bound": false,
         "parameters": [

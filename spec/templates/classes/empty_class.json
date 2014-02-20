@@ -18,7 +18,7 @@
     "methods": [
       {
         "type": "instance",
-        "signature": ".<strong>foo</strong>()",
+        "signature": "::<strong>foo</strong>()",
         "name": "foo",
         "bound": false,
         "parameters": [],

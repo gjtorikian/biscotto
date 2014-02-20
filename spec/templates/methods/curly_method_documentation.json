@@ -30,7 +30,7 @@
           ]
         },
         "type": "instance",
-        "signature": "Number .<strong>fetchLimit</strong>()",
+        "signature": "Number ::<strong>fetchLimit</strong>()",
         "name": "fetchLimit",
         "bound": false,
         "parameters": [],
@@ -85,7 +85,7 @@
           ]
         },
         "type": "instance",
-        "signature": "Boolean .<strong>doIt</strong>(it, again, options)",
+        "signature": "Boolean ::<strong>doIt</strong>(it, again, options)",
         "name": "doIt",
         "bound": false,
         "parameters": [
@@ -108,8 +108,8 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it without spaces!</p><p>See {@lets_do_it} for more information.</p>",
-          "summary": "Do it without spaces! See {@lets_do_it} for more information.",
+          "comment": "<p>Do it without spaces!</p><p>See {.lets_do_it} for more information.</p>",
+          "summary": "Do it without spaces! See {.lets_do_it} for more information.",
           "status": "Private",
           "returnValue": [
             {
@@ -119,7 +119,7 @@
           ]
         },
         "type": "instance",
-        "signature": "Boolean .<strong>doWithoutSpace</strong>(it, again, options)",
+        "signature": "Boolean ::<strong>doWithoutSpace</strong>(it, again, options)",
         "name": "doWithoutSpace",
         "bound": false,
         "parameters": [
@@ -142,12 +142,12 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it!</p><p>See {.do} for more information.</p>",
-          "summary": "Do it! See {.do} for more information.",
+          "comment": "<p>Do it!</p><p>See {::do} for more information.</p>",
+          "summary": "Do it! See {::do} for more information.",
           "status": "Private"
         },
         "type": "class",
-        "signature": "@<strong>lets_do_it</strong>(it, options)",
+        "signature": ".<strong>lets_do_it</strong>(it, options)",
         "name": "lets_do_it",
         "bound": false,
         "parameters": [

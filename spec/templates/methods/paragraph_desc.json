@@ -18,12 +18,12 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>This should be one paragraph.</p><p>If soft tabs are enabled, this is a space (<code>&quot; &quot;</code>) times the <code>{.getTabLength}</code> value.\nOtherwise, it&#39;s a tab (<code>\\t</code>). </p>",
+          "comment": "<p>This should be one paragraph.</p><p>If soft tabs are enabled, this is a space (<code>&quot; &quot;</code>) times the <code>{::getTabLength}</code> value.\nOtherwise, it&#39;s a tab (<code>\\t</code>). </p>",
           "summary": "This should be one paragraph.",
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>spacing</strong>()",
+        "signature": "::<strong>spacing</strong>()",
         "name": "spacing",
         "bound": false,
         "parameters": [],
@@ -38,7 +38,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>br</strong>()",
+        "signature": "::<strong>br</strong>()",
         "name": "br",
         "bound": false,
         "parameters": [],
@@ -53,7 +53,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>twoParagraphs</strong>()",
+        "signature": "::<strong>twoParagraphs</strong>()",
         "name": "twoParagraphs",
         "bound": false,
         "parameters": [],
@@ -68,7 +68,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>ulList</strong>()",
+        "signature": "::<strong>ulList</strong>()",
         "name": "ulList",
         "bound": false,
         "parameters": [],
@@ -83,7 +83,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": ".<strong>olList</strong>()",
+        "signature": "::<strong>olList</strong>()",
         "name": "olList",
         "bound": false,
         "parameters": [],

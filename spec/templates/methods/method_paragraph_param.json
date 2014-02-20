@@ -30,7 +30,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>helper</strong>(something)",
+        "signature": "::<strong>helper</strong>(something)",
         "name": "helper",
         "bound": false,
         "parameters": [
@@ -84,7 +84,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>bound</strong>(something, something2)",
+        "signature": "::<strong>bound</strong>(something, something2)",
         "name": "bound",
         "bound": true,
         "parameters": [
@@ -142,7 +142,7 @@
           ]
         },
         "type": "instance",
-        "signature": ".<strong>bound</strong>(something, something2, opts, opts2)",
+        "signature": "::<strong>bound</strong>(something, something2, opts, opts2)",
         "name": "bound",
         "bound": true,
         "parameters": [

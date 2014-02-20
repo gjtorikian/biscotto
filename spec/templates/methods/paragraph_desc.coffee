@@ -1,8 +1,8 @@
 class TestParagraphs
 
   # Public: This should be one paragraph.
-  # 
-  # If soft tabs are enabled, this is a space (`" "`) times the `{.getTabLength}` value.
+  #
+  # If soft tabs are enabled, this is a space (`" "`) times the `{::getTabLength}` value.
   # Otherwise, it's a tab (`\t`).
   spacing: ->
 
@@ -29,7 +29,7 @@ class TestParagraphs
   # * the two `scrollTop` and `scrollLeft` property are the same
   # * the two `{Cursor}` screen positions are the same
   #
-  # 
+  #
   ulList: ->
 
   # Public: Compares two objects to determine equality.
@@ -40,5 +40,5 @@ class TestParagraphs
   # 2. the two `scrollTop` and `scrollLeft` property are the same
   # 3. the two `{Cursor}` screen positions are the same
   #
-  # 
+  #
   olList: ->
