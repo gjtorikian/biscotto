@@ -411,7 +411,7 @@ module.exports = class Referencer
       instanceMethods = _.map(_.filter(entity.getMethods(), (m) -> m.getType() is 'instance'), (m) -> m.getName())
 
       if _.include instanceMethods, ref.substring(2)
-        see.reference = "#{ path }classes/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(1) }-instance"
+        see.reference = "#{ path }classes/#{ entity.getFullName().replace(/\./g, '/') }.html##{ ref.substring(2) }-instance"
         see.label = ref unless see.label
       else
         see.label = see.reference
@@ -460,7 +460,7 @@ module.exports = class Referencer
               instanceMethods = _.map(_.filter(otherEntity.getMethods(), (m) -> _.indexOf(['instance', 'mixin'], m.getType()) >= 0), (m) -> m.getName())
 
               if _.include instanceMethods, refMethod.substring(2)
-                see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(1) }-instance"
+                see.reference = "#{ path }#{ if otherEntity.constructor.name == 'Class' then 'classes' else 'modules' }/#{ otherEntity.getFullName().replace(/\./g, '/') }.html##{ refMethod.substring(2) }-instance"
                 see.label = ref unless see.label
               else
                 see.label = see.reference
