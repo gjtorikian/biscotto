@@ -243,14 +243,13 @@ module.exports = class Class extends Node
   #
   # Returns the methods as an {Array}.
   getMethods: ->
-    _.filter(@methods, (method) =>
-      if !@options.private && method.doc.status == "Private"
-        return false
-      else if !@options.internal && method.doc.status == "Internal"
-        return false
+    @methods.filter (method) =>
+      if @options.private and method.doc.isPrivate()
+        true
+      else if @options.internal && method.doc.isInternal()
+        true
       else
-        return true
-    )
+        method.doc.isPublic()
 
   # Public: Get all variables.
   #

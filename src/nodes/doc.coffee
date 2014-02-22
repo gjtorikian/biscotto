@@ -35,6 +35,18 @@ module.exports = class Doc extends Node
   isPublic: ->
     /public/i.test(@status)
 
+  # Public: Is this doc internal?
+  #
+  # Returns a {Boolean}.
+  isInternal: ->
+    /internal/i.test(@status)
+
+  # Public: Is this doc private?
+  #
+  # Returns a {Boolean}.
+  isPrivate: ->
+    not @isPublic() and not @isInternal()
+
   # Public: Detect whitespace on the left and removes
   # the minimum whitespace ammount.
   #
