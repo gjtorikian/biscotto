@@ -157,7 +157,10 @@ module.exports = class Biscotto
             default   : biscottoopts.internal || false
             describe  : 'Show internal methods'
           )
-          .default('title', biscottoopts.title || 'CoffeeScript API Documentation')
+          .options('stability',
+            describe  : 'Set stability level'
+            default   : -1
+          ).default('title', biscottoopts.title || 'CoffeeScript API Documentation')
 
         argv = optimist.argv
 
@@ -191,6 +194,7 @@ module.exports = class Biscotto
             analytics: analytics || argv.a
             tag: defaults.tag
             origin: defaults.origin
+            stability: argv.stability
 
           extra = false
 

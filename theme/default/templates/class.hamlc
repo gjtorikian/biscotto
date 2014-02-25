@@ -6,7 +6,7 @@
 
     #content
       %h1
-        Class:
+        Class
         = @classData.class.className
 
         - if @classData.doc?.abstract || @classData.doc?.abstract is ''
@@ -17,6 +17,11 @@
 
         - if @classData.doc?.private || @classData.doc?.private is ''
           %span.private.note.title Private
+
+      - if @stability >= 0
+        %div{:class => "stability-#{@stability}"}
+          %span{:class => "heading"}
+          %div{:class => "message"}
 
       %table.box
         %tr

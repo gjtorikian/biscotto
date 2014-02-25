@@ -26,6 +26,7 @@ module.exports = class Templater
       underscore: _
       str: _.str
       title: @options.title
+      stability: @options.stability
       referencer: @referencer
       analytics: @options.analytics
       fileCount: @parser.files.length
