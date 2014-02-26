@@ -99,7 +99,7 @@ returnSingleType: ->
 # Internal: Does some thing.
 #
 # Returns an object with the keys:
-#   :duration - A {Number} of millseconds.
+#   :duration - A {Number} of milliseconds.
 returnAHash: =>
 ```
 

@@ -62,7 +62,7 @@ module.exports = class File extends Class
 
     for input in @options.inputs
       input = input.replace(///^\.[\/]///, '')                        # Clean leading `./`
-      input = input + Path.sep unless ///#{ Path.sep }$///.test input # Append trailling `/`
+      input = input + Path.sep unless ///#{ Path.sep }$///.test input # Append trailing `/`
       input = input.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1")         # Escape String
       fullName = fullName.replace(new RegExp(input), '')
 
