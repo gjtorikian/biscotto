@@ -76,7 +76,7 @@
         != @JST['partials/doc']({ doc: @classData.doc, type: 'class', path: @path, referencer: @referencer })
 
       - if @subClasses.length isnt 0
-        %h2 Direct Known Subclasses
+        %h2 Subclasses
         %p.children
           - for child in @subClasses
             - if child is @underscore.last @subClasses
