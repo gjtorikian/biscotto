@@ -48,7 +48,7 @@ module.exports = class Doc extends Node
     not @isPublic() and not @isInternal()
 
   # Public: Detect whitespace on the left and removes
-  # the minimum whitespace ammount.
+  # the minimum whitespace amount.
   #
   # lines - The comment lines [{String}]
   #

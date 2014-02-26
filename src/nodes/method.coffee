@@ -8,7 +8,7 @@ _.str     = require 'underscore.string'
 # Public: The Node representation of a CoffeeScript method.
 module.exports = class Method extends Node
 
-  # Public: Constructs the documentaion node.
+  # Public: Constructs the documentation node.
   #
   # entity - The method's {Class}
   # node - The method node (a {Object})
