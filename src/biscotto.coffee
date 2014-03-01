@@ -44,7 +44,7 @@ module.exports = class Biscotto
   #      else
   #        console.log "Documentation generated"
   #
-  #    biscotto.run file, done
+  #    biscotto.run done, file
   #
   @run: (done, file, analytics = false, homepage = false) ->
 
