@@ -24,3 +24,4 @@ module.exports = (grunt) ->
 
   grunt.registerTask('test', 'exec:test')
   grunt.registerTask('publish', ['exec:build_docs', 'gh-pages'])
+  grunt.registerTask('default', ['test'])
