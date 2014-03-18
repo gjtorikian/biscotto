@@ -96,7 +96,7 @@ module.exports = class Parser
           # If p.name is empty value is going to be assigned to index...
           name.push p.name?.value for p in child.variable.properties
 
-          # ... and therefore should be just skippped.
+          # ... and therefore should be just skipped.
           if name.indexOf(undefined) == -1
             mixin = new Mixin(child, file, @options, doc)
 
