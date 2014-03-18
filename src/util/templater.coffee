@@ -38,7 +38,8 @@ module.exports = class Templater
 
     for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
-        @JST[match[1]] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
+        varname = match[1].replace(/\\/g, "/")
+        @JST[varname] = hamlc.compile(fs.readFileSync(filename, 'utf-8'))
 
   # Public: Redirect template generation to a callback.
   #
