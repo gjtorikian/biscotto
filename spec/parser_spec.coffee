@@ -79,3 +79,5 @@ for filename in walkdir.sync './spec/templates'
               if hunk.removed
                 console.error "Removed: \n#{_.str.strip(diff.value)}"
             console.error delta
+            # TODO: we basically want to flag this test as false, but print out the debug info above
+            expect(true).toBe(false)
