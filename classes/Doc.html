@@ -121,7 +121,7 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>A documentation node is responsible for parsing the comments for known tags.</p>
+  <p>A documentation node is responsible for parsing</p>
 </div>
 <div class='tags'>
 </div>
@@ -150,6 +150,26 @@
   </li>
   <li>
     <span class='signature'>
+      <a href='#isInternal-instance'>
+        Boolean .<strong>isInternal</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Is this doc internal?
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isPrivate-instance'>
+        Boolean .<strong>isPrivate</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Is this doc private?
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#isPublic-instance'>
         Boolean .<strong>isPublic</strong>()
       </a>
@@ -165,7 +185,7 @@
       </a>
     </span>
     <span class='desc'>
-      Detect whitespace on the left and removes the minimum whitespace ammount.
+      Detect whitespace on the left and removes
     </span>
   </li>
   <li>
@@ -175,7 +195,7 @@
       </a>
     </span>
     <span class='desc'>
-      Parse the given lines as TomDoc and adds the result to the result object.
+      Parse the given lines as TomDoc and adds the result
     </span>
   </li>
   <li>
@@ -244,9 +264,6 @@
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
       .<strong>constructor</strong>(node, options)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L18'>Source</a>
     </p>
     <div class='docstring'>
   <p>Construct a documentation node.</p>
@@ -258,13 +275,13 @@
       <span class='type'>(Object)</span>
       <span class='name'>node</span>
       &mdash;
-      <span class='desc'>The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
+      <span class='desc'>The comment node (a {Object})</span>
     </li>
     <li>
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
+      <span class='desc'>The parser options (a {Object})</span>
     </li>
   </ul>
 </div>
@@ -275,9 +292,6 @@
   <div class='method_details'>
     <p class='signature' id='hasComment-instance'>
       Boolean .<strong>hasComment</strong>()
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L29'>Source</a>
     </p>
     <div class='docstring'>
   <p>Determines if the current doc has some comments</p>
@@ -289,7 +303,45 @@
       <span class='type'></span>
       (<tt>Boolean</tt>)
       &mdash;
-      <span class='desc'>Returns the comment status (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>).</span>
+      <span class='desc'>Returns the comment status (a {Boolean}).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isInternal-instance'>
+      Boolean .<strong>isInternal</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Is this doc internal?</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a {Boolean}.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isPrivate-instance'>
+      Boolean .<strong>isPrivate</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Is this doc private?</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a {Boolean}.</span>
     </li>
   </ul>
 </div>
@@ -297,9 +349,6 @@
   <div class='method_details'>
     <p class='signature' id='isPublic-instance'>
       Boolean .<strong>isPublic</strong>()
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L35'>Source</a>
     </p>
     <div class='docstring'>
   <p>Is this doc public?</p>
@@ -311,7 +360,7 @@
       <span class='type'></span>
       (<tt>Boolean</tt>)
       &mdash;
-      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+      <span class='desc'>Returns a {Boolean}.</span>
     </li>
   </ul>
 </div>
@@ -319,12 +368,9 @@
   <div class='method_details'>
     <p class='signature' id='leftTrimBlock-instance'>
       .<strong>leftTrimBlock</strong>(lines)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L51'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Detect whitespace on the left and removes the minimum whitespace ammount.</p>
+  <p>Detect whitespace on the left and removes</p>
   <div class='examples'>
     <h3>Examples:</h3>
     <h4>
@@ -348,7 +394,7 @@
       <span class='type'>(String)</span>
       <span class='name'>lines</span>
       &mdash;
-      <span class='desc'>The comment lines [<a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>]</span>
+      <span class='desc'>The comment lines [{String}]</span>
     </li>
   </ul>
 </div>
@@ -356,12 +402,9 @@
   <div class='method_details'>
     <p class='signature' id='parseBlock-instance'>
       .<strong>parseBlock</strong>(lines)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L72'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Parse the given lines as TomDoc and adds the result to the result object.</p>
+  <p>Parse the given lines as TomDoc and adds the result</p>
 </div>
 <div class='tags'>
 </div>
@@ -369,12 +412,9 @@
   <div class='method_details'>
     <p class='signature' id='parse_arguments-instance'>
       .<strong>parse_arguments</strong>(section)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L193'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Parse the member&#39;s arguments. Arguments occur subsequent to the description.</p>
+  <p>Parse the member&#39;s arguments. Arguments occur subsequent to</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -383,7 +423,7 @@
       <span class='type'>(String)</span>
       <span class='name'>section</span>
       &mdash;
-      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> containing the argument definitions.</span>
+      <span class='desc'>A {String} containing the argument definitions.</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -398,9 +438,6 @@
   <div class='method_details'>
     <p class='signature' id='parse_description-instance'>
       .<strong>parse_description</strong>(section)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L119'>Source</a>
     </p>
     <div class='docstring'>
   <p>Parse the member description.</p>
@@ -412,7 +449,7 @@
       <span class='type'>(String)</span>
       <span class='name'>section</span>
       &mdash;
-      <span class='desc'>The section <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> containing a description.</span>
+      <span class='desc'>The section {String} containing a description.</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -427,9 +464,6 @@
   <div class='method_details'>
     <p class='signature' id='parse_examples-instance'>
       .<strong>parse_examples</strong>(section, sections)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L140'>Source</a>
     </p>
     <div class='docstring'>
   <p>Parse the member examples.</p>
@@ -441,7 +475,7 @@
       <span class='type'>(String)</span>
       <span class='name'>section</span>
       &mdash;
-      <span class='desc'>The section <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> starting with &quot;Examples&quot;</span>
+      <span class='desc'>The section {String} starting with &quot;Examples&quot;</span>
     </li>
     <li>
       <span class='name'>sections</span>
@@ -461,9 +495,6 @@
   <div class='method_details'>
     <p class='signature' id='parse_returns-instance'>
       .<strong>parse_returns</strong>(section)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L157'>Source</a>
     </p>
     <div class='docstring'>
   <p>Parse the member&#39;s return values.</p>
@@ -475,7 +506,7 @@
       <span class='type'>(String)</span>
       <span class='name'>section</span>
       &mdash;
-      <span class='desc'>The section <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> starting with &quot;Returns&quot;</span>
+      <span class='desc'>The section {String} starting with &quot;Returns&quot;</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -490,9 +521,6 @@
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
       Object .<strong>toJSON</strong>()
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;nodes&#47;doc.coffee#L256'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get a JSON representation of the object.</p>
@@ -504,7 +532,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>).</span>
+      <span class='desc'>Returns the JSON object (a {Object}).</span>
     </li>
   </ul>
 </div>
@@ -513,10 +541,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Fri Feb 07 2014 16:47:04 GMT-0800 (PST)
+  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.6.0
+  v0.0.12
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

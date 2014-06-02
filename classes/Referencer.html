@@ -119,6 +119,19 @@
 </div>
 <div class='tags'>
 </div>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#getLinkMatch-class'>
+        @<strong>getLinkMatch</strong>(text)
+      </a>
+    </span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+</ul>
       <h2>Instance Method Summary</h2>
       <ul class='summary'>
   <li>
@@ -259,7 +272,7 @@
       </a>
     </span>
     <span class='desc'>
-      Resolves delegations; that is, methods whose source content come from another file.
+      Resolves delegations; that is, methods whose source content come from These are basically conrefs.
     </span>
   </li>
   <li>
@@ -323,14 +336,21 @@
     </span>
   </li>
 </ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='getLinkMatch-class'>
+      @<strong>getLinkMatch</strong>(text)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
       <h2>Constructor Details</h2>
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
       .<strong>constructor</strong>(classes, mixins, options)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L14'>Source</a>
     </p>
     <div class='docstring'>
   <p>Construct a referencer.</p>
@@ -352,7 +372,7 @@
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>the parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
+      <span class='desc'>the parser options (a {Object})</span>
     </li>
   </ul>
 </div>
@@ -363,9 +383,6 @@
   <div class='method_details'>
     <p class='signature' id='getConcernMethods-instance'>
       Array .<strong>getConcernMethods</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L83'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all concerns methods.</p>
@@ -386,7 +403,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of concern <a href='../classes/Method.html'>Method</a>s.</span>
+      <span class='desc'>Returns an {Array} of concern {Method}s.</span>
     </li>
   </ul>
 </div>
@@ -394,9 +411,6 @@
   <div class='method_details'>
     <p class='signature' id='getDirectSubClasses-instance'>
       Array .<strong>getDirectSubClasses</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L24'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all direct subclasses.</p>
@@ -417,7 +431,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Class.html'>Class</a>es.</span>
+      <span class='desc'>Returns an {Array} of {Class}es.</span>
     </li>
   </ul>
 </div>
@@ -425,9 +439,6 @@
   <div class='method_details'>
     <p class='signature' id='getExtendedMethods-instance'>
       Array .<strong>getExtendedMethods</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L64'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all extended mixins in the class hierarchy.</p>
@@ -448,7 +459,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Mixin.html'>Mixin</a>s.</span>
+      <span class='desc'>Returns an {Array} of {Mixin}s.</span>
     </li>
   </ul>
 </div>
@@ -456,9 +467,6 @@
   <div class='method_details'>
     <p class='signature' id='getIncludedMethods-instance'>
       Array .<strong>getIncludedMethods</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L45'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all included mixins in the class hierarchy.</p>
@@ -479,7 +487,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Mixin.html'>Mixin</a>s.</span>
+      <span class='desc'>Returns an {Array} of {Mixin}s.</span>
     </li>
   </ul>
 </div>
@@ -487,9 +495,6 @@
   <div class='method_details'>
     <p class='signature' id='getInheritedConstants-instance'>
       Array .<strong>getInheritedConstants</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L130'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all inherited constants.</p>
@@ -510,7 +515,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Variable.html'>Variable</a>s that are constants.</span>
+      <span class='desc'>Returns an {Array} of {Variable}s that are constants.</span>
     </li>
   </ul>
 </div>
@@ -518,9 +523,6 @@
   <div class='method_details'>
     <p class='signature' id='getInheritedMethods-instance'>
       .<strong>getInheritedMethods</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L32'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all inherited methods.</p>
@@ -547,9 +549,6 @@
   <div class='method_details'>
     <p class='signature' id='getInheritedProperties-instance'>
       Array .<strong>getInheritedProperties</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L138'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all inherited properties.</p>
@@ -570,7 +569,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Property.html'>Property</a> types.</span>
+      <span class='desc'>Returns an {Array} of {Property} types.</span>
     </li>
   </ul>
 </div>
@@ -578,9 +577,6 @@
   <div class='method_details'>
     <p class='signature' id='getInheritedVariables-instance'>
       Array .<strong>getInheritedVariables</strong>(clazz)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L117'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get all inherited variables.</p>
@@ -601,7 +597,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Variable.html'>Variable</a>s.</span>
+      <span class='desc'>Returns an {Array} of {Variable}s.</span>
     </li>
   </ul>
 </div>
@@ -609,12 +605,9 @@
   <div class='method_details'>
     <p class='signature' id='getLink-instance'>
       .<strong>getLink</strong>(classname, path)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L187'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the link to classname.</p><p>See <a href='../classes/Referencer.html#linkTypes-instance'>.linkTypes</a>.</p>
+  <p>Get the link to classname.</p><p>See {::linkTypes}.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -623,13 +616,13 @@
       <span class='type'>(String)</span>
       <span class='name'>classname</span>
       &mdash;
-      <span class='desc'>The class name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The class name (a {String})</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>path</span>
       &mdash;
-      <span class='desc'>The path prefix (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The path prefix (a {String})</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -644,12 +637,9 @@
   <div class='method_details'>
     <p class='signature' id='linkType-instance'>
       String .<strong>linkType</strong>(text = '', path)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L170'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Create browsable links to a known entity.</p><p>See <a href='../classes/Referencer.html#getLink-instance'>.getLink</a>.</p>
+  <p>Create browsable links to a known entity.</p><p>See {::getLink}.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -658,13 +648,13 @@
       <span class='type'>(String)</span>
       <span class='name'>text</span>
       &mdash;
-      <span class='desc'>The text to parse (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The text to parse (a {String})</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>path</span>
       &mdash;
-      <span class='desc'>The path prefix (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The path prefix (a {String})</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -673,7 +663,7 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the processed text (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>Returns the processed text (a {String})</span>
     </li>
   </ul>
 </div>
@@ -681,12 +671,9 @@
   <div class='method_details'>
     <p class='signature' id='linkTypes-instance'>
       String .<strong>linkTypes</strong>(text = '', path)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L154'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Creates browsable links for known entities.</p><p>See <a href='../classes/Referencer.html#getLink-instance'>.getLink</a>.</p>
+  <p>Creates browsable links for known entities.</p><p>See {::getLink}.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -695,13 +682,13 @@
       <span class='type'>(String)</span>
       <span class='name'>text</span>
       &mdash;
-      <span class='desc'>The text to parse (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The text to parse (a {String})</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>path</span>
       &mdash;
-      <span class='desc'>The path prefix (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The path prefix (a {String})</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -710,7 +697,7 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the processed text (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>Returns the processed text (a {String})</span>
     </li>
   </ul>
 </div>
@@ -718,9 +705,6 @@
   <div class='method_details'>
     <p class='signature' id='readStandardJSON-instance'>
       Object .<strong>readStandardJSON</strong>()
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L475'>Source</a>
     </p>
     <div class='docstring'>
   <p>Constructs the documentation links for the standard JS objects.</p>
@@ -732,7 +716,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns a JSON <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>.</span>
+      <span class='desc'>Returns a JSON {Object}.</span>
     </li>
   </ul>
 </div>
@@ -740,12 +724,9 @@
   <div class='method_details'>
     <p class='signature' id='resolveDelegation-instance'>
       .<strong>resolveDelegation</strong>(origin, ref, entity)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L289'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Resolves delegations; that is, methods whose source content come from another file.</p><p>These are basically conrefs. </p>
+  <p>Resolves delegations; that is, methods whose source content come from</p><p>These are basically conrefs.</p>
 </div>
 <div class='tags'>
 </div>
@@ -753,9 +734,6 @@
   <div class='method_details'>
     <p class='signature' id='resolveDoc-instance'>
       Object .<strong>resolveDoc</strong>(data, entity, path)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L200'>Source</a>
     </p>
     <div class='docstring'>
   <p>Resolve all tags on class and method json output.</p>
@@ -767,7 +745,7 @@
       <span class='type'>(Object)</span>
       <span class='name'>data</span>
       &mdash;
-      <span class='desc'>The JSON data (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
+      <span class='desc'>The JSON data (a {Object})</span>
     </li>
     <li>
       <span class='type'>(Class)</span>
@@ -779,7 +757,7 @@
       <span class='type'>(String)</span>
       <span class='name'>path</span>
       &mdash;
-      <span class='desc'>The path to the asset root (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The path to the asset root (a {String})</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -788,7 +766,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON data with resolved references (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
+      <span class='desc'>Returns the JSON data with resolved references (a {Object})</span>
     </li>
   </ul>
 </div>
@@ -796,9 +774,6 @@
   <div class='method_details'>
     <p class='signature' id='resolveMixinMethods-instance'>
       Array .<strong>resolveMixinMethods</strong>(name)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L102'>Source</a>
     </p>
     <div class='docstring'>
   <p>Get a list of all methods from the given mixin name</p>
@@ -819,7 +794,7 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns the mixin methods as an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+      <span class='desc'>Returns the mixin methods as an {Array}.</span>
     </li>
   </ul>
 </div>
@@ -827,12 +802,9 @@
   <div class='method_details'>
     <p class='signature' id='resolveParamReferences-instance'>
       .<strong>resolveParamReferences</strong>()
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L487'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Resolve parameter references. This goes through all method parameter and see if a param doc references another method. If so, copy over the doc meta data.</p>
+  <p>Resolve parameter references. This goes through all</p>
 </div>
 <div class='tags'>
 </div>
@@ -840,9 +812,6 @@
   <div class='method_details'>
     <p class='signature' id='resolveSee-instance'>
       Object .<strong>resolveSee</strong>(see, entity, path)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L377'>Source</a>
     </p>
     <div class='docstring'>
   <p>Resolves curly-bracket reference links.</p>
@@ -854,7 +823,7 @@
       <span class='type'>(Object)</span>
       <span class='name'>see</span>
       &mdash;
-      <span class='desc'>The reference object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
+      <span class='desc'>The reference object (a {Object})</span>
     </li>
     <li>
       <span class='type'>(Class)</span>
@@ -866,7 +835,7 @@
       <span class='type'>(String)</span>
       <span class='name'>path</span>
       &mdash;
-      <span class='desc'>The path to the asset root (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
+      <span class='desc'>The path to the asset root (a {String})</span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -875,7 +844,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the resolved see (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>).</span>
+      <span class='desc'>Returns the resolved see (a {Object}).</span>
     </li>
   </ul>
 </div>
@@ -883,9 +852,6 @@
   <div class='method_details'>
     <p class='signature' id='resolveTextReferences-instance'>
       .<strong>resolveTextReferences</strong>(text = '', entity, path)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L261'>Source</a>
     </p>
     <div class='docstring'>
   <p>Search a text to find see links wrapped in curly braces.</p>
@@ -911,9 +877,6 @@
   <div class='method_details'>
     <p class='signature' id='verifyExternalObjReference-instance'>
       Boolean .<strong>verifyExternalObjReference</strong>(name)
-      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;0.6.0
-/src&#47;util&#47;referencer.coffee#L481'>Source</a>
     </p>
     <div class='docstring'>
   <p>Checks to make sure that an object that&#39;s referenced exists in <em>standardObjs.json</em>.</p>
@@ -925,7 +888,7 @@
       <span class='type'></span>
       (<tt>Boolean</tt>)
       &mdash;
-      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+      <span class='desc'>Returns a {Boolean}.</span>
     </li>
   </ul>
 </div>
@@ -934,10 +897,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Fri Feb 07 2014 16:47:04 GMT-0800 (PST)
+  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.6.0
+  v0.0.12
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

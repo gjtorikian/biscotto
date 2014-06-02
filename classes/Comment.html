@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/biscotto.css' type='text/css'>
+  <script src='..&#47;assets/biscotto.js'></script>
+  <script src='..&#47;assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='..&#47;README.md.html' title='Biscotto'>Biscotto</a>
+    &raquo;
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Comment</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Classes</a>
+      <a id='file_list_link' href='..&#47;file_list.html'>Files</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Methods</a>
+      <a id='extra_list_link' href='..&#47;extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Comment
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>node_modules&#47;haml-coffee&#47;src&#47;nodes&#47;comment.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='..&#47;classes/Node.html'>Node</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>Comment node for silent code blocks or pure</p><p>@example silent code block
+  -# silent
+    code comment</p><p>@example Haml comment
+  / This is a comment</p><p>@example Haml conditional comment
+  /[if IE]</p><p>Comments nodes can be silent, so they swallow all the children output.</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Constant Summary</h2>
+      <h3 class='inherited'>
+        Constants inherited from
+        <a href='..&#47;classes/Node.html'>Node</a>
+      </h3>
+      <p class='inherited'>
+                <a href='..&#47;classes/Node.html#CLEAR_WHITESPACE_LEFT-constant'>CLEAR_WHITESPACE_LEFT</a>,
+        <a href='..&#47;classes/Node.html#CLEAR_WHITESPACE_RIGHT-constant'>CLEAR_WHITESPACE_RIGHT</a>
+      </p>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#evaluate-instance'>
+        .<strong>evaluate</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Evaluate the Haml comments
+    </span>
+  </li>
+</ul>
+      <h2>
+        <small>Inherited Method Summary</small>
+      </h2>
+      <h3 class='inherited'>
+        Methods inherited from
+        <a href='..&#47;classes/Node.html'>Node</a>
+      </h3>
+      <p class='inherited'>
+                <a href='..&#47;classes/Node.html#constructor-instance'>.constructor</a>,
+                <a href='..&#47;classes/Node.html#addChild-instance'>.addChild</a>,
+                <a href='..&#47;classes/Node.html#getOpener-instance'>.getOpener</a>,
+                <a href='..&#47;classes/Node.html#getCloser-instance'>.getCloser</a>,
+                <a href='..&#47;classes/Node.html#isPreserved-instance'>.isPreserved</a>,
+                <a href='..&#47;classes/Node.html#isCommented-instance'>.isCommented</a>,
+                <a href='..&#47;classes/Node.html#markText-instance'>.markText</a>,
+                <a href='..&#47;classes/Node.html#markRunningCode-instance'>.markRunningCode</a>,
+                <a href='..&#47;classes/Node.html#markInsertingCode-instance'>.markInsertingCode</a>,
+                <a href='..&#47;classes/Node.html#evaluate-instance'>.evaluate</a>,
+        <a href='..&#47;classes/Node.html#render-instance'>.render</a>
+      </p>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='evaluate-instance'>
+      .<strong>evaluate</strong>()
+    </p>
+    <div class='docstring'>
+  <p>Evaluate the Haml comments</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Wed May 14 2014 18:43:10 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v0.0.12
+  (Node.js v0.10.3).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+</html>
