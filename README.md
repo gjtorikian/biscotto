@@ -251,6 +251,10 @@ Put each option flag on a separate line, followed by the source directories or f
 should be included into the documentation separated by a dash (`-`). If your extra file has the extension `.md`, it'll
 be rendered as Markdown.
 
+### Gulp-Biscotto
+
+If you want use Biscotto with [Gulp](https://gulpjs.com), see [gulp-biscotto](https://github.com/adam-lynch/gulp-biscotto).
+
 ## Keyboard navigation
 
 You can quickly search and jump through the documentation by using the fuzzy finder dialog:
