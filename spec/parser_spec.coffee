@@ -1,5 +1,6 @@
 fs      = require 'fs'
 walkdir = require 'walkdir'
+Biscotto  = require '../src/biscotto'
 Parser  = require '../src/parser'
 Referencer = require '../src/util/referencer'
 Generator = require '../src/generator'
@@ -38,14 +39,21 @@ for filename in walkdir.sync './spec/templates'
 
           filename = filename.substring process.cwd().length + 1
 
-          tokens = parser.parseContent source, filename
+          if /with_delegated_requires/.test filename
+            Biscotto.followRequires(parser, filename)
+          else
+            parser.parseContent filename, source
+
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
           # each file is parsed one at a time; delegations need multiple files parsed
           if /delegation/.test filename
-            parser.parseFile "./spec/templates/methods/method_example.coffee"
-            parser.parseFile "./spec/templates/methods/curly_method_documentation.coffee"
-            parser.parseFile "./spec/templates/methods/fixtures/private_class.coffee"
+            contents = parser.fileContents("./spec/templates/methods/method_example.coffee")
+            parser.parseFile "./spec/templates/methods/method_example.coffee", contents
+            contents = parser.fileContents("./spec/templates/methods/curly_method_documentation.coffee")
+            parser.parseFile "./spec/templates/methods/curly_method_documentation.coffee", contents
+            contents = parser.fileContents("./spec/templates/methods/fixtures/private_class.coffee")
+            parser.parseFile "./spec/templates/methods/fixtures/private_classmethod_example.coffee", contents
 
             # since delegation happens in the generator, we need to force that
             # magic here

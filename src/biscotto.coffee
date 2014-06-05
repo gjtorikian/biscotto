@@ -4,6 +4,8 @@ path      = require 'path'
 walkdir   = require 'walkdir'
 Async     = require 'async'
 _         = require 'underscore'
+CoffeeScript = require 'coffee-script'
+detective = require 'detective'
 
 Parser    = require './parser'
 Generator = require './generator'
@@ -212,6 +214,9 @@ module.exports = class Biscotto
 
           parser = new Parser(options)
 
+          if options.inputs.length == 1 && fs.lstatSync(options.inputs[0]).isFile()
+            @followRequires(parser, options.inputs[0])
+          else
             for input in options.inputs
               if (fs.existsSync || path.existsSync)(input)
                 stats = fs.lstatSync input
@@ -248,6 +253,25 @@ module.exports = class Biscotto
       done(error) if done
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
+
+  # Public: Follows and parses all the levels required by a file.
+  #
+  # Returns nothing.
+  @followRequires: (parser, filename) ->
+    src = CoffeeScript.compile(fs.readFileSync(filename, 'utf8'), {
+      header: false,
+      bare: true
+    })
+    sources = _.map detective(src), (i) ->
+      dirname = path.dirname filename
+      "#{path.resolve(dirname, i)}.coffee"
+
+    sources.push(filename)
+    _.each sources, (input) ->
+      console.log input
+      filename = input.substring process.cwd().length + 1
+      contents = parser.fileContents input
+      parser.parseFile input, contents
 
   # Public: Get the Biscotto script content that is used in the webinterface
   #
