@@ -1,40 +1,5 @@
 [
   {
-    "file": "/Users/garentorikian/atom/biscotto/spec/templates/methods/fixtures/required_class.coffee",
-    "doc": {
-      "comment": "<p>This is a required class.</p><p>It does required things. </p>",
-      "summary": "This is a required class.",
-      "status": "Private"
-    },
-    "class": {
-      "className": "RequiredClass",
-      "name": "RequiredClass",
-      "namespace": ""
-    },
-    "location": {
-      "line": 4
-    },
-    "methods": [
-      {
-        "doc": {
-          "comment": "<p>A totally delegated method.</p>",
-          "summary": "A totally delegated method.",
-          "status": "Public"
-        },
-        "type": "instance",
-        "signature": "::<strong>someDelegatedMethod</strong>()",
-        "name": "someDelegatedMethod",
-        "bound": false,
-        "parameters": [],
-        "location": {
-          "line": 7
-        }
-      }
-    ],
-    "variables": [],
-    "properties": []
-  },
-  {
     "file": "spec/templates/methods/method_with_delegated_requires.coffee",
     "doc": {
       "comment": "<p>A class that requires another file.</p>",
@@ -52,8 +17,9 @@
     "methods": [
       {
         "doc": {
-          "status": "Public",
-          "delegation": "RequiredClass.someDelegatedMethod"
+            "comment": "<p>A totally delegated method.</p>",
+            "summary": "A totally delegated method.",
+            "status": "Public"
         },
         "type": "instance",
         "signature": "::<strong>delegatedMethod</strong>()",

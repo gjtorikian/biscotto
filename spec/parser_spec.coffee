@@ -39,21 +39,23 @@ for filename in walkdir.sync './spec/templates'
 
           filename = filename.substring process.cwd().length + 1
 
-          if /with_delegated_requires/.test filename
-            Biscotto.followRequires(parser, filename)
-          else
-            parser.parseContent filename, source
+          unless /with_delegated_requires/.test filename
+            return
 
+          parser.parseContent filename, source
           generated = JSON.stringify(parser.toJSON(), null, 2)
 
           # each file is parsed one at a time; delegations need multiple files parsed
-          if /delegation/.test filename
-            contents = parser.fileContents("./spec/templates/methods/method_example.coffee")
-            parser.parseFile "./spec/templates/methods/method_example.coffee", contents
-            contents = parser.fileContents("./spec/templates/methods/curly_method_documentation.coffee")
-            parser.parseFile "./spec/templates/methods/curly_method_documentation.coffee", contents
-            contents = parser.fileContents("./spec/templates/methods/fixtures/private_class.coffee")
-            parser.parseFile "./spec/templates/methods/fixtures/private_classmethod_example.coffee", contents
+          if /delegation|delegated/.test filename
+            if /delegation/.test filename
+              contents = parser.fileContents("./spec/templates/methods/method_example.coffee")
+              parser.parseFile "./spec/templates/methods/method_example.coffee", contents
+              contents = parser.fileContents("./spec/templates/methods/curly_method_documentation.coffee")
+              parser.parseFile "./spec/templates/methods/curly_method_documentation.coffee", contents
+              contents = parser.fileContents("./spec/templates/methods/fixtures/private_class.coffee")
+              parser.parseFile "./spec/templates/methods/fixtures/private_classmethod_example.coffee", contents
+            else
+              Biscotto.followRequires(parser, filename)
 
             # since delegation happens in the generator, we need to force that
             # magic here
@@ -80,6 +82,7 @@ for filename in walkdir.sync './spec/templates'
 
           delta = diff.diffLines(expected, generated)
           if (delta.length > 1)
+            # console.log expected, generated
             console.error "\nFor #{filename}:"
             for hunk in delta
               if hunk.added
