@@ -215,7 +215,7 @@ module.exports = class Biscotto
           parser = new Parser(options)
 
           if options.inputs.length == 1 && fs.lstatSync(options.inputs[0]).isFile()
-            @followRequires(parser, options.inputs[0])
+            Biscotto.followRequires(parser, options.inputs[0])
           else
             for input in options.inputs
               if (fs.existsSync || path.existsSync)(input)
