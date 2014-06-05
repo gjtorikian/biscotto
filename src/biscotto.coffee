@@ -201,7 +201,6 @@ module.exports = class Biscotto
           # ignore params if biscotto has not been started directly
           args = if argv._.length isnt 0 and /.+biscotto$/.test(process.argv[1]) then argv._ else biscottoopts._
 
-
           for arg in args
             if arg is '-'
               extra = true
@@ -213,25 +212,28 @@ module.exports = class Biscotto
 
           parser = new Parser(options)
 
-          for input in options.inputs
-            if (fs.existsSync || path.existsSync)(input)
-              stats = fs.lstatSync input
-
-              if stats.isDirectory()
-                for filename in walkdir.sync input
-                  if filename.match /\._?coffee$/
+            for input in options.inputs
+              if (fs.existsSync || path.existsSync)(input)
+                stats = fs.lstatSync input
+                if stats.isDirectory()
+                  for filename in walkdir.sync input
+                    if filename.match /\._?coffee$/
+                      try
+                        filename = filename.substring process.cwd().length + 1
+                        contents = parser.fileContents filename
+                        parser.parseFile filename, contents
+                      catch error
+                        throw error if options.debug
+                        console.log "Cannot parse file #{ filename }: #{ error.message }"
+                else
+                  if input.match /\._?coffee$/
                     try
-                      parser.parseFile filename.substring process.cwd().length + 1
+                      filename = input.substring process.cwd().length + 1
+                      contents = parser.fileContents input
+                      parser.parseFile input, contents
                     catch error
                       throw error if options.debug
                       console.log "Cannot parse file #{ filename }: #{ error.message }"
-              else
-                if input.match /\._?coffee$/
-                  try
-                    parser.parseFile input
-                  catch error
-                    throw error if options.debug
-                    console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           generator = new Generator(parser, options)
           generator.generate(file)

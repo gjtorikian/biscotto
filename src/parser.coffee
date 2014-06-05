@@ -31,11 +31,19 @@ module.exports = class Parser
 
                         """
 
-  # Public: Parse the given CoffeeScript file.
+  # Public: Return the contents of the given CoffeeScript file.
   #
   # file - A {String} representing the the CoffeeScript filename
-  parseFile: (file) ->
-    @parseContent fs.readFileSync(file, 'utf8'), file
+
+  fileContents: (file) ->
+    fs.readFileSync(file, 'utf8')
+
+  # Public: Parse the given CoffeeScript file.
+  #
+  # contents - A {String} representing the the CoffeeScript contents
+  # file - A {String} representing the the CoffeeScript filename
+  parseFile: (file, contents) ->
+    @parseContent file, contents
     @fileCount += 1
 
   # Public: Parse the given CoffeeScript content.
@@ -43,7 +51,7 @@ module.exports = class Parser
   # content - A {String} representing the CoffeeScript file content
   # file - A {String} representing the CoffeeScript file name
   #
-  parseContent: (content, file = '') ->
+  parseContent: (file = '', content) ->
     @previousNodes = []
     @globalStatus = "Private"
 
