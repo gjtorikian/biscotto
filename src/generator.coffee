@@ -26,7 +26,7 @@ module.exports = class Generator
   # to the callback.
   #
   # With a provided file generation callback, the assets will not be copied. You
-  # can use {Biscotto.script} and {Biscotto.style} to get them.
+  # can use {Biscotto@script} and {Biscotto@style} to get them.
   #
   # file - A {Function} that acts as a file generation callback
   #
