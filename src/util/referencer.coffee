@@ -348,6 +348,7 @@ module.exports = class Referencer
               return refMethod.substring(1) == m.getName()
 
             if match
+              # it's another delegation!
               if match.doc.delegation
                 return @resolveDelegation(origin, match.doc.delegation, otherEntity)
               else
@@ -362,8 +363,8 @@ module.exports = class Referencer
 
             match = _.find methods, (m) ->
               return refMethod.substring(1) == m.getName()
-
             if match
+              # it's another delegation!
               if match.doc.delegation
                 return @resolveDelegation(origin, match.doc.delegation, otherEntity)
               else
