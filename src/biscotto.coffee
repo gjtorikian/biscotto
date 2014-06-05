@@ -268,7 +268,6 @@ module.exports = class Biscotto
 
     sources.push(filename)
     _.each sources, (input) ->
-      console.log input
       filename = input.substring process.cwd().length + 1
       contents = parser.fileContents input
       parser.parseFile input, contents
