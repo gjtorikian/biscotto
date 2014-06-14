@@ -7,7 +7,7 @@ _         = require 'underscore'
 
 Parser    = require './parser'
 Generator = require './generator'
-exec = require('child_process').exec
+{exec}    = require 'child_process'
 
 # Public: Biscotto - the TomDoc-CoffeeScript API documentation generator
 module.exports = class Biscotto
