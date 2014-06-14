@@ -219,7 +219,7 @@ the tests for Biscotto.
 
 ## Generate
 
-After the installation, you will have a `biscotto` binary that can be used to generate the documentation recursively for all CoffeeScript files within a directory. Note: The `coffee-script` module must be installed globally.
+After the installation, you will have a `biscotto` binary that can be used to generate the documentation recursively for all CoffeeScript files within a directory.
 
 To view a list of commands, type
 
