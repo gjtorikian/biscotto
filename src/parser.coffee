@@ -99,7 +99,7 @@ module.exports = class Parser
         # Skip the 1st comment which is added by coffeescript
         return if exp.comment is '~Private~'
 
-        @commentLines[exp.locationData.last_line] = exp.comment.trim()
+        @commentLines[lineMapping[exp.locationData.last_line]] = exp.comment.trim()
 
       visitClass: (exp) ->
         @defs[exp.variable.base.value] = @evalClass(exp)
@@ -134,9 +134,9 @@ module.exports = class Parser
                 # case `exports.foo = 42`
                 @exports[firstProp.name.value] =
                   type: 'primitive'
-                  doc: @commentLines[value.locationData.first_line - 1]
-                  startLineNumber:  value.locationData.first_line
-                  endLineNumber:    value.locationData.last_line
+                  doc: @commentLines[lineMapping[value.locationData.first_line] - 1]
+                  startLineNumber:  lineMapping[value.locationData.first_line]
+                  endLineNumber:    lineMapping[value.locationData.last_line]
 
             else
               # case `exports = bar`
@@ -217,9 +217,9 @@ module.exports = class Parser
                         if lookedUpVar.type is 'import'
                           value =
                             name: name
-                            doc: @commentLines[value.locationData.first_line - 1]
-                            startLineNumber: value.locationData.first_line
-                            endLineNumber: value.locationData.last_line
+                            doc: @commentLines[lineMapping[value.locationData.first_line] - 1]
+                            startLineNumber: lineMapping[value.locationData.first_line]
+                            endLineNumber: lineMapping[value.locationData.last_line]
                             reference: lookedUpVar
                         else
                           value = _.extend name: name, lookedUpVar
@@ -229,9 +229,9 @@ module.exports = class Parser
                         value =
                           type: 'primitive'
                           name: name
-                          doc: @commentLines[value.locationData.first_line - 1]
-                          startLineNumber:  value.locationData.first_line
-                          endLineNumber:    value.locationData.last_line
+                          doc: @commentLines[lineMapping[value.locationData.first_line] - 1]
+                          startLineNumber:  lineMapping[value.locationData.first_line]
+                          endLineNumber:    lineMapping[value.locationData.last_line]
 
                     else
                       value = _.extend name: name, value
@@ -248,17 +248,17 @@ module.exports = class Parser
         name: className
         classProperties: classProperties
         prototypeProperties: prototypeProperties
-        doc: @commentLines[exp.locationData.first_line - 1]
-        startLineNumber:  exp.locationData.first_line
-        endLineNumber:    exp.locationData.last_line
+        doc: @commentLines[lineMapping[exp.locationData.first_line] - 1]
+        startLineNumber:  lineMapping[exp.locationData.first_line]
+        endLineNumber:    lineMapping[exp.locationData.last_line]
 
       evalCode: (exp) ->
         bindingType: 'variable'
         type: 'function'
         paramNames: _.map exp.params, (param) -> param.name.value
-        doc: @commentLines[exp.locationData.first_line - 1]
-        startLineNumber:  exp.locationData.first_line
-        endLineNumber:    exp.locationData.last_line
+        doc: @commentLines[lineMapping[exp.locationData.first_line] - 1]
+        startLineNumber:  lineMapping[exp.locationData.first_line]
+        endLineNumber:    lineMapping[exp.locationData.last_line]
 
       evalValue: (exp) -> exp
       evalCall: (exp) ->
@@ -273,9 +273,9 @@ module.exports = class Parser
 
           ret =
             type: 'import'
-            doc: @commentLines[exp.locationData.first_line - 1]
-            startLineNumber:  exp.locationData.first_line
-            # endLineNumber:    exp.locationData.last_line
+            doc: @commentLines[lineMapping[exp.locationData.first_line] - 1]
+            startLineNumber:  lineMapping[exp.locationData.first_line]
+            # endLineNumber:    lineMapping[exp.locationData.last_line]
 
           if /^\./.test(moduleName)
             # Local module
