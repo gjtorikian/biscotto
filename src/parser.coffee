@@ -92,8 +92,12 @@ module.exports = class Parser
       constructor: (root) ->
         root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
 
-      visit: (exp) ->  @["visit#{exp.constructor.name}"](exp)
-      eval:  (exp) ->  @["eval#{exp.constructor.name}"](exp)
+      visit: (exp) ->
+        # throw new Error "Could not parse line #{lineMapping[exp.locationData.first_line]} because of missing visit#{exp.constructor.name}()" unless @["visit#{exp.constructor.name}"]
+        @["visit#{exp.constructor.name}"](exp)
+      eval:  (exp) ->
+        # throw new Error "Could not parse line #{lineMapping[exp.locationData.first_line]} because of missing eval#{exp.constructor.name}()" unless @["eval#{exp.constructor.name}"]
+        @["eval#{exp.constructor.name}"](exp)
 
       visitComment: (exp) ->
         # Skip the 1st comment which is added by coffeescript
@@ -109,15 +113,17 @@ module.exports = class Parser
         variable = @eval(exp.variable)
         value = @eval(exp.value)
 
-        baseName = variable.base.value
+        baseName = exp.variable.base.value
         switch baseName
           when 'module'
-            unless variable.properties?[0]?.name?.value is 'exports'
+            return if exp.variable.properties.length is 0 # Ignore `module = ...` (atom/src/browser/main.coffee)
+            unless exp.variable.properties?[0]?.name?.value is 'exports'
+              # console.log _.map variable.properties, (item) -> item.name.value
               throw new Error 'BUG: Does not support module.somthingOtherThanExports'
             baseName = 'exports'
-            firstProp = variable.properties[1]
+            firstProp = exp.variable.properties[1]
           when 'exports'
-            firstProp = variable.properties[0]
+            firstProp = exp.variable.properties[0]
 
         switch baseName
           when 'exports'
@@ -144,17 +150,20 @@ module.exports = class Parser
 
           # case left-hand-side is anything other than `exports...`
           else
-            # Handle 3 common cases:
+            # Handle 4 common cases:
             #
             # X     = ...
             # {X}   = ...
             # {X:Y} = ...
-            switch variable.base.constructor.name
+            # X.y   = ...
+            switch exp.variable.base.constructor.name
               when 'Literal'
-                # case X = ...
-                @defs[variable.base.value] = _.extend name: variable.base.value, value
+                # case X.y = ...  (just ignore it)
+                unless exp.variable.properties?.length > 0
+                  # case X = ...
+                  @defs[exp.variable.base.value] = _.extend name: exp.variable.base.value, value
               when 'Obj'
-                for key in variable.base.objects
+                for key in exp.variable.base.objects
                   switch key.constructor.name
                     when 'Value'
                       # case {X} = ...
@@ -260,7 +269,16 @@ module.exports = class Parser
         startLineNumber:  lineMapping[exp.locationData.first_line]
         endLineNumber:    lineMapping[exp.locationData.last_line]
 
-      evalValue: (exp) -> exp
+      evalValue: (exp) ->
+        if exp.base
+          type: 'primitive'
+          name: exp.base?.value
+          doc: @commentLines[lineMapping[exp.locationData.first_line] - 1]
+          startLineNumber:  lineMapping[exp.locationData.first_line]
+          endLineNumber:    lineMapping[exp.locationData.last_line]
+        else
+          throw new Error 'BUG? Not sure how to evaluate this value if it does not have .base'
+
       evalCall: (exp) ->
         # The only interesting call is `require('foo')`
         if exp.variable.base.value is 'require'
@@ -288,13 +306,32 @@ module.exports = class Parser
           ret
 
         else
-          null
+          type: 'function'
+          doc: @commentLines[lineMapping[exp.locationData.first_line] - 1]
+          startLineNumber:  lineMapping[exp.locationData.first_line]
+          endLineNumber:    lineMapping[exp.locationData.last_line]
 
-      evalAssign: (exp) -> throw new Error 'BUG: Not implemented yet'
-      evalLiteral: (exp) -> throw new Error 'BUG: Not implemented yet'
-      evalObj: (exp) -> throw new Error 'BUG: Not implemented yet'
-      evalAccess: (exp) -> throw new Error 'BUG: Not implemented yet'
 
+      evalError: (str, exp) ->
+        throw new Error "BUG: Not implemented yet: #{str}. Line #{exp.locationData.first_line}"
+      evalAssign: (exp) -> @eval(exp.value) # Support x = y = z
+      evalLiteral: (exp) -> @evalError 'evalLiteral', exp
+      evalObj: (exp) -> @evalError 'evalObj', exp
+      evalAccess: (exp) -> @evalError 'evalAccess', exp
+
+      evalUnknown: (exp) -> exp
+      evalIf: -> @evalUnknown(arguments)
+      visitIf: ->
+      visitOp: ->
+      visitArr: ->
+      visitNull: ->
+      visitBool: ->
+      visitIndex: ->
+      visitParens: ->
+
+      evalOp: (exp) -> exp
+
+    # console.log 'Visiting ' + file
 
     {defs:unindexedObjects, exports:exports} = new Visitor(root)
     objects = {}
