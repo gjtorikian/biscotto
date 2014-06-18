@@ -485,7 +485,7 @@ module.exports = class Referencer
     see
 
   @getLinkMatch: (text) ->
-    if m = text.match(/\{(\w+)\}/)
+    if m = text.match(/\{([\w.]+)\}/)
       return m[1]
     else
       return ""
