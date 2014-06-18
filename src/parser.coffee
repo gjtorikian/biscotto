@@ -54,15 +54,15 @@ module.exports = class Parser
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
-    [content, lineMapping] = @convertComments(content)
+    [convertedContent, lineMapping] = @convertComments(content)
 
-    sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
+    sourceMap = CoffeeScript.compile(convertedContent, {sourceMap: true}).v3SourceMap
     @smc = new SourceMapConsumer(sourceMap)
 
     try
-      root = CoffeeScript.nodes(content)
+      root = CoffeeScript.nodes(convertedContent)
     catch error
-      console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
+      console.log('Parsed CoffeeScript source:\n%s', convertedContent) if @options.debug
       throw error
 
     # Find top-level methods and constants that aren't within a class
@@ -71,7 +71,8 @@ module.exports = class Parser
 
     @linkAncestors root
 
-    {defs:unindexedObjects, exports:exports} = new Visitor(file, root, lineMapping)
+    # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+    {defs:unindexedObjects, exports:exports} = new Visitor(file, CoffeeScript.nodes(content), lineMapping)
     objects = {}
 
     for key, value of unindexedObjects
@@ -231,8 +232,9 @@ module.exports = class Parser
               indentComment = ""
 
             globalCount++
+            # comment.push whitespace(indentComment) + '### ' + commentLine[2]?.replace /#/g, "\u0091#"
             # we place these here to indicate that the method had a global status applied
-            result.push("#{indentComment}###~#{@globalStatus}~###")
+            result.push("#{indentComment}###~#{@globalStatus}~###") unless /require/.test(line)
 
           result.push line
 
