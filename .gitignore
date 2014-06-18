@@ -11,3 +11,4 @@ npm-debug.log
 js_src/
 dummy/
 .grunt/
+metadata.json
