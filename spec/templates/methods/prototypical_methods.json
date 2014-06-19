@@ -1,0 +1,37 @@
+[
+  {
+    "file": "spec/templates/methods/prototypical_methods.coffee",
+    "doc": {
+      "comment": "<p>Here&#39;s a class.</p>",
+      "summary": "Here&#39;s a class.",
+      "status": "Public"
+    },
+    "class": {
+      "className": "Foo",
+      "name": "Foo",
+      "namespace": ""
+    },
+    "location": {
+      "line": 2
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Here&#39;s a method, baz.</p>",
+          "summary": "Here&#39;s a method, baz.",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>baz</strong>()",
+        "name": "baz",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 4
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

@@ -162,6 +162,10 @@ describe "Parser", ->
       delta = constructDelta("spec/templates/methods/preprocessor_flagging.coffee")
       checkDelta(delta)
 
+    fit 'understands prototypical methods', ->
+      delta = constructDelta("spec/templates/methods/prototypical_methods.coffee")
+      checkDelta(delta)
+
     it 'understands return values', ->
       delta = constructDelta("spec/templates/methods/return_values.coffee")
       checkDelta(delta)
