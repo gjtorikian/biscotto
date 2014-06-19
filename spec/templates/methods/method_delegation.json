@@ -36,7 +36,7 @@
           ]
         },
         "type": "instance",
-        "signature": "::<strong>delegatedClassname</strong>()",
+        "signature": "Boolean ::<strong>delegatedClassname</strong>(p)",
         "name": "delegatedClassname",
         "bound": false,
         "parameters": [
@@ -77,7 +77,7 @@
           ]
         },
         "type": "instance",
-        "signature": "::<strong>doubleDelegationOne</strong>()",
+        "signature": "Number ::<strong>doubleDelegationOne</strong>()",
         "name": "doubleDelegationOne",
         "bound": false,
         "parameters": [],
@@ -98,7 +98,7 @@
           ]
         },
         "type": "instance",
-        "signature": "::<strong>doubleDelegationTwo</strong>()",
+        "signature": "Number ::<strong>doubleDelegationTwo</strong>()",
         "name": "doubleDelegationTwo",
         "bound": false,
         "parameters": [],
@@ -134,7 +134,7 @@
           "status": "Public"
         },
         "type": "instance",
-        "signature": "::<strong>delegatedInternalRegular</strong>()",
+        "signature": "::<strong>delegatedInternalRegular</strong>(it, options)",
         "name": "delegatedInternalRegular",
         "bound": false,
         "parameters": [
