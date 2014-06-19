@@ -5,3 +5,6 @@ class Foo
 
 # Public: Here is a method on Foo, called bar.
 Foo::bar = () -> 'bar'
+
+# Public: Show that other prototypes are safe
+Bing::bang = () -> 'koof'
