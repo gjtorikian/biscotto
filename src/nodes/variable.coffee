@@ -8,11 +8,11 @@ module.exports = class Variable extends Node
   #
   # entity - The variable's {Class}
   # node - The variable node (a {Object})
-  # smc - An object mapping the actual position of a member to its Biscotto one
+  # lineMapping - An object mapping the actual position of a member to its Biscotto one
   # options - The parser options (a {Object})
   # classType - A {Boolean} indicating if the class is a `class` or an `instance`
   # comment - The comment node (a {Object})
-  constructor: (@entity, @node, @smc, @options, @classType = false, comment = null) ->
+  constructor: (@entity, @node, @lineMapping, @options, @classType = false, comment = null) ->
     try
       @doc = new Doc(comment, @options)
       @getName()
