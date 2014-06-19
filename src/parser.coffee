@@ -1,5 +1,4 @@
 fs           = require 'fs'
-path         = require 'path'
 _            = require 'underscore'
 _.str        = require 'underscore.string'
 CoffeeScript = require 'coffee-script'
