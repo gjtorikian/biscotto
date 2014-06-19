@@ -14,7 +14,6 @@ describe "Parser", ->
   parser = null
 
   constructDelta = (filename, hasReferences = false) ->
-    filename = "spec/templates/classes/class_description_markdown.coffee"
     source = fs.readFileSync filename, 'utf8'
 
     parser.parseContent source, filename
