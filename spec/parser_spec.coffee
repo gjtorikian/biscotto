@@ -14,7 +14,6 @@ describe "Parser", ->
   parser = null
 
   constructDelta = (filename, hasReferences = false) ->
-    filename = "spec/templates/classes/class_description_markdown.coffee"
     source = fs.readFileSync filename, 'utf8'
 
     parser.parseContent source, filename
@@ -25,6 +24,10 @@ describe "Parser", ->
     diff(expected, generated)
 
   followReferences = (parser) ->
+    parser.parseFile "spec/templates/methods/method_example.coffee"
+    parser.parseFile "spec/templates/methods/curly_method_documentation.coffee"
+    parser.parseFile "spec/templates/methods/fixtures/private_class.coffee"
+
     # since delegation happens in the generator, we need to force that magic here
     generator = new Generator(parser,
                               noOutput: true
@@ -37,7 +40,7 @@ describe "Parser", ->
       methods = clazz.getMethods()
 
       # resolve all delegations in methods
-      for method in methods by 1
+      for method in methods
         delegation = method.doc.delegation
         if delegation
           originalStatus = method.doc.status
@@ -45,7 +48,7 @@ describe "Parser", ->
           method.doc.status = originalStatus
 
     # [0], because we don't want the parsed files in the resulting JSON
-    generated = JSON.stringify([parser.toJSON()[0]], null, 2)
+    JSON.stringify([parser.toJSON()[0]], null, 2)
 
   checkDelta = (delta) ->
     if delta?
@@ -113,10 +116,6 @@ describe "Parser", ->
 
     it 'understands curly notation', ->
       delta = constructDelta("spec/templates/methods/curly_method_documentation.coffee")
-      checkDelta(delta)
-
-    it 'understands private classes', ->
-      delta = constructDelta("spec/templates/methods/fixtures/private_class.coffee")
       checkDelta(delta)
 
     it 'understands hash parameters', ->
