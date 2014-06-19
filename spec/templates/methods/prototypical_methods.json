@@ -1,5 +1,27 @@
 [
   {
+    "file": "prototypical_methods.coffee",
+    "path": "spec/templates/methods",
+    "methods": [
+      {
+        "doc": {
+          "comment": "<p>Show that other prototypes are safe</p>",
+          "summary": "Show that other prototypes are safe",
+          "status": "Public"
+        },
+        "type": "file",
+        "signature": "? <strong>Bing.prototype.bang</strong>()",
+        "name": "Bing.prototype.bang",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 10
+        }
+      }
+    ],
+    "variables": []
+  },
+  {
     "file": "spec/templates/methods/prototypical_methods.coffee",
     "doc": {
       "comment": "<p>Here&#39;s a class.</p>",
@@ -29,6 +51,22 @@
         "location": {
           "line": 4
         }
+      },
+      {
+        "doc": {
+          "comment": "<p>Here is a method on Foo, called bar.</p>",
+          "summary": "Here is a method on Foo, called bar.",
+          "status": "Public"
+        },
+        "type": "file",
+        "signature": "::<strong>bar</strong>()",
+        "name": "bar",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 7
+        },
+        "original_filename": "spec/templates/methods/prototypical_methods.coffee"
       }
     ],
     "variables": [],
