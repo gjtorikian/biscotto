@@ -142,7 +142,7 @@ describe "Parser", ->
     it 'understands preprocessor flagging for visibility', ->
       constructDelta("spec/templates/methods/preprocessor_flagging.coffee")
 
-    fit 'understands prototypical methods', ->
+    it 'understands prototypical methods', ->
       constructDelta("spec/templates/methods/prototypical_methods.coffee")
 
     it 'understands return values', ->
