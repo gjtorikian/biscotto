@@ -39,7 +39,7 @@
           %h4
             != example.title
           %pre
-            %code.coffee= example.code
+            %code.coffee= example
 
 .tags
   - if @type is 'method' or @type is 'overload'

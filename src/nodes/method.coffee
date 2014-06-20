@@ -64,6 +64,13 @@ module.exports = class Method extends Node
 
     @originalName
 
+  # Gets the original type of a method. This is only used for prototypical methods defined in Files
+  getOriginalType: ->
+    unless @originalType
+      @originalType = @getDoc().originalType
+
+    @originalType
+
   # Get the class doc
   #
   # @return [Doc] the class doc
@@ -218,7 +225,7 @@ module.exports = class Method extends Node
   toJSON: ->
     json =
       doc: @getDoc().toJSON()
-      type: @getType()
+      type: @getOriginalType() || @getType()
       signature: @getSignature()
       name: @getOriginalName() || @getName()
       bound: @node.value.bound

@@ -25,16 +25,18 @@ module.exports = class Templater
       JST: @JST
       underscore: _
       str: _.str
-      title: @options.title
-      stability: @options.stability
       referencer: @referencer
-      analytics: @options.analytics
       fileCount: @parser.files.length
       classCount: @parser.classes.length
       mixinCount: @parser.mixins.length
       methodCount: @parser.getAllMethods().length
       extraCount: _.union([@options.readme], @options.extras).length
+      isVisible: @isVisible
+      parserClasses: @parser.classes
       repo: "#{@options.origin}/blob/#{@options.tag}"
+
+    _.each @options, (value, property) =>
+      @globalContext[property] = value
 
     for filename in walkdir.sync path.join(__dirname, '..', '..', 'theme', 'default', 'templates')
       if match = /theme[/\\]default[/\\]templates[/\\](.+).hamlc$/.exec filename
@@ -74,3 +76,7 @@ module.exports = class Templater
               fs.writeFile file, html
 
     html
+
+  # Verifies that, given the visibility settings, whether something is rendered
+  isVisible: (status) =>
+    (status == "Public") || (status == "Private" && @options.private) || (status == "Internal" && @options.internal)
