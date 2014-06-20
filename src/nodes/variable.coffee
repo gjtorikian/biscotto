@@ -72,8 +72,11 @@ module.exports = class Variable extends Node
     try
       unless @location
         {locationData} = @node.variable
-        originalPosition = @smc.originalPositionFor({ line: locationData.first_line, column: locationData.first_column })
-        @location = { line: originalPosition.line, column: originalPosition.column }
+        firstLine = locationData.first_line + 1
+        if !@lineMapping[firstLine]?
+          @lineMapping[firstLine] = @lineMapping[firstLine - 1]
+
+        @location = { line: @lineMapping[firstLine] }
 
       @location
 
