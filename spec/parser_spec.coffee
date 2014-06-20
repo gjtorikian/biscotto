@@ -1,83 +1,155 @@
 fs      = require 'fs'
+{inspect} = require 'util'
 walkdir = require 'walkdir'
 Parser  = require '../src/parser'
 Referencer = require '../src/util/referencer'
 Generator = require '../src/generator'
 
-diff    = require 'diff'
-_       = require 'underscore'
-_.str   = require 'underscore.string'
+{diff}    = require 'jsondiffpatch'
+_         = require 'underscore'
+_.str     = require 'underscore.string'
+require('jasmine-focused')
 
-beforeEach ->
-  @addMatchers
-    toBeCompiledTo: (expected) ->
-      @message = -> @actual.report
-      @actual.generated is expected
+describe "Parser", ->
+  parser = null
 
-for filename in walkdir.sync './spec/templates'
-  isFixture = /fixtures/.test(filename)
-
-  if filename.match(/\.coffee$/) && !isFixture
+  constructDelta = (filename, hasReferences = false) ->
     source = fs.readFileSync filename, 'utf8'
+
+    parser.parseContent source, filename
+
     expected = JSON.stringify(JSON.parse(fs.readFileSync filename.replace(/\.coffee$/, '.json'), 'utf8'), null, 2)
+    generated = if hasReferences then followReferences(parser) else JSON.stringify(parser.toJSON(), null, 2)
 
-    do (source, expected, filename) ->
-      describe "The CoffeeScript file #{ filename }", ->
-        it 'parses correctly to JSON', ->
+    diff(expected, generated)
+    checkDelta(expected, generated, diff(expected, generated))
 
-          parser = new Parser({
-            inputs: []
-            output: ''
-            extras: []
-            readme: ''
-            title: ''
-            quiet: false
-            private: true
-            github: ''
-          })
+  followReferences = (parser) ->
+    parser.parseFile "spec/templates/methods/method_example.coffee"
+    parser.parseFile "spec/templates/methods/curly_method_documentation.coffee"
+    parser.parseFile "spec/templates/methods/fixtures/private_class.coffee"
 
-          filename = filename.substring process.cwd().length + 1
+    # since delegation happens in the generator, we need to force that magic here
+    generator = new Generator(parser,
+                              noOutput: true
+                              stats: true
+                              extras: []
+                              quiet: false
+                            )
+    referencer = new Referencer(parser.classes, parser.mixins, {quiet: false})
+    for clazz in parser.classes
+      methods = clazz.getMethods()
 
-          tokens = parser.parseContent source, filename
-          generated = JSON.stringify(parser.toJSON(), null, 2)
+      # resolve all delegations in methods
+      for method in methods
+        delegation = method.doc.delegation
+        if delegation
+          originalStatus = method.doc.status
+          [method.doc, method.parameters] = referencer.resolveDelegation(method, delegation, clazz)
+          method.doc.status = originalStatus
 
-          # each file is parsed one at a time; delegations need multiple files parsed
-          if /delegation/.test filename
-            parser.parseFile "./spec/templates/methods/method_example.coffee"
-            parser.parseFile "./spec/templates/methods/curly_method_documentation.coffee"
-            parser.parseFile "./spec/templates/methods/fixtures/private_class.coffee"
+    # [0], because we don't want the parsed files in the resulting JSON
+    JSON.stringify([parser.toJSON()[0]], null, 2)
 
-            # since delegation happens in the generator, we need to force that
-            # magic here
-            generator = new Generator(parser,
-                                      noOutput: true
-                                      stats: true
-                                      extras: []
-                                      quiet: false
-                                    )
-            referencer = new Referencer(parser.classes, parser.mixins, {quiet: false})
-            for clazz in parser.classes
-              methods = clazz.getMethods()
+  checkDelta = (expected, generated, delta) ->
+    if delta?
+      console.error expected, generated
+      console.error(delta)
+      expect(delta).toBe(undefined)
 
-              # resolve all delegations in methods
-              for method in methods by 1
-                delegation = method.doc.delegation
-                if delegation
-                  originalStatus = method.doc.status
-                  [method.doc, method.parameters] = referencer.resolveDelegation(method, delegation, clazz)
-                  method.doc.status = originalStatus
+  beforeEach ->
+    parser = new Parser({
+      inputs: []
+      output: ''
+      extras: []
+      readme: ''
+      title: ''
+      quiet: false
+      private: true
+      verbose: true
+      github: ''
+    })
 
-            # [0], because we don't want the parsed files in the resulting JSON
-            generated = JSON.stringify([parser.toJSON()[0]], null, 2)
+  describe "Classes", ->
+    it 'understands descriptions', ->
+      constructDelta("spec/templates/classes/class_description_markdown.coffee")
 
-          delta = diff.diffLines(expected, generated)
-          if (delta.length > 1)
-            console.error "\nFor #{filename}:"
-            for hunk in delta
-              if hunk.added
-                console.error "Added: \n#{_.str.strip(diff.value)}"
-              if hunk.removed
-                console.error "Removed: \n#{_.str.strip(diff.value)}"
-            console.error delta
-            # TODO: we basically want to flag this test as false, but print out the debug info above
-            expect(true).toBe(false)
+    it 'understands documentation', ->
+      constructDelta("spec/templates/classes/class_documentation.coffee")
+
+    it 'understands extends', ->
+      constructDelta("spec/templates/classes/class_extends.coffee")
+
+    it 'understands empty classes', ->
+      constructDelta("spec/templates/classes/empty_class.coffee")
+
+    it 'understands exporting classess', ->
+      constructDelta("spec/templates/classes/export_class.coffee")
+
+    it 'understands inner classes', ->
+      constructDelta("spec/templates/classes/inner_class.coffee")
+
+    it 'understands namespaced classes', ->
+      constructDelta("spec/templates/classes/namespaced_class.coffee")
+
+    it 'understands simple classes', ->
+      constructDelta("spec/templates/classes/simple_class.coffee")
+
+    it 'understands classes with uppercase identifiers', ->
+      constructDelta("spec/templates/classes/uppercase_identifiers.coffee")
+
+  describe "non class files", ->
+    it 'understands descriptions', ->
+      constructDelta("spec/templates/files/non_class_file.coffee")
+
+  describe "Methods", ->
+    it 'understands assigned parameters classes', ->
+      constructDelta("spec/templates/methods/assigned_parameters.coffee")
+
+    it 'understands class methods', ->
+      constructDelta("spec/templates/methods/class_methods.coffee")
+
+    it 'understands curly notation', ->
+      constructDelta("spec/templates/methods/curly_method_documentation.coffee")
+
+    it 'understands hash parameters', ->
+      constructDelta("spec/templates/methods/hash_parameters.coffee")
+
+    it 'understands instance methods', ->
+      constructDelta("spec/templates/methods/instance_methods.coffee")
+
+    it 'understands links in methods', ->
+      constructDelta("spec/templates/methods/links.coffee")
+
+    it 'understands method delegation', ->
+      constructDelta("spec/templates/methods/method_delegation.coffee", true)
+
+    it 'understands method delegation from public to private', ->
+      constructDelta("spec/templates/methods/method_delegation_as_private.coffee", true)
+
+    it 'understands basic methods', ->
+      constructDelta("spec/templates/methods/method_example.coffee")
+
+    it 'understands methods with paragraph descriptions for parameters', ->
+      constructDelta("spec/templates/methods/method_paragraph_param.coffee")
+
+    it 'understands methods with no descriptions', ->
+      constructDelta("spec/templates/methods/method_shortdesc.coffee")
+
+    it 'understands optional arguments', ->
+      constructDelta("spec/templates/methods/optional_arguments.coffee")
+
+    it 'understands paragraph length descriptions', ->
+      constructDelta("spec/templates/methods/paragraph_desc.coffee")
+
+    it 'understands preprocessor flagging for visibility', ->
+      constructDelta("spec/templates/methods/preprocessor_flagging.coffee")
+
+    it 'understands prototypical methods', ->
+      constructDelta("spec/templates/methods/prototypical_methods.coffee")
+
+    it 'understands return values', ->
+      constructDelta("spec/templates/methods/return_values.coffee")
+
+    it 'understands paragraph length return values', ->
+      constructDelta("spec/templates/methods/return_values_long.coffee")

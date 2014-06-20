@@ -50,6 +50,27 @@ module.exports = class Method extends Node
 
     @type
 
+  # Gets the original location of a method. This is only used for prototypical methods defined in Files
+  getOriginalFilename: ->
+    unless @originalFilename
+      @originalFilename = @getDoc().originalFilename
+
+    @originalFilename
+
+  # Gets the original name of a method. This is only used for prototypical methods defined in Files
+  getOriginalName: ->
+    unless @originalName
+      @originalName = @getDoc().originalName
+
+    @originalName
+
+  # Gets the original type of a method. This is only used for prototypical methods defined in Files
+  getOriginalType: ->
+    unless @originalType
+      @originalType = @getDoc().originalType
+
+    @originalType
+
   # Get the class doc
   #
   # @return [Doc] the class doc
@@ -69,7 +90,8 @@ module.exports = class Method extends Node
                      when 'instance'
                        '::'
                      else
-                       '? '
+                       if @getOriginalFilename()? then "::" else '? '
+
         doc = @getDoc()
 
         # this adds a superfluous space if there's no type defined
@@ -79,7 +101,7 @@ module.exports = class Method extends Node
             retVals.push "#{ _.str.escapeHTML retVal.type }"
           @signature = retVals.join("|") + " #{@signature}"
 
-        @signature += "<strong>#{ @getName() }</strong>"
+        @signature += "<strong>#{ @getOriginalName() || @getName() }</strong>"
         @signature += '('
 
         params = []
@@ -203,12 +225,14 @@ module.exports = class Method extends Node
   toJSON: ->
     json =
       doc: @getDoc().toJSON()
-      type: @getType()
+      type: @getOriginalType() || @getType()
       signature: @getSignature()
-      name: @getName()
+      name: @getOriginalName() || @getName()
       bound: @node.value.bound
       parameters: []
       location: @getLocation()
+
+    json["original_filename"] = @getOriginalFilename() if @getOriginalFilename?
 
     for parameter, i in @getParameters()
       json.parameters.push(parameter.toJSON(i))

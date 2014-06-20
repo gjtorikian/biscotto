@@ -32,8 +32,11 @@
           %tr
             %td Inherits:
             %td
-              %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
-
+              -# Don’t render inherited classes that don’t exist
+              - if (@parserClasses.some (clazz) => return clazz.className == @classData.class.parent)
+                %a{ href: "#{ @path }classes/#{ @classData.class.parent.replace(/\./g, '/') }.html"}= @classData.class.parent
+              - else
+                = @classData.class.parent
         - extendsFrom = @underscore.keys @extendedMethods
         - unless @underscore.isEmpty extendsFrom
           %tr

@@ -95,7 +95,10 @@
         "type": "class",
         "constant": true,
         "name": "GREETING",
-        "value": "'Hay'"
+        "value": "'Hay'",
+        "location": {
+         "line": 2
+        }
       }
     ]
   }

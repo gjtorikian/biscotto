@@ -210,6 +210,7 @@ module.exports = class Referencer
         data.doc.summary = @resolveTextReferences(data.doc.summary, entity, path)
 
       for name, options of data.doc.options
+        continue unless options?
         for option, index in options
           data.doc.options[name][index].desc = @resolveTextReferences(option.desc, entity, path)
 
@@ -485,7 +486,7 @@ module.exports = class Referencer
     see
 
   @getLinkMatch: (text) ->
-    if m = text.match(/\{(\w+)\}/)
+    if m = text.match(/\{([\w.]+)\}/)
       return m[1]
     else
       return ""
