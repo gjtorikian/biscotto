@@ -13,8 +13,10 @@
 
       %ul
         - for method in @methods
-          %li{ deprecated: if method.deprecated then true else false }
-            %a{ href: method.href, target: 'main', title: method.name }
-              = "#{ if method.type is 'instance' then '#' else '.' }#{ method.name }"
-            %small
-              = surround '(', ')', -> method.classname
+          -#Don’t render methods within classes that don’t exist
+          - if (@underscore.some @parserClasses, (clazz) => return clazz.className == method.classname && @isVisible(clazz.doc.status))
+            %li{ deprecated: if method.deprecated then true else false }
+              %a{ href: method.href, target: 'main', title: method.name }
+                = "#{ if method.type is 'instance' then '#' else '.' }#{ method.name }"
+              %small
+                = surround '(', ')', -> method.classname
