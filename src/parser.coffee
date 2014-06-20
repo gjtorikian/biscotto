@@ -343,6 +343,7 @@ module.exports = class Parser
           if className == clazz.getClassName()
             method.doc['originalFilename'] = method.entity.fileName
             method.doc['originalName'] = methodName
+            method.doc['originalType'] = "instance"
             clazz.methods.push(method)
             return false
           return true

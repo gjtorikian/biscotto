@@ -58,7 +58,7 @@
           "summary": "Here is a method on Foo, called bar.",
           "status": "Public"
         },
-        "type": "file",
+        "type": "instance",
         "signature": "::<strong>bar</strong>()",
         "name": "bar",
         "bound": false,
