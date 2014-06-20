@@ -95,6 +95,9 @@ describe "Parser", ->
     it 'understands simple classes', ->
       constructDelta("spec/templates/classes/simple_class.coffee")
 
+    it 'understands classes with uppercase identifiers', ->
+      constructDelta("spec/templates/classes/uppercase_identifiers.coffee")
+
   describe "non class files", ->
     it 'understands descriptions', ->
       constructDelta("spec/templates/files/non_class_file.coffee")
