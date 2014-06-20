@@ -237,6 +237,8 @@ module.exports = class Parser
     unless @methods
       @methods = []
 
+      @convertPrototypes()
+
       for file in @files
         @methods = _.union @methods, file.getMethods()
 
@@ -332,11 +334,26 @@ module.exports = class Parser
     if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
+  # Private: Moves prototypes found in Files to proper locations in Classes
+  convertPrototypes: ->
+    _.each @files, (file) =>
+      file.methods = _.filter file.methods, (method) =>
+        [className, methodName] = method.name.split(/\.prototype\./)
+        _.every @classes, (clazz) =>
+          if className == clazz.getClassName()
+            method.doc['originalFilename'] = method.entity.fileName
+            method.doc['originalName'] = methodName
+            clazz.methods.push(method)
+            return false
+          return true
+
   # Public: Get a JSON representation of the object.
   #
   # Returns the JSON {Object}.
   toJSON: ->
     json = []
+
+    @convertPrototypes()
 
     for file in @files
       json.push file.toJSON()

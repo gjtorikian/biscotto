@@ -22,6 +22,7 @@ describe "Parser", ->
     generated = if hasReferences then followReferences(parser) else JSON.stringify(parser.toJSON(), null, 2)
 
     diff(expected, generated)
+    checkDelta(expected, generated, diff(expected, generated))
 
   followReferences = (parser) ->
     parser.parseFile "spec/templates/methods/method_example.coffee"
@@ -50,9 +51,10 @@ describe "Parser", ->
     # [0], because we don't want the parsed files in the resulting JSON
     JSON.stringify([parser.toJSON()[0]], null, 2)
 
-  checkDelta = (delta) ->
+  checkDelta = (expected, generated, delta) ->
     if delta?
-      console.error(inspect(delta))
+      console.error expected, generated
+      console.error(delta)
       expect(delta).toBe(undefined)
 
   beforeEach ->
@@ -64,108 +66,87 @@ describe "Parser", ->
       title: ''
       quiet: false
       private: true
+      verbose: true
       github: ''
     })
 
   describe "Classes", ->
     it 'understands descriptions', ->
-      delta = constructDelta("spec/templates/classes/class_description_markdown.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/class_description_markdown.coffee")
 
     it 'understands documentation', ->
-      delta = constructDelta("spec/templates/classes/class_documentation.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/class_documentation.coffee")
 
     it 'understands extends', ->
-      delta = constructDelta("spec/templates/classes/class_extends.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/class_extends.coffee")
 
     it 'understands empty classes', ->
-      delta = constructDelta("spec/templates/classes/empty_class.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/empty_class.coffee")
 
     it 'understands exporting classess', ->
-      delta = constructDelta("spec/templates/classes/export_class.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/export_class.coffee")
 
     it 'understands inner classes', ->
-      delta = constructDelta("spec/templates/classes/inner_class.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/inner_class.coffee")
 
     it 'understands namespaced classes', ->
-      delta = constructDelta("spec/templates/classes/namespaced_class.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/namespaced_class.coffee")
 
     it 'understands simple classes', ->
-      delta = constructDelta("spec/templates/classes/simple_class.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/classes/simple_class.coffee")
 
   describe "non class files", ->
     it 'understands descriptions', ->
-      delta = constructDelta("spec/templates/files/non_class_file.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/files/non_class_file.coffee")
 
   describe "Methods", ->
     it 'understands assigned parameters classes', ->
-      delta = constructDelta("spec/templates/methods/assigned_parameters.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/assigned_parameters.coffee")
 
     it 'understands class methods', ->
-      delta = constructDelta("spec/templates/methods/class_methods.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/class_methods.coffee")
 
     it 'understands curly notation', ->
-      delta = constructDelta("spec/templates/methods/curly_method_documentation.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/curly_method_documentation.coffee")
 
     it 'understands hash parameters', ->
-      delta = constructDelta("spec/templates/methods/hash_parameters.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/hash_parameters.coffee")
 
     it 'understands instance methods', ->
-      delta = constructDelta("spec/templates/methods/instance_methods.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/instance_methods.coffee")
 
     it 'understands links in methods', ->
-      delta = constructDelta("spec/templates/methods/links.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/links.coffee")
 
     it 'understands method delegation', ->
-      delta = constructDelta("spec/templates/methods/method_delegation.coffee", true)
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/method_delegation.coffee", true)
 
     it 'understands method delegation from public to private', ->
-      delta = constructDelta("spec/templates/methods/method_delegation_as_private.coffee", true)
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/method_delegation_as_private.coffee", true)
 
     it 'understands basic methods', ->
-      delta = constructDelta("spec/templates/methods/method_example.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/method_example.coffee")
 
     it 'understands methods with paragraph descriptions for parameters', ->
-      delta = constructDelta("spec/templates/methods/method_paragraph_param.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/method_paragraph_param.coffee")
 
     it 'understands methods with no descriptions', ->
-      delta = constructDelta("spec/templates/methods/method_shortdesc.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/method_shortdesc.coffee")
 
     it 'understands optional arguments', ->
-      delta = constructDelta("spec/templates/methods/optional_arguments.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/optional_arguments.coffee")
 
     it 'understands paragraph length descriptions', ->
-      delta = constructDelta("spec/templates/methods/paragraph_desc.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/paragraph_desc.coffee")
 
     it 'understands preprocessor flagging for visibility', ->
-      delta = constructDelta("spec/templates/methods/preprocessor_flagging.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/preprocessor_flagging.coffee")
+
+    it 'understands prototypical methods', ->
+      constructDelta("spec/templates/methods/prototypical_methods.coffee")
 
     it 'understands return values', ->
-      delta = constructDelta("spec/templates/methods/return_values.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/return_values.coffee")
 
     it 'understands paragraph length return values', ->
-      delta = constructDelta("spec/templates/methods/return_values_long.coffee")
-      checkDelta(delta)
+      constructDelta("spec/templates/methods/return_values_long.coffee")
