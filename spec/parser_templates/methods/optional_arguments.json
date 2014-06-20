@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/optional_arguments.coffee",
+    "file": "spec/parser_templates/methods/optional_arguments.coffee",
     "doc": {
       "comment": "",
       "summary": "",

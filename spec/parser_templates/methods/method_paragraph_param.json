@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/method_paragraph_param.coffee",
+    "file": "spec/parser_templates/methods/method_paragraph_param.coffee",
     "doc": {
       "comment": "",
       "summary": "",

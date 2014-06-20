@@ -1,7 +1,7 @@
 [
   {
     "file": "prototypical_methods.coffee",
-    "path": "spec/templates/methods",
+    "path": "spec/parser_templates/methods",
     "methods": [
       {
         "doc": {
@@ -22,7 +22,7 @@
     "variables": []
   },
   {
-    "file": "spec/templates/methods/prototypical_methods.coffee",
+    "file": "spec/parser_templates/methods/prototypical_methods.coffee",
     "doc": {
       "comment": "<p>Here&#39;s a class.</p>",
       "summary": "Here&#39;s a class.",
@@ -66,7 +66,7 @@
         "location": {
           "line": 7
         },
-        "original_filename": "spec/templates/methods/prototypical_methods.coffee"
+        "original_filename": "spec/parser_templates/methods/prototypical_methods.coffee"
       }
     ],
     "variables": [],

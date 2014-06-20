@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/method_delegation_as_private.coffee",
+    "file": "spec/parser_templates/methods/method_delegation_as_private.coffee",
     "doc": {
       "comment": "",
       "summary": "",

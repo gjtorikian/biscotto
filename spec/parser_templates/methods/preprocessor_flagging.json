@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/preprocessor_flagging.coffee",
+    "file": "spec/parser_templates/methods/preprocessor_flagging.coffee",
     "doc": {
       "comment": "<p>Testing block statuses.</p>",
       "summary": "Testing block statuses.",

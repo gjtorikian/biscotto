@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/classes/inner_class.coffee",
+    "file": "spec/parser_templates/classes/inner_class.coffee",
     "doc": {
           "comment": "",
           "summary": "",
@@ -21,7 +21,7 @@
     "properties": []
   },
   {
-    "file": "spec/templates/classes/inner_class.coffee",
+    "file": "spec/parser_templates/classes/inner_class.coffee",
     "class": {
       "className": "Tower.Model.Relation.HasMany.Scope",
       "name": "Scope",

@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/method_delegation.coffee",
+    "file": "spec/parser_templates/methods/method_delegation.coffee",
     "doc": {
       "comment": "",
       "summary": "",

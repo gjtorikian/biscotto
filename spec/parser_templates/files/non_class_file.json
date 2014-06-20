@@ -1,7 +1,7 @@
 [
   {
     "file": "non_class_file.coffee",
-    "path": "spec/templates/files",
+    "path": "spec/parser_templates/files",
     "methods": [
       {
         "doc": {

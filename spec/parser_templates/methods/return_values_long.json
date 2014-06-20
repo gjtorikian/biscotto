@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/return_values_long.coffee",
+    "file": "spec/parser_templates/methods/return_values_long.coffee",
     "doc": {
       "comment": "",
       "summary": "",

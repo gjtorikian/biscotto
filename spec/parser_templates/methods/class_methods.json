@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/class_methods.coffee",
+    "file": "spec/parser_templates/methods/class_methods.coffee",
     "doc": {
       "comment": "",
       "summary": "",

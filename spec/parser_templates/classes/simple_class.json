@@ -1,16 +1,16 @@
 [
   {
-    "file":      "spec/templates/classes/namespaced_class.coffee",
+    "file": "spec/parser_templates/classes/simple_class.coffee",
     "doc": {
           "comment": "",
           "summary": "",
           "status": "Private",
           "generated": true
-     },
-     "class":     {
-      "className": "Some.Namespace.MyClass",
-      "name":      "MyClass",
-      "namespace": "Some.Namespace"
+    },
+    "class":     {
+      "className": "MyTestClass",
+      "name":      "MyTestClass",
+      "namespace": ""
     },
     "location": {
       "line": 1

@@ -1,6 +1,6 @@
 [
   {
-    "file": "spec/templates/methods/hash_parameters.coffee",
+    "file": "spec/parser_templates/methods/hash_parameters.coffee",
     "doc": {
       "comment": "",
       "summary": "",
