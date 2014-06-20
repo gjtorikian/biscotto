@@ -1,0 +1,31 @@
+[
+  {
+    "file": "spec/templates/classes/uppercase_identifiers.coffee",
+    "doc": {
+      "comment": "<p>Test!</p>",
+      "summary": "Test!",
+      "status": "Public"
+    },
+    "class": {
+      "className": "Test",
+      "name": "Test",
+      "namespace": ""
+    },
+    "location": {
+      "line": 2
+    },
+    "methods": [],
+    "variables": [
+      {
+        "type": "instance",
+        "constant": true,
+        "name": "TESTY_TEST",
+        "value": "1000",
+        "location": {
+          "line": 3
+        }
+      }
+    ],
+    "properties": []
+  }
+ ]
