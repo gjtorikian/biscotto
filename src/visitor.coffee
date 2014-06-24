@@ -16,7 +16,7 @@ builtins     = require 'builtins'
 module.exports = class Visitor
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
-  constructor: (@fileName, root, @lineMapping) ->
+  constructor: (@fileName, @classes, root, @lineMapping) ->
     @defs = {} # Local variable definitions
     @exports = {}
     @commentLines = {}
@@ -195,11 +195,14 @@ module.exports = class Visitor
                   prototypeProperties.push(value)
           true
 
+    # find the matching class from the parsed file
+    clazz = _.find(@classes, (clazz) -> clazz.getFullName() == className)
+
     type: 'class'
     name: className
     classProperties: classProperties
     prototypeProperties: prototypeProperties
-    doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
+    doc: clazz.doc.node.comment
     startLineNumber:  exp.locationData.first_line + 1
     endLineNumber:    exp.locationData.last_line + 1
 

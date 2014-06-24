@@ -1,0 +1,16 @@
+{
+  "spec/visitor_templates/classes/basic_class.coffee": {
+    "objects": {
+      "5": {
+        "type": "class",
+        "name": "TextBuffer",
+        "classProperties": [],
+        "prototypeProperties": [],
+        "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+        "startLineNumber": 5,
+        "endLineNumber": 5
+      }
+    },
+    "exports": 5
+  }
+}

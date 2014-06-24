@@ -45,7 +45,7 @@ module.exports = class Parser
   # content - A {String} representing the CoffeeScript file content
   # file - A {String} representing the CoffeeScript file name
   #
-  parseContent: (content, file = '') ->
+  parseContent: (@content, file = '') ->
     @previousNodes = []
     @globalStatus = "Private"
 
@@ -54,7 +54,7 @@ module.exports = class Parser
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
-    [convertedContent, lineMapping] = @convertComments(content)
+    [convertedContent, lineMapping] = @convertComments(@content)
 
     sourceMap = CoffeeScript.compile(convertedContent, {sourceMap: true}).v3SourceMap
     @smc = new SourceMapConsumer(sourceMap)
@@ -70,25 +70,6 @@ module.exports = class Parser
     @files.push(fileClass) unless fileClass.isEmpty()
 
     @linkAncestors root
-
-    # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
-    {defs:unindexedObjects, exports:exports} = new Visitor(file, CoffeeScript.nodes(content), lineMapping)
-    objects = {}
-
-    for key, value of unindexedObjects
-      objects[value.startLineNumber] = value
-      # Update the classProperties to be line numbers
-      if value.type is 'class'
-        value.classProperties = (prop.startLineNumber for prop in _.clone(value.classProperties))
-        value.prototypeProperties = (prop.startLineNumber for prop in _.clone(value.prototypeProperties))
-
-    if exports._default
-      exports = exports._default.startLineNumber
-    else
-      for key, value of exports
-        exports[key] = value.startLineNumber
-
-    @slugs[file] = {objects, exports}
 
     root.traverseChildren true, (child) =>
       entity = false
@@ -127,6 +108,8 @@ module.exports = class Parser
         if entity == 'clazz'
           clazz = new Class(child, file, lineMapping, @options, doc)
           @classes.push clazz
+          # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+          @populateSlug(file, new Visitor(file, @classes, CoffeeScript.nodes(@content), lineMapping))
 
       @previousNodes.push child
       true
@@ -252,6 +235,25 @@ module.exports = class Parser
       child.ancestor = node
       @linkAncestors child
 
+  # Public: Parse and collect metadata slugs
+  populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
+    objects = {}
+
+    for key, value of unindexedObjects
+      objects[value.startLineNumber] = value
+      # Update the classProperties to be line numbers
+      if value.type is 'class'
+        value.classProperties = (prop.startLineNumber for prop in _.clone(value.classProperties))
+        value.prototypeProperties = (prop.startLineNumber for prop in _.clone(value.prototypeProperties))
+
+    if exports._default
+      exports = exports._default.startLineNumber
+    else
+      for key, value of exports
+        exports[key] = value.startLineNumber
+
+    @slugs[file] = {objects, exports}
+
   # Public: Get all the parsed methods.
   #
   # Returns an {Array} of {Method}s.
@@ -353,7 +355,7 @@ module.exports = class Parser
 
     console.log stats
 
-    fs.writeFileSync "metadata.json", JSON.stringify(@slugs, null, 2)
+    fs.writeFileSync "metadata.json", JSON.stringify(@toMetadata(), null, "    ")
 
     if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
@@ -390,3 +392,9 @@ module.exports = class Parser
       json.push mixin.toJSON()
 
     json
+
+  # Public: Get the metadata representation of the module.
+  #
+  # Returns a JSON {Object}.
+  toMetadata: ->
+    @slugs
