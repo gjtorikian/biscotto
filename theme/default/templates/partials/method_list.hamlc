@@ -14,5 +14,6 @@
           (private)
 
         - if @parent.repo
-          %a{ href: "#{@parent.repo}/#{ @parent.classData.file }#L#{ method.location.line }", class: "gh-link"} Source
+          - filePath = @parent.classData?.file || "#{@parent.filepath}/#{@parent.filename}"
+          %a{ href: "#{@parent.repo}/#{ filePath }#L#{ method.location.line }", class: "gh-link"} Source
       != @parent.JST['partials/doc']({ doc: method.doc, type: 'method', method: method, str: @str, parent: @parent, path: @parent.path, referencer: @parent.referencer })
