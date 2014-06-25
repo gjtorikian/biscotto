@@ -201,13 +201,16 @@ module.exports = class Visitor
                 else
                   value = _.extend name: name, value
 
+
+                # TODO: `value = @eval(prototypeExp.value)` is messing this up
                 if isClassLevel
-                  # TODO: `value = @eval(prototypeExp.value)` is messing this up
                   value.name = name
                   value.type = "classProperty"
                   @defs["#{className}.#{name}"] = value
                   classProperties.push(value)
                 else
+                  value.name = name
+                  value.type = "prototypeProperty"
                   @defs["#{className}::#{name}"] = value
                   prototypeProperties.push(value)
           true
