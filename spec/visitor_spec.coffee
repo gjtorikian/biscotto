@@ -18,17 +18,21 @@ describe "Parser", ->
 
     parser.parseContent source, filename
 
-    expected = JSON.stringify(JSON.parse(fs.readFileSync filename.replace(/\.coffee$/, '.json'), 'utf8'), null, 2)
+    expected_filename = filename.replace(/\.coffee$/, '.json')
+    expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)
     generated =  JSON.stringify(parser.toMetadata(), null, 2)
 
     diff(expected, generated)
-    checkDelta(expected, generated, diff(expected, generated))
+    checkDelta(expected_filename, expected, generated, diff(expected, generated))
 
-  checkDelta = (expected, generated, delta) ->
+  checkDelta = (expected_filename, expected, generated, delta) ->
     if delta?
-      console.error expected, generated
-      console.error(delta)
-      expect(delta).toBe(undefined)
+      if process.env.BISCOTTO_DEBUG=1
+        fs.writeFileSync(expected_filename, expected)
+      else
+        console.error expected, generated
+        console.error(delta)
+        expect(delta).toBe(undefined)
 
   beforeEach ->
     parser = new Parser({
