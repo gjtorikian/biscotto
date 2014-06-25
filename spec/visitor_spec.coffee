@@ -28,7 +28,7 @@ describe "Parser", ->
   checkDelta = (expected_filename, expected, generated, delta) ->
     if delta?
       if process.env.BISCOTTO_DEBUG=1
-        fs.writeFileSync(expected_filename, expected)
+        fs.writeFileSync(expected_filename, generated)
       else
         console.error expected, generated
         console.error(delta)
