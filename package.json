@@ -13,7 +13,7 @@
       "name": "Garen J. Torikian"
     }
   ],
-  "version": "2.1.3",
+  "version": "2.1.4",
   "engines": {
     "node": ">=0.10.0"
   },
