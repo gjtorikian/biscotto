@@ -50,5 +50,8 @@ describe "Parser", ->
     it 'understands class properties', ->
       constructDelta("spec/visitor_templates/classes/class_with_class_properties.coffee")
 
-    fit 'understands prototype properties', ->
+    it 'understands prototype properties', ->
       constructDelta("spec/visitor_templates/classes/class_with_prototype_properties.coffee")
+
+    it 'understands a class with require expressions', ->
+      constructDelta("spec/visitor_templates/classes/class_with_requires.coffee")

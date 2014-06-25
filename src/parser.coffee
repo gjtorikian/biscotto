@@ -238,10 +238,10 @@ module.exports = class Parser
   # Public: Parse and collect metadata slugs
   populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
     objects = {}
-
     for key, value of unindexedObjects
-      objects[value.startLineNumber] = value
-      # Update the classProperties to be line numbers
+      objects[value.startLineNumber] = {} unless objects[value.startLineNumber]?
+      objects[value.startLineNumber][value.startColNumber] = value
+      # Update the classProperties/prototypeProperties to be line numbers
       if value.type is 'class'
         value.classProperties = (prop.startLineNumber for prop in _.clone(value.classProperties))
         value.prototypeProperties = (prop.startLineNumber for prop in _.clone(value.prototypeProperties))

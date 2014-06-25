@@ -74,8 +74,10 @@ module.exports = class Visitor
             @exports[firstProp.name.value] =
               type: 'primitive'
               doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
-              startLineNumber:  value.locationData.first_line + 1
-              endLineNumber:    value.locationData.last_line + 1
+              startLineNumber:  value.locationData.first_line
+              endLineNumber:    value.locationData.last_line
+              startColNumber:  value.locationData.first_column
+              endColNumber:    value.locationData.last_column
 
         else
           # case `exports = bar`
@@ -183,8 +185,10 @@ module.exports = class Visitor
                       value =
                         name: name
                         doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
-                        startLineNumber: value.locationData.first_line + 1
-                        endLineNumber: value.locationData.last_line + 1
+                        startLineNumber: value.locationData.first_line
+                        endLineNumber: value.locationData.last_line
+                        startColNumber:  value.locationData.first_column
+                        endColNumber:    value.locationData.last_column
                         reference: lookedUpVar
                     else
                       value = _.extend name: name, lookedUpVar
@@ -195,14 +199,17 @@ module.exports = class Visitor
                       type: 'primitive'
                       name: name
                       doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
-                      startLineNumber:  value.locationData.first_line + 1
-                      endLineNumber:    value.locationData.last_line + 1
+                      startLineNumber:  value.locationData.first_line
+                      endLineNumber:    value.locationData.last_line
+                      startColNumber:  value.locationData.first_column
+                      endColNumber:    value.locationData.last_column
 
                 else
                   value = _.extend name: name, value
 
 
                 # TODO: `value = @eval(prototypeExp.value)` is messing this up
+                # interferes also with evalValue
                 if isClassLevel
                   value.name = name
                   value.type = "classProperty"
@@ -223,24 +230,30 @@ module.exports = class Visitor
     classProperties: classProperties
     prototypeProperties: prototypeProperties
     doc: clazz.doc.node.comment
-    startLineNumber:  exp.locationData.first_line + 1
-    endLineNumber:    exp.locationData.last_line + 1
+    startLineNumber:  exp.locationData.first_line
+    endLineNumber:    exp.locationData.last_line
+    startColNumber:  exp.locationData.first_column
+    endColNumber:    exp.locationData.last_column
 
   evalCode: (exp) ->
     bindingType: 'variable'
     type: 'function'
     paramNames: _.map exp.params, (param) -> param.name.value
     doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-    startLineNumber:  exp.locationData.first_line + 1
-    endLineNumber:    exp.locationData.last_line + 1
+    startLineNumber:  exp.locationData.first_line
+    endLineNumber:    exp.locationData.last_line
+    startColNumber:  exp.locationData.first_column
+    endColNumber:    exp.locationData.last_column
 
   evalValue: (exp) ->
     if exp.base
       type: 'primitive'
       name: exp.base?.value
       doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-      startLineNumber: exp.locationData.first_line + 1
-      endLineNumber:   exp.locationData.last_line + 1
+      startLineNumber: exp.locationData.first_line
+      endLineNumber:   exp.locationData.last_line
+      startColNumber:  exp.locationData.first_column
+      endColNumber:    exp.locationData.last_column
     else
       throw new Error 'BUG? Not sure how to evaluate this value if it does not have .base'
 
@@ -257,8 +270,10 @@ module.exports = class Visitor
       ret =
         type: 'import'
         doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-        startLineNumber:  exp.locationData.first_line + 1
-        # endLineNumber:    lineMapping[exp.locationData.last_line]
+        startLineNumber:  exp.locationData.first_line
+        endLineNumber:    exp.locationData.first_line
+        startColNumber:  exp.locationData.first_column
+        endColNumber:    exp.locationData.last_column
 
       if /^\./.test(moduleName)
         # Local module
@@ -273,9 +288,10 @@ module.exports = class Visitor
     else
       type: 'function'
       doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-      startLineNumber:  exp.locationData.first_line + 1
-      endLineNumber:    exp.locationData.last_line + 1
-
+      startLineNumber:  exp.locationData.first_line
+      endLineNumber:    exp.locationData.last_line
+      startColNumber:  exp.locationData.first_column
+      endColNumber:    exp.locationData.last_column
 
   evalError: (str, exp) ->
     throw new Error "BUG: Not implemented yet: #{str}. Line #{exp.locationData.first_line}"
