@@ -229,7 +229,7 @@ module.exports = class Visitor
     name: className
     classProperties: classProperties
     prototypeProperties: prototypeProperties
-    doc: clazz.doc.node.comment
+    doc: if clazz? then clazz.doc.node.comment else null
     startLineNumber:  exp.locationData.first_line
     endLineNumber:    exp.locationData.last_line
     startColNumber:  exp.locationData.first_column
