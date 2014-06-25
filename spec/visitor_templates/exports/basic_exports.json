@@ -1,0 +1,27 @@
+{
+  "spec/visitor_templates/exports/basic_exports.coffee": {
+    "objects": {
+      "1": {
+        "6": {
+          "name": "foo",
+          "bindingType": "variable",
+          "type": "function",
+          "paramNames": [],
+          "startLineNumber": 1,
+          "endLineNumber": 1,
+          "startColNumber": 6,
+          "endColNumber": 15,
+          "doc": {
+            "comment": "<p>Returns hello</p>",
+            "summary": "Returns hello",
+            "status": "Public"
+          }
+        }
+      }
+    },
+    "exports": {
+      "foo": 3,
+      "bar": 6
+    }
+  }
+}

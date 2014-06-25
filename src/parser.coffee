@@ -108,8 +108,9 @@ module.exports = class Parser
         if entity == 'clazz'
           clazz = new Class(child, file, lineMapping, @options, doc)
           @classes.push clazz
-          # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
-          @populateSlug(file, new Visitor(file, @classes, CoffeeScript.nodes(@content), lineMapping))
+
+      # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+      @populateSlug(file, new Visitor(file, @classes, @files, CoffeeScript.nodes(@content), lineMapping))
 
       @previousNodes.push child
       true

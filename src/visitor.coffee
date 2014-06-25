@@ -4,19 +4,10 @@ path         = require 'path' # To load package.json
 _            = require 'underscore'
 builtins     = require 'builtins'
 
-# TODO:
-#
-# - [x] add `paramNames` for functions
-# - [x] convert `objects` to line numbers (and in the exports section)
-# - [x] tag builtin NodeJs modules : https://github.com/segmentio/builtins
-# - [x] add `classProperties` and `prototypeProperties`
-# - [x] add doc string
-# - [x] look up version numbers for modules
-
 module.exports = class Visitor
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
-  constructor: (@fileName, @classes, root, @lineMapping) ->
+  constructor: (@fileName, @classes, @files, root, @lineMapping) ->
     @defs = {} # Local variable definitions
     @exports = {}
     @commentLines = {}
@@ -31,7 +22,7 @@ module.exports = class Visitor
     @["eval#{exp.constructor.name}"](exp)
 
   visitComment: (exp) ->
-    # Skip the 1st comment which is added by coffeescript
+    # Skip the 1st comment which is added by biscotto
     return if exp.comment is '~Private~'
 
     @commentLines[@lineMapping[exp.locationData.last_line]] = exp.comment.trim()
@@ -65,20 +56,18 @@ module.exports = class Visitor
         # - `exports.foo = 42`
         # - `exports = bar`
         if firstProp
-          return unless value.base?
-          if @defs[value.base.value]
+          if value.base? && @defs[value.base.value]
             # case `exports.foo = SomeClass`
             @exports[firstProp.name.value] = @defs[value.base.value]
           else
             # case `exports.foo = 42`
             @exports[firstProp.name.value] =
               type: 'primitive'
-              doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
-              startLineNumber:  value.locationData.first_line
-              endLineNumber:    value.locationData.last_line
-              startColNumber:  value.locationData.first_column
-              endColNumber:    value.locationData.last_column
-
+              doc: null
+              startLineNumber:  exp.variable.base.locationData.first_line
+              endLineNumber:    exp.variable.base.locationData.last_line
+              startColNumber:  exp.variable.base.locationData.first_column
+              endColNumber:    exp.variable.base.locationData.last_column
         else
           # case `exports = bar`
           @exports = {_default: value}
@@ -100,6 +89,18 @@ module.exports = class Visitor
             else # case X = ...
               # console.log exp.variable.base.value
               @defs[exp.variable.base.value] = _.extend name: exp.variable.base.value, value
+              switch @defs[exp.variable.base.value].type
+                when 'function'
+                  doc = null
+                  # fetch method from file
+                  _.each @files, (file) =>
+                    file.methods = _.filter file.methods, (method) =>
+                      if @defs[exp.variable.base.value].name == method.name
+                        doc = method.doc
+                        return true
+                      return false
+
+                  @defs[exp.variable.base.value].doc = doc
           when 'Obj'
             for key in exp.variable.base.objects
               switch key.constructor.name
@@ -239,7 +240,6 @@ module.exports = class Visitor
     bindingType: 'variable'
     type: 'function'
     paramNames: _.map exp.params, (param) -> param.name.value
-    doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
     startLineNumber:  exp.locationData.first_line
     endLineNumber:    exp.locationData.last_line
     startColNumber:  exp.locationData.first_column
