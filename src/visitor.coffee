@@ -140,10 +140,24 @@ module.exports = class Visitor
     prototypeProperties = []
 
     for subExp in exp.body.expressions
+
       switch subExp.constructor.name
-        # when 'Assign'
+        # case Prototype-level methods (this.foo = (foo) -> ...)
+        when 'Assign'
+          value = @eval(subExp.value)
+          # value.paramNames = value.paramNames
+          # console.log subExp.value.constructor.name
+          # console.log subExp.params
+          # value =
+          #   name: property.name.value
+          #   type: "classProperty"
+          #   doc: null
+          #   startLineNumber: property.locationData.first_line + 1
+          #   endLineNumber: property.locationData.last_line + 1
+          @defs["#{className}.#{value.name}"] = value
+          classProperties.push(value)
         when 'Value'
-          # case Prototype-level properties
+          # case Prototype-level properties (@foo: "foo")
           for prototypeExp in subExp.base.properties
 
             switch prototypeExp.constructor.name
@@ -188,6 +202,9 @@ module.exports = class Visitor
                   value = _.extend name: name, value
 
                 if isClassLevel
+                  # TODO: `value = @eval(prototypeExp.value)` is messing this up
+                  value.name = name
+                  value.type = "classProperty"
                   @defs["#{className}.#{name}"] = value
                   classProperties.push(value)
                 else
@@ -212,7 +229,7 @@ module.exports = class Visitor
     paramNames: _.map exp.params, (param) -> param.name.value
     doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
     startLineNumber:  exp.locationData.first_line + 1
-    # endLineNumber:    exp.locationData.last_line
+    endLineNumber:    exp.locationData.last_line + 1
 
   evalValue: (exp) ->
     if exp.base

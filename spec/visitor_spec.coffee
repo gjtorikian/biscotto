@@ -44,5 +44,8 @@ describe "Parser", ->
     })
 
   describe "Classes", ->
-    fit 'understands descriptions', ->
+    it 'understands descriptions', ->
       constructDelta("spec/visitor_templates/classes/basic_class.coffee")
+
+    fit 'understands class properties', ->
+      constructDelta("spec/visitor_templates/classes/class_with_class_properties.coffee")
