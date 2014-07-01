@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/classes/export_class.coffee",
     "doc": {
-      "comment": "<p>Yep, this should be assigned to the class</p>",
+      "comment": "Private: Yep, this should be assigned to the class ",
       "summary": "Yep, this should be assigned to the class",
       "status": "Private"
     },

@@ -1,26 +1,26 @@
 [
   {
-    "file":      "spec/parser_templates/methods/assigned_parameters.coffee",
+    "file": "spec/parser_templates/methods/assigned_parameters.coffee",
     "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Private",
-          "generated": true
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
     },
-    "class":     {
+    "class": {
       "className": "TestAssignedParameters",
-      "name":      "TestAssignedParameters",
+      "name": "TestAssignedParameters",
       "namespace": ""
     },
     "location": {
       "line": 1
     },
-    "methods":   [
+    "methods": [
       {
-        "type":       "instance",
-        "signature":  "::<strong>help</strong>(me)",
-        "name":       "help",
-        "bound":      false,
+        "type": "instance",
+        "signature": "::<strong>help</strong>(me)",
+        "name": "help",
+        "bound": false,
         "parameters": [
           {
             "name": "me",

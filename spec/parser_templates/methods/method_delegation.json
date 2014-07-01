@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/method_delegation.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Oh hello.</p>",
+          "comment": " Private: Oh hello.\n\np - A {String}\n\nReturns a {Boolean}. ",
           "summary": "Oh hello.",
           "status": "Public",
           "params": [
@@ -51,7 +51,7 @@
       },
       {
         "doc": {
-          "comment": "<p>I&#39;m being delegated to!</p>",
+          "comment": "Public: I'm being delegated to! ",
           "summary": "I&#39;m being delegated to!",
           "status": "Public"
         },
@@ -66,7 +66,7 @@
       },
       {
         "doc": {
-          "comment": "<p>At last, we have the same content!</p><p>You might also like {.undelegatedRegular}.</p>",
+          "comment": " Public: At last, we have the same content!\n\nYou might also like {.undelegatedRegular}.\n\nReturns a {Number}. ",
           "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
           "status": "Public",
           "returnValue": [
@@ -87,7 +87,7 @@
       },
       {
         "doc": {
-          "comment": "<p>At last, we have the same content!</p><p>You might also like {.undelegatedRegular}.</p>",
+          "comment": " Public: At last, we have the same content!\n\nYou might also like {.undelegatedRegular}.\n\nReturns a {Number}. ",
           "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
           "status": "Public",
           "returnValue": [
@@ -108,7 +108,7 @@
       },
       {
         "doc": {
-          "comment": "<p>At last, we have the same content!</p><p>You might also like {.undelegatedRegular}.</p>",
+          "comment": " Public: At last, we have the same content!\n\nYou might also like {.undelegatedRegular}.\n\nReturns a {Number}. ",
           "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
           "status": "Public",
           "returnValue": [
@@ -129,7 +129,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it!</p><p>See {::do} for more information.</p>",
+          "comment": " Private: Do it!\n\nSee {::do} for more information.\n\n ",
           "summary": "Do it! See {::do} for more information.",
           "status": "Public"
         },
@@ -153,7 +153,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Oh hello.</p>",
+          "comment": " Private: Oh hello.\n\np - A {String}\n\nReturns a {Boolean}. ",
           "summary": "Oh hello.",
           "status": "Private",
           "params": [
@@ -189,7 +189,7 @@
           "examples": [
             "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done "
           ],
-          "comment": "<p>A method to run.</p>",
+          "comment": " Private: A method to run.\n\nExamples\n\n biscotto = require 'biscotto'\n file = (filename, content) ->\n console.log \"New file %s with content %s\", filename, content\n done = (err) ->\n if err\n   console.log \"Cannot generate documentation:\", err\n else\n   console.log \"Documentation generated\"\n biscotto.run file, done ",
           "summary": "A method to run.",
           "status": "Public"
         },
@@ -204,7 +204,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Blah</p>",
+          "comment": "Public: Blah ",
           "summary": "Blah",
           "status": "Public"
         },

@@ -30,7 +30,7 @@ describe "Metadata", ->
   checkDelta = (expected_filename, expected, generated, delta) ->
     if delta?
       if process.env.BISCOTTO_DEBUG
-        fs.writeFileSync(expected_filename, generated)
+        fs.writeFileSync(expected_filename, generated + "\n")
       else
         console.error expected, generated
         console.error(delta)

@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/return_values.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -19,7 +19,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Do it!</p><p>See #undo for more information.</p>",
+          "comment": " Private: Do it!\n\nSee #undo for more information.\n\nReturns {Boolean} when it works.\n\n ",
           "summary": "Do it! See #undo for more information.",
           "status": "Private",
           "returnValue": [
@@ -40,7 +40,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Blahblah.</p>",
+          "comment": " Public: Blahblah.\n\nReturns no type.\n\n ",
           "summary": "Blahblah.",
           "status": "Public",
           "returnValue": [
@@ -61,7 +61,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Blahblah.</p>",
+          "comment": " Public: Blahblah.\n\nReturns a {String}.\nReturns also a {Number}. ",
           "summary": "Blahblah.",
           "status": "Public",
           "returnValue": [

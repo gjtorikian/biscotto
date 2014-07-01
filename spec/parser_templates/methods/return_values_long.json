@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/return_values_long.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -19,7 +19,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Compares two <code>Point</code>s.</p><p>Otherwise, returns <code>0</code>. </p>",
+          "comment": " Public: Compares two `Point`s.\n\nother - The {Point} to compare against\n\nReturns a {Number} matching the following rules:\n* If the first `row` is greater than `other.row`, returns `1`.\n* If the first `row` is less than `other.row`, returns `-1`.\n* If the first `column` is greater than `other.column`, returns `1`.\n* If the first `column` is less than `other.column`, returns `-1`.\n\nOtherwise, returns `0`. ",
           "summary": "Compares two <code>Point</code>s.",
           "status": "Public",
           "params": [

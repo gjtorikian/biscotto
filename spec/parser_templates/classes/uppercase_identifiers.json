@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/classes/uppercase_identifiers.coffee",
     "doc": {
-      "comment": "<p>Test!</p>",
+      "comment": "Public: Test! ",
       "summary": "Test!",
       "status": "Public"
     },
@@ -28,4 +28,4 @@
     ],
     "properties": []
   }
- ]
+]

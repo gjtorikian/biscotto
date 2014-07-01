@@ -1,25 +1,25 @@
 [
-    {
-        "file": "spec/parser_templates/classes/class_documentation.coffee",
-        "doc": {
-            "examples": [
-                "Class.getType('cat')\nnew Class()",
-                "# Alternatively, this is possible\ncl = Class.for(obj)\ncl.execute() "
-            ],
-            "comment": "<p>This is a test class with <code>inline.dot</code>. Beware.</p>",
-            "summary": "This is a test class with <code>inline.dot</code>.",
-            "status": "Public"
-        },
-        "class": {
-            "className": "TestClassDocumentation",
-            "name": "TestClassDocumentation",
-            "namespace": ""
-        },
-        "location": {
-          "line": 11
-        },
-        "methods": [],
-        "variables": [],
-        "properties": []
-    }
+  {
+    "file": "spec/parser_templates/classes/class_documentation.coffee",
+    "doc": {
+      "examples": [
+        "Class.getType('cat')\nnew Class()",
+        "# Alternatively, this is possible\ncl = Class.for(obj)\ncl.execute() "
+      ],
+      "comment": " Public: This is a test class with `inline.dot`. Beware.\n\nExamples\n\n  Class.getType('cat')\n  new Class()\n\n  # Alternatively, this is possible\n  cl = Class.for(obj)\n  cl.execute() ",
+      "summary": "This is a test class with <code>inline.dot</code>.",
+      "status": "Public"
+    },
+    "class": {
+      "className": "TestClassDocumentation",
+      "name": "TestClassDocumentation",
+      "namespace": ""
+    },
+    "location": {
+      "line": 11
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  }
 ]

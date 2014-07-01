@@ -5,7 +5,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Show that other prototypes are safe</p>",
+          "comment": "Public: Show that other prototypes are safe ",
           "summary": "Show that other prototypes are safe",
           "status": "Public"
         },
@@ -24,7 +24,7 @@
   {
     "file": "spec/parser_templates/methods/prototypical_methods.coffee",
     "doc": {
-      "comment": "<p>Here&#39;s a class.</p>",
+      "comment": "Public: Here's a class. ",
       "summary": "Here&#39;s a class.",
       "status": "Public"
     },
@@ -39,7 +39,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Here&#39;s a method, baz.</p>",
+          "comment": "Private: Here's a method, baz. ",
           "summary": "Here&#39;s a method, baz.",
           "status": "Private"
         },
@@ -54,7 +54,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Here is a method on Foo, called bar.</p>",
+          "comment": "Public: Here is a method on Foo, called bar. ",
           "summary": "Here is a method on Foo, called bar.",
           "status": "Public"
         },

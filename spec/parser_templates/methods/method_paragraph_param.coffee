@@ -21,7 +21,7 @@ class ParagraphParm
 
   # Public: Does more other stuff
   #
-  # something - Blah blah blah.
+  # something - Blah **blah blah**.
   #             Fah fah fah?
   #              Foo foo foo!
   # something2 - Bar bar bar.

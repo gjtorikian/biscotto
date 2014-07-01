@@ -18,7 +18,9 @@ module.exports = class Doc extends Node
   constructor: (@node, @options) ->
     try
       if @node
-        @parseBlock @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        trimmedComment = @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
+        @comment = trimmedComment.join("\n")
+        @parseBlock trimmedComment
 
     catch error
       console.warn('Create doc error:', @node, error) if @options.verbose
@@ -119,7 +121,6 @@ module.exports = class Doc extends Node
 
       current = sections.shift()
 
-    @comment = Markdown.convert(text)
     sentence = /((?:.|\n)*?[.#][\s$])/.exec(text)
     sentence = sentence[1].replace(/\s*#\s*$/, '') if sentence
     @summary = Markdown.convert(_.str.clean(sentence || text), true)

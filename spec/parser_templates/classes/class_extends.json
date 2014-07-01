@@ -2,21 +2,21 @@
   {
     "file": "spec/parser_templates/classes/class_extends.coffee",
     "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Private",
-          "generated": true
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
     },
-    "class":     {
+    "class": {
       "className": "NS.Clazz",
-      "name":      "Clazz",
+      "name": "Clazz",
       "namespace": "NS",
-      "parent":    "Another.Clazz"
+      "parent": "Another.Clazz"
     },
     "location": {
       "line": 1
     },
-    "methods":   [],
+    "methods": [],
     "variables": [],
     "properties": []
   }

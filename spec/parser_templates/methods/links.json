@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/links.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>External link short.</p><p><a href=\"http://coffeescript.org/\">http://coffeescript.org/</a></p>",
+          "comment": " Private: External link short.\n\nhttp://coffeescript.org/\n\n ",
           "summary": "External link short.",
           "status": "Private"
         },
@@ -33,7 +33,7 @@
       },
       {
         "doc": {
-          "comment": "<p>External link <a href=\"http://coffeescript.org/\">long</a>.</p>",
+          "comment": "Private: External link [long](http://coffeescript.org/).\n\n",
           "summary": "External link <a href=\"http://coffeescript.org/\">long</a>.",
           "status": "Private"
         },
@@ -48,7 +48,7 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClassLinkShort</p><p>{::internalLinkLong}</p>",
+          "comment": " Private: internalClassLinkShort\n\n{::internalLinkLong}\n\n ",
           "summary": "internalClassLinkShort {::internalLinkLong}",
           "status": "Private"
         },
@@ -63,7 +63,7 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClass [Link Long]{App.TestLinks}</p>",
+          "comment": "Private: internalClass [Link Long]{App.TestLinks}\n\n",
           "summary": "internalClass [Link Long]{App.TestLinks}",
           "status": "Private"
         },
@@ -78,7 +78,7 @@
       },
       {
         "doc": {
-          "comment": "<p>internalInstanceLinkShort {::externalLinkShort}</p>",
+          "comment": "Private: internalInstanceLinkShort {::externalLinkShort}\n\n",
           "summary": "internalInstanceLinkShort {::externalLinkShort}",
           "status": "Private"
         },
@@ -93,7 +93,7 @@
       },
       {
         "doc": {
-          "comment": "<p>internalInstance [Link Long]{::externalLinkLong}</p>",
+          "comment": "Private: internalInstance [Link Long]{::externalLinkLong}\n\n",
           "summary": "internalInstance [Link Long]{::externalLinkLong}",
           "status": "Private"
         },
@@ -108,7 +108,7 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClassLinkShort {.internalClassLinkLong}</p>",
+          "comment": "Private: internalClassLinkShort {.internalClassLinkLong}\n\n",
           "summary": "internalClassLinkShort {.internalClassLinkLong}",
           "status": "Private"
         },
@@ -123,7 +123,7 @@
       },
       {
         "doc": {
-          "comment": "<p>internalClass [LinkLong]{.internalClassLinkShort}</p>",
+          "comment": "Private: internalClass [LinkLong]{.internalClassLinkShort}\n\n",
           "summary": "internalClass [LinkLong]{.internalClassLinkShort}",
           "status": "Private"
         },

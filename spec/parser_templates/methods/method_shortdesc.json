@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/method_shortdesc.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "",
+          "comment": "Public: ",
           "summary": "",
           "status": "Public"
         },
@@ -33,7 +33,7 @@
       },
       {
         "doc": {
-          "comment": "",
+          "comment": "~Private~",
           "summary": "",
           "status": "Private",
           "generated": true

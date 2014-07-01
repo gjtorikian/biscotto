@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/instance_methods.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "",
+          "comment": "~Private~",
           "summary": "",
           "status": "Private",
           "generated": true
@@ -34,7 +34,7 @@
       },
       {
         "doc": {
-          "comment": "",
+          "comment": "~Private~",
           "summary": "",
           "status": "Private",
           "generated": true
@@ -59,7 +59,7 @@
       },
       {
         "doc": {
-          "comment": "",
+          "comment": "~Private~",
           "summary": "",
           "status": "Private",
           "generated": true
@@ -95,7 +95,7 @@
       },
       {
         "doc": {
-          "comment": "",
+          "comment": "~Private~",
           "summary": "",
           "status": "Private",
           "generated": true
@@ -120,7 +120,7 @@
       },
       {
         "doc": {
-          "comment": "",
+          "comment": "~Private~",
           "summary": "",
           "status": "Private",
           "generated": true

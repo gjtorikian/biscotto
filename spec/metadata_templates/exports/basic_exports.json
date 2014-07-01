@@ -11,7 +11,7 @@
         "startColNumber": 6,
         "endColNumber": 15,
         "doc": {
-          "comment": "<p>Returns hello</p>",
+          "comment": "Public: Returns hello ",
           "summary": "Returns hello",
           "status": "Public"
         }

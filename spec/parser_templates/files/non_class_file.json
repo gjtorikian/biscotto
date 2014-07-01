@@ -5,7 +5,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Says hello to a person</p>",
+          "comment": " Public: Says hello to a person\n\nname - The name of the person\n\n ",
           "summary": "Says hello to a person",
           "status": "Public",
           "params": [
@@ -32,7 +32,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Says bye to a person</p>",
+          "comment": " Public: Says bye to a person\n\nname - The name of the person\n\n ",
           "summary": "Says bye to a person",
           "status": "Public",
           "params": [
@@ -59,7 +59,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Say hi to a person</p>",
+          "comment": " Public: Say hi to a person\n\nname - The name of the person\n\n ",
           "summary": "Say hi to a person",
           "status": "Public",
           "params": [
@@ -88,7 +88,7 @@
     "variables": [
       {
         "doc": {
-          "comment": "<p>The greeting</p>",
+          "comment": "Public: The greeting ",
           "summary": "The greeting",
           "status": "Public"
         },
@@ -97,7 +97,7 @@
         "name": "GREETING",
         "value": "'Hay'",
         "location": {
-         "line": 2
+          "line": 2
         }
       }
     ]

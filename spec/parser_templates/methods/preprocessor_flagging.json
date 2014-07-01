@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/preprocessor_flagging.coffee",
     "doc": {
-      "comment": "<p>Testing block statuses.</p>",
+      "comment": "Private: Testing block statuses. ",
       "summary": "Testing block statuses.",
       "status": "Private"
     },
@@ -17,7 +17,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Blah blah!</p>",
+          "comment": "Public: Blah blah! ",
           "summary": "Blah blah!",
           "status": "Public"
         },
@@ -37,7 +37,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Blah blah test!</p>",
+          "comment": "Public: Blah blah test! ",
           "summary": "Blah blah test!",
           "status": "Public"
         },
@@ -52,7 +52,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Tricksy words!</p>",
+          "comment": "Public: Tricksy words! ",
           "summary": "Tricksy words!",
           "status": "Public"
         },
@@ -67,7 +67,7 @@
       },
       {
         "doc": {
-          "comment": "<p>I&#39;m really documented.</p>",
+          "comment": "Public: I'm really documented. ",
           "summary": "I&#39;m really documented.",
           "status": "Public"
         },

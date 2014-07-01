@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/classes/empty_class.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true

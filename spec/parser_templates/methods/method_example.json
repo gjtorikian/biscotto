@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/method_example.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -21,7 +21,7 @@
           "examples": [
             "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done "
           ],
-          "comment": "<p>A method to run.</p>",
+          "comment": " Private: A method to run.\n\nExamples\n\n biscotto = require 'biscotto'\n file = (filename, content) ->\n console.log \"New file %s with content %s\", filename, content\n done = (err) ->\n if err\n   console.log \"Cannot generate documentation:\", err\n else\n   console.log \"Documentation generated\"\n biscotto.run file, done ",
           "summary": "A method to run.",
           "status": "Private"
         },

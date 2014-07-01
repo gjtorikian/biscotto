@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/method_delegation_as_private.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Delegated method.</p>",
+          "comment": "Private: Delegated method. ",
           "summary": "Delegated method.",
           "status": "Public"
         },

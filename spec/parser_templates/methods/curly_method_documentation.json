@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/curly_method_documentation.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -19,7 +19,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Should be overloaded to change fetch limit.</p>",
+          "comment": " Private: Should be overloaded to change fetch limit.\n\nReturns the {Number} of items per fetch\n\n ",
           "summary": "Should be overloaded to change fetch limit.",
           "status": "Private",
           "returnValue": [
@@ -40,7 +40,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it!</p><p>See {#undo} for more information.</p>",
+          "comment": " Private: Do it!\n\nSee {#undo} for more information.\n\nit - The {String} thing to do\nagain - A {Boolean} for do it again\noptions - The do options\n        :speed - The {String} speed\n        :repeat - How many {Number} times to repeat\n        :tasks - The {Tasks} tasks to do\n\nReturns {Boolean} when successfully executed\n\n ",
           "summary": "Do it! See {#undo} for more information.",
           "status": "Private",
           "params": [
@@ -108,7 +108,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it without spaces!</p><p>See {.lets_do_it} for more information.</p>",
+          "comment": " Private: Do it without spaces!\n\nSee {.lets_do_it} for more information.\n\nReturns {Boolean} when successfully executed\n\n ",
           "summary": "Do it without spaces! See {.lets_do_it} for more information.",
           "status": "Private",
           "returnValue": [
@@ -142,7 +142,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Do it!</p><p>See {::do} for more information.</p>",
+          "comment": " Private: Do it!\n\nSee {::do} for more information.\n\n ",
           "summary": "Do it! See {::do} for more information.",
           "status": "Private"
         },

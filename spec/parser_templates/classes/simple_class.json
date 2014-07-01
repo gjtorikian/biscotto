@@ -2,20 +2,20 @@
   {
     "file": "spec/parser_templates/classes/simple_class.coffee",
     "doc": {
-          "comment": "",
-          "summary": "",
-          "status": "Private",
-          "generated": true
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
     },
-    "class":     {
+    "class": {
       "className": "MyTestClass",
-      "name":      "MyTestClass",
+      "name": "MyTestClass",
       "namespace": ""
     },
     "location": {
       "line": 1
     },
-    "methods":   [],
+    "methods": [],
     "variables": [],
     "properties": []
   }

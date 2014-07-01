@@ -2,7 +2,7 @@
   {
     "file": "spec/parser_templates/methods/optional_arguments.coffee",
     "doc": {
-      "comment": "",
+      "comment": "~Private~",
       "summary": "",
       "status": "Private",
       "generated": true
@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": "<p>Does something.</p>",
+          "comment": " Public: Does something.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
           "summary": "Does something.",
           "status": "Public",
           "params": [
@@ -63,7 +63,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Does something else.</p>",
+          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
           "summary": "Does something else.",
           "status": "Public",
           "params": [
@@ -108,7 +108,7 @@
       },
       {
         "doc": {
-          "comment": "<p>Does something else.</p>",
+          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
           "summary": "Does something else.",
           "status": "Public",
           "params": [
