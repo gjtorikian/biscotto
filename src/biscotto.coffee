@@ -35,7 +35,7 @@ module.exports = class Biscotto
   #
   #    biscotto = require 'biscotto'
   #
-  #    file = (filename, content) ->
+  #    file_generator_cb = (filename, content) ->
   #      console.log "New file %s with content %s", filename, content
   #
   #    done = (err) ->
@@ -44,9 +44,9 @@ module.exports = class Biscotto
   #      else
   #        console.log "Documentation generated"
   #
-  #    biscotto.run done, file
+  #    biscotto.run done, file_generator_cb
   #
-  @run: (done, file, analytics = false, homepage = false) ->
+  @run: (done, file_generator_cb, analytics = false, homepage = false) ->
 
     biscottoopts =
       _ : []
@@ -234,7 +234,7 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           generator = new Generator(parser, options)
-          generator.generate(file)
+          generator.generate(file_generator_cb)
 
           if options.json && options.json.length
             fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");

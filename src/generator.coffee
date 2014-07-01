@@ -28,10 +28,10 @@ module.exports = class Generator
   # With a provided file generation callback, the assets will not be copied. You
   # can use {Biscotto.script} and {Biscotto.style} to get them.
   #
-  # file - A {Function} that acts as a file generation callback
+  # file_generator_cb - A {Function} that acts as a file generation callback
   #
-  generate: (file = null) ->
-    @templater.redirect(file) if file
+  generate: (file_generator_cb = null) ->
+    @templater.redirect(file_generator_cb) if file_generator_cb
 
     @generateIndex()
 
@@ -47,8 +47,8 @@ module.exports = class Generator
     @generateFileList()
     @generateExtraList()
 
-    @generateSearchData file
-    @copyAssets() unless file or @options.noOutput
+    @generateSearchData file_generator_cb
+    @copyAssets() unless file_generator_cb or @options.noOutput
 
   # Public: Generates the frame source.
   generateIndex: ->
