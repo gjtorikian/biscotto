@@ -7,6 +7,7 @@ _         = require 'underscore'
 
 Parser    = require './parser'
 Generator = require './generator'
+Metadata   = require './metadata'
 {exec}    = require 'child_process'
 
 # Public: Biscotto - the TomDoc-CoffeeScript API documentation generator
@@ -76,7 +77,9 @@ module.exports = class Biscotto
         tag:     @detectTag
         origin:  @detectOrigin
       },
-      (err, defaults) ->
+      (err, defaults) =>
+
+        @slugs   = {}
 
         extraUsage = if defaults.extras.length is 0 then '' else  "- #{ defaults.extras.join ' ' }"
 
@@ -157,6 +160,11 @@ module.exports = class Biscotto
             default   : biscottoopts.internal || false
             describe  : 'Show internal methods'
           )
+          .options('metadata',
+            boolean   : true
+            default   : biscottoopts.metadata || true
+            describe  : 'Whether to generate metadata slug'
+          )
           .options('stability',
             describe  : 'Set stability level'
             default   : -1
@@ -194,13 +202,13 @@ module.exports = class Biscotto
             analytics: analytics || argv.a
             tag: defaults.tag
             origin: defaults.origin
+            metadata: argv.metadata
             stability: argv.stability
 
           extra = false
 
           # ignore params if biscotto has not been started directly
           args = if argv._.length isnt 0 and /.+biscotto$/.test(process.argv[1]) then argv._ else biscottoopts._
-
 
           for arg in args
             if arg is '-'
@@ -233,6 +241,12 @@ module.exports = class Biscotto
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
+          if options.metadata
+            for filename, content of parser.iteratedFiles
+              # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+              @slugs[file] = @populateSlug(file, new Metadata(file, parser.classes, parser.files, CoffeeScript.nodes(content)))
+            fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
+
           generator = new Generator(parser, options)
           generator.generate(file_generator_cb)
 
@@ -246,6 +260,25 @@ module.exports = class Biscotto
       done(error) if done
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
+
+  # Public: Parse and collect metadata slugs
+  @populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
+    objects = {}
+    for key, value of unindexedObjects
+      objects[value.startLineNumber] = {} unless objects[value.startLineNumber]?
+      objects[value.startLineNumber][value.startColNumber] = value
+      # Update the classProperties/prototypeProperties to be line numbers
+      if value.type is 'class'
+        value.classProperties = (prop.startLineNumber for prop in _.clone(value.classProperties))
+        value.prototypeProperties = (prop.startLineNumber for prop in _.clone(value.prototypeProperties))
+
+    if exports._default
+      exports = exports._default.startLineNumber
+    else
+      for key, value of exports
+        exports[key] = value.startLineNumber
+
+    {objects, exports}
 
   # Public: Get the Biscotto script content that is used in the webinterface
   #

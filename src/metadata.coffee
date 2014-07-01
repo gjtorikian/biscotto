@@ -1,31 +1,26 @@
 fs           = require 'fs'
-path         = require 'path' # To load package.json
+path         = require 'path'
 
 _            = require 'underscore'
 builtins     = require 'builtins'
 
-module.exports = class Visitor
+module.exports = class Metadata
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
   constructor: (@fileName, @classes, @files, root, @lineMapping) ->
     @defs = {} # Local variable definitions
     @exports = {}
-    @commentLines = {}
 
     root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
 
   visit: (exp) ->
-    # throw new Error "Could not parse line #{lineMapping[exp.locationData.first_line]} because of missing visit#{exp.constructor.name}()" unless @["visit#{exp.constructor.name}"]
     @["visit#{exp.constructor.name}"](exp)
   eval:  (exp) ->
-    # throw new Error "Could not parse line #{lineMapping[exp.locationData.first_line]} because of missing eval#{exp.constructor.name}()" unless @["eval#{exp.constructor.name}"]
     @["eval#{exp.constructor.name}"](exp)
 
   visitComment: (exp) ->
     # Skip the 1st comment which is added by biscotto
     return if exp.comment is '~Private~'
-
-    @commentLines[@lineMapping[exp.locationData.last_line]] = exp.comment.trim()
 
   visitClass: (exp) ->
     return unless exp.variable?
@@ -185,7 +180,7 @@ module.exports = class Visitor
                     if lookedUpVar.type is 'import'
                       value =
                         name: name
-                        doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
+                        # doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
                         startLineNumber: value.locationData.first_line
                         endLineNumber: value.locationData.last_line
                         startColNumber:  value.locationData.first_column
@@ -199,7 +194,7 @@ module.exports = class Visitor
                     value =
                       type: 'primitive'
                       name: name
-                      doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
+                      # doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
                       startLineNumber:  value.locationData.first_line
                       endLineNumber:    value.locationData.last_line
                       startColNumber:  value.locationData.first_column
@@ -250,7 +245,7 @@ module.exports = class Visitor
     if exp.base
       type: 'primitive'
       name: exp.base?.value
-      doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
+      # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
       startLineNumber: exp.locationData.first_line
       endLineNumber:   exp.locationData.last_line
       startColNumber:  exp.locationData.first_column
@@ -270,7 +265,7 @@ module.exports = class Visitor
 
       ret =
         type: 'import'
-        doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
+        # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
         startLineNumber:  exp.locationData.first_line
         endLineNumber:    exp.locationData.first_line
         startColNumber:  exp.locationData.first_column
@@ -288,7 +283,7 @@ module.exports = class Visitor
 
     else
       type: 'function'
-      doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
+      # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
       startLineNumber:  exp.locationData.first_line
       endLineNumber:    exp.locationData.last_line
       startColNumber:  exp.locationData.first_column

@@ -3,7 +3,6 @@ _            = require 'underscore'
 _.str        = require 'underscore.string'
 CoffeeScript = require 'coffee-script'
 
-Visitor       = require './visitor'
 File          = require './nodes/file'
 Class         = require './nodes/class'
 Mixin         = require './nodes/mixin'
@@ -24,7 +23,7 @@ module.exports = class Parser
     @files   = []
     @classes = []
     @mixins  = []
-    @slugs   = {}
+    @iteratedFiles = {}
 
     @fileCount = 0
     @globalStatus = "Private"
@@ -37,7 +36,9 @@ module.exports = class Parser
   #
   # file - A {String} representing the the CoffeeScript filename
   parseFile: (file) ->
-    @parseContent fs.readFileSync(file, 'utf8'), file
+    content = fs.readFileSync(file, 'utf8')
+    @parseContent content, file
+    @iteratedFiles[file] = content
     @fileCount += 1
 
   # Public: Parse the given CoffeeScript content.
@@ -108,9 +109,6 @@ module.exports = class Parser
         if entity == 'clazz'
           clazz = new Class(child, file, lineMapping, @options, doc)
           @classes.push clazz
-
-      # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
-      @populateSlug(file, new Visitor(file, @classes, @files, CoffeeScript.nodes(@content), lineMapping))
 
       @previousNodes.push child
       true
@@ -236,25 +234,6 @@ module.exports = class Parser
       child.ancestor = node
       @linkAncestors child
 
-  # Public: Parse and collect metadata slugs
-  populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
-    objects = {}
-    for key, value of unindexedObjects
-      objects[value.startLineNumber] = {} unless objects[value.startLineNumber]?
-      objects[value.startLineNumber][value.startColNumber] = value
-      # Update the classProperties/prototypeProperties to be line numbers
-      if value.type is 'class'
-        value.classProperties = (prop.startLineNumber for prop in _.clone(value.classProperties))
-        value.prototypeProperties = (prop.startLineNumber for prop in _.clone(value.prototypeProperties))
-
-    if exports._default
-      exports = exports._default.startLineNumber
-    else
-      for key, value of exports
-        exports[key] = value.startLineNumber
-
-    @slugs[file] = {objects, exports}
-
   # Public: Get all the parsed methods.
   #
   # Returns an {Array} of {Method}s.
@@ -356,8 +335,6 @@ module.exports = class Parser
 
     console.log stats
 
-    fs.writeFileSync "metadata.json", JSON.stringify(@toMetadata(), null, "    ")
-
     if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
@@ -393,9 +370,3 @@ module.exports = class Parser
       json.push mixin.toJSON()
 
     json
-
-  # Public: Get the metadata representation of the module.
-  #
-  # Returns a JSON {Object}.
-  toMetadata: ->
-    @slugs
