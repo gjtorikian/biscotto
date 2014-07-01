@@ -61,6 +61,9 @@ describe "Parser", ->
     it 'understands basic exports', ->
       constructDelta("spec/visitor_templates/exports/basic_exports.coffee")
 
+    fit 'understands class exports', ->
+      constructDelta("spec/visitor_templates/exports/class_exports.coffee")
+
   describe "Requires", ->
     it 'understand basic requires', ->
       constructDelta("spec/visitor_templates/requires/basic_requires.coffee")

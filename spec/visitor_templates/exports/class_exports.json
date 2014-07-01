@@ -1,0 +1,21 @@
+{
+  "spec/visitor_templates/exports/class_exports.coffee": {
+    "objects": {
+      "1": {
+        "0": {
+          "type": "class",
+          "name": "Foo",
+          "bindingType": null,
+          "classProperties": [],
+          "prototypeProperties": [],
+          "doc": "~Private~",
+          "startLineNumber": 1,
+          "endLineNumber": 1,
+          "startColNumber": 0,
+          "endColNumber": 8
+        }
+      }
+    },
+    "exports": 1
+  }
+}

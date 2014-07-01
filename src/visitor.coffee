@@ -228,6 +228,7 @@ module.exports = class Visitor
 
     type: 'class'
     name: className
+    bindingType: null
     classProperties: classProperties
     prototypeProperties: prototypeProperties
     doc: if clazz? then clazz.doc.node.comment else null
