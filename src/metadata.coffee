@@ -57,13 +57,17 @@ module.exports = class Metadata
             @exports[firstProp.name.value] = @defs[value.base.value]
           else
             # case `exports.foo = 42`
+            unless firstProp.name.value == value.name
+              @defs[firstProp.name.value] =
+                name: firstProp.name.value
+                bindingType: 'exportsProperty'
+                type: value.type
+                startLineNumber:  exp.variable.base.locationData.first_line
+                endLineNumber:    exp.variable.base.locationData.last_line
+                startColNumber:  exp.variable.base.locationData.first_column
+                endColNumber:    exp.variable.base.locationData.last_column
             @exports[firstProp.name.value] =
-              type: 'primitive'
-              doc: null
               startLineNumber:  exp.variable.base.locationData.first_line
-              endLineNumber:    exp.variable.base.locationData.last_line
-              startColNumber:  exp.variable.base.locationData.first_column
-              endColNumber:    exp.variable.base.locationData.last_column
         else
           # case `exports = bar`
           @exports = {_default: value}
@@ -83,7 +87,6 @@ module.exports = class Metadata
               nameWithPeriods = [exp.variable.base.value].concat(_.map(exp.variable.properties, (prop) -> prop.name.value)).join(".")
               @defs[nameWithPeriods] = _.extend name: nameWithPeriods, value
             else # case X = ...
-              # console.log exp.variable.base.value
               @defs[exp.variable.base.value] = _.extend name: exp.variable.base.value, value
               switch @defs[exp.variable.base.value].type
                 when 'function'
@@ -209,12 +212,12 @@ module.exports = class Metadata
                 # interferes also with evalValue
                 if isClassLevel
                   value.name = name
-                  value.type = "classProperty"
+                  value.bindingType = "classProperty"
                   @defs["#{className}.#{name}"] = value
                   classProperties.push(value)
                 else
                   value.name = name
-                  value.type = "prototypeProperty"
+                  value.bindingType = "prototypeProperty"
                   @defs["#{className}::#{name}"] = value
                   prototypeProperties.push(value)
           true
