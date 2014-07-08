@@ -17,6 +17,7 @@ describe "Metadata", ->
   constructDelta = (filename, hasReferences = false) ->
     source = fs.readFileSync filename, 'utf8'
 
+    Biscotto.slugs = {}
     parser.parseContent source, filename
     metadata = new Metadata(filename, parser.classes, parser.files)
     metadata.generate(CoffeeScript.nodes(source))
