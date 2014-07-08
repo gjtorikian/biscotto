@@ -42,11 +42,12 @@
         "4": {
           "10": {
             "name": "prop2",
-            "type": "classProperty",
+            "type": "primitive",
             "startLineNumber": 4,
             "endLineNumber": 4,
             "startColNumber": 10,
-            "endColNumber": 14
+            "endColNumber": 14,
+            "bindingType": "classProperty"
           }
         },
         "6": {
@@ -65,8 +66,8 @@
         "13": {
           "12": {
             "name": "method2",
-            "bindingType": "variable",
-            "type": "classProperty",
+            "bindingType": "classProperty",
+            "type": "function",
             "paramNames": [
               "a"
             ],
@@ -101,18 +102,19 @@
         "4": {
           "9": {
             "name": "prop2",
-            "type": "prototypeProperty",
+            "type": "primitive",
             "startLineNumber": 4,
             "endLineNumber": 4,
             "startColNumber": 9,
-            "endColNumber": 13
+            "endColNumber": 13,
+            "bindingType": "prototypeProperty"
           }
         },
         "11": {
           "11": {
             "name": "method2",
-            "bindingType": "variable",
-            "type": "prototypeProperty",
+            "bindingType": "prototypeProperty",
+            "type": "function",
             "paramNames": [
               "a"
             ],
