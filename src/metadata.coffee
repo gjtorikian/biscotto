@@ -10,6 +10,7 @@ module.exports = class Metadata
   constructor: (@fileName, @classes, @files) ->
     @defs = {} # Local variable definitions
     @exports = {}
+    @bindingTypes = {}
 
   generate: (@root) ->
     @root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
@@ -71,6 +72,9 @@ module.exports = class Metadata
         else
           # case `exports = bar`
           @exports = {_default: value}
+          switch value.type
+            when 'class'
+              @bindingTypes[value.name] = "exports"
 
       # case left-hand-side is anything other than `exports...`
       else
@@ -227,7 +231,7 @@ module.exports = class Metadata
 
     type: 'class'
     name: className
-    bindingType: null
+    bindingType: @bindingTypes[className] unless _.isUndefined @bindingTypes[className]
     classProperties: classProperties
     prototypeProperties: prototypeProperties
     doc: if clazz? then clazz.doc.node.comment else null

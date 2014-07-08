@@ -6,7 +6,6 @@
           "0": {
             "type": "class",
             "name": "TextBuffer",
-            "bindingType": null,
             "classProperties": [],
             "prototypeProperties": [
               4,

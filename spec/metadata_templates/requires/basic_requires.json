@@ -42,7 +42,6 @@
           "0": {
             "type": "class",
             "name": "Bar",
-            "bindingType": null,
             "classProperties": [],
             "prototypeProperties": [],
             "doc": "~Private~",

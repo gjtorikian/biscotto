@@ -6,7 +6,7 @@
           "0": {
             "type": "class",
             "name": "Foo",
-            "bindingType": null,
+            "bindingType": "exports",
             "classProperties": [],
             "prototypeProperties": [],
             "doc": "~Private~",

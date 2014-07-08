@@ -6,7 +6,7 @@
           "0": {
             "type": "class",
             "name": "TextBuffer",
-            "bindingType": null,
+            "bindingType": "exports",
             "classProperties": [],
             "prototypeProperties": [],
             "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
