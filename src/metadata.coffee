@@ -7,11 +7,12 @@ builtins     = require 'builtins'
 module.exports = class Metadata
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
-  constructor: (@fileName, @classes, @files, root, @lineMapping) ->
+  constructor: (@fileName, @classes, @files) ->
     @defs = {} # Local variable definitions
     @exports = {}
 
-    root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
+  generate: (@root) ->
+    @root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
 
   visit: (exp) ->
     @["visit#{exp.constructor.name}"](exp)

@@ -242,9 +242,11 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           if options.metadata
+            metadata = new Metadata(file, parser.classes, parser.files)
             for filename, content of parser.iteratedFiles
               # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
-              @slugs[file] = @populateSlug(file, new Metadata(file, parser.classes, parser.files, CoffeeScript.nodes(content)))
+              metadata.generate(CoffeeScript.nodes(content))
+              @slugs[file] = @populateSlug(file, metadata)
             fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
 
           generator = new Generator(parser, options)

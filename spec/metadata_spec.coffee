@@ -18,7 +18,9 @@ describe "Metadata", ->
     source = fs.readFileSync filename, 'utf8'
 
     parser.parseContent source, filename
-    generated = Biscotto.populateSlug(filename, new Metadata(filename, parser.classes, parser.files, CoffeeScript.nodes(source)))
+    metadata = new Metadata(filename, parser.classes, parser.files)
+    metadata.generate(CoffeeScript.nodes(source))
+    generated = Biscotto.populateSlug(filename, metadata)
 
     expected_filename = filename.replace(/\.coffee$/, '.json')
     expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)
