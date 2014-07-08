@@ -246,7 +246,7 @@ module.exports = class Biscotto
             for filename, content of parser.iteratedFiles
               # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
               metadata.generate(CoffeeScript.nodes(content))
-              @slugs[file] = @populateSlug(file, metadata)
+              @populateSlug(file, metadata)
             fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
 
           generator = new Generator(parser, options)
@@ -280,7 +280,11 @@ module.exports = class Biscotto
       for key, value of exports
         exports[key] = value.startLineNumber
 
-    {objects, exports}
+    @slugs = {} if _.isUndefined @slugs
+    @slugs["files"] = {} if _.isUndefined @slugs["files"]
+
+    @slugs["files"][file] = {objects, exports}
+    @slugs
 
   # Public: Get the Biscotto script content that is used in the webinterface
   #

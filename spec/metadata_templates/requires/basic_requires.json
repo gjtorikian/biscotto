@@ -1,55 +1,1725 @@
 {
-  "objects": {
-    "0": {
-      "8": {
-        "type": "import",
-        "startLineNumber": 0,
-        "endLineNumber": 0,
-        "startColNumber": 8,
-        "endColNumber": 20,
-        "module": "foo",
-        "name": "Foo",
-        "exportsProperty": "Foo"
+  "files": {
+    "spec/metadata_templates/classes/basic_class.coffee": {
+      "objects": {
+        "4": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "bindingType": null,
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+            "startLineNumber": 4,
+            "endLineNumber": 4,
+            "startColNumber": 0,
+            "endColNumber": 15
+          }
+        }
+      },
+      "exports": 4
+    },
+    "spec/metadata_templates/classes/class_with_class_properties.coffee": {
+      "objects": {
+        "3": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "bindingType": null,
+            "classProperties": [
+              4,
+              6,
+              13
+            ],
+            "prototypeProperties": [],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+            "startLineNumber": 3,
+            "endLineNumber": 13,
+            "startColNumber": 0,
+            "endColNumber": 18
+          }
+        },
+        "4": {
+          "10": {
+            "name": "prop2",
+            "type": "classProperty",
+            "startLineNumber": 4,
+            "endLineNumber": 4,
+            "startColNumber": 10,
+            "endColNumber": 14
+          }
+        },
+        "6": {
+          "17": {
+            "bindingType": "variable",
+            "type": "function",
+            "paramNames": [
+              "a"
+            ],
+            "startLineNumber": 6,
+            "endLineNumber": 6,
+            "startColNumber": 17,
+            "endColNumber": 22
+          }
+        },
+        "13": {
+          "12": {
+            "name": "method2",
+            "bindingType": "variable",
+            "type": "classProperty",
+            "paramNames": [
+              "a"
+            ],
+            "startLineNumber": 13,
+            "endLineNumber": 13,
+            "startColNumber": 12,
+            "endColNumber": 17
+          }
+        }
+      },
+      "exports": {}
+    },
+    "spec/metadata_templates/classes/class_with_prototype_properties.coffee": {
+      "objects": {
+        "3": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "bindingType": null,
+            "classProperties": [],
+            "prototypeProperties": [
+              4,
+              11
+            ],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+            "startLineNumber": 3,
+            "endLineNumber": 11,
+            "startColNumber": 0,
+            "endColNumber": 17
+          }
+        },
+        "4": {
+          "9": {
+            "name": "prop2",
+            "type": "prototypeProperty",
+            "startLineNumber": 4,
+            "endLineNumber": 4,
+            "startColNumber": 9,
+            "endColNumber": 13
+          }
+        },
+        "11": {
+          "11": {
+            "name": "method2",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "a"
+            ],
+            "startLineNumber": 11,
+            "endLineNumber": 11,
+            "startColNumber": 11,
+            "endColNumber": 16
+          }
+        }
+      },
+      "exports": {}
+    },
+    "spec/metadata_templates/classes/complicated_class.coffee": {
+      "objects": {
+        "0": {
+          "4": {
+            "name": "_",
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 4,
+            "endColNumber": 28,
+            "module": "underscore-plus"
+          }
+        },
+        "1": {
+          "12": {
+            "name": "Delegator",
+            "type": "import",
+            "startLineNumber": 1,
+            "endLineNumber": 1,
+            "startColNumber": 12,
+            "endColNumber": 29,
+            "module": "delegato"
+          }
+        },
+        "2": {
+          "7": {
+            "name": "Grim",
+            "type": "import",
+            "startLineNumber": 2,
+            "endLineNumber": 2,
+            "startColNumber": 7,
+            "endColNumber": 20,
+            "module": "grim"
+          }
+        },
+        "3": {
+          "15": {
+            "name": "Serializable",
+            "type": "import",
+            "startLineNumber": 3,
+            "endLineNumber": 3,
+            "startColNumber": 15,
+            "endColNumber": 36,
+            "module": "serializable"
+          }
+        },
+        "4": {
+          "24": {
+            "type": "import",
+            "startLineNumber": 4,
+            "endLineNumber": 4,
+            "startColNumber": 24,
+            "endColNumber": 41,
+            "module": "emissary",
+            "name": "Subscriber",
+            "exportsProperty": "Subscriber"
+          }
+        },
+        "5": {
+          "9": {
+            "type": "import",
+            "startLineNumber": 5,
+            "endLineNumber": 5,
+            "startColNumber": 9,
+            "endColNumber": 29,
+            "module": "pathwatcher",
+            "name": "File",
+            "exportsProperty": "File"
+          }
+        },
+        "6": {
+          "15": {
+            "name": "SpanSkipList",
+            "type": "import",
+            "startLineNumber": 6,
+            "endLineNumber": 6,
+            "startColNumber": 15,
+            "endColNumber": 38,
+            "module": "span-skip-list"
+          }
+        },
+        "7": {
+          "7": {
+            "name": "diff",
+            "type": "import",
+            "startLineNumber": 7,
+            "endLineNumber": 7,
+            "startColNumber": 7,
+            "endColNumber": 20,
+            "module": "diff"
+          }
+        },
+        "8": {
+          "4": {
+            "name": "Q",
+            "type": "import",
+            "startLineNumber": 8,
+            "endLineNumber": 8,
+            "startColNumber": 4,
+            "endColNumber": 14,
+            "module": "q"
+          }
+        },
+        "9": {
+          "8": {
+            "name": "Point",
+            "type": "import",
+            "startLineNumber": 9,
+            "endLineNumber": 9,
+            "startColNumber": 8,
+            "endColNumber": 24,
+            "path": "./point"
+          }
+        },
+        "10": {
+          "8": {
+            "name": "Range",
+            "type": "import",
+            "startLineNumber": 10,
+            "endLineNumber": 10,
+            "startColNumber": 8,
+            "endColNumber": 24,
+            "path": "./range"
+          }
+        },
+        "11": {
+          "10": {
+            "name": "History",
+            "type": "import",
+            "startLineNumber": 11,
+            "endLineNumber": 11,
+            "startColNumber": 10,
+            "endColNumber": 28,
+            "path": "./history"
+          }
+        },
+        "12": {
+          "16": {
+            "name": "MarkerManager",
+            "type": "import",
+            "startLineNumber": 12,
+            "endLineNumber": 12,
+            "startColNumber": 16,
+            "endColNumber": 41,
+            "path": "./marker-manager"
+          }
+        },
+        "13": {
+          "14": {
+            "name": "BufferPatch",
+            "type": "import",
+            "startLineNumber": 13,
+            "endLineNumber": 13,
+            "startColNumber": 14,
+            "endColNumber": 37,
+            "path": "./buffer-patch"
+          }
+        },
+        "14": {
+          "30": {
+            "type": "import",
+            "startLineNumber": 14,
+            "endLineNumber": 14,
+            "startColNumber": 30,
+            "endColNumber": 48,
+            "path": "./helpers",
+            "name": "newlineRegex",
+            "exportsProperty": "newlineRegex"
+          }
+        },
+        "68": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "bindingType": null,
+            "classProperties": [
+              69,
+              70,
+              71
+            ],
+            "prototypeProperties": [
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              112,
+              119,
+              130,
+              142,
+              148,
+              154,
+              160,
+              168,
+              175,
+              187,
+              196,
+              204,
+              211,
+              260,
+              273,
+              281,
+              289,
+              297,
+              309,
+              337,
+              347,
+              406,
+              436,
+              454,
+              471,
+              478,
+              485,
+              496,
+              515,
+              532,
+              545,
+              548,
+              552,
+              555,
+              565,
+              569,
+              577,
+              579,
+              581,
+              583,
+              587,
+              592,
+              624,
+              629,
+              636,
+              640,
+              650,
+              656,
+              662,
+              668,
+              682,
+              687,
+              693,
+              710,
+              724,
+              726,
+              736,
+              774,
+              792,
+              804,
+              830,
+              881,
+              889,
+              897,
+              910,
+              918,
+              926,
+              930,
+              933,
+              942,
+              947,
+              956,
+              959,
+              969,
+              977,
+              983,
+              987,
+              990,
+              1029,
+              1037,
+              1042,
+              1047,
+              1069,
+              1074
+            ],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n## Events\n\n* `changed` -\n     Emitted synchronously whenever the buffer changes. Binding a slow handler\n     to this event has the potential to destroy typing performance. Consider\n     using `contents-modified` instead and aim for extremely fast performance\n     (< 2 ms) if you must bind to it. Your handler will be called with an\n     object containing the following keys.\n     * `oldRange` - The {Range} of the old text\n     * `newRange` - The {Range} of the new text\n     * `oldText` - A {String} containing the text that was replaced\n     * `newText` - A {String} containing the text that was inserted\n\n* `markers-updated` -\n     Emitted synchronously when the `changed` events of all markers have been\n     fired for a change. The order of events is as follows:\n     * The text of the buffer is changed\n     * All markers are updated accordingly, but their `changed` events are not\n       emited\n     * The `changed` event is emitted\n     * The `changed` events of all updated markers are emitted\n     * The `markers-updated` event is emitted.\n\n* `contents-modified` -\n     Emitted asynchronously 300ms (or `TextBuffer::stoppedChangingDelay`)\n     after the last buffer change. This is a good place to handle changes to\n     the buffer without compromising typing performance.\n\n* `modified-status-changed` -\n     Emitted with a {Boolean} when the result of {::isModified} changes.\n\n* `contents-conflicted` -\n     Emitted when the buffer's underlying file changes on disk at a moment\n     when the result of {::isModified} is true.\n\n* `will-reload` -\n     Emitted before the in-memory contents of the buffer are refreshed from\n     the contents of the file on disk.\n\n* `reloaded` -\n     Emitted after the in-memory contents of the buffer are refreshed from\n     the contents of the file on disk.\n\n* `will-be-saved` - Emitted before the buffer is saved to disk.\n\n* `saved` - Emitted after the buffer is saved to disk.\n\n* `destroyed` - Emitted when the buffer is destroyed. ",
+            "startLineNumber": 68,
+            "endLineNumber": 1074,
+            "startColNumber": 0,
+            "endColNumber": 46
+          }
+        },
+        "69": {
+          "10": {
+            "name": "Point",
+            "type": "classProperty",
+            "startLineNumber": 69,
+            "endLineNumber": 69,
+            "startColNumber": 10,
+            "endColNumber": 14
+          }
+        },
+        "70": {
+          "10": {
+            "name": "Range",
+            "type": "classProperty",
+            "startLineNumber": 70,
+            "endLineNumber": 70,
+            "startColNumber": 10,
+            "endColNumber": 14
+          }
+        },
+        "71": {
+          "17": {
+            "name": "newlineRegex",
+            "type": "classProperty",
+            "startLineNumber": 71,
+            "endLineNumber": 71,
+            "startColNumber": 17,
+            "endColNumber": 28
+          }
+        },
+        "78": {
+          "14": {
+            "name": "cachedText",
+            "type": "prototypeProperty",
+            "startLineNumber": 78,
+            "endLineNumber": 78,
+            "startColNumber": 14,
+            "endColNumber": 17
+          }
+        },
+        "79": {
+          "24": {
+            "name": "stoppedChangingDelay",
+            "type": "prototypeProperty",
+            "startLineNumber": 79,
+            "endLineNumber": 79,
+            "startColNumber": 24,
+            "endColNumber": 26
+          }
+        },
+        "80": {
+          "26": {
+            "name": "stoppedChangingTimeout",
+            "type": "prototypeProperty",
+            "startLineNumber": 80,
+            "endLineNumber": 80,
+            "startColNumber": 26,
+            "endColNumber": 29
+          }
+        },
+        "81": {
+          "22": {
+            "name": "cachedDiskContents",
+            "type": "prototypeProperty",
+            "startLineNumber": 81,
+            "endLineNumber": 81,
+            "startColNumber": 22,
+            "endColNumber": 25
+          }
+        },
+        "82": {
+          "12": {
+            "name": "conflict",
+            "type": "prototypeProperty",
+            "startLineNumber": 82,
+            "endLineNumber": 82,
+            "startColNumber": 12,
+            "endColNumber": 16
+          }
+        },
+        "83": {
+          "8": {
+            "name": "file",
+            "type": "prototypeProperty",
+            "startLineNumber": 83,
+            "endLineNumber": 83,
+            "startColNumber": 8,
+            "endColNumber": 11
+          }
+        },
+        "84": {
+          "12": {
+            "name": "refcount",
+            "type": "prototypeProperty",
+            "startLineNumber": 84,
+            "endLineNumber": 84,
+            "startColNumber": 12,
+            "endColNumber": 12
+          }
+        },
+        "112": {
+          "21": {
+            "name": "deserializeParams",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "params"
+            ],
+            "startLineNumber": 112,
+            "endLineNumber": 119,
+            "startColNumber": 21,
+            "endColNumber": 1
+          }
+        },
+        "119": {
+          "19": {
+            "name": "serializeParams",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 119,
+            "endLineNumber": 130,
+            "startColNumber": 19,
+            "endColNumber": 1
+          }
+        },
+        "130": {
+          "11": {
+            "name": "getText",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 130,
+            "endLineNumber": 142,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "142": {
+          "12": {
+            "name": "getLines",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 142,
+            "endLineNumber": 148,
+            "startColNumber": 12,
+            "endColNumber": 1
+          }
+        },
+        "148": {
+          "11": {
+            "name": "isEmpty",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 148,
+            "endLineNumber": 154,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "154": {
+          "16": {
+            "name": "getLineCount",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 154,
+            "endLineNumber": 160,
+            "startColNumber": 16,
+            "endColNumber": 1
+          }
+        },
+        "160": {
+          "14": {
+            "name": "getLastRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 160,
+            "endLineNumber": 168,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "168": {
+          "14": {
+            "name": "lineForRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "row"
+            ],
+            "startLineNumber": 168,
+            "endLineNumber": 175,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "175": {
+          "15": {
+            "name": "getLastLine",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 175,
+            "endLineNumber": 187,
+            "startColNumber": 15,
+            "endColNumber": 1
+          }
+        },
+        "187": {
+          "20": {
+            "name": "lineEndingForRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "row"
+            ],
+            "startLineNumber": 187,
+            "endLineNumber": 196,
+            "startColNumber": 20,
+            "endColNumber": 1
+          }
+        },
+        "196": {
+          "20": {
+            "name": "lineLengthForRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "row"
+            ],
+            "startLineNumber": 196,
+            "endLineNumber": 204,
+            "startColNumber": 20,
+            "endColNumber": 1
+          }
+        },
+        "204": {
+          "11": {
+            "name": "setText",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "text"
+            ],
+            "startLineNumber": 204,
+            "endLineNumber": 211,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "211": {
+          "18": {
+            "name": "setTextViaDiff",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "text"
+            ],
+            "startLineNumber": 211,
+            "endLineNumber": 260,
+            "startColNumber": 18,
+            "endColNumber": 1
+          }
+        },
+        "260": {
+          "18": {
+            "name": "setTextInRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "range",
+              "text",
+              "normalizeLineEndings"
+            ],
+            "startLineNumber": 260,
+            "endLineNumber": 273,
+            "startColNumber": 18,
+            "endColNumber": 1
+          }
+        },
+        "273": {
+          "10": {
+            "name": "insert",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "position",
+              "text",
+              "normalizeLineEndings"
+            ],
+            "startLineNumber": 273,
+            "endLineNumber": 281,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "281": {
+          "10": {
+            "name": "append",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "text",
+              "normalizeLineEndings"
+            ],
+            "startLineNumber": 281,
+            "endLineNumber": 289,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "289": {
+          "10": {
+            "name": "delete",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "range"
+            ],
+            "startLineNumber": 289,
+            "endLineNumber": 297,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "297": {
+          "13": {
+            "name": "deleteRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "row"
+            ],
+            "startLineNumber": 297,
+            "endLineNumber": 309,
+            "startColNumber": 13,
+            "endColNumber": 1
+          }
+        },
+        "309": {
+          "14": {
+            "name": "deleteRows",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "startRow",
+              "endRow"
+            ],
+            "startLineNumber": 309,
+            "endLineNumber": 337,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "337": {
+          "14": {
+            "name": "buildPatch",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "oldRange",
+              "newText",
+              "normalizeLineEndings"
+            ],
+            "startLineNumber": 337,
+            "endLineNumber": 347,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "347": {
+          "14": {
+            "name": "applyPatch",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              null
+            ],
+            "startLineNumber": 347,
+            "endLineNumber": 406,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "406": {
+          "18": {
+            "name": "getTextInRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "range"
+            ],
+            "startLineNumber": 406,
+            "endLineNumber": 436,
+            "startColNumber": 18,
+            "endColNumber": 1
+          }
+        },
+        "436": {
+          "13": {
+            "name": "clipRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "range"
+            ],
+            "startLineNumber": 436,
+            "endLineNumber": 454,
+            "startColNumber": 13,
+            "endColNumber": 1
+          }
+        },
+        "454": {
+          "16": {
+            "name": "clipPosition",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "position"
+            ],
+            "startLineNumber": 454,
+            "endLineNumber": 471,
+            "startColNumber": 16,
+            "endColNumber": 1
+          }
+        },
+        "471": {
+          "20": {
+            "name": "getFirstPosition",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 471,
+            "endLineNumber": 478,
+            "startColNumber": 20,
+            "endColNumber": 1
+          }
+        },
+        "478": {
+          "18": {
+            "name": "getEndPosition",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 478,
+            "endLineNumber": 485,
+            "startColNumber": 18,
+            "endColNumber": 1
+          }
+        },
+        "485": {
+          "12": {
+            "name": "getRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 485,
+            "endLineNumber": 496,
+            "startColNumber": 12,
+            "endColNumber": 1
+          }
+        },
+        "496": {
+          "15": {
+            "name": "rangeForRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "row",
+              "includeNewline"
+            ],
+            "startLineNumber": 496,
+            "endLineNumber": 515,
+            "startColNumber": 15,
+            "endColNumber": 1
+          }
+        },
+        "515": {
+          "29": {
+            "name": "characterIndexForPosition",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "position"
+            ],
+            "startLineNumber": 515,
+            "endLineNumber": 532,
+            "startColNumber": 29,
+            "endColNumber": 1
+          }
+        },
+        "532": {
+          "29": {
+            "name": "positionForCharacterIndex",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "offset"
+            ],
+            "startLineNumber": 532,
+            "endLineNumber": 545,
+            "startColNumber": 29,
+            "endColNumber": 1
+          }
+        },
+        "545": {
+          "24": {
+            "name": "getMaxCharacterIndex",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 545,
+            "endLineNumber": 548,
+            "startColNumber": 24,
+            "endColNumber": 1
+          }
+        },
+        "548": {
+          "12": {
+            "name": "loadSync",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 548,
+            "endLineNumber": 552,
+            "startColNumber": 12,
+            "endColNumber": 1
+          }
+        },
+        "552": {
+          "8": {
+            "name": "load",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 552,
+            "endLineNumber": 555,
+            "startColNumber": 8,
+            "endColNumber": 1
+          }
+        },
+        "555": {
+          "17": {
+            "name": "finishLoading",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 555,
+            "endLineNumber": 565,
+            "startColNumber": 17,
+            "endColNumber": 1
+          }
+        },
+        "565": {
+          "20": {
+            "name": "handleTextChange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "event"
+            ],
+            "startLineNumber": 565,
+            "endLineNumber": 569,
+            "startColNumber": 20,
+            "endColNumber": 1
+          }
+        },
+        "569": {
+          "11": {
+            "name": "destroy",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 569,
+            "endLineNumber": 577,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "577": {
+          "11": {
+            "name": "isAlive",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 577,
+            "endLineNumber": 577,
+            "startColNumber": 11,
+            "endColNumber": 27
+          }
+        },
+        "579": {
+          "15": {
+            "name": "isDestroyed",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 579,
+            "endLineNumber": 579,
+            "startColNumber": 15,
+            "endColNumber": 27
+          }
+        },
+        "581": {
+          "14": {
+            "name": "isRetained",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 581,
+            "endLineNumber": 581,
+            "startColNumber": 14,
+            "endColNumber": 29
+          }
+        },
+        "583": {
+          "10": {
+            "name": "retain",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 583,
+            "endLineNumber": 587,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "587": {
+          "11": {
+            "name": "release",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 587,
+            "endLineNumber": 592,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "592": {
+          "19": {
+            "name": "subscribeToFile",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 592,
+            "endLineNumber": 624,
+            "startColNumber": 19,
+            "endColNumber": 1
+          }
+        },
+        "624": {
+          "22": {
+            "name": "hasMultipleEditors",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 624,
+            "endLineNumber": 624,
+            "startColNumber": 22,
+            "endColNumber": 37
+          }
+        },
+        "629": {
+          "10": {
+            "name": "reload",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 629,
+            "endLineNumber": 636,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "636": {
+          "32": {
+            "name": "updateCachedDiskContentsSync",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 636,
+            "endLineNumber": 640,
+            "startColNumber": 32,
+            "endColNumber": 1
+          }
+        },
+        "640": {
+          "28": {
+            "name": "updateCachedDiskContents",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 640,
+            "endLineNumber": 650,
+            "startColNumber": 28,
+            "endColNumber": 1
+          }
+        },
+        "650": {
+          "15": {
+            "name": "getBaseName",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 650,
+            "endLineNumber": 656,
+            "startColNumber": 15,
+            "endColNumber": 1
+          }
+        },
+        "656": {
+          "11": {
+            "name": "getPath",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 656,
+            "endLineNumber": 662,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "662": {
+          "10": {
+            "name": "getUri",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 662,
+            "endLineNumber": 668,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "668": {
+          "11": {
+            "name": "setPath",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "filePath"
+            ],
+            "startLineNumber": 668,
+            "endLineNumber": 682,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "682": {
+          "18": {
+            "name": "getEofPosition",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 682,
+            "endLineNumber": 687,
+            "startColNumber": 18,
+            "endColNumber": 1
+          }
+        },
+        "687": {
+          "8": {
+            "name": "save",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 687,
+            "endLineNumber": 693,
+            "startColNumber": 8,
+            "endColNumber": 1
+          }
+        },
+        "693": {
+          "10": {
+            "name": "saveAs",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "filePath"
+            ],
+            "startLineNumber": 693,
+            "endLineNumber": 710,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "710": {
+          "14": {
+            "name": "isModified",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 710,
+            "endLineNumber": 724,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "724": {
+          "16": {
+            "name": "isInConflict",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 724,
+            "endLineNumber": 724,
+            "startColNumber": 16,
+            "endColNumber": 27
+          }
+        },
+        "726": {
+          "17": {
+            "name": "destroyMarker",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "id"
+            ],
+            "startLineNumber": 726,
+            "endLineNumber": 736,
+            "startColNumber": 17,
+            "endColNumber": 1
+          }
+        },
+        "736": {
+          "27": {
+            "name": "matchesInCharacterRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "regex",
+              "startIndex",
+              "endIndex"
+            ],
+            "startLineNumber": 736,
+            "endLineNumber": 774,
+            "startColNumber": 27,
+            "endColNumber": 1
+          }
+        },
+        "774": {
+          "8": {
+            "name": "scan",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "regex",
+              "iterator"
+            ],
+            "startLineNumber": 774,
+            "endLineNumber": 792,
+            "startColNumber": 8,
+            "endColNumber": 1
+          }
+        },
+        "792": {
+          "17": {
+            "name": "backwardsScan",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "regex",
+              "iterator"
+            ],
+            "startLineNumber": 792,
+            "endLineNumber": 804,
+            "startColNumber": 17,
+            "endColNumber": 1
+          }
+        },
+        "804": {
+          "11": {
+            "name": "replace",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "regex",
+              "replacementText"
+            ],
+            "startLineNumber": 804,
+            "endLineNumber": 830,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "830": {
+          "15": {
+            "name": "scanInRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "regex",
+              "range",
+              "iterator",
+              "reverse"
+            ],
+            "startLineNumber": 830,
+            "endLineNumber": 881,
+            "startColNumber": 15,
+            "endColNumber": 1
+          }
+        },
+        "881": {
+          "24": {
+            "name": "backwardsScanInRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "regex",
+              "range",
+              "iterator"
+            ],
+            "startLineNumber": 881,
+            "endLineNumber": 889,
+            "startColNumber": 24,
+            "endColNumber": 1
+          }
+        },
+        "889": {
+          "14": {
+            "name": "isRowBlank",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "row"
+            ],
+            "startLineNumber": 889,
+            "endLineNumber": 897,
+            "startColNumber": 14,
+            "endColNumber": 1
+          }
+        },
+        "897": {
+          "23": {
+            "name": "previousNonBlankRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "startRow"
+            ],
+            "startLineNumber": 897,
+            "endLineNumber": 910,
+            "startColNumber": 23,
+            "endColNumber": 1
+          }
+        },
+        "910": {
+          "19": {
+            "name": "nextNonBlankRow",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "startRow"
+            ],
+            "startLineNumber": 910,
+            "endLineNumber": 918,
+            "startColNumber": 19,
+            "endColNumber": 1
+          }
+        },
+        "918": {
+          "16": {
+            "name": "usesSoftTabs",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 918,
+            "endLineNumber": 926,
+            "startColNumber": 16,
+            "endColNumber": 1
+          }
+        },
+        "926": {
+          "10": {
+            "name": "change",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "oldRange",
+              "newText",
+              "options"
+            ],
+            "startLineNumber": 926,
+            "endLineNumber": 930,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "930": {
+          "32": {
+            "name": "cancelStoppedChangingTimeout",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 930,
+            "endLineNumber": 933,
+            "startColNumber": 32,
+            "endColNumber": 1
+          }
+        },
+        "933": {
+          "26": {
+            "name": "scheduleModifiedEvents",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 933,
+            "endLineNumber": 942,
+            "startColNumber": 26,
+            "endColNumber": 1
+          }
+        },
+        "942": {
+          "29": {
+            "name": "emitModifiedStatusChanged",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "modifiedStatus"
+            ],
+            "startLineNumber": 942,
+            "endLineNumber": 947,
+            "startColNumber": 29,
+            "endColNumber": 1
+          }
+        },
+        "947": {
+          "12": {
+            "name": "logLines",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "start",
+              "end"
+            ],
+            "startLineNumber": 947,
+            "endLineNumber": 952,
+            "startColNumber": 12,
+            "endColNumber": 1
+          }
+        },
+        "956": {
+          "8": {
+            "name": "undo",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 956,
+            "endLineNumber": 956,
+            "startColNumber": 8,
+            "endColNumber": 25
+          }
+        },
+        "959": {
+          "8": {
+            "name": "redo",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 959,
+            "endLineNumber": 959,
+            "startColNumber": 8,
+            "endColNumber": 25
+          }
+        },
+        "969": {
+          "12": {
+            "name": "transact",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "fn"
+            ],
+            "startLineNumber": 969,
+            "endLineNumber": 969,
+            "startColNumber": 12,
+            "endColNumber": 40
+          }
+        },
+        "977": {
+          "20": {
+            "name": "beginTransaction",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 977,
+            "endLineNumber": 977,
+            "startColNumber": 20,
+            "endColNumber": 49
+          }
+        },
+        "983": {
+          "21": {
+            "name": "commitTransaction",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 983,
+            "endLineNumber": 983,
+            "startColNumber": 21,
+            "endColNumber": 51
+          }
+        },
+        "987": {
+          "20": {
+            "name": "abortTransaction",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 987,
+            "endLineNumber": 987,
+            "startColNumber": 20,
+            "endColNumber": 49
+          }
+        },
+        "990": {
+          "18": {
+            "name": "clearUndoStack",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 990,
+            "endLineNumber": 990,
+            "startColNumber": 18,
+            "endColNumber": 45
+          }
+        },
+        "1029": {
+          "13": {
+            "name": "markRange",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "range",
+              "properties"
+            ],
+            "startLineNumber": 1029,
+            "endLineNumber": 1029,
+            "startColNumber": 13,
+            "endColNumber": 72
+          }
+        },
+        "1037": {
+          "16": {
+            "name": "markPosition",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "position",
+              "properties"
+            ],
+            "startLineNumber": 1037,
+            "endLineNumber": 1037,
+            "startColNumber": 16,
+            "endColNumber": 84
+          }
+        },
+        "1042": {
+          "13": {
+            "name": "getMarker",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "id"
+            ],
+            "startLineNumber": 1042,
+            "endLineNumber": 1042,
+            "startColNumber": 13,
+            "endColNumber": 42
+          }
+        },
+        "1047": {
+          "14": {
+            "name": "getMarkers",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 1047,
+            "endLineNumber": 1047,
+            "startColNumber": 14,
+            "endColNumber": 37
+          }
+        },
+        "1069": {
+          "15": {
+            "name": "findMarkers",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [
+              "params"
+            ],
+            "startLineNumber": 1069,
+            "endLineNumber": 1069,
+            "startColNumber": 15,
+            "endColNumber": 54
+          }
+        },
+        "1074": {
+          "18": {
+            "name": "getMarkerCount",
+            "bindingType": "variable",
+            "type": "prototypeProperty",
+            "paramNames": [],
+            "startLineNumber": 1074,
+            "endLineNumber": 1074,
+            "startColNumber": 18,
+            "endColNumber": 45
+          }
+        }
+      },
+      "exports": 68
+    },
+    "spec/metadata_templates/exports/basic_exports.coffee": {
+      "objects": {
+        "1": {
+          "6": {
+            "name": "foo",
+            "bindingType": "variable",
+            "type": "function",
+            "paramNames": [],
+            "startLineNumber": 1,
+            "endLineNumber": 1,
+            "startColNumber": 6,
+            "endColNumber": 15,
+            "doc": {
+              "comment": "Public: Returns hello ",
+              "summary": "Returns hello",
+              "status": "Public"
+            }
+          }
+        }
+      },
+      "exports": {
+        "foo": 3,
+        "bar": 6
       }
     },
-    "1": {
-      "14": {
-        "type": "import",
-        "startLineNumber": 1,
-        "endLineNumber": 1,
-        "startColNumber": 14,
-        "endColNumber": 28,
-        "module": "defs2",
-        "name": "foof",
-        "exportsProperty": "defs"
-      }
+    "spec/metadata_templates/exports/class_exports.coffee": {
+      "objects": {
+        "1": {
+          "0": {
+            "type": "class",
+            "name": "Foo",
+            "bindingType": null,
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "startLineNumber": 1,
+            "endLineNumber": 1,
+            "startColNumber": 0,
+            "endColNumber": 8
+          }
+        }
+      },
+      "exports": 1
     },
-    "2": {
-      "13": {
-        "type": "import",
-        "startLineNumber": 2,
-        "endLineNumber": 2,
-        "startColNumber": 13,
-        "endColNumber": 25,
-        "module": "kaz",
-        "name": "baz",
-        "exportsProperty": "baz"
-      }
-    },
-    "4": {
-      "0": {
-        "type": "class",
-        "name": "Bar",
-        "bindingType": null,
-        "classProperties": [],
-        "prototypeProperties": [],
-        "doc": "~Private~",
-        "startLineNumber": 4,
-        "endLineNumber": 4,
-        "startColNumber": 0,
-        "endColNumber": 8
-      }
+    "spec/metadata_templates/requires/basic_requires.coffee": {
+      "objects": {
+        "0": {
+          "8": {
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 8,
+            "endColNumber": 20,
+            "module": "foo",
+            "name": "Foo",
+            "exportsProperty": "Foo"
+          }
+        },
+        "1": {
+          "14": {
+            "type": "import",
+            "startLineNumber": 1,
+            "endLineNumber": 1,
+            "startColNumber": 14,
+            "endColNumber": 28,
+            "module": "defs2",
+            "name": "foof",
+            "exportsProperty": "defs"
+          }
+        },
+        "2": {
+          "13": {
+            "type": "import",
+            "startLineNumber": 2,
+            "endLineNumber": 2,
+            "startColNumber": 13,
+            "endColNumber": 25,
+            "module": "kaz",
+            "name": "baz",
+            "exportsProperty": "baz"
+          }
+        },
+        "4": {
+          "0": {
+            "type": "class",
+            "name": "Bar",
+            "bindingType": null,
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "startLineNumber": 4,
+            "endLineNumber": 4,
+            "startColNumber": 0,
+            "endColNumber": 8
+          }
+        }
+      },
+      "exports": {}
     }
-  },
-  "exports": {}
+  }
 }
