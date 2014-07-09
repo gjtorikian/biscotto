@@ -71,5 +71,8 @@ describe "Metadata", ->
       constructDelta("spec/metadata_templates/exports/class_exports.coffee")
 
   describe "Requires", ->
-    it 'understand basic requires', ->
+    it 'understands basic requires', ->
       constructDelta("spec/metadata_templates/requires/basic_requires.coffee")
+
+    it 'understands importing', ->
+      constructDelta("spec/metadata_templates/requires/references/buffer-patch.coffee")

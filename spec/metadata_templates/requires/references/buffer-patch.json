@@ -1,0 +1,52 @@
+{
+  "files": {
+    "spec/metadata_templates/requires/references/buffer-patch.coffee": {
+      "objects": {
+        "0": {
+          "14": {
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 14,
+            "endColNumber": 32,
+            "path": "./helpers",
+            "name": "getTextOG",
+            "exportsProperty": "getTextOG"
+          }
+        },
+        "3": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "bindingType": "exports",
+            "classProperties": [],
+            "prototypeProperties": [
+              4
+            ],
+            "doc": "~Private~",
+            "startLineNumber": 3,
+            "endLineNumber": 4,
+            "startColNumber": 0,
+            "endColNumber": 20
+          }
+        },
+        "4": {
+          "11": {
+            "name": "getText",
+            "type": "primitive",
+            "startLineNumber": 4,
+            "endLineNumber": 4,
+            "startColNumber": 11,
+            "endColNumber": 19,
+            "bindingType": "prototypeProperty",
+            "reference": {
+              "path": "./helpers",
+              "exportsProperty": "getTextOG"
+            }
+          }
+        }
+      },
+      "exports": 3
+    }
+  }
+}

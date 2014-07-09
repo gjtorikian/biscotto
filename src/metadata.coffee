@@ -11,6 +11,7 @@ module.exports = class Metadata
     @defs = {} # Local variable definitions
     @exports = {}
     @bindingTypes = {}
+    @modules = {}
 
   generate: (@root) ->
     @root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
@@ -112,7 +113,12 @@ module.exports = class Metadata
                   @defs[key.base.value] = _.extend {}, value,
                     name: key.base.value
                     exportsProperty: key.base.value
-
+                  # I *think* this case is always true
+                  # Store the name of the exported property to the module name
+                  if @defs[key.base.value].type == "import"
+                    if _.isUndefined @modules[@defs[key.base.value].path]
+                      @modules[@defs[key.base.value].path] = []
+                    @modules[@defs[key.base.value].path].push @defs[key.base.value].name
                 when 'Assign'
                   # case {X:Y} = ...
                   @defs[key.value.base.value] = _.extend {}, value,
@@ -151,15 +157,6 @@ module.exports = class Metadata
         # case Prototype-level methods (this.foo = (foo) -> ...)
         when 'Assign'
           value = @eval(subExp.value)
-          # value.paramNames = value.paramNames
-          # console.log subExp.value.constructor.name
-          # console.log subExp.params
-          # value =
-          #   name: property.name.value
-          #   type: "classProperty"
-          #   doc: null
-          #   startLineNumber: property.locationData.first_line + 1
-          #   endLineNumber: property.locationData.last_line + 1
           @defs["#{className}.#{value.name}"] = value
           classProperties.push(value)
         when 'Value'
@@ -211,7 +208,6 @@ module.exports = class Metadata
                 else
                   value = _.extend name: name, value
 
-
                 # TODO: `value = @eval(prototypeExp.value)` is messing this up
                 # interferes also with evalValue
                 if isClassLevel
@@ -224,6 +220,14 @@ module.exports = class Metadata
                   value.bindingType = "prototypeProperty"
                   @defs["#{className}::#{name}"] = value
                   prototypeProperties.push(value)
+                  # apply the reference (if one exists)
+                  for module, references of @modules
+                    _.each references, (reference) =>
+                      if reference == prototypeExp.value.base.value
+                        @defs["#{className}::#{name}"].reference =
+                          path: module
+                          exportsProperty: reference
+
           true
 
     # find the matching class from the parsed file
