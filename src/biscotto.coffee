@@ -54,7 +54,7 @@ module.exports = class Biscotto
 
     # Read .biscottoopts project defaults
     try
-      if (fs.existsSync || path.existsSync)('.biscottoopts')
+      if fs.existsSync('.biscottoopts')
         configs = fs.readFileSync '.biscottoopts', 'utf8'
 
         for config in configs.split('\n')
@@ -161,9 +161,7 @@ module.exports = class Biscotto
             describe  : 'Show internal methods'
           )
           .options('metadata',
-            boolean   : true
-            default   : biscottoopts.metadata || true
-            describe  : 'Whether to generate metadata slug'
+            describe  : 'The path to the top-level npm module directory'
           )
           .options('stability',
             describe  : 'Set stability level'
@@ -310,7 +308,7 @@ module.exports = class Biscotto
       'src'
       'lib'
       'app'
-    ], (fs.exists || path.exists), (results) ->
+    ], fs.exists, (results) ->
       results.push '.' if results.length is 0
       done null, results
 
@@ -323,7 +321,7 @@ module.exports = class Biscotto
       'readme.markdown'
       'readme.md'
       'readme'
-    ], (fs.exists || path.exists), (results) -> done null, _.first(results) || ''
+    ], fs.exists, (results) -> done null, _.first(results) || ''
 
   # Public: Find extra project files in the repository.
   @detectExtras: (done) ->
@@ -338,14 +336,14 @@ module.exports = class Biscotto
       'LICENSE.markdown'
       'LICENSE.MIT'
       'LICENSE.GPL'
-    ], (fs.exists || path.exists), (results) -> done null, results
+    ], fs.exists, (results) -> done null, results
 
   # Public: Find the project name by either parsing `package.json`,
   # or getting the current working directory name.
   #
   # done - The {Function} callback to call once this is done
   @detectName: (done) ->
-    if (fs.exists || path.exists)('package.json')
+    if fs.existsSync('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
     else
       name = path.basename(process.cwd())
