@@ -7,7 +7,6 @@
     - if @doc?.deprecated || @doc?.deprecated is ''
       .note.deprecated
         %strong Deprecated.
-        != @doc.deprecated
 
     - if @doc?.abstract || @doc?.abstract is ''
       .note.abstract
@@ -15,7 +14,20 @@
           This
           = @type
           is abstract.
-        != @doc.abstract
+
+    - if @doc?.internal || @doc?.internal is ''
+      .note.internal
+        %strong
+          This
+          = @type
+          is internal.
+
+    - if @doc?.private || @doc?.private is ''
+      .note.private
+        %strong
+          This
+          = @type
+          is private.
 
     - if @doc?.todos
       - for todo in @doc?.todos

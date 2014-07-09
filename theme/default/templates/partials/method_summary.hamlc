@@ -12,6 +12,9 @@
       - if method.doc?.private
         %span.private.note.title Private
 
+      - if method.doc?.internal
+        %span.internal.note.title Internal
+
       - if method.doc?.abstract || method.doc?.abstract is ''
         %span.abstract.note.title Abstract
 
@@ -21,6 +24,5 @@
       %span.desc
         - if method.doc?.deprecated || method.doc?.deprecated is ''
           %strong Deprecated.
-          != method.doc?.deprecated
         - else
           != method.doc?.summary
