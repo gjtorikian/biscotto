@@ -222,6 +222,11 @@ module.exports = class Biscotto
           parser = new Parser(options)
 
           for input in options.inputs
+            # collect probable package.json path
+            package_json_path = path.join(input, 'package.json')
+            if options.metadata && fs.existsSync(package_json_path)
+              package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
+
             if (fs.existsSync || path.existsSync)(input)
               stats = fs.lstatSync input
 
@@ -242,11 +247,11 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           if options.metadata
-            metadata = new Metadata(file, parser.classes, parser.files)
+            metadata = new Metadata(package_json["main"], parser.classes, parser.files)
             for filename, content of parser.iteratedFiles
               # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
               metadata.generate(CoffeeScript.nodes(content))
-              @populateSlug(file, metadata)
+              @populateSlug(filename, metadata)
             fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
 
           generator = new Generator(parser, options)
@@ -264,7 +269,7 @@ module.exports = class Biscotto
       throw error
 
   # Public: Parse and collect metadata slugs
-  @populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
+  @populateSlug: (file, {main_file, defs:unindexedObjects, exports:exports}) ->
     objects = {}
     for key, value of unindexedObjects
       objects[value.startLineNumber] = {} unless objects[value.startLineNumber]?
@@ -281,6 +286,7 @@ module.exports = class Biscotto
         exports[key] = value.startLineNumber
 
     @slugs = {} if _.isUndefined @slugs
+    @slugs["main"] = main_file
     @slugs["files"] = {} if _.isUndefined @slugs["files"]
 
     @slugs["files"][file] = {objects, exports}

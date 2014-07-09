@@ -1,4 +1,5 @@
 {
+  "main": "spec/metadata_templates/exports/basic_exports.coffee",
   "files": {
     "spec/metadata_templates/exports/basic_exports.coffee": {
       "objects": {

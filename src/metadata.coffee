@@ -7,7 +7,7 @@ builtins     = require 'builtins'
 module.exports = class Metadata
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
-  constructor: (@fileName, @classes, @files) ->
+  constructor: (@main_file, @classes, @files) ->
     @defs = {} # Local variable definitions
     @exports = {}
     @bindingTypes = {}

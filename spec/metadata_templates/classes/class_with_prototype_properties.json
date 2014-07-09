@@ -1,4 +1,5 @@
 {
+  "main": "spec/metadata_templates/classes/class_with_prototype_properties.coffee",
   "files": {
     "spec/metadata_templates/classes/class_with_prototype_properties.coffee": {
       "objects": {
