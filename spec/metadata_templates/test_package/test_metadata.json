@@ -1,0 +1,293 @@
+{
+  "main": "./lib/test.coffee",
+  "files": {
+    "spec/metadata_templates/test_package/lib/point.coffee": {
+      "objects": {
+        "11": {
+          "0": {
+            "type": "class",
+            "name": "Point",
+            "bindingType": "exports",
+            "classProperties": [
+              24,
+              36
+            ],
+            "prototypeProperties": [
+              47,
+              51,
+              56,
+              60,
+              70,
+              86
+            ],
+            "doc": " Public: Represents a point in a buffer in row/column coordinates.\n\nEvery public method that takes a point also accepts a *point-compatible*\n{Array}. This means a 2-element array containing {Number}s representing the\nrow and column. So the following are equivalent:\n\n```coffee\nnew Point(1, 2)\n[1, 2]\n``` ",
+            "startLineNumber": 11,
+            "endLineNumber": 97,
+            "startColNumber": 0,
+            "endColNumber": 9
+          }
+        },
+        "24": {
+          "15": {
+            "name": "fromObject",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "object",
+              "copy"
+            ],
+            "startLineNumber": 24,
+            "endLineNumber": 36,
+            "startColNumber": 15,
+            "endColNumber": 1
+          }
+        },
+        "36": {
+          "8": {
+            "name": "min",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "point1",
+              "point2"
+            ],
+            "startLineNumber": 36,
+            "endLineNumber": 44,
+            "startColNumber": 8,
+            "endColNumber": 1
+          }
+        },
+        "47": {
+          "8": {
+            "name": "copy",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [],
+            "startLineNumber": 47,
+            "endLineNumber": 51,
+            "startColNumber": 8,
+            "endColNumber": 1
+          }
+        },
+        "51": {
+          "10": {
+            "name": "freeze",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [],
+            "startLineNumber": 51,
+            "endLineNumber": 56,
+            "startColNumber": 10,
+            "endColNumber": 1
+          }
+        },
+        "56": {
+          "13": {
+            "name": "translate",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "delta"
+            ],
+            "startLineNumber": 56,
+            "endLineNumber": 60,
+            "startColNumber": 13,
+            "endColNumber": 1
+          }
+        },
+        "60": {
+          "7": {
+            "name": "add",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "other"
+            ],
+            "startLineNumber": 60,
+            "endLineNumber": 70,
+            "startColNumber": 7,
+            "endColNumber": 1
+          }
+        },
+        "70": {
+          "11": {
+            "name": "splitAt",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "column"
+            ],
+            "startLineNumber": 70,
+            "endLineNumber": 86,
+            "startColNumber": 11,
+            "endColNumber": 1
+          }
+        },
+        "86": {
+          "11": {
+            "name": "compare",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "other"
+            ],
+            "startLineNumber": 86,
+            "endLineNumber": 97,
+            "startColNumber": 11,
+            "endColNumber": 9
+          }
+        }
+      },
+      "exports": 11
+    },
+    "spec/metadata_templates/test_package/lib/range.coffee": {
+      "objects": {
+        "0": {
+          "7": {
+            "name": "Grim",
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 7,
+            "endColNumber": 20,
+            "module": "grim@0.11.0"
+          }
+        },
+        "1": {
+          "8": {
+            "name": "Point",
+            "type": "import",
+            "startLineNumber": 1,
+            "endLineNumber": 1,
+            "startColNumber": 8,
+            "endColNumber": 24,
+            "path": "./point"
+          }
+        },
+        "2": {
+          "17": {
+            "type": "import",
+            "startLineNumber": 2,
+            "endLineNumber": 2,
+            "startColNumber": 17,
+            "endColNumber": 35,
+            "path": "./helpers",
+            "name": "newlineRegex",
+            "exportsProperty": "newlineRegex"
+          }
+        },
+        "3": {
+          "5": {
+            "name": "Fs",
+            "type": "import",
+            "startLineNumber": 3,
+            "endLineNumber": 3,
+            "startColNumber": 5,
+            "endColNumber": 16,
+            "module": "fs",
+            "builtin": true
+          }
+        },
+        "17": {
+          "0": {
+            "type": "class",
+            "name": "Range",
+            "bindingType": "exports",
+            "classProperties": [
+              19,
+              33,
+              53
+            ],
+            "prototypeProperties": [
+              71
+            ],
+            "doc": " Public: Represents a region in a buffer in row/column coordinates.\n\nEvery public method that takes a range also accepts a *range-compatible*\n{Array}. This means a 2-element array containing {Point}s or point-compatible\narrays. So the following are equivalent:\n\n```coffee\nnew Range(new Point(0, 1), new Point(2, 3))\nnew Range([0, 1], [2, 3])\n[[0, 1], [2, 3]]\n``` ",
+            "startLineNumber": 17,
+            "endLineNumber": 74,
+            "startColNumber": 0,
+            "endColNumber": 59
+          }
+        },
+        "19": {
+          "16": {
+            "name": "deserialize",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "array"
+            ],
+            "startLineNumber": 19,
+            "endLineNumber": 33,
+            "startColNumber": 16,
+            "endColNumber": 1
+          }
+        },
+        "33": {
+          "15": {
+            "name": "fromObject",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "object",
+              "copy"
+            ],
+            "startLineNumber": 33,
+            "endLineNumber": 53,
+            "startColNumber": 15,
+            "endColNumber": 1
+          }
+        },
+        "53": {
+          "23": {
+            "name": "fromPointWithDelta",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "startPoint",
+              "rowDelta",
+              "columnDelta"
+            ],
+            "startLineNumber": 53,
+            "endLineNumber": 58,
+            "startColNumber": 23,
+            "endColNumber": 1
+          }
+        },
+        "71": {
+          "11": {
+            "name": "isEqual",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "other"
+            ],
+            "startLineNumber": 71,
+            "endLineNumber": 74,
+            "startColNumber": 11,
+            "endColNumber": 59
+          }
+        }
+      },
+      "exports": 17
+    },
+    "spec/metadata_templates/test_package/lib/test.coffee": {
+      "objects": {
+        "1": {
+          "0": {
+            "type": "class",
+            "name": "TestClass",
+            "bindingType": "exports",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "startLineNumber": 1,
+            "endLineNumber": 1,
+            "startColNumber": 0,
+            "endColNumber": 14
+          }
+        }
+      },
+      "exports": 1
+    }
+  }
+}

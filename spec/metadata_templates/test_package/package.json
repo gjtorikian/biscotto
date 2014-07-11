@@ -1,0 +1,6 @@
+{
+  "main": "./lib/test.coffee",
+  "dependencies": {
+    "grim": "0.11.0"
+  }
+}
