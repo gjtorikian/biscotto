@@ -16,6 +16,8 @@ Fs = require 'fs'
 # ```
 module.exports =
 class Range
+  grim: Grim
+
   # Public: Call this with the result of {Range::serialize} to construct a new Range.
   @deserialize: (array) ->
     new this(array...)

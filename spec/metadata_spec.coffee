@@ -90,7 +90,7 @@ describe "Metadata", ->
       for file in fs.readdirSync(path.join(test_path, "lib"))
         parser.parseFile path.join(test_path, "lib", file)
 
-    it "renders the package correctly", ->
+    fit "renders the package correctly", ->
       # TODO: this is the block from Biscotto. should it be abstracted better?
       metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
       for filename, content of parser.iteratedFiles

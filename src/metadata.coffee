@@ -39,7 +39,6 @@ module.exports = class Metadata
       when 'module'
         return if exp.variable.properties.length is 0 # Ignore `module = ...` (atom/src/browser/main.coffee)
         unless exp.variable.properties?[0]?.name?.value is 'exports'
-          # console.log _.map variable.properties, (item) -> item.name.value
           throw new Error 'BUG: Does not support module.somthingOtherThanExports'
         baseName = 'exports'
         firstProp = exp.variable.properties[1]
@@ -93,6 +92,15 @@ module.exports = class Metadata
               @defs[nameWithPeriods] = _.extend name: nameWithPeriods, value
             else # case X = ...
               @defs[exp.variable.base.value] = _.extend name: exp.variable.base.value, value
+
+              # satisfies the case of npm module requires (like Grim)
+              if @defs[exp.variable.base.value].type == "import"
+                key = @defs[exp.variable.base.value].path || @defs[exp.variable.base.value].module
+                if _.isUndefined @modules[key]
+                  @modules[key] = []
+
+                @modules[key].push @defs[exp.variable.base.value].name
+
               switch @defs[exp.variable.base.value].type
                 when 'function'
                   doc = null
@@ -113,7 +121,7 @@ module.exports = class Metadata
                   @defs[key.base.value] = _.extend {}, value,
                     name: key.base.value
                     exportsProperty: key.base.value
-                  # I *think* this case is always true
+                  # I *think* this if statement will always be true here
                   # Store the name of the exported property to the module name
                   if @defs[key.base.value].type == "import"
                     if _.isUndefined @modules[@defs[key.base.value].path]
@@ -220,10 +228,16 @@ module.exports = class Metadata
                   value.bindingType = "prototypeProperty"
                   @defs["#{className}::#{name}"] = value
                   prototypeProperties.push(value)
+
                   # apply the reference (if one exists)
                   for module, references of @modules
                     _.each references, (reference) =>
-                      if reference == prototypeExp.value.base?.value
+                      # non-npm module case (local file ref)
+                      if prototypeExp.value.base?.value
+                        ref = prototypeExp.value.base.value
+                      else
+                        ref = prototypeExp.value.base
+                      if reference == ref
                         @defs["#{className}::#{name}"].reference =
                           path: module
                           exportsProperty: reference

@@ -194,21 +194,37 @@
             "name": "Range",
             "bindingType": "exports",
             "classProperties": [
-              19,
-              33,
-              53
+              21,
+              35,
+              55
             ],
             "prototypeProperties": [
-              71
+              18,
+              73
             ],
             "doc": " Public: Represents a region in a buffer in row/column coordinates.\n\nEvery public method that takes a range also accepts a *range-compatible*\n{Array}. This means a 2-element array containing {Point}s or point-compatible\narrays. So the following are equivalent:\n\n```coffee\nnew Range(new Point(0, 1), new Point(2, 3))\nnew Range([0, 1], [2, 3])\n[[0, 1], [2, 3]]\n``` ",
             "startLineNumber": 17,
-            "endLineNumber": 74,
+            "endLineNumber": 76,
             "startColNumber": 0,
             "endColNumber": 59
           }
         },
-        "19": {
+        "18": {
+          "8": {
+            "name": "grim",
+            "type": "primitive",
+            "startLineNumber": 18,
+            "endLineNumber": 18,
+            "startColNumber": 8,
+            "endColNumber": 11,
+            "bindingType": "prototypeProperty",
+            "reference": {
+              "path": "grim@0.11.0",
+              "exportsProperty": "Grim"
+            }
+          }
+        },
+        "21": {
           "16": {
             "name": "deserialize",
             "bindingType": "classProperty",
@@ -216,13 +232,13 @@
             "paramNames": [
               "array"
             ],
-            "startLineNumber": 19,
-            "endLineNumber": 33,
+            "startLineNumber": 21,
+            "endLineNumber": 35,
             "startColNumber": 16,
             "endColNumber": 1
           }
         },
-        "33": {
+        "35": {
           "15": {
             "name": "fromObject",
             "bindingType": "classProperty",
@@ -231,13 +247,13 @@
               "object",
               "copy"
             ],
-            "startLineNumber": 33,
-            "endLineNumber": 53,
+            "startLineNumber": 35,
+            "endLineNumber": 55,
             "startColNumber": 15,
             "endColNumber": 1
           }
         },
-        "53": {
+        "55": {
           "23": {
             "name": "fromPointWithDelta",
             "bindingType": "classProperty",
@@ -247,13 +263,13 @@
               "rowDelta",
               "columnDelta"
             ],
-            "startLineNumber": 53,
-            "endLineNumber": 58,
+            "startLineNumber": 55,
+            "endLineNumber": 60,
             "startColNumber": 23,
             "endColNumber": 1
           }
         },
-        "71": {
+        "73": {
           "11": {
             "name": "isEqual",
             "bindingType": "prototypeProperty",
@@ -261,8 +277,8 @@
             "paramNames": [
               "other"
             ],
-            "startLineNumber": 71,
-            "endLineNumber": 74,
+            "startLineNumber": 73,
+            "endLineNumber": 76,
             "startColNumber": 11,
             "endColNumber": 59
           }
