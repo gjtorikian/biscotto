@@ -7,13 +7,13 @@ builtins     = require 'builtins'
 module.exports = class Metadata
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
-  constructor: (@main_file, @classes, @files) ->
+  constructor: (@main_file, @dependencies, @classes, @files) ->
+
+  generate: (@root) ->
     @defs = {} # Local variable definitions
     @exports = {}
     @bindingTypes = {}
     @modules = {}
-
-  generate: (@root) ->
     @root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
 
   visit: (exp) ->
@@ -223,7 +223,7 @@ module.exports = class Metadata
                   # apply the reference (if one exists)
                   for module, references of @modules
                     _.each references, (reference) =>
-                      if reference == prototypeExp.value.base.value
+                      if reference == prototypeExp.value.base?.value
                         @defs["#{className}::#{name}"].reference =
                           path: module
                           exportsProperty: reference
@@ -272,7 +272,7 @@ module.exports = class Metadata
       moduleName = moduleName.substring(1, moduleName.length - 1)
 
       # For npm modules include the version number
-      ver = @packageFile.dependencies[moduleName]
+      ver = @dependencies[moduleName]
       moduleName = "#{moduleName}@#{ver}" if ver
 
       ret =

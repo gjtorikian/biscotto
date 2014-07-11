@@ -245,7 +245,7 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           if options.metadata
-            metadata = new Metadata(package_json["main"], parser.classes, parser.files)
+            metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
             for filename, content of parser.iteratedFiles
               # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
               metadata.generate(CoffeeScript.nodes(content))

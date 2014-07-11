@@ -1,4 +1,6 @@
 fs      = require 'fs'
+path    = require 'path'
+
 {inspect} = require 'util'
 walkdir = require 'walkdir'
 Biscotto = require '../src/biscotto'
@@ -19,15 +21,15 @@ describe "Metadata", ->
 
     Biscotto.slugs = {}
     parser.parseContent source, filename
-    metadata = new Metadata(filename, parser.classes, parser.files)
+    metadata = new Metadata(filename, {}, parser.classes, parser.files)
     metadata.generate(CoffeeScript.nodes(source))
     generated = Biscotto.populateSlug(filename, metadata)
+    Biscotto.slugs = {} # reset the slugs
 
     expected_filename = filename.replace(/\.coffee$/, '.json')
     expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)
     generated =  JSON.stringify(generated, null, 2)
 
-    diff(expected, generated)
     checkDelta(expected_filename, expected, generated, diff(expected, generated))
 
   checkDelta = (expected_filename, expected, generated, delta) ->
@@ -76,3 +78,28 @@ describe "Metadata", ->
 
     it 'understands importing', ->
       constructDelta("spec/metadata_templates/requires/references/buffer-patch.coffee")
+
+  describe "A real package", ->
+    package_json = null
+    test_path = null
+
+    beforeEach ->
+      test_path = path.join("spec", "metadata_templates", "test_package")
+      package_json_path = path.join(test_path, 'package.json')
+      package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
+      for file in fs.readdirSync(path.join(test_path, "lib"))
+        parser.parseFile path.join(test_path, "lib", file)
+
+    it "renders the package correctly", ->
+      # TODO: this is the block from Biscotto. should it be abstracted better?
+      metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
+      for filename, content of parser.iteratedFiles
+        # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+        metadata.generate(CoffeeScript.nodes(content))
+        Biscotto.populateSlug(filename, metadata)
+
+      expected_filename = path.join(test_path, 'test_metadata.json')
+      expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)
+      generated =  JSON.stringify(Biscotto.slugs, null, 2)
+
+      checkDelta(expected_filename, expected, generated, diff(expected, generated))
