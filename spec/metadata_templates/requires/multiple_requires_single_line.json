@@ -1,0 +1,35 @@
+{
+  "main": "spec/metadata_templates/requires/multiple_requires_single_line.coffee",
+  "files": {
+    "spec/metadata_templates/requires/multiple_requires_single_line.coffee": {
+      "objects": {
+        "0": {
+          "13": {
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 13,
+            "endColNumber": 25,
+            "module": "kaz",
+            "name": "baz",
+            "exportsProperty": "baz"
+          }
+        },
+        "2": {
+          "0": {
+            "type": "class",
+            "name": "Bar",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "startLineNumber": 2,
+            "endLineNumber": 2,
+            "startColNumber": 0,
+            "endColNumber": 8
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "main": "spec/metadata_templates/requires/requires_with_colon.coffee",
+  "files": {
+    "spec/metadata_templates/requires/requires_with_colon.coffee": {
+      "objects": {
+        "0": {
+          "14": {
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 14,
+            "endColNumber": 28,
+            "module": "defs2",
+            "name": "foof",
+            "exportsProperty": "defs"
+          }
+        },
+        "2": {
+          "0": {
+            "type": "class",
+            "name": "Bar",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "startLineNumber": 2,
+            "endLineNumber": 2,
+            "startColNumber": 0,
+            "endColNumber": 8
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}

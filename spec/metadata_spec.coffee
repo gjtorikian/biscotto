@@ -76,6 +76,12 @@ describe "Metadata", ->
     it 'understands basic requires', ->
       constructDelta("spec/metadata_templates/requires/basic_requires.coffee")
 
+    it 'understands multiple requires on a single line', ->
+      constructDelta("spec/metadata_templates/requires/multiple_requires_single_line.coffee")
+
+    it 'understands requires with a colon', ->
+      constructDelta("spec/metadata_templates/requires/requires_with_colon.coffee")
+
     it 'understands importing', ->
       constructDelta("spec/metadata_templates/requires/references/buffer-patch.coffee")
 
@@ -90,7 +96,7 @@ describe "Metadata", ->
       for file in fs.readdirSync(path.join(test_path, "lib"))
         parser.parseFile path.join(test_path, "lib", file)
 
-    fit "renders the package correctly", ->
+    it "renders the package correctly", ->
       # TODO: this is the block from Biscotto. should it be abstracted better?
       metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
       for filename, content of parser.iteratedFiles
