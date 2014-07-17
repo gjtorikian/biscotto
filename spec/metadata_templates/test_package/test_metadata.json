@@ -1,7 +1,7 @@
 {
   "main": "./lib/test.coffee",
   "files": {
-    "spec/metadata_templates/test_package/lib/point.coffee": {
+    "./lib/point.coffee": {
       "objects": {
         "11": {
           "0": {
@@ -140,7 +140,7 @@
       },
       "exports": 11
     },
-    "spec/metadata_templates/test_package/lib/range.coffee": {
+    "./lib/range.coffee": {
       "objects": {
         "0": {
           "7": {
@@ -150,7 +150,8 @@
             "endLineNumber": 0,
             "startColNumber": 7,
             "endColNumber": 20,
-            "module": "grim@0.11.0"
+            "module": "grim@0.11.0",
+            "bindingType": "variable"
           }
         },
         "1": {
@@ -161,7 +162,8 @@
             "endLineNumber": 1,
             "startColNumber": 8,
             "endColNumber": 24,
-            "path": "./point"
+            "path": "./point",
+            "bindingType": "variable"
           }
         },
         "2": {
@@ -173,7 +175,8 @@
             "endColNumber": 35,
             "path": "./helpers",
             "name": "newlineRegex",
-            "exportsProperty": "newlineRegex"
+            "exportsProperty": "newlineRegex",
+            "bindingType": "variable"
           }
         },
         "3": {
@@ -185,7 +188,8 @@
             "startColNumber": 5,
             "endColNumber": 16,
             "module": "fs",
-            "builtin": true
+            "builtin": true,
+            "bindingType": "variable"
           }
         },
         "17": {
@@ -219,8 +223,7 @@
             "endColNumber": 11,
             "bindingType": "prototypeProperty",
             "reference": {
-              "path": "grim@0.11.0",
-              "exportsProperty": "Grim"
+              "position": [ 0, 7 ]
             }
           }
         },
@@ -286,7 +289,7 @@
       },
       "exports": 17
     },
-    "spec/metadata_templates/test_package/lib/test.coffee": {
+    "./lib/test.coffee": {
       "objects": {
         "1": {
           "0": {
