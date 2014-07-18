@@ -274,8 +274,8 @@ module.exports = class Biscotto
       objects[value.startLineNumber][value.startColNumber] = value
       # Update the classProperties/prototypeProperties to be line numbers
       if value.type is 'class'
-        value.classProperties = (prop.startLineNumber for prop in _.clone(value.classProperties))
-        value.prototypeProperties = (prop.startLineNumber for prop in _.clone(value.prototypeProperties))
+        value.classProperties = ( [prop.startLineNumber, prop.startColNumber] for prop in _.clone(value.classProperties))
+        value.prototypeProperties = ([prop.startLineNumber, prop.startColNumber] for prop in _.clone(value.prototypeProperties))
 
     if exports._default
       exports = exports._default.startLineNumber

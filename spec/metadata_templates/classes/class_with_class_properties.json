@@ -8,9 +8,18 @@
             "type": "class",
             "name": "TextBuffer",
             "classProperties": [
-              4,
-              6,
-              13
+              [
+                4,
+                10
+              ],
+              [
+                6,
+                17
+              ],
+              [
+                13,
+                12
+              ]
             ],
             "prototypeProperties": [],
             "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",

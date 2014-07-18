@@ -9,16 +9,40 @@
             "name": "Point",
             "bindingType": "exports",
             "classProperties": [
-              24,
-              36
+              [
+                24,
+                15
+              ],
+              [
+                36,
+                8
+              ]
             ],
             "prototypeProperties": [
-              47,
-              51,
-              56,
-              60,
-              70,
-              86
+              [
+                47,
+                8
+              ],
+              [
+                51,
+                10
+              ],
+              [
+                56,
+                13
+              ],
+              [
+                60,
+                7
+              ],
+              [
+                70,
+                11
+              ],
+              [
+                86,
+                11
+              ]
             ],
             "doc": " Public: Represents a point in a buffer in row/column coordinates.\n\nEvery public method that takes a point also accepts a *point-compatible*\n{Array}. This means a 2-element array containing {Number}s representing the\nrow and column. So the following are equivalent:\n\n```coffee\nnew Point(1, 2)\n[1, 2]\n``` ",
             "startLineNumber": 11,
@@ -194,13 +218,28 @@
             "name": "Range",
             "bindingType": "exports",
             "classProperties": [
-              21,
-              35,
-              55
+              [
+                21,
+                16
+              ],
+              [
+                35,
+                15
+              ],
+              [
+                55,
+                23
+              ]
             ],
             "prototypeProperties": [
-              18,
-              73
+              [
+                18,
+                8
+              ],
+              [
+                73,
+                11
+              ]
             ],
             "doc": " Public: Represents a region in a buffer in row/column coordinates.\n\nEvery public method that takes a range also accepts a *range-compatible*\n{Array}. This means a 2-element array containing {Point}s or point-compatible\narrays. So the following are equivalent:\n\n```coffee\nnew Range(new Point(0, 1), new Point(2, 3))\nnew Range([0, 1], [2, 3])\n[[0, 1], [2, 3]]\n``` ",
             "startLineNumber": 17,

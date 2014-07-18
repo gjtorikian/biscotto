@@ -22,7 +22,10 @@
             "bindingType": "exports",
             "classProperties": [],
             "prototypeProperties": [
-              4
+              [
+                4,
+                11
+              ]
             ],
             "doc": "~Private~",
             "startLineNumber": 3,
