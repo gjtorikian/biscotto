@@ -16,6 +16,7 @@
                 3
               ]
             ],
+            "bindingType": "variable",
             "module": "kaz",
             "name": "faz",
             "exportsProperty": "faz"
@@ -32,6 +33,7 @@
                 8
               ]
             ],
+            "bindingType": "variable",
             "module": "kaz",
             "name": "baz",
             "exportsProperty": "baz"

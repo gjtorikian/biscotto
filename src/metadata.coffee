@@ -276,6 +276,7 @@ module.exports = class Metadata
         type: 'import'
         # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
         range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
+        bindingType: 'variable'
 
       if /^\./.test(moduleName)
         # Local module

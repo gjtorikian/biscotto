@@ -16,6 +16,7 @@
                 28
               ]
             ],
+            "bindingType": "variable",
             "module": "defs2",
             "name": "foof",
             "exportsProperty": "defs"

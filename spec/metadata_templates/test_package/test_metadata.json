@@ -234,6 +234,7 @@
                 20
               ]
             ],
+            "bindingType": "variable",
             "module": "grim@0.11.0"
           }
         },
@@ -251,6 +252,7 @@
                 24
               ]
             ],
+            "bindingType": "variable",
             "path": "./point"
           }
         },
@@ -267,6 +269,7 @@
                 12
               ]
             ],
+            "bindingType": "variable",
             "path": "./helpers",
             "name": "newlineRegex",
             "exportsProperty": "newlineRegex"
@@ -286,6 +289,7 @@
                 16
               ]
             ],
+            "bindingType": "variable",
             "module": "fs",
             "builtin": true
           }
