@@ -7,13 +7,17 @@ builtins     = require 'builtins'
 module.exports = class Metadata
   packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
 
-  constructor: (@main_file, @dependencies, @classes, @files) ->
+  constructor: (@main_file, @dependencies, @parser) ->
 
   generate: (@root) ->
     @defs = {} # Local variable definitions
     @exports = {}
     @bindingTypes = {}
     @modules = {}
+    @classes = @parser.classes
+    @files = @parser.files
+    @methods = @parser.getAllMethods()
+
     @root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
 
   visit: (exp) ->
@@ -221,22 +225,26 @@ module.exports = class Metadata
                   @defs["#{className}::#{name}"] = value
                   prototypeProperties.push(value)
 
-                  # apply the reference (if one exists)
-                  for module, references of @modules
-                    _.each references, (reference) =>
-                      # non-npm module case (local file ref)
-                      if prototypeExp.value.base?.value
-                        ref = prototypeExp.value.base.value
-                      else
-                        ref = prototypeExp.value.base
+                # apply the reference (if one exists)
+                for module, references of @modules
+                  _.each references, (reference) =>
+                    # non-npm module case (local file ref)
+                    if prototypeExp.value.base?.value
+                      ref = prototypeExp.value.base.value
+                    else
+                      ref = prototypeExp.value.base
 
-                      if reference.name == ref
-                        @defs["#{className}::#{name}"].reference =
-                          position: reference.range[0]
+                    if reference.name == ref
+                      @defs["#{className}::#{name}"].reference =
+                        position: reference.range[0]
 
+                if value.type == "function"
+                  # find the matching method from the parsed files
+                  func = _.find(@methods, (method) -> method.name == value.name)
+                  value.doc = if func? then func.doc.node.comment else null
           true
 
-    # find the matching class from the parsed file
+    # find the matching class from the parsed files
     clazz = _.find(@classes, (clazz) -> clazz.getFullName() == className)
 
     type: 'class'
@@ -252,6 +260,7 @@ module.exports = class Metadata
     type: 'function'
     paramNames: _.map exp.params, (param) -> param.name.value
     range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
+    doc: null
 
   evalValue: (exp) ->
     if exp.base

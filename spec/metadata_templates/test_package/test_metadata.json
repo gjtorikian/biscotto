@@ -75,7 +75,8 @@
                 36,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n  This can be an object that's already a {Point}, in which case it's\n  simply returned, or an array containing two {Number}s representing the\n  row and column.\n\n* copy:\n  An optional boolean indicating whether to force the copying of objects\n  that are already points.\n\nReturns: A {Point} based on the given object. "
           }
         },
         "36": {
@@ -96,7 +97,8 @@
                 44,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Returns the given point that is earlier in the buffer. "
           }
         },
         "47": {
@@ -114,7 +116,8 @@
                 51,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Returns a new {Point} with the same row and column. "
           }
         },
         "51": {
@@ -132,7 +135,8 @@
                 56,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Makes this point immutable and returns itself. "
           }
         },
         "56": {
@@ -152,7 +156,8 @@
                 60,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Return a new {Point} based on shifting this point by the given delta,\nwhich is represented by another {Point}. "
           }
         },
         "60": {
@@ -172,7 +177,8 @@
                 70,
                 1
               ]
-            ]
+            ],
+            "doc": "~Private~"
           }
         },
         "70": {
@@ -192,7 +198,8 @@
                 86,
                 1
               ]
-            ]
+            ],
+            "doc": "~Private~"
           }
         },
         "86": {
@@ -212,7 +219,8 @@
                 97,
                 9
               ]
-            ]
+            ],
+            "doc": " Public:\n\n* other: A {Point} or point-compatible {Array}.\n\nReturns:\n * -1 if this point precedes the argument.\n * 0 if this point is equivalent to the argument.\n * 1 if this point follows the argument. "
           }
         }
       },
@@ -376,7 +384,8 @@
                 35,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Call this with the result of {Range::serialize} to construct a new Range. "
           }
         },
         "35": {
@@ -397,7 +406,8 @@
                 55,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n  This can be an object that's already a {Point}, in which case it's\n  simply returned, or an array containing two {Number}s representing the\n  row and column.\n\n* copy:\n  An optional boolean indicating whether to force the copying of objects\n  that are already points.\n\nReturns: A {Point} based on the given object. "
           }
         },
         "55": {
@@ -419,7 +429,8 @@
                 60,
                 1
               ]
-            ]
+            ],
+            "doc": " Public: Returns a {Range} that starts at the given point and ends at the\nstart point plus the given row and column deltas.\n\n* startPoint:\n  A {Point} or point-compatible {Array}\n* rowDelta:\n  A {Number} indicating how many rows to add to the start point to get the\n  end point.\n* columnDelta:\n  A {Number} indicating how many rows to columns to the start point to get\n  the end point.\n\nReturns a {Range} "
           }
         },
         "73": {
@@ -439,7 +450,8 @@
                 76,
                 59
               ]
-            ]
+            ],
+            "doc": " Public: Returns a {Boolean} indicating whether this range has the same start\nand end points as the given {Range} or range-compatible {Array}. "
           }
         }
       },

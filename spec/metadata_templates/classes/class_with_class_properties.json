@@ -65,7 +65,8 @@
                 11,
                 17
               ]
-            ]
+            ],
+            "doc": " Public: Takes an argument and does some stuff.\n\na - A {String}\n\nReturns {Boolean}. "
           }
         }
       },

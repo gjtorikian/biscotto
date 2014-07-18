@@ -21,7 +21,7 @@ describe "Metadata", ->
 
     Biscotto.slugs = {}
     parser.parseContent source, filename
-    metadata = new Metadata(filename, {}, parser.classes, parser.files)
+    metadata = new Metadata(filename, {}, parser)
     metadata.generate(CoffeeScript.nodes(source))
     generated = Biscotto.populateSlug(filename, metadata)
     Biscotto.slugs = {} # reset the slugs

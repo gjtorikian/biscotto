@@ -264,7 +264,7 @@ module.exports = class Biscotto
     if fs.existsSync(package_json_path)
       package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
 
-    metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
+    metadata = new Metadata(package_json["main"], package_json["dependencies"], parser)
     for filename, content of parser.iteratedFiles
       relative_filename = path.relative(package_json_path, filename)
       # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
