@@ -93,7 +93,7 @@ module.exports = class Metadata
             else # case X = ...
               @defs[exp.variable.base.value] = _.extend name: exp.variable.base.value, value
 
-              # satisfies the case of npm module requires (like Grim)
+              # satisfies the case of npm module requires (like Grim in our tests)
               if @defs[exp.variable.base.value].type == "import"
                 key = @defs[exp.variable.base.value].path || @defs[exp.variable.base.value].module
                 if _.isUndefined @modules[key]
@@ -121,9 +121,13 @@ module.exports = class Metadata
                   @defs[key.base.value] = _.extend {}, value,
                     name: key.base.value
                     exportsProperty: key.base.value
-                  # I *think* this if statement will always be true here
+                    startLineNumber: key.base.locationData.first_line
+                    startColNumber: key.base.locationData.first_column
+                    endLineNumber: key.base.locationData.last_line
+                    endColNumber: key.base.locationData.last_column
+
                   # Store the name of the exported property to the module name
-                  if @defs[key.base.value].type == "import"
+                  if @defs[key.base.value].type == "import" # I *think* this will always be true
                     if _.isUndefined @modules[@defs[key.base.value].path]
                       @modules[@defs[key.base.value].path] = []
                     @modules[@defs[key.base.value].path].push @defs[key.base.value].name

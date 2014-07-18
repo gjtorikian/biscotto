@@ -165,12 +165,12 @@
           }
         },
         "2": {
-          "17": {
+          "1": {
             "type": "import",
             "startLineNumber": 2,
             "endLineNumber": 2,
-            "startColNumber": 17,
-            "endColNumber": 35,
+            "startColNumber": 1,
+            "endColNumber": 12,
             "path": "./helpers",
             "name": "newlineRegex",
             "exportsProperty": "newlineRegex"

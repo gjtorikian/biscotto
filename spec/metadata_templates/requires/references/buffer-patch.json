@@ -4,12 +4,12 @@
     "spec/metadata_templates/requires/references/buffer-patch.coffee": {
       "objects": {
         "0": {
-          "14": {
+          "1": {
             "type": "import",
             "startLineNumber": 0,
             "endLineNumber": 0,
-            "startColNumber": 14,
-            "endColNumber": 32,
+            "startColNumber": 1,
+            "endColNumber": 9,
             "path": "./helpers",
             "name": "getTextOG",
             "exportsProperty": "getTextOG"

@@ -4,12 +4,12 @@
     "spec/metadata_templates/requires/basic_requires.coffee": {
       "objects": {
         "0": {
-          "8": {
+          "1": {
             "type": "import",
             "startLineNumber": 0,
             "endLineNumber": 0,
-            "startColNumber": 8,
-            "endColNumber": 20,
+            "startColNumber": 1,
+            "endColNumber": 3,
             "module": "foo",
             "name": "Foo",
             "exportsProperty": "Foo"
@@ -28,12 +28,22 @@
           }
         },
         "2": {
-          "13": {
+          "1": {
             "type": "import",
             "startLineNumber": 2,
             "endLineNumber": 2,
-            "startColNumber": 13,
-            "endColNumber": 25,
+            "startColNumber": 1,
+            "endColNumber": 3,
+            "module": "kaz",
+            "name": "faz",
+            "exportsProperty": "faz"
+          },
+          "6": {
+            "type": "import",
+            "startLineNumber": 2,
+            "endLineNumber": 2,
+            "startColNumber": 6,
+            "endColNumber": 8,
             "module": "kaz",
             "name": "baz",
             "exportsProperty": "baz"

@@ -4,12 +4,22 @@
     "spec/metadata_templates/requires/multiple_requires_single_line.coffee": {
       "objects": {
         "0": {
-          "13": {
+          "1": {
             "type": "import",
             "startLineNumber": 0,
             "endLineNumber": 0,
-            "startColNumber": 13,
-            "endColNumber": 25,
+            "startColNumber": 1,
+            "endColNumber": 3,
+            "module": "kaz",
+            "name": "faz",
+            "exportsProperty": "faz"
+          },
+          "6": {
+            "type": "import",
+            "startLineNumber": 0,
+            "endLineNumber": 0,
+            "startColNumber": 6,
+            "endColNumber": 8,
             "module": "kaz",
             "name": "baz",
             "exportsProperty": "baz"
