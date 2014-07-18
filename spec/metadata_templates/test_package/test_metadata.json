@@ -1,7 +1,7 @@
 {
   "main": "./lib/test.coffee",
   "files": {
-    "spec/metadata_templates/test_package/lib/point.coffee": {
+    "./lib/point.coffee": {
       "objects": {
         "11": {
           "0": {
@@ -218,7 +218,7 @@
       },
       "exports": 11
     },
-    "spec/metadata_templates/test_package/lib/range.coffee": {
+    "./lib/range.coffee": {
       "objects": {
         "0": {
           "7": {
@@ -439,7 +439,7 @@
       },
       "exports": 17
     },
-    "spec/metadata_templates/test_package/lib/test.coffee": {
+    "./lib/test.coffee": {
       "objects": {
         "1": {
           "0": {

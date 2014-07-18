@@ -86,23 +86,17 @@ describe "Metadata", ->
       constructDelta("spec/metadata_templates/requires/references/buffer-patch.coffee")
 
   describe "A real package", ->
-    package_json = null
+    package_json_path = null
     test_path = null
 
     beforeEach ->
       test_path = path.join("spec", "metadata_templates", "test_package")
       package_json_path = path.join(test_path, 'package.json')
-      package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
       for file in fs.readdirSync(path.join(test_path, "lib"))
         parser.parseFile path.join(test_path, "lib", file)
 
     it "renders the package correctly", ->
-      # TODO: this is the block from Biscotto. should it be abstracted better?
-      metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
-      for filename, content of parser.iteratedFiles
-        # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
-        metadata.generate(CoffeeScript.nodes(content))
-        Biscotto.populateSlug(filename, metadata)
+      Biscotto.generateMetadata(package_json_path, parser, {output: ""})
 
       expected_filename = path.join(test_path, 'test_metadata.json')
       expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)

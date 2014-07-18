@@ -222,8 +222,6 @@ module.exports = class Biscotto
           for input in options.inputs
             # collect probable package.json path
             package_json_path = path.join(input, 'package.json')
-            if options.metadata && fs.existsSync(package_json_path)
-              package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
 
             if (fs.existsSync || path.existsSync)(input)
               stats = fs.lstatSync input
@@ -245,12 +243,7 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           if options.metadata
-            metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
-            for filename, content of parser.iteratedFiles
-              # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
-              metadata.generate(CoffeeScript.nodes(content))
-              @populateSlug(filename, metadata)
-            fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
+            generateMetadata(package_json_path, parser, options)
 
           generator = new Generator(parser, options)
           generator.generate(file_generator_cb)
@@ -265,6 +258,19 @@ module.exports = class Biscotto
       done(error) if done
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
+
+  # Public: Builds and writes to metadata.json
+  @generateMetadata: (package_json_path, parser, options) ->
+    if fs.existsSync(package_json_path)
+      package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
+
+    metadata = new Metadata(package_json["main"], package_json["dependencies"], parser.classes, parser.files)
+    for filename, content of parser.iteratedFiles
+      relative_filename = path.relative(package_json_path, filename)
+      # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+      metadata.generate(CoffeeScript.nodes(content))
+      @populateSlug(relative_filename, metadata)
+    fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
 
   # Public: Parse and collect metadata slugs
   @populateSlug: (file, {main_file, defs:unindexedObjects, exports:exports}) ->
@@ -289,6 +295,8 @@ module.exports = class Biscotto
     @slugs["main"] = main_file
     @slugs["files"] = {} if _.isUndefined @slugs["files"]
 
+    # TODO: ugh, I don't understand relative resolving ;_;
+    file = file.substring(1, file.length) if file.match /^\.\./
     @slugs["files"][file] = {objects, exports}
     @slugs
 
