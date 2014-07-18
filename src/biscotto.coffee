@@ -270,15 +270,17 @@ module.exports = class Biscotto
   @populateSlug: (file, {main_file, defs:unindexedObjects, exports:exports}) ->
     objects = {}
     for key, value of unindexedObjects
-      objects[value.startLineNumber] = {} unless objects[value.startLineNumber]?
-      objects[value.startLineNumber][value.startColNumber] = value
+      startLineNumber = value.range[0][0]
+      startColNumber = value.range[0][1]
+      objects[startLineNumber] = {} unless objects[startLineNumber]?
+      objects[startLineNumber][startColNumber] = value
       # Update the classProperties/prototypeProperties to be line numbers
       if value.type is 'class'
-        value.classProperties = ( [prop.startLineNumber, prop.startColNumber] for prop in _.clone(value.classProperties))
-        value.prototypeProperties = ([prop.startLineNumber, prop.startColNumber] for prop in _.clone(value.prototypeProperties))
+        value.classProperties = ( [prop.range[0][0], prop.range[0][1]] for prop in _.clone(value.classProperties))
+        value.prototypeProperties = ([prop.range[0][0], prop.range[0][1]] for prop in _.clone(value.prototypeProperties))
 
     if exports._default
-      exports = exports._default.startLineNumber
+      exports = exports._default.range[0][0]
     else
       for key, value of exports
         exports[key] = value.startLineNumber

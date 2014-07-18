@@ -6,20 +6,32 @@
         "0": {
           "1": {
             "type": "import",
-            "startLineNumber": 0,
-            "endLineNumber": 0,
-            "startColNumber": 1,
-            "endColNumber": 3,
+            "range": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
             "module": "kaz",
             "name": "faz",
             "exportsProperty": "faz"
           },
           "6": {
             "type": "import",
-            "startLineNumber": 0,
-            "endLineNumber": 0,
-            "startColNumber": 6,
-            "endColNumber": 8,
+            "range": [
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                8
+              ]
+            ],
             "module": "kaz",
             "name": "baz",
             "exportsProperty": "baz"
@@ -32,10 +44,16 @@
             "classProperties": [],
             "prototypeProperties": [],
             "doc": "~Private~",
-            "startLineNumber": 2,
-            "endLineNumber": 2,
-            "startColNumber": 0,
-            "endColNumber": 8
+            "range": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                8
+              ]
+            ]
           }
         }
       },

@@ -13,7 +13,7 @@ _.str     = require 'underscore.string'
 
 require 'jasmine-focused'
 
-fdescribe "Metadata", ->
+describe "Metadata", ->
   parser = null
 
   constructDelta = (filename, hasReferences = false) ->

@@ -11,10 +11,16 @@
             "classProperties": [],
             "prototypeProperties": [],
             "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
-            "startLineNumber": 4,
-            "endLineNumber": 4,
-            "startColNumber": 0,
-            "endColNumber": 15
+            "range": [
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                15
+              ]
+            ]
           }
         }
       },

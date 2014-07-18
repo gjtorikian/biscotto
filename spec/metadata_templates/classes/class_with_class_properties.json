@@ -23,20 +23,32 @@
             ],
             "prototypeProperties": [],
             "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
-            "startLineNumber": 3,
-            "endLineNumber": 13,
-            "startColNumber": 0,
-            "endColNumber": 18
+            "range": [
+              [
+                3,
+                0
+              ],
+              [
+                13,
+                18
+              ]
+            ]
           }
         },
         "4": {
           "10": {
             "name": "prop2",
             "type": "primitive",
-            "startLineNumber": 4,
-            "endLineNumber": 4,
-            "startColNumber": 10,
-            "endColNumber": 14,
+            "range": [
+              [
+                4,
+                10
+              ],
+              [
+                4,
+                14
+              ]
+            ],
             "bindingType": "classProperty"
           }
         },
@@ -47,10 +59,16 @@
             "paramNames": [
               "a"
             ],
-            "startLineNumber": 6,
-            "endLineNumber": 6,
-            "startColNumber": 17,
-            "endColNumber": 22
+            "range": [
+              [
+                6,
+                17
+              ],
+              [
+                6,
+                22
+              ]
+            ]
           }
         },
         "13": {
@@ -61,10 +79,16 @@
             "paramNames": [
               "a"
             ],
-            "startLineNumber": 13,
-            "endLineNumber": 13,
-            "startColNumber": 12,
-            "endColNumber": 17
+            "range": [
+              [
+                13,
+                12
+              ],
+              [
+                13,
+                17
+              ]
+            ]
           }
         }
       },

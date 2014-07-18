@@ -11,10 +11,16 @@
             "classProperties": [],
             "prototypeProperties": [],
             "doc": "~Private~",
-            "startLineNumber": 1,
-            "endLineNumber": 1,
-            "startColNumber": 0,
-            "endColNumber": 8
+            "range": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                8
+              ]
+            ]
           }
         }
       },

@@ -6,10 +6,16 @@
         "0": {
           "1": {
             "type": "import",
-            "startLineNumber": 0,
-            "endLineNumber": 0,
-            "startColNumber": 1,
-            "endColNumber": 3,
+            "range": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
             "module": "foo",
             "name": "Foo",
             "exportsProperty": "Foo"
@@ -18,10 +24,16 @@
         "1": {
           "14": {
             "type": "import",
-            "startLineNumber": 1,
-            "endLineNumber": 1,
-            "startColNumber": 14,
-            "endColNumber": 28,
+            "range": [
+              [
+                1,
+                14
+              ],
+              [
+                1,
+                28
+              ]
+            ],
             "module": "defs2",
             "name": "foof",
             "exportsProperty": "defs"
@@ -30,20 +42,32 @@
         "2": {
           "1": {
             "type": "import",
-            "startLineNumber": 2,
-            "endLineNumber": 2,
-            "startColNumber": 1,
-            "endColNumber": 3,
+            "range": [
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ],
             "module": "kaz",
             "name": "faz",
             "exportsProperty": "faz"
           },
           "6": {
             "type": "import",
-            "startLineNumber": 2,
-            "endLineNumber": 2,
-            "startColNumber": 6,
-            "endColNumber": 8,
+            "range": [
+              [
+                2,
+                6
+              ],
+              [
+                2,
+                8
+              ]
+            ],
             "module": "kaz",
             "name": "baz",
             "exportsProperty": "baz"
@@ -56,10 +80,16 @@
             "classProperties": [],
             "prototypeProperties": [],
             "doc": "~Private~",
-            "startLineNumber": 4,
-            "endLineNumber": 4,
-            "startColNumber": 0,
-            "endColNumber": 8
+            "range": [
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                8
+              ]
+            ]
           }
         }
       },

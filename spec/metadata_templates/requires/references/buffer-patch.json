@@ -6,10 +6,16 @@
         "0": {
           "1": {
             "type": "import",
-            "startLineNumber": 0,
-            "endLineNumber": 0,
-            "startColNumber": 1,
-            "endColNumber": 9,
+            "range": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                9
+              ]
+            ],
             "path": "./helpers",
             "name": "getTextOG",
             "exportsProperty": "getTextOG"
@@ -28,20 +34,32 @@
               ]
             ],
             "doc": "~Private~",
-            "startLineNumber": 3,
-            "endLineNumber": 4,
-            "startColNumber": 0,
-            "endColNumber": 20
+            "range": [
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                20
+              ]
+            ]
           }
         },
         "4": {
           "11": {
             "name": "getText",
             "type": "primitive",
-            "startLineNumber": 4,
-            "endLineNumber": 4,
-            "startColNumber": 11,
-            "endColNumber": 19,
+            "range": [
+              [
+                4,
+                11
+              ],
+              [
+                4,
+                19
+              ]
+            ],
             "bindingType": "prototypeProperty",
             "reference": {
               "path": "./helpers",

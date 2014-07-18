@@ -6,10 +6,16 @@
         "0": {
           "14": {
             "type": "import",
-            "startLineNumber": 0,
-            "endLineNumber": 0,
-            "startColNumber": 14,
-            "endColNumber": 28,
+            "range": [
+              [
+                0,
+                14
+              ],
+              [
+                0,
+                28
+              ]
+            ],
             "module": "defs2",
             "name": "foof",
             "exportsProperty": "defs"
@@ -22,10 +28,16 @@
             "classProperties": [],
             "prototypeProperties": [],
             "doc": "~Private~",
-            "startLineNumber": 2,
-            "endLineNumber": 2,
-            "startColNumber": 0,
-            "endColNumber": 8
+            "range": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                8
+              ]
+            ]
           }
         }
       },

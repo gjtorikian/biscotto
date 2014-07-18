@@ -63,10 +63,7 @@ module.exports = class Metadata
                 name: firstProp.name.value
                 bindingType: 'exportsProperty'
                 type: value.type
-                startLineNumber:  exp.variable.base.locationData.first_line
-                endLineNumber:    exp.variable.base.locationData.last_line
-                startColNumber:  exp.variable.base.locationData.first_column
-                endColNumber:    exp.variable.base.locationData.last_column
+                range: [ [exp.variable.base.locationData.first_line, exp.variable.base.locationData.first_column], [exp.variable.base.locationData.last_line, exp.variable.base.locationData.last_column ] ]
             @exports[firstProp.name.value] =
               startLineNumber:  exp.variable.base.locationData.first_line
         else
@@ -121,10 +118,7 @@ module.exports = class Metadata
                   @defs[key.base.value] = _.extend {}, value,
                     name: key.base.value
                     exportsProperty: key.base.value
-                    startLineNumber: key.base.locationData.first_line
-                    startColNumber: key.base.locationData.first_column
-                    endLineNumber: key.base.locationData.last_line
-                    endColNumber: key.base.locationData.last_column
+                    range: [ [key.base.locationData.first_line, key.base.locationData.first_column], [key.base.locationData.last_line, key.base.locationData.last_column ] ]
 
                   # Store the name of the exported property to the module name
                   if @defs[key.base.value].type == "import" # I *think* this will always be true
@@ -198,10 +192,7 @@ module.exports = class Metadata
                       value =
                         name: name
                         # doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
-                        startLineNumber: value.locationData.first_line
-                        endLineNumber: value.locationData.last_line
-                        startColNumber:  value.locationData.first_column
-                        endColNumber:    value.locationData.last_column
+                        range: [ [value.locationData.first_line, value.locationData.first_column], [value.locationData.last_line, value.locationData.last_column ] ]
                         reference: lookedUpVar
                     else
                       value = _.extend name: name, lookedUpVar
@@ -212,10 +203,7 @@ module.exports = class Metadata
                       type: 'primitive'
                       name: name
                       # doc: @commentLines[@lineMapping[value.locationData.first_line] - 1]
-                      startLineNumber:  value.locationData.first_line
-                      endLineNumber:    value.locationData.last_line
-                      startColNumber:  value.locationData.first_column
-                      endColNumber:    value.locationData.last_column
+                      range: [ [value.locationData.first_line, value.locationData.first_column], [value.locationData.last_line, value.locationData.last_column ] ]
 
                 else
                   value = _.extend name: name, value
@@ -257,29 +245,20 @@ module.exports = class Metadata
     classProperties: classProperties
     prototypeProperties: prototypeProperties
     doc: if clazz? then clazz.doc.node.comment else null
-    startLineNumber:  exp.locationData.first_line
-    endLineNumber:    exp.locationData.last_line
-    startColNumber:  exp.locationData.first_column
-    endColNumber:    exp.locationData.last_column
+    range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
   evalCode: (exp) ->
     bindingType: 'variable'
     type: 'function'
     paramNames: _.map exp.params, (param) -> param.name.value
-    startLineNumber:  exp.locationData.first_line
-    endLineNumber:    exp.locationData.last_line
-    startColNumber:  exp.locationData.first_column
-    endColNumber:    exp.locationData.last_column
+    range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
   evalValue: (exp) ->
     if exp.base
       type: 'primitive'
       name: exp.base?.value
       # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-      startLineNumber: exp.locationData.first_line
-      endLineNumber:   exp.locationData.last_line
-      startColNumber:  exp.locationData.first_column
-      endColNumber:    exp.locationData.last_column
+      range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
     else
       throw new Error 'BUG? Not sure how to evaluate this value if it does not have .base'
 
@@ -296,10 +275,7 @@ module.exports = class Metadata
       ret =
         type: 'import'
         # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-        startLineNumber:  exp.locationData.first_line
-        endLineNumber:    exp.locationData.first_line
-        startColNumber:  exp.locationData.first_column
-        endColNumber:    exp.locationData.last_column
+        range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
       if /^\./.test(moduleName)
         # Local module
@@ -314,10 +290,7 @@ module.exports = class Metadata
     else
       type: 'function'
       # doc: @commentLines[@lineMapping[exp.locationData.first_line] - 1]
-      startLineNumber:  exp.locationData.first_line
-      endLineNumber:    exp.locationData.last_line
-      startColNumber:  exp.locationData.first_column
-      endColNumber:    exp.locationData.last_column
+      range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
   evalError: (str, exp) ->
     throw new Error "BUG: Not implemented yet: #{str}. Line #{exp.locationData.first_line}"

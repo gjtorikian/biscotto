@@ -9,10 +9,16 @@
             "bindingType": "variable",
             "type": "function",
             "paramNames": [],
-            "startLineNumber": 1,
-            "endLineNumber": 1,
-            "startColNumber": 6,
-            "endColNumber": 15,
+            "range": [
+              [
+                1,
+                6
+              ],
+              [
+                1,
+                15
+              ]
+            ],
             "doc": {
               "comment": "Public: Returns hello ",
               "summary": "Returns hello",
@@ -25,10 +31,16 @@
             "name": "bar",
             "bindingType": "exportsProperty",
             "type": "primitive",
-            "startLineNumber": 6,
-            "endLineNumber": 6,
-            "startColNumber": 0,
-            "endColNumber": 6
+            "range": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                6
+              ]
+            ]
           }
         }
       },
