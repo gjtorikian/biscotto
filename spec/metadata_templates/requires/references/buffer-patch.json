@@ -63,8 +63,10 @@
             ],
             "bindingType": "prototypeProperty",
             "reference": {
-              "path": "./helpers",
-              "exportsProperty": "getTextOG"
+              "position": [
+                0,
+                1
+              ]
             }
           }
         }

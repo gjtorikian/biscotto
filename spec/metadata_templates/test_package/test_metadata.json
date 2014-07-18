@@ -352,8 +352,10 @@
             ],
             "bindingType": "prototypeProperty",
             "reference": {
-              "path": "grim@0.11.0",
-              "exportsProperty": "Grim"
+              "position": [
+                0,
+                7
+              ]
             }
           }
         },

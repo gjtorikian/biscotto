@@ -96,7 +96,7 @@ module.exports = class Metadata
                 if _.isUndefined @modules[key]
                   @modules[key] = []
 
-                @modules[key].push @defs[exp.variable.base.value].name
+                @modules[key].push { name: @defs[exp.variable.base.value].name, range: @defs[exp.variable.base.value].range }
 
               switch @defs[exp.variable.base.value].type
                 when 'function'
@@ -124,7 +124,7 @@ module.exports = class Metadata
                   if @defs[key.base.value].type == "import" # I *think* this will always be true
                     if _.isUndefined @modules[@defs[key.base.value].path]
                       @modules[@defs[key.base.value].path] = []
-                    @modules[@defs[key.base.value].path].push @defs[key.base.value].name
+                    @modules[@defs[key.base.value].path].push {name: @defs[key.base.value].name, range: @defs[key.base.value].range}
                 when 'Assign'
                   # case {X:Y} = ...
                   @defs[key.value.base.value] = _.extend {}, value,
@@ -229,10 +229,10 @@ module.exports = class Metadata
                         ref = prototypeExp.value.base.value
                       else
                         ref = prototypeExp.value.base
-                      if reference == ref
+
+                      if reference.name == ref
                         @defs["#{className}::#{name}"].reference =
-                          path: module
-                          exportsProperty: reference
+                          position: reference.range[0]
 
           true
 
