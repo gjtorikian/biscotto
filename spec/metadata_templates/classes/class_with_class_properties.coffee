@@ -4,8 +4,6 @@
 class TextBuffer
   @prop2: "bar"
 
-  this.method1 = (a) ->
-
   # Public: Takes an argument and does some stuff.
   #
   # a - A {String}
