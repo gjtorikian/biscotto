@@ -310,6 +310,7 @@ In (very) brief, take a look at this example:
       "bindingType": "classProperty"
     }
   }
+}
 ```
 
 Items are indexed by their row numbers, followed by thier column numbers. The idea is that you can traverse all along the metadata blob by simply following the location references.
