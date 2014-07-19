@@ -1,5 +1,4 @@
 {
-  "main": "spec/metadata_templates/requires/multiple_requires_single_line.coffee",
   "files": {
     "spec/metadata_templates/requires/multiple_requires_single_line.coffee": {
       "objects": {

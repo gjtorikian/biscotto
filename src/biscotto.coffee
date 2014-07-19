@@ -10,6 +10,8 @@ Generator = require './generator'
 Metadata   = require './metadata'
 {exec}    = require 'child_process'
 
+SRC_DIRS = ['src', 'lib', 'app']
+
 # Public: Biscotto - the TomDoc-CoffeeScript API documentation generator
 module.exports = class Biscotto
 
@@ -264,16 +266,37 @@ module.exports = class Biscotto
     if fs.existsSync(package_json_path)
       package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
 
-    metadata = new Metadata(package_json["main"], package_json["dependencies"], parser)
+    metadata = new Metadata(package_json["dependencies"], parser)
+    @slugs = { main: "", files: {} }
+
+    main_file = package_json["main"]
+    if fs.existsSync main_file
+      @slugs["main"] = main_file
+    else
+      if main_file.match(/\.js$/)
+        main_file = main_file.replace(/\.js$/, ".coffee")
+      else
+        main_file += ".coffee"
+      for dir in SRC_DIRS
+        filename = path.basename(main_file)
+        composite_main = "#{path.dirname package_json_path}#{path.sep}#{dir}#{path.sep}#{filename}"
+
+        if fs.existsSync composite_main
+          file = path.relative(package_json_path, composite_main)
+          file = file.substring(1, file.length) if file.match /^\.\./
+          @slugs["main"] = file
+          break
+
     for filename, content of parser.iteratedFiles
       relative_filename = path.relative(package_json_path, filename)
       # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
       metadata.generate(CoffeeScript.nodes(content))
       @populateSlug(relative_filename, metadata)
-    fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ");
+
+    fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ")
 
   # Public: Parse and collect metadata slugs
-  @populateSlug: (file, {main_file, defs:unindexedObjects, exports:exports}) ->
+  @populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
     objects = {}
     for key, value of unindexedObjects
       startLineNumber = value.range[0][0]
@@ -290,10 +313,6 @@ module.exports = class Biscotto
     else
       for key, value of exports
         exports[key] = value.startLineNumber
-
-    @slugs = {} if _.isUndefined @slugs
-    @slugs["main"] = main_file
-    @slugs["files"] = {} if _.isUndefined @slugs["files"]
 
     # TODO: ugh, I don't understand relative resolving ;_;
     file = file.substring(1, file.length) if file.match /^\.\./
@@ -314,11 +333,7 @@ module.exports = class Biscotto
 
   # Public: Find the source directories.
   @detectSources: (done) ->
-    Async.filter [
-      'src'
-      'lib'
-      'app'
-    ], fs.exists, (results) ->
+    Async.filter SRC_DIRS, fs.exists, (results) ->
       results.push '.' if results.length is 0
       done null, results
 

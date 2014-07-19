@@ -1,5 +1,4 @@
 {
-  "main": "spec/metadata_templates/requires/references/buffer-patch.coffee",
   "files": {
     "spec/metadata_templates/requires/references/buffer-patch.coffee": {
       "objects": {

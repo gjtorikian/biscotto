@@ -19,9 +19,9 @@ describe "Metadata", ->
   constructDelta = (filename, hasReferences = false) ->
     source = fs.readFileSync filename, 'utf8'
 
-    Biscotto.slugs = {}
+    Biscotto.slugs = { files: {} }
     parser.parseContent source, filename
-    metadata = new Metadata(filename, {}, parser)
+    metadata = new Metadata({}, parser)
     metadata.generate(CoffeeScript.nodes(source))
     generated = Biscotto.populateSlug(filename, metadata)
     Biscotto.slugs = {} # reset the slugs
@@ -92,8 +92,8 @@ describe "Metadata", ->
     beforeEach ->
       test_path = path.join("spec", "metadata_templates", "test_package")
       package_json_path = path.join(test_path, 'package.json')
-      for file in fs.readdirSync(path.join(test_path, "lib"))
-        parser.parseFile path.join(test_path, "lib", file)
+      for file in fs.readdirSync(path.join(test_path, "src"))
+        parser.parseFile path.join(test_path, "src", file)
 
     it "renders the package correctly", ->
       Biscotto.generateMetadata(package_json_path, parser, {output: ""})

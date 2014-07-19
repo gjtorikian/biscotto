@@ -1,5 +1,4 @@
 {
-  "main": "spec/metadata_templates/requires/requires_with_colon.coffee",
   "files": {
     "spec/metadata_templates/requires/requires_with_colon.coffee": {
       "objects": {

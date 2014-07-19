@@ -1,5 +1,4 @@
 {
-  "main": "spec/metadata_templates/classes/basic_class.coffee",
   "files": {
     "spec/metadata_templates/classes/basic_class.coffee": {
       "objects": {
