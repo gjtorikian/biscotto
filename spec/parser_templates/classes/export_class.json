@@ -1,0 +1,21 @@
+[
+  {
+    "file": "spec/parser_templates/classes/export_class.coffee",
+    "doc": {
+      "comment": "Private: Yep, this should be assigned to the class ",
+      "summary": "Yep, this should be assigned to the class",
+      "status": "Private"
+    },
+    "class": {
+      "className": "TestExportClass",
+      "name": "TestExportClass",
+      "namespace": ""
+    },
+    "location": {
+      "line": 2
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  }
+]

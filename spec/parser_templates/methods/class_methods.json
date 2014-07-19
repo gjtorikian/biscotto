@@ -1,0 +1,155 @@
+[
+  {
+    "file": "spec/parser_templates/methods/class_methods.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "TestClassMethods",
+      "name": "TestClassMethods",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "~Private~",
+          "summary": "",
+          "status": "Private",
+          "generated": true
+        },
+        "type": "class",
+        "signature": ".<strong>helper</strong>()",
+        "name": "helper",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 3
+        }
+      },
+      {
+        "doc": {
+          "comment": "~Private~",
+          "summary": "",
+          "status": "Private",
+          "generated": true
+        },
+        "type": "class",
+        "signature": ".<strong>another</strong>(a, b)",
+        "name": "another",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "splat": false
+          },
+          {
+            "name": "b",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 5
+        }
+      },
+      {
+        "doc": {
+          "comment": "~Private~",
+          "summary": "",
+          "status": "Private",
+          "generated": true
+        },
+        "type": "class",
+        "signature": ".<strong>withDefault</strong>(a = 2, c, d = 'hi', e = { a: 2 }, f = new TestClassMethods())",
+        "name": "withDefault",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "a",
+            "default": "2",
+            "splat": false
+          },
+          {
+            "name": "c",
+            "splat": false
+          },
+          {
+            "name": "d",
+            "default": "'hi'",
+            "splat": false
+          },
+          {
+            "name": "e",
+            "default": "{\n  a: 2\n}",
+            "splat": false
+          },
+          {
+            "name": "f",
+            "default": "new TestClassMethods()",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 7
+        }
+      },
+      {
+        "doc": {
+          "comment": "~Private~",
+          "summary": "",
+          "status": "Private",
+          "generated": true
+        },
+        "type": "class",
+        "signature": ".<strong>nowWithSpalt</strong>(foo, bar...)",
+        "name": "nowWithSpalt",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": true
+          }
+        ],
+        "location": {
+          "line": 9
+        }
+      },
+      {
+        "doc": {
+          "comment": "~Private~",
+          "summary": "",
+          "status": "Private",
+          "generated": true
+        },
+        "type": "class",
+        "signature": ".<strong>andSoDoesThis</strong>(foo, bar)",
+        "name": "andSoDoesThis",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "foo",
+            "splat": false
+          },
+          {
+            "name": "bar",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 11
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

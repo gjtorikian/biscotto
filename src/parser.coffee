@@ -8,7 +8,7 @@ Class         = require './nodes/class'
 Mixin         = require './nodes/mixin'
 VirtualMethod = require './nodes/virtual_method'
 
-{whitespace} = require('./util/text')
+{whitespace} = require './util/text'
 {SourceMapConsumer} = require 'source-map'
 
 # Public: This parser is responsible for converting each file into the intermediate /
@@ -23,6 +23,7 @@ module.exports = class Parser
     @files   = []
     @classes = []
     @mixins  = []
+    @iteratedFiles = {}
 
     @fileCount = 0
     @globalStatus = "Private"
@@ -35,7 +36,9 @@ module.exports = class Parser
   #
   # file - A {String} representing the the CoffeeScript filename
   parseFile: (file) ->
-    @parseContent fs.readFileSync(file, 'utf8'), file
+    content = fs.readFileSync(file, 'utf8')
+    @parseContent content, file
+    @iteratedFiles[file] = content
     @fileCount += 1
 
   # Public: Parse the given CoffeeScript content.
@@ -43,7 +46,7 @@ module.exports = class Parser
   # content - A {String} representing the CoffeeScript file content
   # file - A {String} representing the CoffeeScript file name
   #
-  parseContent: (content, file = '') ->
+  parseContent: (@content, file = '') ->
     @previousNodes = []
     @globalStatus = "Private"
 
@@ -52,15 +55,15 @@ module.exports = class Parser
       clazz: (node) -> node.constructor.name is 'Class' && node.variable?.base?.value?
       mixin: (node) -> node.constructor.name == 'Assign' && node.value?.base?.properties?
 
-    [content, lineMapping] = @convertComments(content)
+    [convertedContent, lineMapping] = @convertComments(@content)
 
-    sourceMap = CoffeeScript.compile(content, {sourceMap: true}).v3SourceMap
+    sourceMap = CoffeeScript.compile(convertedContent, {sourceMap: true}).v3SourceMap
     @smc = new SourceMapConsumer(sourceMap)
 
     try
-      root = CoffeeScript.nodes(content)
+      root = CoffeeScript.nodes(convertedContent)
     catch error
-      console.log('Parsed CoffeeScript source:\n%s', content) if @options.debug
+      console.log('Parsed CoffeeScript source:\n%s', convertedContent) if @options.debug
       throw error
 
     # Find top-level methods and constants that aren't within a class
@@ -211,8 +214,9 @@ module.exports = class Parser
               indentComment = ""
 
             globalCount++
+            # comment.push whitespace(indentComment) + '### ' + commentLine[2]?.replace /#/g, "\u0091#"
             # we place these here to indicate that the method had a global status applied
-            result.push("#{indentComment}###~#{@globalStatus}~###")
+            result.push("#{indentComment}###~#{@globalStatus}~###") unless /require/.test(line)
 
           result.push line
 

@@ -1,0 +1,29 @@
+{
+  "files": {
+    "spec/metadata_templates/exports/class_exports.coffee": {
+      "objects": {
+        "1": {
+          "0": {
+            "type": "class",
+            "name": "Foo",
+            "bindingType": "exports",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "range": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                8
+              ]
+            ]
+          }
+        }
+      },
+      "exports": 1
+    }
+  }
+}

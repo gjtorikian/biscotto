@@ -1,0 +1,160 @@
+[
+  {
+    "file": "spec/parser_templates/methods/optional_arguments.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "OptionalArguments",
+      "name": "OptionalArguments",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": " Public: Does something.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
+          "summary": "Does something.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "obj",
+              "desc": "An object with the following defaults:",
+              "type": "",
+              "options": [
+                {
+                  "name": "option1",
+                  "desc": "Does some stuff",
+                  "type": ""
+                },
+                {
+                  "name": "option2",
+                  "desc": "Does some {Integer} stuff",
+                  "type": "Integer"
+                }
+              ]
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "::<strong>method1</strong>({option1, option2})",
+        "name": "method1",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "option1",
+            "splat": false,
+            "optionized": true
+          },
+          {
+            "name": "option2",
+            "splat": false,
+            "optionized": true
+          }
+        ],
+        "location": {
+          "line": 8
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
+          "summary": "Does something else.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "obj",
+              "desc": "An object with the following defaults:",
+              "type": "",
+              "options": [
+                {
+                  "name": "option1",
+                  "desc": "Does some stuff",
+                  "type": ""
+                },
+                {
+                  "name": "option2",
+                  "desc": "Does some {Integer} stuff",
+                  "type": "Integer"
+                }
+              ]
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "::<strong>method2</strong>({option1, option2}={})",
+        "name": "method2",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "option1",
+            "splat": false,
+            "optionized": true
+          },
+          {
+            "name": "option2",
+            "splat": false,
+            "optionized": true
+          }
+        ],
+        "location": {
+          "line": 16
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
+          "summary": "Does something else.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "obj",
+              "desc": "An object with the following defaults:",
+              "type": "",
+              "options": [
+                {
+                  "name": "option1",
+                  "desc": "Does some stuff",
+                  "type": ""
+                },
+                {
+                  "name": "option2",
+                  "desc": "Does some {Integer} stuff",
+                  "type": "Integer"
+                }
+              ]
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "::<strong>method3</strong>({option1, option2}={3,4})",
+        "name": "method3",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "option1",
+            "default": "3",
+            "splat": false,
+            "optionized": true
+          },
+          {
+            "name": "option2",
+            "default": "4",
+            "splat": false,
+            "optionized": true
+          }
+        ],
+        "location": {
+          "line": 25
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

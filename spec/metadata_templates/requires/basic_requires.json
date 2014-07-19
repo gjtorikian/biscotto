@@ -1,0 +1,102 @@
+{
+  "files": {
+    "spec/metadata_templates/requires/basic_requires.coffee": {
+      "objects": {
+        "0": {
+          "1": {
+            "type": "import",
+            "range": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "bindingType": "variable",
+            "module": "foo",
+            "name": "Foo",
+            "exportsProperty": "Foo"
+          }
+        },
+        "1": {
+          "14": {
+            "type": "import",
+            "range": [
+              [
+                1,
+                14
+              ],
+              [
+                1,
+                28
+              ]
+            ],
+            "bindingType": "variable",
+            "module": "defs2",
+            "name": "foof",
+            "exportsProperty": "defs"
+          }
+        },
+        "2": {
+          "1": {
+            "type": "import",
+            "range": [
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "bindingType": "variable",
+            "module": "kaz",
+            "name": "faz",
+            "exportsProperty": "faz"
+          },
+          "6": {
+            "type": "import",
+            "range": [
+              [
+                2,
+                6
+              ],
+              [
+                2,
+                8
+              ]
+            ],
+            "bindingType": "variable",
+            "module": "kaz",
+            "name": "baz",
+            "exportsProperty": "baz"
+          }
+        },
+        "4": {
+          "0": {
+            "type": "class",
+            "name": "Bar",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "range": [
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                8
+              ]
+            ]
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}

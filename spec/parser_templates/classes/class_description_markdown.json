@@ -1,0 +1,21 @@
+[
+  {
+    "file": "spec/parser_templates/classes/class_description_markdown.coffee",
+    "doc": {
+      "comment": " Private: Biscotto - the TomDoc-CoffeeScript API documentation generator\n\n# Header 1\n\nThis is a paragraph.\n\n## Header 2\n\nThis is a paragraph.\n\n### Header 3\n\nThis is a paragraph.\n\n#### Header 4\n\nThis is a paragraph.\n\n##### Header 5\n\nThis is a paragraph.\n\n###### Header 6\n\nThis is a paragraph.\n\n ",
+      "summary": "Biscotto - the TomDoc-CoffeeScript API documentation generator",
+      "status": "Private"
+    },
+    "class": {
+      "className": "TestMarkdownDocumentation",
+      "name": "TestMarkdownDocumentation",
+      "namespace": ""
+    },
+    "location": {
+      "line": 27
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  }
+]

@@ -7,7 +7,10 @@ _         = require 'underscore'
 
 Parser    = require './parser'
 Generator = require './generator'
-exec = require('child_process').exec
+Metadata   = require './metadata'
+{exec}    = require 'child_process'
+
+SRC_DIRS = ['src', 'lib', 'app']
 
 # Public: Biscotto - the TomDoc-CoffeeScript API documentation generator
 module.exports = class Biscotto
@@ -35,7 +38,7 @@ module.exports = class Biscotto
   #
   #    biscotto = require 'biscotto'
   #
-  #    file = (filename, content) ->
+  #    file_generator_cb = (filename, content) ->
   #      console.log "New file %s with content %s", filename, content
   #
   #    done = (err) ->
@@ -44,16 +47,16 @@ module.exports = class Biscotto
   #      else
   #        console.log "Documentation generated"
   #
-  #    biscotto.run done, file
+  #    biscotto.run done, file_generator_cb
   #
-  @run: (done, file, analytics = false, homepage = false) ->
+  @run: (done, file_generator_cb, analytics = false, homepage = false) ->
 
     biscottoopts =
       _ : []
 
     # Read .biscottoopts project defaults
     try
-      if (fs.existsSync || path.existsSync)('.biscottoopts')
+      if fs.existsSync('.biscottoopts')
         configs = fs.readFileSync '.biscottoopts', 'utf8'
 
         for config in configs.split('\n')
@@ -76,7 +79,9 @@ module.exports = class Biscotto
         tag:     @detectTag
         origin:  @detectOrigin
       },
-      (err, defaults) ->
+      (err, defaults) =>
+
+        @slugs   = {}
 
         extraUsage = if defaults.extras.length is 0 then '' else  "- #{ defaults.extras.join ' ' }"
 
@@ -157,6 +162,9 @@ module.exports = class Biscotto
             default   : biscottoopts.internal || false
             describe  : 'Show internal methods'
           )
+          .options('metadata',
+            describe  : 'The path to the top-level npm module directory'
+          )
           .options('stability',
             describe  : 'Set stability level'
             default   : -1
@@ -194,13 +202,13 @@ module.exports = class Biscotto
             analytics: analytics || argv.a
             tag: defaults.tag
             origin: defaults.origin
+            metadata: argv.metadata
             stability: argv.stability
 
           extra = false
 
           # ignore params if biscotto has not been started directly
           args = if argv._.length isnt 0 and /.+biscotto$/.test(process.argv[1]) then argv._ else biscottoopts._
-
 
           for arg in args
             if arg is '-'
@@ -214,6 +222,9 @@ module.exports = class Biscotto
           parser = new Parser(options)
 
           for input in options.inputs
+            # collect probable package.json path
+            package_json_path = path.join(input, 'package.json')
+
             if (fs.existsSync || path.existsSync)(input)
               stats = fs.lstatSync input
 
@@ -233,8 +244,11 @@ module.exports = class Biscotto
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
+          if options.metadata
+            generateMetadata(package_json_path, parser, options)
+
           generator = new Generator(parser, options)
-          generator.generate(file)
+          generator.generate(file_generator_cb)
 
           if options.json && options.json.length
             fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
@@ -246,6 +260,64 @@ module.exports = class Biscotto
       done(error) if done
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
+
+  # Public: Builds and writes to metadata.json
+  @generateMetadata: (package_json_path, parser, options) ->
+    if fs.existsSync(package_json_path)
+      package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
+
+    metadata = new Metadata(package_json["dependencies"], parser)
+    @slugs = { main: "", files: {} }
+
+    main_file = package_json["main"]
+    if fs.existsSync main_file
+      @slugs["main"] = main_file
+    else
+      if main_file.match(/\.js$/)
+        main_file = main_file.replace(/\.js$/, ".coffee")
+      else
+        main_file += ".coffee"
+      for dir in SRC_DIRS
+        filename = path.basename(main_file)
+        composite_main = "#{path.dirname package_json_path}#{path.sep}#{dir}#{path.sep}#{filename}"
+
+        if fs.existsSync composite_main
+          file = path.relative(package_json_path, composite_main)
+          file = file.substring(1, file.length) if file.match /^\.\./
+          @slugs["main"] = file
+          break
+
+    for filename, content of parser.iteratedFiles
+      relative_filename = path.relative(package_json_path, filename)
+      # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
+      metadata.generate(CoffeeScript.nodes(content))
+      @populateSlug(relative_filename, metadata)
+
+    fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ")
+
+  # Public: Parse and collect metadata slugs
+  @populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
+    objects = {}
+    for key, value of unindexedObjects
+      startLineNumber = value.range[0][0]
+      startColNumber = value.range[0][1]
+      objects[startLineNumber] = {} unless objects[startLineNumber]?
+      objects[startLineNumber][startColNumber] = value
+      # Update the classProperties/prototypeProperties to be line numbers
+      if value.type is 'class'
+        value.classProperties = ( [prop.range[0][0], prop.range[0][1]] for prop in _.clone(value.classProperties))
+        value.prototypeProperties = ([prop.range[0][0], prop.range[0][1]] for prop in _.clone(value.prototypeProperties))
+
+    if exports._default
+      exports = exports._default.range[0][0]
+    else
+      for key, value of exports
+        exports[key] = value.startLineNumber
+
+    # TODO: ugh, I don't understand relative resolving ;_;
+    file = file.substring(1, file.length) if file.match /^\.\./
+    @slugs["files"][file] = {objects, exports}
+    @slugs
 
   # Public: Get the Biscotto script content that is used in the webinterface
   #
@@ -261,11 +333,7 @@ module.exports = class Biscotto
 
   # Public: Find the source directories.
   @detectSources: (done) ->
-    Async.filter [
-      'src'
-      'lib'
-      'app'
-    ], (fs.exists || path.exists), (results) ->
+    Async.filter SRC_DIRS, fs.exists, (results) ->
       results.push '.' if results.length is 0
       done null, results
 
@@ -278,7 +346,7 @@ module.exports = class Biscotto
       'readme.markdown'
       'readme.md'
       'readme'
-    ], (fs.exists || path.exists), (results) -> done null, _.first(results) || ''
+    ], fs.exists, (results) -> done null, _.first(results) || ''
 
   # Public: Find extra project files in the repository.
   @detectExtras: (done) ->
@@ -293,14 +361,14 @@ module.exports = class Biscotto
       'LICENSE.markdown'
       'LICENSE.MIT'
       'LICENSE.GPL'
-    ], (fs.exists || path.exists), (results) -> done null, results
+    ], fs.exists, (results) -> done null, results
 
   # Public: Find the project name by either parsing `package.json`,
   # or getting the current working directory name.
   #
   # done - The {Function} callback to call once this is done
   @detectName: (done) ->
-    if (fs.exists || path.exists)('package.json')
+    if fs.existsSync('package.json')
       name = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))['name']
     else
       name = path.basename(process.cwd())

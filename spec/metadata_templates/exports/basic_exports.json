@@ -1,0 +1,52 @@
+{
+  "files": {
+    "spec/metadata_templates/exports/basic_exports.coffee": {
+      "objects": {
+        "1": {
+          "6": {
+            "name": "foo",
+            "bindingType": "variable",
+            "type": "function",
+            "paramNames": [],
+            "range": [
+              [
+                1,
+                6
+              ],
+              [
+                1,
+                15
+              ]
+            ],
+            "doc": {
+              "comment": "Public: Returns hello ",
+              "summary": "Returns hello",
+              "status": "Public"
+            }
+          }
+        },
+        "6": {
+          "0": {
+            "name": "bar",
+            "bindingType": "exportsProperty",
+            "type": "primitive",
+            "range": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                6
+              ]
+            ]
+          }
+        }
+      },
+      "exports": {
+        "foo": 3,
+        "bar": 6
+      }
+    }
+  }
+}

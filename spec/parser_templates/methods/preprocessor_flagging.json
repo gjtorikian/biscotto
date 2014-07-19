@@ -1,0 +1,87 @@
+[
+  {
+    "file": "spec/parser_templates/methods/preprocessor_flagging.coffee",
+    "doc": {
+      "comment": "Private: Testing block statuses. ",
+      "summary": "Testing block statuses.",
+      "status": "Private"
+    },
+    "class": {
+      "className": "TestBlockStatus",
+      "name": "TestBlockStatus",
+      "namespace": ""
+    },
+    "location": {
+      "line": 2
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "Public: Blah blah! ",
+          "summary": "Blah blah!",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>help</strong>(me)",
+        "name": "help",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "me",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 5
+        }
+      },
+      {
+        "doc": {
+          "comment": "Public: Blah blah test! ",
+          "summary": "Blah blah test!",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>test</strong>()",
+        "name": "test",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 8
+        }
+      },
+      {
+        "doc": {
+          "comment": "Public: Tricksy words! ",
+          "summary": "Tricksy words!",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>internal2</strong>()",
+        "name": "internal2",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 16
+        }
+      },
+      {
+        "doc": {
+          "comment": "Public: I'm really documented. ",
+          "summary": "I&#39;m really documented.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>public1</strong>()",
+        "name": "public1",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 31
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

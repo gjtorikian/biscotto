@@ -1,5 +1,6 @@
 .DS_Store
-node_modules
+node_modules/**/*
+!/spec/metadata_templates/test_package/node_modules/grim
 Gemfile.lock
 .bundle
 .idea
@@ -11,3 +12,4 @@ npm-debug.log
 js_src/
 dummy/
 .grunt/
+metadata.json

@@ -1,0 +1,75 @@
+{
+  "files": {
+    "spec/metadata_templates/classes/class_with_class_properties.coffee": {
+      "objects": {
+        "3": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "classProperties": [
+              [
+                4,
+                10
+              ],
+              [
+                11,
+                12
+              ]
+            ],
+            "prototypeProperties": [],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+            "range": [
+              [
+                3,
+                0
+              ],
+              [
+                11,
+                18
+              ]
+            ]
+          }
+        },
+        "4": {
+          "10": {
+            "name": "prop2",
+            "type": "primitive",
+            "range": [
+              [
+                4,
+                10
+              ],
+              [
+                4,
+                14
+              ]
+            ],
+            "bindingType": "classProperty"
+          }
+        },
+        "11": {
+          "12": {
+            "name": "method2",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "a"
+            ],
+            "range": [
+              [
+                11,
+                12
+              ],
+              [
+                11,
+                17
+              ]
+            ],
+            "doc": " Public: Takes an argument and does some stuff.\n\na - A {String}\n\nReturns {Boolean}. "
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}

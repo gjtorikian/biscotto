@@ -261,7 +261,7 @@ module.exports = class Referencer
   # Returns the text with hyperlinks (a {String})
   resolveTextReferences: (text = '', entity, path) ->
     # Make curly braces within code blocks undetectable
-    text = text.replace /<code(\s+[^>]*)?>(.|\n)+?<\/code>/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
+    text = text.replace /`(.|\n)+?`/mg, (match) -> match.replace(/{/mg, "\u0091").replace(/}/mg, "\u0092")
 
     # Search for references and replace them
     text = text.replace /(?:\[((?:\[[^\]]*\]|[^\]]|\](?=[^\[]*\]))*)\])?\{([^\}]+)\}/gm, (match, label, link) =>

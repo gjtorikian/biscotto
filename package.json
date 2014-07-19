@@ -33,7 +33,8 @@
     "mkdirp": ">= 0.1.0",
     "connect": ">= 0.1.0",
     "async": ">= 0.1.22",
-    "colors": "~0.6.2"
+    "colors": "~0.6.2",
+    "builtins": "0.0.4"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

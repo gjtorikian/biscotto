@@ -1,0 +1,49 @@
+[
+  {
+    "file": "spec/parser_templates/classes/inner_class.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "Tower.Model.Relation.HasMany",
+      "name": "HasMany",
+      "namespace": "Tower.Model.Relation",
+      "parent": "Tower.Model.Relation"
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  },
+  {
+    "file": "spec/parser_templates/classes/inner_class.coffee",
+    "class": {
+      "className": "Tower.Model.Relation.HasMany.Scope",
+      "name": "Scope",
+      "namespace": "Tower.Model.Relation.HasMany",
+      "parent": "Tower.Model.Relation.Scope"
+    },
+    "location": {
+      "line": 2
+    },
+    "methods": [
+      {
+        "type": "instance",
+        "signature": "::<strong>create</strong>()",
+        "name": "create",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 3
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

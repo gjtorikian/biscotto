@@ -1,0 +1,224 @@
+[
+  {
+    "file": "spec/parser_templates/methods/method_delegation.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "MethodDelegation",
+      "name": "MethodDelegation",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": " Private: Oh hello.\n\np - A {String}\n\nReturns a {Boolean}. ",
+          "summary": "Oh hello.",
+          "status": "Public",
+          "params": [
+            {
+              "name": "p",
+              "desc": "A {String}",
+              "type": "String"
+            }
+          ],
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns a {Boolean}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "Boolean ::<strong>delegatedClassname</strong>(p)",
+        "name": "delegatedClassname",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "p",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 6
+        }
+      },
+      {
+        "doc": {
+          "comment": "Public: I'm being delegated to! ",
+          "summary": "I&#39;m being delegated to!",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>delegatedRegular</strong>()",
+        "name": "delegatedRegular",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 9
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: At last, we have the same content!\n\nYou might also like {.undelegatedRegular}.\n\nReturns a {Number}. ",
+          "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "Number",
+              "desc": "Returns a {Number}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "Number ::<strong>doubleDelegationOne</strong>()",
+        "name": "doubleDelegationOne",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 12
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: At last, we have the same content!\n\nYou might also like {.undelegatedRegular}.\n\nReturns a {Number}. ",
+          "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "Number",
+              "desc": "Returns a {Number}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "Number ::<strong>doubleDelegationTwo</strong>()",
+        "name": "doubleDelegationTwo",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 15
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: At last, we have the same content!\n\nYou might also like {.undelegatedRegular}.\n\nReturns a {Number}. ",
+          "summary": "At last, we have the same content! You might also like {.undelegatedRegular}.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "Number",
+              "desc": "Returns a {Number}."
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "Number .<strong>doubleDelegationThree</strong>()",
+        "name": "doubleDelegationThree",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 22
+        }
+      },
+      {
+        "doc": {
+          "comment": " Private: Do it!\n\nSee {::do} for more information.\n\n ",
+          "summary": "Do it! See {::do} for more information.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>delegatedInternalRegular</strong>(it, options)",
+        "name": "delegatedInternalRegular",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "it",
+            "splat": false
+          },
+          {
+            "name": "options",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 25
+        }
+      },
+      {
+        "doc": {
+          "comment": " Private: Oh hello.\n\np - A {String}\n\nReturns a {Boolean}. ",
+          "summary": "Oh hello.",
+          "status": "Private",
+          "params": [
+            {
+              "name": "p",
+              "desc": "A {String}",
+              "type": "String"
+            }
+          ],
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns a {Boolean}."
+            }
+          ]
+        },
+        "type": "class",
+        "signature": "Boolean .<strong>delegatedClassRegular</strong>(p)",
+        "name": "delegatedClassRegular",
+        "bound": false,
+        "parameters": [
+          {
+            "name": "p",
+            "splat": false
+          }
+        ],
+        "location": {
+          "line": 32
+        }
+      },
+      {
+        "doc": {
+          "examples": [
+            "biscotto = require 'biscotto'\nfile = (filename, content) ->\nconsole.log \"New file %s with content %s\", filename, content\ndone = (err) ->\nif err\n  console.log \"Cannot generate documentation:\", err\nelse\n  console.log \"Documentation generated\"\nbiscotto.run file, done "
+          ],
+          "comment": " Private: A method to run.\n\nExamples\n\n biscotto = require 'biscotto'\n file = (filename, content) ->\n console.log \"New file %s with content %s\", filename, content\n done = (err) ->\n if err\n   console.log \"Cannot generate documentation:\", err\n else\n   console.log \"Documentation generated\"\n biscotto.run file, done ",
+          "summary": "A method to run.",
+          "status": "Public"
+        },
+        "type": "class",
+        "signature": ".<strong>delegatedIrregular</strong>()",
+        "name": "delegatedIrregular",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 35
+        }
+      },
+      {
+        "doc": {
+          "comment": "Public: Blah ",
+          "summary": "Blah",
+          "status": "Public"
+        },
+        "type": "class",
+        "signature": ".<strong>undelegatedRegular</strong>()",
+        "name": "undelegatedRegular",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 38
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

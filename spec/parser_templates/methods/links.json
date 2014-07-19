@@ -1,0 +1,143 @@
+[
+  {
+    "file": "spec/parser_templates/methods/links.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "App.TestLinks",
+      "name": "TestLinks",
+      "namespace": "App"
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": " Private: External link short.\n\nhttp://coffeescript.org/\n\n ",
+          "summary": "External link short.",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>externalLinkShort</strong>()",
+        "name": "externalLinkShort",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 7
+        }
+      },
+      {
+        "doc": {
+          "comment": "Private: External link [long](http://coffeescript.org/).\n\n",
+          "summary": "External link <a href=\"http://coffeescript.org/\">long</a>.",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>externalLinkLong</strong>()",
+        "name": "externalLinkLong",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 11
+        }
+      },
+      {
+        "doc": {
+          "comment": " Private: internalClassLinkShort\n\n{::internalLinkLong}\n\n ",
+          "summary": "internalClassLinkShort {::internalLinkLong}",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>internalLinkShort</strong>()",
+        "name": "internalLinkShort",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 17
+        }
+      },
+      {
+        "doc": {
+          "comment": "Private: internalClass [Link Long]{App.TestLinks}\n\n",
+          "summary": "internalClass [Link Long]{App.TestLinks}",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>internalLinkLong</strong>()",
+        "name": "internalLinkLong",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 21
+        }
+      },
+      {
+        "doc": {
+          "comment": "Private: internalInstanceLinkShort {::externalLinkShort}\n\n",
+          "summary": "internalInstanceLinkShort {::externalLinkShort}",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>internalInstanceLinkShort</strong>()",
+        "name": "internalInstanceLinkShort",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 25
+        }
+      },
+      {
+        "doc": {
+          "comment": "Private: internalInstance [Link Long]{::externalLinkLong}\n\n",
+          "summary": "internalInstance [Link Long]{::externalLinkLong}",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>internalInstanceLinkLong</strong>()",
+        "name": "internalInstanceLinkLong",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 29
+        }
+      },
+      {
+        "doc": {
+          "comment": "Private: internalClassLinkShort {.internalClassLinkLong}\n\n",
+          "summary": "internalClassLinkShort {.internalClassLinkLong}",
+          "status": "Private"
+        },
+        "type": "class",
+        "signature": ".<strong>internalClassLinkShort</strong>()",
+        "name": "internalClassLinkShort",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 33
+        }
+      },
+      {
+        "doc": {
+          "comment": "Private: internalClass [LinkLong]{.internalClassLinkShort}\n\n",
+          "summary": "internalClass [LinkLong]{.internalClassLinkShort}",
+          "status": "Private"
+        },
+        "type": "class",
+        "signature": ".<strong>internalClassLinkLong</strong>()",
+        "name": "internalClassLinkLong",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 37
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

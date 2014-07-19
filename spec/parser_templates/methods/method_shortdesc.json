@@ -1,0 +1,54 @@
+[
+  {
+    "file": "spec/parser_templates/methods/method_shortdesc.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "ShortDesc",
+      "name": "ShortDesc",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "Public: ",
+          "summary": "",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>helper</strong>()",
+        "name": "helper",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 4
+        }
+      },
+      {
+        "doc": {
+          "comment": "~Private~",
+          "summary": "",
+          "status": "Private",
+          "generated": true
+        },
+        "type": "instance",
+        "signature": "::<strong>bound</strong>()",
+        "name": "bound",
+        "bound": true,
+        "parameters": [],
+        "location": {
+          "line": 6
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

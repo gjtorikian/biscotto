@@ -1,0 +1,29 @@
+{
+  "files": {
+    "spec/metadata_templates/classes/basic_class.coffee": {
+      "objects": {
+        "4": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "bindingType": "exports",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+            "range": [
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                15
+              ]
+            ]
+          }
+        }
+      },
+      "exports": 4
+    }
+  }
+}

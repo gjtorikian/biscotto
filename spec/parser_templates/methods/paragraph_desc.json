@@ -1,0 +1,98 @@
+[
+  {
+    "file": "spec/parser_templates/methods/paragraph_desc.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "TestParagraphs",
+      "name": "TestParagraphs",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": " Public: This should be one paragraph.\n\nIf soft tabs are enabled, this is a space (`\" \"`) times the `{::getTabLength}` value.\nOtherwise, it's a tab (`\\t`). ",
+          "summary": "This should be one paragraph.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>spacing</strong>()",
+        "name": "spacing",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 7
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: This is a paragraph with a br.\n\nEquality is based on some condition.  \nOh look, a BR! ",
+          "summary": "This is a paragraph with a br.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>br</strong>()",
+        "name": "br",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 13
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: This is two seperate paragraphs.\n\nEquality is based on some condition.\n\nHere I am, still yapping.\n\nAnd I'm done. ",
+          "summary": "This is two seperate paragraphs.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>twoParagraphs</strong>()",
+        "name": "twoParagraphs",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 22
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: Compares two objects to determine equality.\n\nEquality is based on the condition that:\n\n* the two `{Buffer}`s are the same\n* the two `scrollTop` and `scrollLeft` property are the same\n* the two `{Cursor}` screen positions are the same\n\n\n ",
+          "summary": "Compares two objects to determine equality.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>ulList</strong>()",
+        "name": "ulList",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 33
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: Compares two objects to determine equality.\n\nEquality is based on the condition that:\n\n1. the two `{Buffer}`s are the same\n2. the two `scrollTop` and `scrollLeft` property are the same\n3. the two `{Cursor}` screen positions are the same\n\n\n ",
+          "summary": "Compares two objects to determine equality.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>olList</strong>()",
+        "name": "olList",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 44
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

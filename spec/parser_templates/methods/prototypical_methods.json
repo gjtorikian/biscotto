@@ -1,0 +1,75 @@
+[
+  {
+    "file": "prototypical_methods.coffee",
+    "path": "spec/parser_templates/methods",
+    "methods": [
+      {
+        "doc": {
+          "comment": "Public: Show that other prototypes are safe ",
+          "summary": "Show that other prototypes are safe",
+          "status": "Public"
+        },
+        "type": "file",
+        "signature": "? <strong>Bing.prototype.bang</strong>()",
+        "name": "Bing.prototype.bang",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 10
+        }
+      }
+    ],
+    "variables": []
+  },
+  {
+    "file": "spec/parser_templates/methods/prototypical_methods.coffee",
+    "doc": {
+      "comment": "Public: Here's a class. ",
+      "summary": "Here&#39;s a class.",
+      "status": "Public"
+    },
+    "class": {
+      "className": "Foo",
+      "name": "Foo",
+      "namespace": ""
+    },
+    "location": {
+      "line": 2
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": "Private: Here's a method, baz. ",
+          "summary": "Here&#39;s a method, baz.",
+          "status": "Private"
+        },
+        "type": "instance",
+        "signature": "::<strong>baz</strong>()",
+        "name": "baz",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 4
+        }
+      },
+      {
+        "doc": {
+          "comment": "Public: Here is a method on Foo, called bar. ",
+          "summary": "Here is a method on Foo, called bar.",
+          "status": "Public"
+        },
+        "type": "instance",
+        "signature": "::<strong>bar</strong>()",
+        "name": "bar",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 7
+        },
+        "original_filename": "spec/parser_templates/methods/prototypical_methods.coffee"
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]

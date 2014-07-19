@@ -1,0 +1,22 @@
+[
+  {
+    "file": "spec/parser_templates/classes/simple_class.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "MyTestClass",
+      "name": "MyTestClass",
+      "namespace": ""
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  }
+]

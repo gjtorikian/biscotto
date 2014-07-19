@@ -1,0 +1,486 @@
+{
+  "main": "./src/test.coffee",
+  "files": {
+    "./src/point.coffee": {
+      "objects": {
+        "11": {
+          "0": {
+            "type": "class",
+            "name": "Point",
+            "bindingType": "exports",
+            "classProperties": [
+              [
+                24,
+                15
+              ],
+              [
+                36,
+                8
+              ]
+            ],
+            "prototypeProperties": [
+              [
+                47,
+                8
+              ],
+              [
+                51,
+                10
+              ],
+              [
+                56,
+                13
+              ],
+              [
+                60,
+                7
+              ],
+              [
+                70,
+                11
+              ],
+              [
+                86,
+                11
+              ]
+            ],
+            "doc": " Public: Represents a point in a buffer in row/column coordinates.\n\nEvery public method that takes a point also accepts a *point-compatible*\n{Array}. This means a 2-element array containing {Number}s representing the\nrow and column. So the following are equivalent:\n\n```coffee\nnew Point(1, 2)\n[1, 2]\n``` ",
+            "range": [
+              [
+                11,
+                0
+              ],
+              [
+                97,
+                9
+              ]
+            ]
+          }
+        },
+        "24": {
+          "15": {
+            "name": "fromObject",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "object",
+              "copy"
+            ],
+            "range": [
+              [
+                24,
+                15
+              ],
+              [
+                36,
+                1
+              ]
+            ],
+            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n  This can be an object that's already a {Point}, in which case it's\n  simply returned, or an array containing two {Number}s representing the\n  row and column.\n\n* copy:\n  An optional boolean indicating whether to force the copying of objects\n  that are already points.\n\nReturns: A {Point} based on the given object. "
+          }
+        },
+        "36": {
+          "8": {
+            "name": "min",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "point1",
+              "point2"
+            ],
+            "range": [
+              [
+                36,
+                8
+              ],
+              [
+                44,
+                1
+              ]
+            ],
+            "doc": " Public: Returns the given point that is earlier in the buffer. "
+          }
+        },
+        "47": {
+          "8": {
+            "name": "copy",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [],
+            "range": [
+              [
+                47,
+                8
+              ],
+              [
+                51,
+                1
+              ]
+            ],
+            "doc": " Public: Returns a new {Point} with the same row and column. "
+          }
+        },
+        "51": {
+          "10": {
+            "name": "freeze",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [],
+            "range": [
+              [
+                51,
+                10
+              ],
+              [
+                56,
+                1
+              ]
+            ],
+            "doc": " Public: Makes this point immutable and returns itself. "
+          }
+        },
+        "56": {
+          "13": {
+            "name": "translate",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "delta"
+            ],
+            "range": [
+              [
+                56,
+                13
+              ],
+              [
+                60,
+                1
+              ]
+            ],
+            "doc": " Public: Return a new {Point} based on shifting this point by the given delta,\nwhich is represented by another {Point}. "
+          }
+        },
+        "60": {
+          "7": {
+            "name": "add",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "other"
+            ],
+            "range": [
+              [
+                60,
+                7
+              ],
+              [
+                70,
+                1
+              ]
+            ],
+            "doc": "~Private~"
+          }
+        },
+        "70": {
+          "11": {
+            "name": "splitAt",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "column"
+            ],
+            "range": [
+              [
+                70,
+                11
+              ],
+              [
+                86,
+                1
+              ]
+            ],
+            "doc": "~Private~"
+          }
+        },
+        "86": {
+          "11": {
+            "name": "compare",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "other"
+            ],
+            "range": [
+              [
+                86,
+                11
+              ],
+              [
+                97,
+                9
+              ]
+            ],
+            "doc": " Public:\n\n* other: A {Point} or point-compatible {Array}.\n\nReturns:\n * -1 if this point precedes the argument.\n * 0 if this point is equivalent to the argument.\n * 1 if this point follows the argument. "
+          }
+        }
+      },
+      "exports": 11
+    },
+    "./src/range.coffee": {
+      "objects": {
+        "0": {
+          "7": {
+            "name": "Grim",
+            "type": "import",
+            "range": [
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                20
+              ]
+            ],
+            "bindingType": "variable",
+            "module": "grim@0.11.0"
+          }
+        },
+        "1": {
+          "8": {
+            "name": "Point",
+            "type": "import",
+            "range": [
+              [
+                1,
+                8
+              ],
+              [
+                1,
+                24
+              ]
+            ],
+            "bindingType": "variable",
+            "path": "./point"
+          }
+        },
+        "2": {
+          "1": {
+            "type": "import",
+            "range": [
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                12
+              ]
+            ],
+            "bindingType": "variable",
+            "path": "./helpers",
+            "name": "newlineRegex",
+            "exportsProperty": "newlineRegex"
+          }
+        },
+        "3": {
+          "5": {
+            "name": "Fs",
+            "type": "import",
+            "range": [
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                16
+              ]
+            ],
+            "bindingType": "variable",
+            "module": "fs",
+            "builtin": true
+          }
+        },
+        "17": {
+          "0": {
+            "type": "class",
+            "name": "Range",
+            "bindingType": "exports",
+            "classProperties": [
+              [
+                21,
+                16
+              ],
+              [
+                35,
+                15
+              ],
+              [
+                55,
+                23
+              ]
+            ],
+            "prototypeProperties": [
+              [
+                18,
+                8
+              ],
+              [
+                73,
+                11
+              ]
+            ],
+            "doc": " Public: Represents a region in a buffer in row/column coordinates.\n\nEvery public method that takes a range also accepts a *range-compatible*\n{Array}. This means a 2-element array containing {Point}s or point-compatible\narrays. So the following are equivalent:\n\n```coffee\nnew Range(new Point(0, 1), new Point(2, 3))\nnew Range([0, 1], [2, 3])\n[[0, 1], [2, 3]]\n``` ",
+            "range": [
+              [
+                17,
+                0
+              ],
+              [
+                76,
+                59
+              ]
+            ]
+          }
+        },
+        "18": {
+          "8": {
+            "name": "grim",
+            "type": "primitive",
+            "range": [
+              [
+                18,
+                8
+              ],
+              [
+                18,
+                11
+              ]
+            ],
+            "bindingType": "prototypeProperty",
+            "reference": {
+              "position": [
+                0,
+                7
+              ]
+            }
+          }
+        },
+        "21": {
+          "16": {
+            "name": "deserialize",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "array"
+            ],
+            "range": [
+              [
+                21,
+                16
+              ],
+              [
+                35,
+                1
+              ]
+            ],
+            "doc": " Public: Call this with the result of {Range::serialize} to construct a new Range. "
+          }
+        },
+        "35": {
+          "15": {
+            "name": "fromObject",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "object",
+              "copy"
+            ],
+            "range": [
+              [
+                35,
+                15
+              ],
+              [
+                55,
+                1
+              ]
+            ],
+            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n  This can be an object that's already a {Point}, in which case it's\n  simply returned, or an array containing two {Number}s representing the\n  row and column.\n\n* copy:\n  An optional boolean indicating whether to force the copying of objects\n  that are already points.\n\nReturns: A {Point} based on the given object. "
+          }
+        },
+        "55": {
+          "23": {
+            "name": "fromPointWithDelta",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [
+              "startPoint",
+              "rowDelta",
+              "columnDelta"
+            ],
+            "range": [
+              [
+                55,
+                23
+              ],
+              [
+                60,
+                1
+              ]
+            ],
+            "doc": " Public: Returns a {Range} that starts at the given point and ends at the\nstart point plus the given row and column deltas.\n\n* startPoint:\n  A {Point} or point-compatible {Array}\n* rowDelta:\n  A {Number} indicating how many rows to add to the start point to get the\n  end point.\n* columnDelta:\n  A {Number} indicating how many rows to columns to the start point to get\n  the end point.\n\nReturns a {Range} "
+          }
+        },
+        "73": {
+          "11": {
+            "name": "isEqual",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "other"
+            ],
+            "range": [
+              [
+                73,
+                11
+              ],
+              [
+                76,
+                59
+              ]
+            ],
+            "doc": " Public: Returns a {Boolean} indicating whether this range has the same start\nand end points as the given {Range} or range-compatible {Array}. "
+          }
+        }
+      },
+      "exports": 17
+    },
+    "./src/test.coffee": {
+      "objects": {
+        "1": {
+          "0": {
+            "type": "class",
+            "name": "TestClass",
+            "bindingType": "exports",
+            "classProperties": [],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "range": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                14
+              ]
+            ]
+          }
+        }
+      },
+      "exports": 1
+    }
+  }
+}

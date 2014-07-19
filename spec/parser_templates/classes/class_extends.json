@@ -1,0 +1,23 @@
+[
+  {
+    "file": "spec/parser_templates/classes/class_extends.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "NS.Clazz",
+      "name": "Clazz",
+      "namespace": "NS",
+      "parent": "Another.Clazz"
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [],
+    "variables": [],
+    "properties": []
+  }
+]

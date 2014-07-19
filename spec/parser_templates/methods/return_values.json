@@ -1,0 +1,91 @@
+[
+  {
+    "file": "spec/parser_templates/methods/return_values.coffee",
+    "doc": {
+      "comment": "~Private~",
+      "summary": "",
+      "status": "Private",
+      "generated": true
+    },
+    "class": {
+      "className": "App.ReturnValsDocumentation",
+      "name": "ReturnValsDocumentation",
+      "namespace": "App",
+      "parent": "App.Doc"
+    },
+    "location": {
+      "line": 1
+    },
+    "methods": [
+      {
+        "doc": {
+          "comment": " Private: Do it!\n\nSee #undo for more information.\n\nReturns {Boolean} when it works.\n\n ",
+          "summary": "Do it! See #undo for more information.",
+          "status": "Private",
+          "returnValue": [
+            {
+              "type": "Boolean",
+              "desc": "Returns {Boolean} when it works."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "Boolean ::<strong>returnSingleType</strong>()",
+        "name": "returnSingleType",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 9
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: Blahblah.\n\nReturns no type.\n\n ",
+          "summary": "Blahblah.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "",
+              "desc": "Returns no type."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "::<strong>returnNoType</strong>()",
+        "name": "returnNoType",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 16
+        }
+      },
+      {
+        "doc": {
+          "comment": " Public: Blahblah.\n\nReturns a {String}.\nReturns also a {Number}. ",
+          "summary": "Blahblah.",
+          "status": "Public",
+          "returnValue": [
+            {
+              "type": "String",
+              "desc": "Returns a {String}."
+            },
+            {
+              "type": "Number",
+              "desc": "Returns also a {Number}."
+            }
+          ]
+        },
+        "type": "instance",
+        "signature": "String|Number ::<strong>returnTwoReturns</strong>()",
+        "name": "returnTwoReturns",
+        "bound": false,
+        "parameters": [],
+        "location": {
+          "line": 22
+        }
+      }
+    ],
+    "variables": [],
+    "properties": []
+  }
+]
