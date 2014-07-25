@@ -163,6 +163,7 @@ module.exports = class Biscotto
             describe  : 'Show internal methods'
           )
           .options('metadata',
+            boolean   : true
             describe  : 'The path to the top-level npm module directory'
           )
           .options('stability',
@@ -245,7 +246,7 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           if options.metadata
-            generateMetadata(package_json_path, parser, options)
+            @generateMetadata(package_json_path, parser, options)
 
           generator = new Generator(parser, options)
           generator.generate(file_generator_cb)
