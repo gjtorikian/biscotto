@@ -247,14 +247,15 @@ module.exports = class Biscotto
 
           if options.metadata
             @generateMetadata(package_json_path, parser, options)
+          else
+            generator = new Generator(parser, options)
+            generator.generate(file_generator_cb)
 
-          generator = new Generator(parser, options)
-          generator.generate(file_generator_cb)
+            if options.json && options.json.length
+              fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
 
-          if options.json && options.json.length
-            fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
+            parser.showResult(generator) unless options.quiet
 
-          parser.showResult(generator) unless options.quiet
           done() if done
 
     catch error
