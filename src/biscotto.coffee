@@ -281,15 +281,9 @@ module.exports = class Biscotto
         main_file = main_file.replace(/\.js$/, ".coffee")
       else
         main_file += ".coffee"
-      for dir in SRC_DIRS
-        filename = path.basename(main_file)
-        composite_main = "#{path.dirname package_json_path}#{path.sep}#{dir}#{path.sep}#{filename}"
 
-        if fs.existsSync composite_main
-          file = path.relative(package_json_path, composite_main)
-          file = file.substring(1, file.length) if file.match /^\.\./
-          @slugs["main"] = file
-          break
+      composite_main = path.normalize path.join(path.dirname(package_json_path), main_file)
+      @slugs["main"] = main_file if fs.existsSync composite_main
 
     for filename, content of parser.iteratedFiles
       relative_filename = path.relative(package_json_path, filename)
