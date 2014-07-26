@@ -233,7 +233,9 @@ module.exports = class Biscotto
                 for filename in walkdir.sync input
                   if filename.match /\._?coffee$/
                     try
-                      parser.parseFile filename.substring process.cwd().length + 1
+                      relativePath = filename
+                      relativePath = path.normalize(filename.replace(process.cwd(), ".#{path.sep}")) if filename.indexOf(process.cwd()) == 0
+                      parser.parseFile relativePath
                     catch error
                       throw error if options.debug
                       console.log "Cannot parse file #{ filename }: #{ error.message }"
