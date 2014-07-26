@@ -235,7 +235,7 @@ module.exports = class Metadata
                       ref = prototypeExp.value.base
 
                     if reference.name == ref
-                      @defs["#{className}::#{name}"].reference =
+                      @defs["#{className}::#{name}"]?.reference =
                         position: reference.range[0]
 
                 if value.type == "function"
