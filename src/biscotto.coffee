@@ -273,17 +273,7 @@ module.exports = class Biscotto
     metadata = new Metadata(package_json["dependencies"], parser)
     @slugs = { main: "", files: {} }
 
-    main_file = package_json["main"]
-    if fs.existsSync main_file
-      @slugs["main"] = main_file
-    else
-      if main_file.match(/\.js$/)
-        main_file = main_file.replace(/\.js$/, ".coffee")
-      else
-        main_file += ".coffee"
-
-      composite_main = path.normalize path.join(path.dirname(package_json_path), main_file)
-      @slugs["main"] = main_file if fs.existsSync composite_main
+    @slugs["main"] = @main_file_finder(package_json_path, package_json["main"])
 
     for filename, content of parser.iteratedFiles
       relative_filename = path.relative(package_json_path, filename)
@@ -316,6 +306,23 @@ module.exports = class Biscotto
     file = file.substring(1, file.length) if file.match /^\.\./
     @slugs["files"][file] = {objects, exports}
     @slugs
+
+  @main_file_finder: (package_json_path, main_file) ->
+    if main_file.match(/\.js$/)
+      main_file = main_file.replace(/\.js$/, ".coffee")
+    else
+      main_file += ".coffee"
+
+    filename = path.basename(main_file)
+    filepath = path.dirname(package_json_path)
+
+    for dir in SRC_DIRS
+      composite_main = path.normalize path.join(filepath, dir, filename)
+
+      if fs.existsSync composite_main
+        file = path.relative(package_json_path, composite_main)
+        file = file.substring(1, file.length) if file.match /^\.\./
+        return file
 
   # Public: Get the Biscotto script content that is used in the webinterface
   #
