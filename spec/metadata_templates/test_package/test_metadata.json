@@ -459,28 +459,113 @@
     },
     "./src/test.coffee": {
       "objects": {
+        "0": {
+          "8": {
+            "name": "Point",
+            "type": "import",
+            "range": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                24
+              ]
+            ],
+            "bindingType": "variable",
+            "path": "./point"
+          }
+        },
         "1": {
+          "8": {
+            "name": "Range",
+            "type": "import",
+            "range": [
+              [
+                1,
+                8
+              ],
+              [
+                1,
+                24
+              ]
+            ],
+            "bindingType": "variable",
+            "path": "./range"
+          }
+        },
+        "6": {
           "0": {
             "type": "class",
             "name": "TestClass",
             "bindingType": "exports",
-            "classProperties": [],
+            "classProperties": [
+              [
+                7,
+                10
+              ],
+              [
+                8,
+                17
+              ]
+            ],
             "prototypeProperties": [],
-            "doc": "~Private~",
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text. ",
             "range": [
               [
-                1,
+                6,
                 0
               ],
               [
-                1,
-                14
+                8,
+                29
               ]
             ]
           }
+        },
+        "7": {
+          "10": {
+            "name": "Range",
+            "type": "primitive",
+            "range": [
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                14
+              ]
+            ],
+            "bindingType": "classProperty",
+            "reference": {
+              "position": [
+                1,
+                8
+              ]
+            }
+          }
+        },
+        "8": {
+          "17": {
+            "name": "newlineRegex",
+            "type": "primitive",
+            "range": [
+              [
+                8,
+                17
+              ],
+              [
+                8,
+                28
+              ]
+            ],
+            "bindingType": "classProperty"
+          }
         }
       },
-      "exports": 1
+      "exports": 6
     }
   }
 }
