@@ -273,7 +273,7 @@ module.exports = class Biscotto
     metadata = new Metadata(package_json["dependencies"], parser)
     @slugs = { main: "", files: {} }
 
-    @slugs["main"] = @main_file_finder(package_json_path, package_json["main"])
+    @slugs["main"] = @mainFileFinder(package_json_path, package_json["main"])
 
     for filename, content of parser.iteratedFiles
       relative_filename = path.relative(package_json_path, filename)
@@ -307,7 +307,7 @@ module.exports = class Biscotto
     @slugs["files"][file] = {objects, exports}
     @slugs
 
-  @main_file_finder: (package_json_path, main_file) ->
+  @mainFileFinder: (package_json_path, main_file) ->
     if main_file.match(/\.js$/)
       main_file = main_file.replace(/\.js$/, ".coffee")
     else
