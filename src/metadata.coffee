@@ -5,8 +5,6 @@ _            = require 'underscore'
 builtins     = require 'builtins'
 
 module.exports = class Metadata
-  packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
-
   constructor: (@dependencies, @parser) ->
 
   generate: (@root) ->
