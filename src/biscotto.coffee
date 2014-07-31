@@ -163,6 +163,7 @@ module.exports = class Biscotto
             describe  : 'Show internal methods'
           )
           .options('metadata',
+            boolean   : true
             describe  : 'The path to the top-level npm module directory'
           )
           .options('stability',
@@ -232,7 +233,11 @@ module.exports = class Biscotto
                 for filename in walkdir.sync input
                   if filename.match /\._?coffee$/
                     try
-                      parser.parseFile filename.substring process.cwd().length + 1
+                      relativePath = filename
+                      relativePath = path.normalize(filename.replace(process.cwd(), ".#{path.sep}")) if filename.indexOf(process.cwd()) == 0
+                      shortPath = relativePath.replace(path.resolve(process.cwd(), input) + path.sep, '')
+                      # don't parse Gruntfile.coffee, specs, or anything not in a src dir
+                      parser.parseFile relativePath if _.some(SRC_DIRS, (dir) -> ///^#{dir}///.test(shortPath))
                     catch error
                       throw error if options.debug
                       console.log "Cannot parse file #{ filename }: #{ error.message }"
@@ -245,15 +250,16 @@ module.exports = class Biscotto
                     console.log "Cannot parse file #{ filename }: #{ error.message }"
 
           if options.metadata
-            generateMetadata(package_json_path, parser, options)
+            @generateMetadata(package_json_path, parser, options)
+          else
+            generator = new Generator(parser, options)
+            generator.generate(file_generator_cb)
 
-          generator = new Generator(parser, options)
-          generator.generate(file_generator_cb)
+            if options.json?.length
+              fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
 
-          if options.json && options.json.length
-            fs.writeFileSync options.json, JSON.stringify(parser.toJSON(generator.referencer), null, "    ");
+            parser.showResult(generator) unless options.quiet
 
-          parser.showResult(generator) unless options.quiet
           done() if done
 
     catch error
@@ -269,23 +275,7 @@ module.exports = class Biscotto
     metadata = new Metadata(package_json["dependencies"], parser)
     @slugs = { main: "", files: {} }
 
-    main_file = package_json["main"]
-    if fs.existsSync main_file
-      @slugs["main"] = main_file
-    else
-      if main_file.match(/\.js$/)
-        main_file = main_file.replace(/\.js$/, ".coffee")
-      else
-        main_file += ".coffee"
-      for dir in SRC_DIRS
-        filename = path.basename(main_file)
-        composite_main = "#{path.dirname package_json_path}#{path.sep}#{dir}#{path.sep}#{filename}"
-
-        if fs.existsSync composite_main
-          file = path.relative(package_json_path, composite_main)
-          file = file.substring(1, file.length) if file.match /^\.\./
-          @slugs["main"] = file
-          break
+    @slugs["main"] = @mainFileFinder(package_json_path, package_json["main"])
 
     for filename, content of parser.iteratedFiles
       relative_filename = path.relative(package_json_path, filename)
@@ -318,6 +308,23 @@ module.exports = class Biscotto
     file = file.substring(1, file.length) if file.match /^\.\./
     @slugs["files"][file] = {objects, exports}
     @slugs
+
+  @mainFileFinder: (package_json_path, main_file) ->
+    if main_file.match(/\.js$/)
+      main_file = main_file.replace(/\.js$/, ".coffee")
+    else
+      main_file += ".coffee"
+
+    filename = path.basename(main_file)
+    filepath = path.dirname(package_json_path)
+
+    for dir in SRC_DIRS
+      composite_main = path.normalize path.join(filepath, dir, filename)
+
+      if fs.existsSync composite_main
+        file = path.relative(package_json_path, composite_main)
+        file = file.substring(1, file.length) if file.match /^\.\./
+        return file
 
   # Public: Get the Biscotto script content that is used in the webinterface
   #

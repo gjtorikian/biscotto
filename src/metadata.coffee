@@ -5,8 +5,6 @@ _            = require 'underscore'
 builtins     = require 'builtins'
 
 module.exports = class Metadata
-  packageFile: JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8'))
-
   constructor: (@dependencies, @parser) ->
 
   generate: (@root) ->
@@ -219,24 +217,21 @@ module.exports = class Metadata
                   value.bindingType = "classProperty"
                   @defs["#{className}.#{name}"] = value
                   classProperties.push(value)
+
+                  if reference = @applyReference(prototypeExp)
+                    @defs["#{className}.#{name}"].reference =
+                      position: reference.range[0]
                 else
                   value.name = name
                   value.bindingType = "prototypeProperty"
                   @defs["#{className}::#{name}"] = value
                   prototypeProperties.push(value)
 
-                # apply the reference (if one exists)
-                for module, references of @modules
-                  _.each references, (reference) =>
-                    # non-npm module case (local file ref)
-                    if prototypeExp.value.base?.value
-                      ref = prototypeExp.value.base.value
-                    else
-                      ref = prototypeExp.value.base
+                  if reference = @applyReference(prototypeExp)
+                    @defs["#{className}::#{name}"].reference =
+                      position: reference.range[0]
 
-                    if reference.name == ref
-                      @defs["#{className}::#{name}"].reference =
-                        position: reference.range[0]
+                # apply the reference (if one exists)
 
                 if value.type == "function"
                   # find the matching method from the parsed files
@@ -324,3 +319,15 @@ module.exports = class Metadata
   visitParens: ->
 
   evalOp: (exp) -> exp
+
+  applyReference: (prototypeExp) ->
+    for module, references of @modules
+      for reference in references
+        # non-npm module case (local file ref)
+        if prototypeExp.value.base?.value
+          ref = prototypeExp.value.base.value
+        else
+          ref = prototypeExp.value.base
+
+        if reference.name == ref
+          return reference

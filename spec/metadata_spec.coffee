@@ -103,3 +103,5 @@ describe "Metadata", ->
       generated =  JSON.stringify(Biscotto.slugs, null, 2)
 
       checkDelta(expected_filename, expected, generated, diff(expected, generated))
+      expect(_.keys(Biscotto.slugs.files)).not.toContain "./Gruntfile.coffee"
+      expect(_.keys(Biscotto.slugs.files)).not.toContain "./spec/text-buffer-spec.coffee"
