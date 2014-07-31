@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Method
       </h1>
       <table class='box'>
@@ -121,7 +121,7 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The Node representation of a CoffeeScript method.</p>
+  Public: The Node representation of a CoffeeScript method. 
 </div>
 <div class='tags'>
 </div>
@@ -130,92 +130,21 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(entity, node, lineMapping, options, comment)
+        ::<strong>constructor</strong>(entity, node, lineMapping, options, comment)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Constructs the documentation node.
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#getDoc-instance'>
-        .<strong>getDoc</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the class doc @return [Doc] the class doc
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#getLocation-instance'>
-        Number .<strong>getLocation</strong>()
+        Number ::<strong>getLocation</strong>()
       </a>
     </span>
     <span class='desc'>
       Get the source line number
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getName-instance'>
-        .<strong>getName</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the method name @return {String} the method name
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getParameters-instance'>
-        .<strong>getParameters</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the method parameters @param [Array<Parameter>] the method parameters
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getShortSignature-instance'>
-        .<strong>getShortSignature</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the short method signature.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getSignature-instance'>
-        .<strong>getSignature</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the full method signature.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#getType-instance'>
-        .<strong>getType</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get the method type, either <code>class</code> or <code>instance</code> @return {String} the method type
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#toJSON-instance'>
-        .<strong>toJSON</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get a JSON representation of the object @return {Object} the JSON object
     </span>
   </li>
 </ul>
@@ -233,10 +162,20 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(entity, node, lineMapping, options, comment)
+      ::<strong>constructor</strong>(entity, node, lineMapping, options, comment)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;method.coffee#L17'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Constructs the documentation node.</p>
+   Public: Constructs the documentation node.
+
+entity - The method's <a href='../classes/Class.html'>Class</a>
+node - The method node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+fileName - The filename (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)
+lineMapping - An object mapping the actual position of a member to its Biscotto one
+options - The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+comment - The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>) 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -251,13 +190,13 @@
       <span class='type'>(Object)</span>
       <span class='name'>node</span>
       &mdash;
-      <span class='desc'>The method node (a {Object})</span>
+      <span class='desc'>The method node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>fileName</span>
       &mdash;
-      <span class='desc'>The filename (a {String})</span>
+      <span class='desc'>The filename (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
     <li>
       <span class='name'>lineMapping</span>
@@ -268,13 +207,13 @@
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>The parser options (a {Object})</span>
+      <span class='desc'>The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(Object)</span>
       <span class='name'>comment</span>
       &mdash;
-      <span class='desc'>The comment node (a {Object})</span>
+      <span class='desc'>The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
   </ul>
 </div>
@@ -283,21 +222,18 @@
       <h2>Instance Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='getDoc-instance'>
-      .<strong>getDoc</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get the class doc</p><p>@return [Doc] the class doc</p>
-</div>
-<div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='getLocation-instance'>
-      Number .<strong>getLocation</strong>()
+      Number ::<strong>getLocation</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;method.coffee#L196'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the source line number</p>
+   Public: Get the source line number
+
+Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>
+
+ 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -306,79 +242,19 @@
       <span class='type'></span>
       (<tt>Number</tt>)
       &mdash;
-      <span class='desc'>Returns a {Number}</span>
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a></span>
     </li>
   </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getName-instance'>
-      .<strong>getName</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get the method name</p><p>@return {String} the method name</p>
-</div>
-<div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getParameters-instance'>
-      .<strong>getParameters</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get the method parameters</p><p>@param [Array<Parameter>] the method parameters</p>
-</div>
-<div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getShortSignature-instance'>
-      .<strong>getShortSignature</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get the short method signature.</p><p>@return {String} the short signature</p>
-</div>
-<div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getSignature-instance'>
-      .<strong>getSignature</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get the full method signature.</p><p>@return {String} the signature</p>
-</div>
-<div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getType-instance'>
-      .<strong>getType</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get the method type, either <code>class</code> or <code>instance</code></p><p>@return {String} the method type</p>
-</div>
-<div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='toJSON-instance'>
-      .<strong>toJSON</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get a JSON representation of the object</p><p>@return {Object} the JSON object</p>
-</div>
-<div class='tags'>
 </div>
   </div>
 </div>
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

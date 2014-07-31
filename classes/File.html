@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         File
       </h1>
       <table class='box'>
@@ -121,7 +121,10 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The file class is a <code>fake</code> class that wraps the</p>
+   Public: The file class is a `fake` class that wraps the
+file body to capture top-level assigned methods.
+
+ 
 </div>
 <div class='tags'>
 </div>
@@ -130,10 +133,9 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(node, fileName, lineMapping, options)
+        ::<strong>constructor</strong>(node, fileName, lineMapping, options)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Construct a <code>File</code> object.
     </span>
@@ -141,7 +143,7 @@
   <li>
     <span class='signature'>
       <a href='#getFileName-instance'>
-        String .<strong>getFileName</strong>()
+        String ::<strong>getFileName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -151,7 +153,7 @@
   <li>
     <span class='signature'>
       <a href='#getFullName-instance'>
-        String .<strong>getFullName</strong>()
+        String ::<strong>getFullName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -161,7 +163,7 @@
   <li>
     <span class='signature'>
       <a href='#getPath-instance'>
-        String .<strong>getPath</strong>()
+        String ::<strong>getPath</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -171,7 +173,7 @@
   <li>
     <span class='signature'>
       <a href='#isEmpty-instance'>
-        .<strong>isEmpty</strong>()
+        ::<strong>isEmpty</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -181,7 +183,7 @@
   <li>
     <span class='signature'>
       <a href='#toJSON-instance'>
-        Object .<strong>toJSON</strong>()
+        Object ::<strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -197,7 +199,6 @@
         <a href='..&#47;classes/Class.html'>Class</a>
       </h3>
       <p class='inherited'>
-                <a href='..&#47;classes/Class.html#constructor-instance'>.constructor</a>,
                 <a href='..&#47;classes/Class.html#getFileName-instance'>.getFileName</a>,
                 <a href='..&#47;classes/Class.html#getDoc-instance'>.getDoc</a>,
                 <a href='..&#47;classes/Class.html#getFullName-instance'>.getFullName</a>,
@@ -221,10 +222,18 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(node, fileName, lineMapping, options)
+      ::<strong>constructor</strong>(node, fileName, lineMapping, options)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;file.coffee#L17'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Construct a <code>File</code> object.</p>
+   Public: Construct a `File` object.
+
+node - The class node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+filename - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the current filename
+lineMapping - An object mapping the actual position of a member to its Biscotto one
+options - Any additional parser options 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -233,13 +242,13 @@
       <span class='type'>(Object)</span>
       <span class='name'>node</span>
       &mdash;
-      <span class='desc'>The class node (a {Object})</span>
+      <span class='desc'>The class node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>filename</span>
       &mdash;
-      <span class='desc'>A {String} representing the current filename</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the current filename</span>
     </li>
     <li>
       <span class='name'>lineMapping</span>
@@ -259,10 +268,15 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='getFileName-instance'>
-      String .<strong>getFileName</strong>()
+      String ::<strong>getFileName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;file.coffee#L73'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Returns the file class name.</p>
+   Public: Returns the file class name.
+
+Returns the file name without path as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -271,17 +285,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the file name without path as a {String}.</span>
+      <span class='desc'>Returns the file name without path as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getFullName-instance'>
-      String .<strong>getFullName</strong>()
+      String ::<strong>getFullName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;file.coffee#L59'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the full file name with path</p>
+   Public: Get the full file name with path
+
+Returns the file name with path as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -290,17 +309,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the file name with path as a {String}.</span>
+      <span class='desc'>Returns the file name with path as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getPath-instance'>
-      String .<strong>getPath</strong>()
+      String ::<strong>getPath</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;file.coffee#L79'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the file path</p>
+   Public: Get the file path
+
+Returns the file path as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -309,17 +333,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the file path as a {String}.</span>
+      <span class='desc'>Returns the file path as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isEmpty-instance'>
-      .<strong>isEmpty</strong>()
+      ::<strong>isEmpty</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;file.coffee#L87'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Test if the file doesn&#39;t contain any top-level public methods.</p>
+   Public: Test if the file doesn't contain any top-level public methods.
+
+Returns `true` if empty. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -333,10 +362,15 @@
   </div>
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
-      Object .<strong>toJSON</strong>()
+      Object ::<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;file.coffee#L93'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get a JSON representation of the object</p>
+   Public: Get a JSON representation of the object
+
+Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -345,7 +379,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON object (a {Object}).</span>
+      <span class='desc'>Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>).</span>
     </li>
   </ul>
 </div>
@@ -354,10 +388,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

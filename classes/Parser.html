@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Parser
       </h1>
       <table class='box'>
@@ -115,7 +115,10 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>This parser is responsible for converting each file into the intermediate /</p>
+   Public: This parser is responsible for converting each file into the intermediate /
+AST representation as a JSON node.
+
+ 
 </div>
 <div class='tags'>
 </div>
@@ -124,10 +127,9 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(options)
+        ::<strong>constructor</strong>(options)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Construct the parser
     </span>
@@ -135,7 +137,7 @@
   <li>
     <span class='signature'>
       <a href='#convertComments-instance'>
-        .<strong>convertComments</strong>(content)
+        ::<strong>convertComments</strong>(content)
       </a>
     </span>
     <span class='desc'>
@@ -144,18 +146,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#fileContents-instance'>
-        .<strong>fileContents</strong>(file)
-      </a>
-    </span>
-    <span class='desc'>
-      
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#getAllMethods-instance'>
-        Array .<strong>getAllMethods</strong>()
+        Array ::<strong>getAllMethods</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -165,7 +157,7 @@
   <li>
     <span class='signature'>
       <a href='#getAllVariables-instance'>
-        Array .<strong>getAllVariables</strong>()
+        Array ::<strong>getAllVariables</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -175,17 +167,17 @@
   <li>
     <span class='signature'>
       <a href='#linkAncestors-instance'>
-        .<strong>linkAncestors</strong>(node)
+        ::<strong>linkAncestors</strong>(node)
       </a>
     </span>
     <span class='desc'>
-      Attach each parent to its children, so we are able
+      Attach each parent to its children, so we are able to traverse the ancestor parse tree.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#parseContent-instance'>
-        .<strong>parseContent</strong>(file = '', content)
+        ::<strong>parseContent</strong>(content, file = '')
       </a>
     </span>
     <span class='desc'>
@@ -195,7 +187,7 @@
   <li>
     <span class='signature'>
       <a href='#parseFile-instance'>
-        .<strong>parseFile</strong>(file, contents)
+        ::<strong>parseFile</strong>(file)
       </a>
     </span>
     <span class='desc'>
@@ -205,7 +197,7 @@
   <li>
     <span class='signature'>
       <a href='#showResult-instance'>
-        .<strong>showResult</strong>(generator)
+        ::<strong>showResult</strong>(generator)
       </a>
     </span>
     <span class='desc'>
@@ -215,7 +207,7 @@
   <li>
     <span class='signature'>
       <a href='#toJSON-instance'>
-        Object .<strong>toJSON</strong>()
+        Object ::<strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -227,10 +219,15 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(options)
+      ::<strong>constructor</strong>(options)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L20'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Construct the parser</p>
+   Public: Construct the parser
+
+options - An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> of options 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -239,7 +236,7 @@
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>An {Object} of options</span>
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> of options</span>
     </li>
   </ul>
 </div>
@@ -249,10 +246,16 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='convertComments-instance'>
-      .<strong>convertComments</strong>(content)
+      ::<strong>convertComments</strong>(content)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L116'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Converts the comments to block comments, so they appear in the node structure.</p>
+   Public: Converts the comments to block comments, so they appear in the node structure.
+Only block comments are considered by Biscotto.
+
+content - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file content 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -261,24 +264,22 @@
       <span class='type'>(String)</span>
       <span class='name'>content</span>
       &mdash;
-      <span class='desc'>A {String} representing the CoffeeScript file content</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file content</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='fileContents-instance'>
-      .<strong>fileContents</strong>(file)
-    </p>
-    <div class='tags'>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='getAllMethods-instance'>
-      Array .<strong>getAllMethods</strong>()
+      Array ::<strong>getAllMethods</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L229'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get all the parsed methods.</p>
+   Public: Get all the parsed methods.
+
+Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Method.html'>Method</a>s. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -287,17 +288,22 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an {Array} of {Method}s.</span>
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Method.html'>Method</a>s.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getAllVariables-instance'>
-      Array .<strong>getAllVariables</strong>()
+      Array ::<strong>getAllVariables</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L249'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get all parsed variables.</p>
+   Public: Get all parsed variables.
+
+Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Variable.html'>Variable</a>s. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -306,17 +312,27 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an {Array} of {Variable}s.</span>
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='../classes/Variable.html'>Variable</a>s.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='linkAncestors-instance'>
-      .<strong>linkAncestors</strong>(node)
+      ::<strong>linkAncestors</strong>(node)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L221'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Attach each parent to its children, so we are able</p>
+   Public: Attach each parent to its children, so we are able
+to traverse the ancestor parse tree. Since the
+parent attribute is already used in the class node,
+the parent is stored as `ancestor`.
+
+nodes - A <a href='http://coffeescript.org/documentation/docs/nodes.html#section-7'>Base</a> representing the CoffeeScript nodes
+
+ 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -325,17 +341,25 @@
       <span class='type'>(Base)</span>
       <span class='name'>nodes</span>
       &mdash;
-      <span class='desc'>A {Base} representing the CoffeeScript nodes</span>
+      <span class='desc'>A <a href='http://coffeescript.org/documentation/docs/nodes.html#section-7'>Base</a> representing the CoffeeScript nodes</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='parseContent-instance'>
-      .<strong>parseContent</strong>(file = '', content)
+      ::<strong>parseContent</strong>(content, file = '')
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L48'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Parse the given CoffeeScript content.</p>
+   Public: Parse the given CoffeeScript content.
+
+content - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file content
+file - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file name
+
+ 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -344,58 +368,65 @@
       <span class='type'>(String)</span>
       <span class='name'>content</span>
       &mdash;
-      <span class='desc'>A {String} representing the CoffeeScript file content</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file content</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>file</span>
       &mdash;
-      <span class='desc'>A {String} representing the CoffeeScript file name</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the CoffeeScript file name</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='parseFile-instance'>
-      .<strong>parseFile</strong>(file, contents)
+      ::<strong>parseFile</strong>(file)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L36'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Parse the given CoffeeScript file.</p>
+   Public: Parse the given CoffeeScript file.
+
+file - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the the CoffeeScript filename 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
       <span class='type'>(String)</span>
-      <span class='name'>contents</span>
-      &mdash;
-      <span class='desc'>A {String} representing the the CoffeeScript contents</span>
-    </li>
-    <li>
-      <span class='type'>(String)</span>
       <span class='name'>file</span>
       &mdash;
-      <span class='desc'>A {String} representing the the CoffeeScript filename</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the the CoffeeScript filename</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='showResult-instance'>
-      .<strong>showResult</strong>(generator)
+      ::<strong>showResult</strong>(generator)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L265'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Show the final parsing statistics.</p>
+  Public: Show the final parsing statistics. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
-      Object .<strong>toJSON</strong>()
+      Object ::<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;parser.coffee#L344'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get a JSON representation of the object.</p>
+   Public: Get a JSON representation of the object.
+
+Returns the JSON <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -404,7 +435,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON {Object}.</span>
+      <span class='desc'>Returns the JSON <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>.</span>
     </li>
   </ul>
 </div>
@@ -413,10 +444,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

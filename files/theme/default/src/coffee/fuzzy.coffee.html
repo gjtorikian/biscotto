@@ -140,35 +140,122 @@
   <div class='method_details'>
     <p class='signature' id='window.fuzzy-file'>
       ? <strong>window.fuzzy</strong>(pattern, items, options = {})
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.1.3
+/src&#47;util&#47;templater.coffee#L62'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Filter a list of items.</p><p>Note: If <code>pre</code> is passed, you also have to pass <code>post</code> (and vice-versa).</p>
+   Public: Filter a list of items.
+
+pattern - The fuzzy String to match against.
+items   - An Array of String.
+options - (optional)
+        * pre         - String to insert before matching text.
+        * post        - String to insert after matching text.
+        * limit       - Integer maximum number of results.
+        * separator   - String separator. Match against the last
+                        section of the String by default.
+        * ignorecase  - Boolean (default: true).
+        * ignorespace - Boolean (default: true).
+        * separate    - Boolean (default: false). If set to true, the
+                        function returns an array of an array of strings,
+                        where each array is
+                        [beforeLastSeparator, afterLastSeparator].
+                        If set, `separator` must also be passed.
+
+Note: If `pre` is passed, you also have to pass `post` (and vice-versa).
+
+Examples
+
+  fuzzy = require 'fuzzy-filter'
+  fuzzy "cs", ["cheese", "pickles", "crackers", "pirate attack", "cs!!"]
+  # => ["cs!!", "cheese", "crackers"]
+
+  fuzzy "cs", ["cheese", "pickles", "crackers", "pirate attack", "cs!!"],
+    pre:  "<b>"
+    post: "</b>"
+  # => ["<b>cs</b>!!", "<b>c</b>hee<b>s</b>e", "<b>c</b>racker<b>s</b>"]
+
+  fuzzy "cs", ["cookies", "cheese/pie", "fried/cheese", "cheese/cookies"],
+    pre:       "<b>"
+    post:      "</b>"
+    separator: "/"
+  # => [ "<b>c</b>ookie<b>s</b>"
+  #    , "fried/<b>c</b>hee<b>s</b>e"
+  #    , "cheese/<b>c</b>ookie<b>s</b>" ]
+
+  fuzzy "cs/", ["cookies", "cheese/pie", "fried/cheese", "cheese/cookies"],
+    pre:       "<b>"
+    post:      "</b>"
+    separator: "/"
+  # => [ "<b>c</b>hee<b>s</b>e/pie"
+  #    , "<b>c</b>hee<b>s</b>e/cookies" ]
+
+  fuzzy "cs/p", ["cookies", "cheese/pie", "fried/cheese", "cheese/cookies"],
+    pre:       "<b>"
+    post:      "</b>"
+    separator: "/"
+  # => ["<b>c</b>hee<b>s</b>e/<b>p</b>ie"]
+
+  fuzzy "cs/p", ["cookies", "cheese/pie", "fried/cheese", "cheese/cookies"],
+    pre:       "<b>"
+    post:      "</b>"
+    separator: "/"
+    separate:  true
+  # => [ ["<b>c</b>hee<b>s</b>e", "<b>p</b>ie"] ]
+
+Returns an Array of String. 
   <div class='examples'>
     <h3>Examples:</h3>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>fuzzy = require &#39;fuzzy-filter&#39;
+fuzzy &quot;cs&quot;, [&quot;cheese&quot;, &quot;pickles&quot;, &quot;crackers&quot;, &quot;pirate attack&quot;, &quot;cs!!&quot;]
+# =&gt; [&quot;cs!!&quot;, &quot;cheese&quot;, &quot;crackers&quot;]</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>fuzzy &quot;cs&quot;, [&quot;cheese&quot;, &quot;pickles&quot;, &quot;crackers&quot;, &quot;pirate attack&quot;, &quot;cs!!&quot;],
+  pre:  &quot;&lt;b&gt;&quot;
+  post: &quot;&lt;&#47;b&gt;&quot;
+# =&gt; [&quot;&lt;b&gt;cs&lt;&#47;b&gt;!!&quot;, &quot;&lt;b&gt;c&lt;&#47;b&gt;hee&lt;b&gt;s&lt;&#47;b&gt;e&quot;, &quot;&lt;b&gt;c&lt;&#47;b&gt;racker&lt;b&gt;s&lt;&#47;b&gt;&quot;]</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>fuzzy &quot;cs&quot;, [&quot;cookies&quot;, &quot;cheese&#47;pie&quot;, &quot;fried&#47;cheese&quot;, &quot;cheese&#47;cookies&quot;],
+  pre:       &quot;&lt;b&gt;&quot;
+  post:      &quot;&lt;&#47;b&gt;&quot;
+  separator: &quot;&#47;&quot;
+# =&gt; [ &quot;&lt;b&gt;c&lt;&#47;b&gt;ookie&lt;b&gt;s&lt;&#47;b&gt;&quot;
+#    , &quot;fried&#47;&lt;b&gt;c&lt;&#47;b&gt;hee&lt;b&gt;s&lt;&#47;b&gt;e&quot;
+#    , &quot;cheese&#47;&lt;b&gt;c&lt;&#47;b&gt;ookie&lt;b&gt;s&lt;&#47;b&gt;&quot; ]</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>fuzzy &quot;cs&#47;&quot;, [&quot;cookies&quot;, &quot;cheese&#47;pie&quot;, &quot;fried&#47;cheese&quot;, &quot;cheese&#47;cookies&quot;],
+  pre:       &quot;&lt;b&gt;&quot;
+  post:      &quot;&lt;&#47;b&gt;&quot;
+  separator: &quot;&#47;&quot;
+# =&gt; [ &quot;&lt;b&gt;c&lt;&#47;b&gt;hee&lt;b&gt;s&lt;&#47;b&gt;e&#47;pie&quot;
+#    , &quot;&lt;b&gt;c&lt;&#47;b&gt;hee&lt;b&gt;s&lt;&#47;b&gt;e&#47;cookies&quot; ]</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>fuzzy &quot;cs&#47;p&quot;, [&quot;cookies&quot;, &quot;cheese&#47;pie&quot;, &quot;fried&#47;cheese&quot;, &quot;cheese&#47;cookies&quot;],
+  pre:       &quot;&lt;b&gt;&quot;
+  post:      &quot;&lt;&#47;b&gt;&quot;
+  separator: &quot;&#47;&quot;
+# =&gt; [&quot;&lt;b&gt;c&lt;&#47;b&gt;hee&lt;b&gt;s&lt;&#47;b&gt;e&#47;&lt;b&gt;p&lt;&#47;b&gt;ie&quot;]</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>fuzzy &quot;cs&#47;p&quot;, [&quot;cookies&quot;, &quot;cheese&#47;pie&quot;, &quot;fried&#47;cheese&quot;, &quot;cheese&#47;cookies&quot;],
+  pre:       &quot;&lt;b&gt;&quot;
+  post:      &quot;&lt;&#47;b&gt;&quot;
+  separator: &quot;&#47;&quot;
+  separate:  true
+# =&gt; [ [&quot;&lt;b&gt;c&lt;&#47;b&gt;hee&lt;b&gt;s&lt;&#47;b&gt;e&quot;, &quot;&lt;b&gt;p&lt;&#47;b&gt;ie&quot;] ]</code></pre>
     <h4>
       
     </h4>
@@ -223,10 +310,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:43:10 GMT-0700 (PDT)
+  Wed Jul 09 2014 16:22:46 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.1.3
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

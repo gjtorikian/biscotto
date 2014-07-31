@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Class
       </h1>
       <table class='box'>
@@ -121,11 +121,11 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The Node representation of a CoffeeScript class.</p>
+  Public: The Node representation of a CoffeeScript class. 
 </div>
 <div class='tags'>
 </div>
-      <h2>Direct Known Subclasses</h2>
+      <h2>Subclasses</h2>
       <p class='children'>
         <a href='..&#47;classes/File.html'>File</a>
       </p>
@@ -133,19 +133,8 @@
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#constructor-instance'>
-        .<strong>constructor</strong>(node, fileName, lineMapping, options, comment)
-      </a>
-    </span>
-    <span class='constructor note title'>Constructor</span>
-    <span class='desc'>
-      Constructs a class.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#getClassName-instance'>
-        String .<strong>getClassName</strong>()
+        String ::<strong>getClassName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -155,7 +144,7 @@
   <li>
     <span class='signature'>
       <a href='#getDoc-instance'>
-        .<strong>getDoc</strong>()
+        ::<strong>getDoc</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -165,7 +154,7 @@
   <li>
     <span class='signature'>
       <a href='#getFileName-instance'>
-        String .<strong>getFileName</strong>()
+        String ::<strong>getFileName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -175,17 +164,17 @@
   <li>
     <span class='signature'>
       <a href='#getFullName-instance'>
-        String .<strong>getFullName</strong>()
+        String ::<strong>getFullName</strong>()
       </a>
     </span>
     <span class='desc'>
-      Alias for {::getClassName}
+      Alias for <a href='../classes/Class.html#getClassName-instance'>::getClassName</a>
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getLocation-instance'>
-        Number .<strong>getLocation</strong>()
+        Number ::<strong>getLocation</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -195,7 +184,7 @@
   <li>
     <span class='signature'>
       <a href='#getMethods-instance'>
-        Array .<strong>getMethods</strong>()
+        Array ::<strong>getMethods</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -205,7 +194,7 @@
   <li>
     <span class='signature'>
       <a href='#getName-instance'>
-        String .<strong>getName</strong>()
+        String ::<strong>getName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -215,7 +204,7 @@
   <li>
     <span class='signature'>
       <a href='#getNamespace-instance'>
-        String .<strong>getNamespace</strong>()
+        String ::<strong>getNamespace</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -225,7 +214,7 @@
   <li>
     <span class='signature'>
       <a href='#getParentClassName-instance'>
-        String .<strong>getParentClassName</strong>()
+        String ::<strong>getParentClassName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -235,7 +224,7 @@
   <li>
     <span class='signature'>
       <a href='#getVariables-instance'>
-        Array .<strong>getVariables</strong>()
+        Array ::<strong>getVariables</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -245,7 +234,7 @@
   <li>
     <span class='signature'>
       <a href='#toJSON-instance'>
-        Object .<strong>toJSON</strong>()
+        Object ::<strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -263,54 +252,19 @@
       <p class='inherited'>
         <a href='..&#47;classes/Node.html#findAncestor-instance'>.findAncestor</a>
       </p>
-      <h2>Constructor Details</h2>
-      <div class='methods'>
-  <div class='method_details'>
-    <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(node, fileName, lineMapping, options, comment)
-    </p>
-    <div class='docstring'>
-  <p>Constructs a class.</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='type'>(Object)</span>
-      <span class='name'>node</span>
-      &mdash;
-      <span class='desc'>The class node (a {Object})</span>
-    </li>
-    <li>
-      <span class='type'>(String)</span>
-      <span class='name'>fileName</span>
-      &mdash;
-      <span class='desc'>The filename (a {String})</span>
-    </li>
-    <li>
-      <span class='type'>(Object)</span>
-      <span class='name'>options</span>
-      &mdash;
-      <span class='desc'>The parser options (a {Object})</span>
-    </li>
-    <li>
-      <span class='type'>(Object)</span>
-      <span class='name'>comment</span>
-      &mdash;
-      <span class='desc'>The comment node (a {Object})</span>
-    </li>
-  </ul>
-</div>
-  </div>
-</div>
       <h2>Instance Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='getClassName-instance'>
-      String .<strong>getClassName</strong>()
+      String ::<strong>getClassName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L139'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the full class name</p>
+   Public: Get the full class name
+
+Returns the class (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -319,17 +273,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the class (a {String})</span>
+      <span class='desc'>Returns the class (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getDoc-instance'>
-      .<strong>getDoc</strong>()
+      ::<strong>getDoc</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L128'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the class doc</p>
+   Public: Get the class doc
+
+Returns the class doc (a [Doc]) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -343,10 +302,15 @@
   </div>
   <div class='method_details'>
     <p class='signature' id='getFileName-instance'>
-      String .<strong>getFileName</strong>()
+      String ::<strong>getFileName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L123'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the source file name.</p>
+   Public: Get the source file name.
+
+Returns the filename of the class (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -355,17 +319,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the filename of the class (a {String})</span>
+      <span class='desc'>Returns the filename of the class (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getFullName-instance'>
-      String .<strong>getFullName</strong>()
+      String ::<strong>getFullName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L133'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Alias for {::getClassName}</p>
+   Public: Alias for <a href='../classes/Class.html#getClassName-instance'>::getClassName</a>
+
+Returns the full class name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -374,17 +343,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the full class name (a {String})</span>
+      <span class='desc'>Returns the full class name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getLocation-instance'>
-      Number .<strong>getLocation</strong>()
+      Number ::<strong>getLocation</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L181'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the source line number</p>
+   Public: Get the source line number
+
+Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -393,17 +367,22 @@
       <span class='type'></span>
       (<tt>Number</tt>)
       &mdash;
-      <span class='desc'>Returns a {Number}.</span>
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getMethods-instance'>
-      Array .<strong>getMethods</strong>()
+      Array ::<strong>getMethods</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L242'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get all methods.</p>
+   Public: Get all methods.
+
+Returns the methods as an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -412,17 +391,22 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns the methods as an {Array}.</span>
+      <span class='desc'>Returns the methods as an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getName-instance'>
-      String .<strong>getName</strong>()
+      String ::<strong>getName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L168'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the class name</p>
+   Public: Get the class name
+
+Returns the name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -431,17 +415,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the name (a {String})</span>
+      <span class='desc'>Returns the name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getNamespace-instance'>
-      String .<strong>getNamespace</strong>()
+      String ::<strong>getNamespace</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L198'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the class namespace</p>
+   Public: Get the class namespace
+
+Returns the namespace (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -450,17 +439,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the namespace (a {String}).</span>
+      <span class='desc'>Returns the namespace (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getParentClassName-instance'>
-      String .<strong>getParentClassName</strong>()
+      String ::<strong>getParentClassName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L214'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the full parent class name</p>
+   Public: Get the full parent class name
+
+Returns the parent class name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -469,17 +463,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the parent class name (a {String}).</span>
+      <span class='desc'>Returns the parent class name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getVariables-instance'>
-      Array .<strong>getVariables</strong>()
+      Array ::<strong>getVariables</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L254'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get all variables.</p>
+   Public: Get all variables.
+
+Returns the variables as an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -488,17 +487,22 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns the variables as an {Array}.</span>
+      <span class='desc'>Returns the variables as an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
-      Object .<strong>toJSON</strong>()
+      Object ::<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;class.coffee#L259'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get a JSON representation of the object</p>
+   Public: Get a JSON representation of the object
+
+Returns the JSON object (an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -507,7 +511,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON object (an {Object})</span>
+      <span class='desc'>Returns the JSON object (an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
   </ul>
 </div>
@@ -516,10 +520,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Property
       </h1>
       <table class='box'>
@@ -121,21 +121,39 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>A class property that is defined by custom property set/get methods.</p>
+   Public: A class property that is defined by custom property set/get methods.
+
+Examples
+
+  class Test
+
+   get = (props) => @::__defineGetter__ name, getter for name, getter of props
+   set = (props) => @::__defineSetter__ name, setter for name, setter of props
+
+   get name: -> @name
+   set name: (@name) ->
+
+ 
   <div class='examples'>
     <h3>Examples:</h3>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>class Test</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>get = (props) =&gt; @::__defineGetter__ name, getter for name, getter of props
+set = (props) =&gt; @::__defineSetter__ name, setter for name, setter of props</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>get name: -&gt; @name
+set name: (@name) -&gt;</code></pre>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'> </code></pre>
   </div>
 </div>
 <div class='tags'>
@@ -145,10 +163,9 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(entity, node, lineMapping, options, name, comment)
+        ::<strong>constructor</strong>(entity, node, lineMapping, options, name, comment)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Construct a new property node.
     </span>
@@ -156,7 +173,7 @@
   <li>
     <span class='signature'>
       <a href='#getLocation-instance'>
-        Number .<strong>getLocation</strong>()
+        Number ::<strong>getLocation</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -166,7 +183,7 @@
   <li>
     <span class='signature'>
       <a href='#getSignature-instance'>
-        String .<strong>getSignature</strong>()
+        String ::<strong>getSignature</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -176,7 +193,7 @@
   <li>
     <span class='signature'>
       <a href='#toJSON-instance'>
-        Object .<strong>toJSON</strong>()
+        Object ::<strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -198,10 +215,20 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(entity, node, lineMapping, options, name, comment)
+      ::<strong>constructor</strong>(entity, node, lineMapping, options, name, comment)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;property.coffee#L27'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Construct a new property node.</p>
+   Public: Construct a new property node.
+
+entity - The property's <a href='../classes/Class.html'>Class</a>
+node - The property node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+lineMapping - An object mapping the actual position of a member to its Biscotto one
+options - The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+name - The filename (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)
+comment - The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>) 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -216,7 +243,7 @@
       <span class='type'>(Object)</span>
       <span class='name'>node</span>
       &mdash;
-      <span class='desc'>The property node (a {Object})</span>
+      <span class='desc'>The property node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='name'>lineMapping</span>
@@ -227,19 +254,19 @@
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>The parser options (a {Object})</span>
+      <span class='desc'>The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>name</span>
       &mdash;
-      <span class='desc'>The filename (a {String})</span>
+      <span class='desc'>The filename (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
     <li>
       <span class='type'>(Object)</span>
       <span class='name'>comment</span>
       &mdash;
-      <span class='desc'>The comment node (a {Object})</span>
+      <span class='desc'>The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
   </ul>
 </div>
@@ -249,10 +276,15 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='getLocation-instance'>
-      Number .<strong>getLocation</strong>()
+      Number ::<strong>getLocation</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;property.coffee#L36'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the source line number</p>
+   Public: Get the source line number
+
+Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -261,17 +293,22 @@
       <span class='type'></span>
       (<tt>Number</tt>)
       &mdash;
-      <span class='desc'>Returns a {Number}.</span>
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getSignature-instance'>
-      String .<strong>getSignature</strong>()
+      String ::<strong>getSignature</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;property.coffee#L51'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the property signature.</p>
+   Public: Get the property signature.
+
+Returns the signature (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -280,17 +317,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the signature (a {String})</span>
+      <span class='desc'>Returns the signature (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
-      Object .<strong>toJSON</strong>()
+      Object ::<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;property.coffee#L69'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get a JSON representation of the object</p>
+   Public: Get a JSON representation of the object
+
+Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -299,7 +341,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON object (a {Object})</span>
+      <span class='desc'>Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
   </ul>
 </div>
@@ -308,10 +350,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

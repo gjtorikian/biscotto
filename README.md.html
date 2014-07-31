@@ -114,27 +114,25 @@
         </p>
       </nav>
       <div id='filecontents'>
-        <p>Biscotto is a <a href="http://coffeescript.org/">CoffeeScript</a> API documentation generator. The underlying architecture is based on <a href="https://github.com/coffeedoc/codo">codo</a>; however, this uses a variant of the excellent <a href="http://tomdoc.org/">TomDoc</a> notation, instead of verbose JSDoc.</p><p><a href="https://travis-ci.org/atom/biscotto"><img src="https://travis-ci.org/atom/biscotto.png?branch=master" alt="Build Status"></a></p><h2>Features</h2>
+        <h1 id="biscotto">Biscotto</h1><p><a href="https://travis-ci.org/atom/biscotto"><img src="https://travis-ci.org/atom/biscotto.png?branch=master" alt="Build Status"></a></p><p>Biscotto is a tool for generating <a href="http://coffeescript.org/">CoffeeScript</a> documentation. The underlying architecture was based on <a href="https://github.com/coffeedoc/codo">codo</a>; however, this project uses a variant of the excellent <a href="http://tomdoc.org/">TomDoc</a> notation, instead of the more verbose JSDoc. It also has many more niceties.</p><h2 id="features">Features</h2>
 <ul>
 <li>Detects classes, methods, constants, mixins &amp; concerns.</li>
 <li>Generates a nice site to browse your code documentation in various ways.</li>
 <li>Intermediate JSON output to transform into any output</li>
+<li>Can generate a metadata blob for more advanced usage (<a href="#metadata-generation">see below for more information</a>)</li>
 </ul>
-<h2>Comment Parsing</h2><p>The following section outlines how comments in your files are processed.</p><h3>TomDoc</h3><p>API documentation should be written in the <a href="http://tomdoc.org/">TomDoc</a>
-notation. Originally conceived for Ruby, TomDoc lends itself pretty nicely to
-Coffeescript. There are some slight changes in the parse rules to match
-Coffeescript. Briefly, here&#39;s a list of how you should format your
-documentation.</p><h4>Visibility</h4><p>Every class and method should start with one of three phrases: <code>Public:</code>,
-<code>Internal:</code>, and <code>Private:</code>. During the documentation generation process, you
-can flag whether or not to include Internal and Private members via the options
-passed in. If you don&#39;t have one of these status indicators, Biscotto will assume the
-global visibility (more on this below).</p><pre><code class="lang-coffeescript"># Public: This is a test class with `inline.dot`. Beware.
-class TestClassDocumentation</code></pre>
-<h4>Method arguments</h4><p>Each method argument must start with the argument name, followed by a dash (<code>-</code>), and
-the description of the argument:</p><pre><code>argument - Some words about the arg!</code></pre><p>Hash options are placed on a newline and begin with a colon:</p><pre><code>options - These are the options:
+<h2 id="installing">Installing</h2>
+<pre><code class="lang-bash">npm install biscotto
+</code></pre>
+<h2 id="comment-parsing-with-tomdoc">Comment parsing with TomDoc</h2><p>API documentation is written in the <a href="http://tomdoc.org/">TomDoc</a> notation. Originally conceived for Ruby, TomDoc lends itself pretty nicely to CoffeeScript.</p><p>There are some slight changes in the parse rules to match CoffeeScript. Briefly, here&#39;s a list of how you should format your documentation.</p><h4 id="visibility">Visibility</h4><p>Every class and method should start with one of three phrases: <code>Public:</code>, <code>Internal:</code>, and <code>Private:</code>. During the documentation generation process, you can flag whether or not to include Internal and Private members via the options passed in. If you don&#39;t have one of these status indicators, Biscotto will assume the global visibility (more on this below).</p><pre><code class="lang-coffeescript"># Public: This is a test class with `inline.dot`. Beware.
+class TestClassDocumentation
+</code></pre>
+<h4 id="method-arguments">Method arguments</h4><p>Each method argument must start with the argument name, followed by a dash (<code>-</code>), and
+the description of the argument:</p><pre><code>argument - Some words about the arg!
+</code></pre><p>Hash options are placed on a newline and begin with a colon:</p><pre><code>options - These are the options:
           :key1 - Blah blah.
-          :key2 - Blah</code></pre>
-<pre><code class="lang-coffeescript"># Public: Does some stuff.
+          :key2 - Blah
+</code></pre><pre><code class="lang-coffeescript"># Public: Does some stuff.
 #
 # something - Blah blah blah. Fah fah fah? Foo foo foo!
 # something2 - Bar bar bar. Cha cha cha!!
@@ -142,10 +140,9 @@ the description of the argument:</p><pre><code>argument - Some words about the a
 #        :speed - The {String} speed
 #        :repeat -  How many {Number} times to repeat
 #        :tasks - The {Tasks} tasks to do
-bound: (something, something2, opts) =&gt;</code></pre>
-<h4>Examples</h4><p>The examples section must start with the word &quot;Examples&quot; on a line by itself. The
-next line should be blank. Every line thereafter should be indented by two spaces
-from the initial comment marker:</p><pre><code class="lang-coffeescript"># A method to run.
+bound: (something, something2, opts) =&gt;
+</code></pre>
+<h4 id="examples">Examples</h4><p>The examples section must start with the word &quot;Examples&quot; on a line by itself. The next line should be blank. Every line thereafter should be indented by two spaces from the initial comment marker:</p><pre><code class="lang-coffeescript"># A method to run.
 #
 # Examples
 #
@@ -158,9 +155,9 @@ from the initial comment marker:</p><pre><code class="lang-coffeescript"># A met
 #    else
 #      console.log &quot;Documentation generated&quot;
 #  biscotto.run file, done
-run: -&gt;</code></pre>
-<h4>Return types</h4><p>When returning from a method, your line must start with the word <code>Returns</code>.
-You can list more than one <code>Returns</code> per method by separating each type on a different line.</p><pre><code class="lang-coffeescript"># Private: Do it!
+run: -&gt;
+</code></pre>
+<h4 id="return-types">Return types</h4><p>When returning from a method, your line must start with the word <code>Returns</code>. You can list more than one <code>Returns</code> per method by separating each type on a different line.</p><pre><code class="lang-coffeescript"># Private: Do it!
 #
 # Returns {Boolean} when it works.
 returnSingleType: -&gt;
@@ -169,16 +166,15 @@ returnSingleType: -&gt;
 #
 # Returns an object with the keys:
 #   :duration - A {Number} of milliseconds.
-returnAHash: =&gt;</code></pre>
-<h3>Deviation from TomDoc</h3>
-<h4>GitHub Flavored Markdown</h4><p>Biscotto documentation is processed with <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a>.</p><h4>Automatic link references</h4><p>Biscotto comments are parsed for references to other classes, methods, and mixins, and are automatically
-linked together.</p><p>There are several different link types supported:</p><ul>
+returnAHash: =&gt;
+</code></pre>
+<h3 id="deviation-from-tomdoc">Deviation from TomDoc</h3>
+<h4 id="github-flavored-markdown">GitHub Flavored Markdown</h4><p>Biscotto documentation is processed with <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a>.</p><h4 id="automatic-link-references">Automatic link references</h4><p>Biscotto comments are parsed for references to other classes, methods, and mixins, and are automatically linked together.</p><p>There are several different link types supported:</p><ul>
 <li>Normal URL links: <code>{http://coffeescript.org/}</code> or <code>[Try CoffeeScript](http://coffeescript.org/)</code></li>
 <li>Link to a class or a mixin: <code>{Animal::Lion}</code> or <code>[The mighty lion]{Animal::Lion}</code></li>
 <li>Direct link to an instance method: <code>{Animal.Lion::walk}</code> or <code>[The lion walks]{Animal.Lion::walk}</code></li>
 <li>Direct link to a class method: <code>{Animal.Lion.constructor}</code> or <code>[A new king was born]{Animal.Lion.constructor}</code></li>
-</ul><p>If you are referring to a method within the same class, you can omit the class name: <code>{::walk}</code> or <code>{.constructor}</code>.</p><p>As an added bonus, default JavaScript &quot;types,&quot; like String, Number, Boolean, <em>e.t.c.</em>,
-have automatic links generated to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN</a>.</p><p>Here&#39;s an example of using links:</p><pre><code class="lang-coffeescript"># This links out to the `long` method of the same class.
+</ul><p>If you are referring to a method within the same class, you can omit the class name: <code>{::walk}</code> or <code>{.constructor}</code>.</p><p>As an added bonus, wrapping default JavaScript types--like <code>{String}</code>, <code>{Number}</code>, <code>{Boolean}</code> <em>etc.</em>--have links automatically generated to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN</a>.</p><p>Here&#39;s an example of using links:</p><pre><code class="lang-coffeescript"># This links out to the `long` method of the same class.
 #
 # See {::internalLinkLong} for more info.
 #
@@ -187,16 +183,17 @@ internalLinkShort: -&gt;
 # This links out to MDN.
 #
 # Returns a {Number} greater than zero.
-internalLinkLong: -&gt;</code></pre><p>Note: reference resolution does not take place within code blocks.</p><h4>Status Blocks</h4><p>As noted above, classes and methods can be <code>Public,</code> <code>Private</code>, or <code>Internal</code>.</p><p>You can flag multiple methods in a file with the following syntax:</p><pre><code class="lang-coffee">### Public ###</code></pre><p>That will mark every method underneath that block as <code>Public</code>. You can follow the
-same notion for <code>Internal</code> and <code>Private</code> as well.</p><p>You can have as many block status flags as you want. The amount of <code>#</code>s must be at
-least three, and you can have any text inside the block you want. For example:</p><pre><code class="lang-coffee">### Internal: This does some secret stuff. ###</code></pre><p>If you explicitly specify a status for a method within a block, the status is respected.
-For example:</p><pre><code class="lang-coffee">### Public ###
+internalLinkLong: -&gt;
+</code></pre>
+<h4 id="status-blocks">Status Blocks</h4><p>Classes and methods can be marked as <code>Public,</code> <code>Private</code>, or <code>Internal</code>.</p><p>You can flag multiple methods in a file with the following syntax:</p><pre><code class="lang-coffee">### Public ###
+</code></pre><p>That will mark every method underneath that block as <code>Public</code>. You can follow the same notion for <code>Internal</code> and <code>Private</code> as well.</p><p>You can have as many block status flags as you want. The amount of <code>#</code>s must be at least three, and you can have any text inside the block you want (for your own information). For example:</p><pre><code class="lang-coffee">### Internal: This does some secret stuff. ###
+</code></pre><p>If you explicitly specify a status for a method within a block, the status is respected. For example:</p><pre><code class="lang-coffee">### Public ###
 
 # Internal: A secret method
 notShown: -&gt;
 
-shown: -&gt;</code></pre><p><code>shown</code> is kept as Public because of the status block, while <code>notShown</code> is indeed Internal.</p><h4>Delegation</h4><p>If you&#39;re writing methods that do the exact same thing as another method, you can
-choose to copy over the documentation via <em>delegation</em>. For example:</p><pre><code class="lang-coffee"># {Delegates to: .delegatedRegular}
+shown: -&gt;
+</code></pre><p><code>shown</code> is kept as Public because of the status block, while <code>notShown</code> is indeed Internal.</p><h4 id="delegation">Delegation</h4><p>If you&#39;re writing methods that do the exact same thing as another method, you can choose to copy over the documentation via a <em>delegation</em>. For example:</p><pre><code class="lang-coffee"># {Delegates to: .delegatedRegular}
 delegatedMethod: -&gt;
 
 # Public: I&#39;m being delegated to!
@@ -205,13 +202,12 @@ delegatedMethod: -&gt;
 # b - A {String}
 #
 # Returns a {Boolean}
-delegatedRegular: (a, b) -&gt;</code></pre><p><code>delegatedMethod</code> has the same arguments, return type, and documentation as
-<code>delegatedRegular</code>. You can also choose to delegate to a different class:</p><pre><code class="lang-coffee"># Private: {Delegates to: Another.Class@somewhere}
-delegatedMethod: -&gt;</code></pre><p>Classes that are delegated should still set their own statuses. For example, even though
-<code>Another.Class@somewhere</code> is Public, <code>delegatedMethod</code> is still marked as <code>Private</code>.
-The same documentation remains.</p><h4>Defaults</h4><p>Unlike TomDoc, there is no notation for <code>default</code> values. Biscotto will take care of it for you.</p><h2>More Examples</h2><p>For more technical examples, peruse the <a href="./spec">spec</a> folder, which contains all
-the tests for Biscotto.</p><h2>Generate</h2><p>After the installation, you will have a <code>biscotto</code> binary that can be used to generate the documentation recursively for all CoffeeScript files within a directory. Note: The <code>coffee-script</code> module must be installed globally.</p><p>To view a list of commands, type</p><pre><code class="lang-bash">$ biscotto --help</code></pre><p>Biscotto wants to be smart and tries to detect the best default settings for the sources, the readme, the extra files, and
-the project name, so the above defaults may be different on your project.</p><h3>Project defaults</h3><p>You can define your project defaults by writing your command line options to a <code>.biscottoopts</code> file:</p><pre><code class="lang-bash">--name       &quot;Biscotto&quot;
+delegatedRegular: (a, b) -&gt;
+</code></pre><p><code>delegatedMethod</code> has the same arguments, return type, and documentation as <code>delegatedRegular</code>. You can also choose to delegate to a different class:</p><pre><code class="lang-coffee"># Private: {Delegates to: Another.Class@somewhere}
+delegatedMethod: -&gt;
+</code></pre><p>Classes that are delegated should still set their own statuses. For example, even though <code>Another.Class@somewhere</code> is Public, <code>delegatedMethod</code> is still marked as <code>Private</code>. The same documentation remains.</p><h4 id="defaults">Defaults</h4><p>Unlike TomDoc, there is no additional notation for <code>default</code> values. Biscotto will take care of it for you, because it parses the CoffeeScript source and understands default values.</p><h2 id="more-examples">More Examples</h2><p>For more technical examples, peruse the <a href="./spec">spec</a> folder, which contains all the tests for Biscotto.</p><h2 id="generating-and-serving-html">Generating and serving HTML</h2><p>After installing Biscotto, you&#39;ll have a <code>biscotto</code> binary that can be used to generate the documentation recursively for all CoffeeScript files within a directory.</p><p>To view a list of commands, type</p><pre><code class="lang-bash">$ biscotto --help
+</code></pre><p>Biscotto wants to be smart and tries to detect the best default settings for the sources, the README, any extra files, and
+the project name, so the above defaults may be different on your project.</p><h3 id="project-defaults">Project defaults</h3><p>You can define your project defaults by writing your command line options to a <code>.biscottoopts</code> file:</p><pre><code class="lang-bash">--name       &quot;Biscotto&quot;
 --readme     README.md
 --title      &quot;Biscotto Documentation&quot;
 --private
@@ -220,9 +216,8 @@ the project name, so the above defaults may be different on your project.</p><h3
 ./src
 -
 LICENSE
-CHANGELOG.md</code></pre><p>Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that
-should be included into the documentation separated by a dash (<code>-</code>). If your extra file has the extension <code>.md</code>, it&#39;ll
-be rendered as Markdown.</p><h2>Keyboard navigation</h2><p>You can quickly search and jump through the documentation by using the fuzzy finder dialog:</p><ul>
+CHANGELOG.md
+</code></pre><p>Put each option flag on a separate line, followed by the source directories or files, and optionally any extra file that should be included into the documentation separated by a dash (<code>-</code>). If your extra file has the extension <code>.md</code>, it&#39;ll be rendered as Markdown.</p><h3 id="website-keyboard-navigation">Website keyboard navigation</h3><p>You can quickly search and jump through the documentation by using the fuzzy finder dialog:</p><ul>
 <li>Open fuzzy finder dialog: <code>Ctrl-T</code></li>
 </ul><p>In frame mode you can toggle the list navigation frame on the left side:</p><ul>
 <li>Toggle list view: <code>Ctrl-L</code></li>
@@ -238,7 +233,40 @@ be rendered as Markdown.</p><h2>Keyboard navigation</h2><p>You can quickly searc
 </ul><p>In frameless mode you can close the list tab:</p><ul>
 <li>Close list tab: <code>Esc</code></li>
 </ul>
-<h2>License</h2><p>(The MIT License)</p><p>Copyright (c) 2013 Garen J. Torikian</p><p>Permission is hereby granted, free of charge, to any person obtaining
+<h2 id="gulp-biscotto">Gulp-Biscotto</h2><p>If you want to use Biscotto with <a href="https://gulpjs.com">Gulp</a>, see <a href="https://github.com/adam-lynch/gulp-biscotto">gulp-biscotto</a>.</p><h2 id="metadata-generation">Metadata generation</h2><p>You can use Biscotto to generate a complete JSON representation of your Node.js module. Simply pass in the <code>--metadata</code> flag and the path to your top-level module directory (where you keep your package.json).</p><pre><code class="lang-bash">biscotto --metadata ./path/to/module
+</code></pre><p>Metadata generation should be considered an &quot;advanced&quot; way of using Biscotto. By generating metadata, Biscotto itself doesn&#39;t provide a way to turn it into HTML or interpret the comments in any way. It relies solely on the existing CoffeeScript AST. It allows for greater consumption and flexibility, however, because it traverses over the entire module.</p><p>You can find an example of the sort of metadata generated by <a href="./spec/metadata_templates/test_package/test_metadata.json">looking at the test suite</a>.</p><p>In (very) brief, take a look at this example:</p><pre><code class="lang-json">&quot;objects&quot;: {
+  &quot;3&quot;: {
+    &quot;0&quot;: {
+      &quot;type&quot;: &quot;class&quot;,
+      &quot;name&quot;: &quot;TextBuffer&quot;,
+      &quot;classProperties&quot;: [
+        [
+          4,
+          10
+        ]
+      ],
+      &quot;doc&quot;: &quot; Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n &quot;,
+    }
+  },
+  &quot;4&quot;: {
+    &quot;10&quot;: {
+      &quot;name&quot;: &quot;prop2&quot;,
+      &quot;type&quot;: &quot;primitive&quot;,
+      &quot;range&quot;: [
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          14
+        ]
+      ],
+      &quot;bindingType&quot;: &quot;classProperty&quot;
+    }
+  }
+}
+</code></pre><p>Items are indexed by their row numbers, followed by thier column numbers. The idea is that you can traverse all along the metadata blob by simply following the location references.</p><p>For a deeper understanding of the syntax and rationale, see the original proposal at <a href="https://github.com/atom/biscotto/issues/43">issue #43</a></p><h2 id="license">License</h2><p>(The MIT License)</p><p>Copyright (c) 2014 Garen J. Torikian</p><p>Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 &#39;Software&#39;), to deal in the Software without restriction, including
 without limitation the rights to use, copy, modify, merge, publish,
@@ -256,10 +284,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

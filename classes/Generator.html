@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Generator
       </h1>
       <table class='box'>
@@ -115,7 +115,10 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The documentation generator uses the intermediate JSON from <a href='../classes/Parser.html'>Parser</a>,</p>
+   Public: The documentation generator uses the intermediate JSON from <a href='../classes/Parser.html'>Parser</a>,
+and generates the final HTML Biscotto documentation.
+
+ 
 </div>
 <div class='tags'>
 </div>
@@ -124,10 +127,9 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(parser, options)
+        ::<strong>constructor</strong>(parser, options)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Constructs a generator
     </span>
@@ -135,7 +137,7 @@
   <li>
     <span class='signature'>
       <a href='#copy-instance'>
-        .<strong>copy</strong>(from, to)
+        ::<strong>copy</strong>(from, to)
       </a>
     </span>
     <span class='desc'>
@@ -145,7 +147,7 @@
   <li>
     <span class='signature'>
       <a href='#copyAssets-instance'>
-        .<strong>copyAssets</strong>()
+        ::<strong>copyAssets</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -155,7 +157,7 @@
   <li>
     <span class='signature'>
       <a href='#generate-instance'>
-        .<strong>generate</strong>(file = null)
+        ::<strong>generate</strong>(file_generator_cb = null)
       </a>
     </span>
     <span class='desc'>
@@ -165,7 +167,7 @@
   <li>
     <span class='signature'>
       <a href='#generateClassAndMixinLists-instance'>
-        .<strong>generateClassAndMixinLists</strong>()
+        ::<strong>generateClassAndMixinLists</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -175,7 +177,7 @@
   <li>
     <span class='signature'>
       <a href='#generateClassMixinFileExtraIndex-instance'>
-        .<strong>generateClassMixinFileExtraIndex</strong>()
+        ::<strong>generateClassMixinFileExtraIndex</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -185,7 +187,7 @@
   <li>
     <span class='signature'>
       <a href='#generateClasses-instance'>
-        .<strong>generateClasses</strong>()
+        ::<strong>generateClasses</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -195,7 +197,7 @@
   <li>
     <span class='signature'>
       <a href='#generateExtraList-instance'>
-        .<strong>generateExtraList</strong>()
+        ::<strong>generateExtraList</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -205,7 +207,7 @@
   <li>
     <span class='signature'>
       <a href='#generateExtras-instance'>
-        .<strong>generateExtras</strong>()
+        ::<strong>generateExtras</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -215,7 +217,7 @@
   <li>
     <span class='signature'>
       <a href='#generateFileList-instance'>
-        .<strong>generateFileList</strong>()
+        ::<strong>generateFileList</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -225,7 +227,7 @@
   <li>
     <span class='signature'>
       <a href='#generateFiles-instance'>
-        .<strong>generateFiles</strong>()
+        ::<strong>generateFiles</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -235,7 +237,7 @@
   <li>
     <span class='signature'>
       <a href='#generateIndex-instance'>
-        .<strong>generateIndex</strong>()
+        ::<strong>generateIndex</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -245,7 +247,7 @@
   <li>
     <span class='signature'>
       <a href='#generateMethodList-instance'>
-        .<strong>generateMethodList</strong>()
+        ::<strong>generateMethodList</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -255,7 +257,7 @@
   <li>
     <span class='signature'>
       <a href='#generateMixins-instance'>
-        .<strong>generateMixins</strong>()
+        ::<strong>generateMixins</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -265,7 +267,7 @@
   <li>
     <span class='signature'>
       <a href='#generateSearchData-instance'>
-        .<strong>generateSearchData</strong>(file)
+        ::<strong>generateSearchData</strong>(file)
       </a>
     </span>
     <span class='desc'>
@@ -277,10 +279,18 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(parser, options)
+      ::<strong>constructor</strong>(parser, options)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L19'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Constructs a generator</p>
+   Public: Constructs a generator
+
+parser - A <a href='../classes/Parser.html'>Parser</a> object
+options - An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> of options
+
+ 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -295,7 +305,7 @@
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>An {Object} of options</span>
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> of options</span>
     </li>
   </ul>
 </div>
@@ -305,10 +315,16 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='copy-instance'>
-      .<strong>copy</strong>(from, to)
+      ::<strong>copy</strong>(from, to)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L394'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Copy a file from its temporary location to a more permanent one.</p>
+   Public: Copy a file from its temporary location to a more permanent one.
+
+from - The source filename as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>
+to - The destination filename as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -317,153 +333,202 @@
       <span class='type'>(String)</span>
       <span class='name'>from</span>
       &mdash;
-      <span class='desc'>The source filename as a {String}</span>
+      <span class='desc'>The source filename as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a></span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>to</span>
       &mdash;
-      <span class='desc'>The destination filename as a {String}</span>
+      <span class='desc'>The destination filename as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a></span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='copyAssets-instance'>
-      .<strong>copyAssets</strong>()
+      ::<strong>copyAssets</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L386'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Copy the styles and scripts.</p>
+  Public: Copy the styles and scripts. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generate-instance'>
-      .<strong>generate</strong>(file = null)
+      ::<strong>generate</strong>(file_generator_cb = null)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L32'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generate the documentation. Without the <code>file</code> callback, the documentation</p><p>With a provided file generation callback, the assets will not be copied. You
-can use <a href='../classes/Biscotto.html#script-class'>Biscotto@script</a> and <a href='../classes/Biscotto.html#style-class'>Biscotto@style</a> to get them.</p>
+   Public: Generate the documentation. Without the `file` callback, the documentation
+is written to the file system. With the callback, the file's contents is passed
+to the callback.
+
+With a provided file generation callback, the assets will not be copied. You
+can use <a href='../classes/Biscotto.html#script-class'>Biscotto.script</a> and <a href='../classes/Biscotto.html#style-class'>Biscotto.style</a> to get them.
+
+file_generator_cb - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> that acts as a file generation callback
+
+ 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
       <span class='type'>(Function)</span>
-      <span class='name'>file</span>
+      <span class='name'>file_generator_cb</span>
       &mdash;
-      <span class='desc'>A {Function} that acts as a file generation callback</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> that acts as a file generation callback</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateClassAndMixinLists-instance'>
-      .<strong>generateClassAndMixinLists</strong>()
+      ::<strong>generateClassAndMixinLists</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L271'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the drop down class list</p>
+  Public: Generates the drop down class list 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateClassMixinFileExtraIndex-instance'>
-      .<strong>generateClassMixinFileExtraIndex</strong>()
+      ::<strong>generateClassMixinFileExtraIndex</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L242'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generate the alphabetical index of all classes and mixins.</p>
+  Public: Generate the alphabetical index of all classes and mixins. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateClasses-instance'>
-      .<strong>generateClasses</strong>()
+      ::<strong>generateClasses</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L69'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the pages for all the classes.</p>
+  Public: Generates the pages for all the classes. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateExtraList-instance'>
-      .<strong>generateExtraList</strong>()
+      ::<strong>generateExtraList</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L379'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the drop down extra list.</p>
+  Public: Generates the drop down extra list. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateExtras-instance'>
-      .<strong>generateExtras</strong>()
+      ::<strong>generateExtras</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L206'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the pages for all the extra files.</p>
+  Public: Generates the pages for all the extra files. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateFileList-instance'>
-      .<strong>generateFileList</strong>()
+      ::<strong>generateFileList</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L347'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the drop down file list.</p>
+  Public: Generates the drop down file list. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateFiles-instance'>
-      .<strong>generateFiles</strong>()
+      ::<strong>generateFiles</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L169'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generate the pages for all the (non-class) files that contains methods.</p>
+  Public: Generate the pages for all the (non-class) files that contains methods. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateIndex-instance'>
-      .<strong>generateIndex</strong>()
+      ::<strong>generateIndex</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L52'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the frame source.</p>
+  Public: Generates the frame source. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateMethodList-instance'>
-      .<strong>generateMethodList</strong>()
+      ::<strong>generateMethodList</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L323'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generates the drop down method list.</p>
+  Public: Generates the drop down method list. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateMixins-instance'>
-      .<strong>generateMixins</strong>()
+      ::<strong>generateMixins</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L124'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Generate the pages for all the mixins.</p>
+  Public: Generate the pages for all the mixins. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='generateSearchData-instance'>
-      .<strong>generateSearchData</strong>(file)
+      ::<strong>generateSearchData</strong>(file)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;generator.coffee#L407'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Writs the data used by search into a JSON file used by the frontend.</p>
+   Public: Writs the data used by search into a JSON file used by the frontend.
+
+file - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback after every file is read 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -472,7 +537,7 @@ can use <a href='../classes/Biscotto.html#script-class'>Biscotto@script</a> and 
       <span class='type'>(Function)</span>
       <span class='name'>file</span>
       &mdash;
-      <span class='desc'>A {Function} callback after every file is read</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback after every file is read</span>
     </li>
   </ul>
 </div>
@@ -481,10 +546,10 @@ can use <a href='../classes/Biscotto.html#script-class'>Biscotto@script</a> and 
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

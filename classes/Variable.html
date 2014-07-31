@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Variable
       </h1>
       <table class='box'>
@@ -121,7 +121,7 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The Node representation of a CoffeeScript variable.</p>
+  Public: The Node representation of a CoffeeScript variable. 
 </div>
 <div class='tags'>
 </div>
@@ -130,10 +130,9 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(entity, node, smc, options, classType = false, comment = null)
+        ::<strong>constructor</strong>(entity, node, lineMapping, options, classType = false, comment = null)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Construct a variable node.
     </span>
@@ -141,7 +140,7 @@
   <li>
     <span class='signature'>
       <a href='#getDoc-instance'>
-        .<strong>getDoc</strong>()
+        ::<strong>getDoc</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -151,7 +150,7 @@
   <li>
     <span class='signature'>
       <a href='#getLocation-instance'>
-        Number .<strong>getLocation</strong>()
+        Number ::<strong>getLocation</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -161,7 +160,7 @@
   <li>
     <span class='signature'>
       <a href='#getName-instance'>
-        String .<strong>getName</strong>()
+        String ::<strong>getName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -171,7 +170,7 @@
   <li>
     <span class='signature'>
       <a href='#getType-instance'>
-        String .<strong>getType</strong>()
+        String ::<strong>getType</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -181,7 +180,7 @@
   <li>
     <span class='signature'>
       <a href='#getValue-instance'>
-        String .<strong>getValue</strong>()
+        String ::<strong>getValue</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -191,7 +190,7 @@
   <li>
     <span class='signature'>
       <a href='#isConstant-instance'>
-        Boolean .<strong>isConstant</strong>()
+        Boolean ::<strong>isConstant</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -201,7 +200,7 @@
   <li>
     <span class='signature'>
       <a href='#toJSON-instance'>
-        Object .<strong>toJSON</strong>()
+        Object ::<strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -223,10 +222,20 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(entity, node, smc, options, classType = false, comment = null)
+      ::<strong>constructor</strong>(entity, node, lineMapping, options, classType = false, comment = null)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L14'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Construct a variable node.</p>
+   Public: Construct a variable node.
+
+entity - The variable's <a href='../classes/Class.html'>Class</a>
+node - The variable node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+lineMapping - An object mapping the actual position of a member to its Biscotto one
+options - The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+classType - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating if the class is a `class` or an `instance`
+comment - The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>) 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -241,10 +250,10 @@
       <span class='type'>(Object)</span>
       <span class='name'>node</span>
       &mdash;
-      <span class='desc'>The variable node (a {Object})</span>
+      <span class='desc'>The variable node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
-      <span class='name'>smc</span>
+      <span class='name'>lineMapping</span>
       &mdash;
       <span class='desc'>An object mapping the actual position of a member to its Biscotto one</span>
     </li>
@@ -252,19 +261,19 @@
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>The parser options (a {Object})</span>
+      <span class='desc'>The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(Boolean)</span>
       <span class='name'>classType</span>
       &mdash;
-      <span class='desc'>A {Boolean} indicating if the class is a <code>class</code> or an <code>instance</code></span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating if the class is a <code>class</code> or an <code>instance</code></span>
     </li>
     <li>
       <span class='type'>(Object)</span>
       <span class='name'>comment</span>
       &mdash;
-      <span class='desc'>The comment node (a {Object})</span>
+      <span class='desc'>The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
   </ul>
 </div>
@@ -274,10 +283,15 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='getDoc-instance'>
-      .<strong>getDoc</strong>()
+      ::<strong>getDoc</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L44'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the class doc</p>
+   Public: Get the class doc
+
+Returns the class doc (a [Doc]). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -291,10 +305,15 @@
   </div>
   <div class='method_details'>
     <p class='signature' id='getLocation-instance'>
-      Number .<strong>getLocation</strong>()
+      Number ::<strong>getLocation</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L70'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the source line number</p>
+   Public: Get the source line number
+
+Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -303,17 +322,22 @@
       <span class='type'></span>
       (<tt>Number</tt>)
       &mdash;
-      <span class='desc'>Returns a {Number}.</span>
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getName-instance'>
-      String .<strong>getName</strong>()
+      String ::<strong>getName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L49'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the variable name</p>
+   Public: Get the variable name
+
+Returns the variable name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -322,17 +346,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the variable name (a {String}).</span>
+      <span class='desc'>Returns the variable name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getType-instance'>
-      String .<strong>getType</strong>()
+      String ::<strong>getType</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L25'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the variable type, either <code>class</code> or <code>constant</code></p>
+   Public: Get the variable type, either `class` or `constant`
+
+Returns the variable type (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -341,17 +370,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the variable type (a {String}).</span>
+      <span class='desc'>Returns the variable type (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getValue-instance'>
-      String .<strong>getValue</strong>()
+      String ::<strong>getValue</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L88'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the variable value.</p>
+   Public: Get the variable value.
+
+Returns the value (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -360,17 +394,24 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the value (a {String}).</span>
+      <span class='desc'>Returns the value (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='isConstant-instance'>
-      Boolean .<strong>isConstant</strong>()
+      Boolean ::<strong>isConstant</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L36'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Test if the given value should be treated ad constant.</p>
+   Public: Test if the given value should be treated ad constant.
+
+Returns true if a constant (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>)
+
+ 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -379,17 +420,22 @@
       <span class='type'></span>
       (<tt>Boolean</tt>)
       &mdash;
-      <span class='desc'>Returns true if a constant (a {Boolean})</span>
+      <span class='desc'>Returns true if a constant (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>)</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
-      Object .<strong>toJSON</strong>()
+      Object ::<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;variable.coffee#L101'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get a JSON representation of the object</p>
+   Public: Get a JSON representation of the object
+
+Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -398,7 +444,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON object (a {Object}).</span>
+      <span class='desc'>Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>).</span>
     </li>
   </ul>
 </div>
@@ -407,10 +453,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

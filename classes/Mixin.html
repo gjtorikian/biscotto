@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Mixin
       </h1>
       <table class='box'>
@@ -121,7 +121,9 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>The Node representation of a CoffeeScript mixins</p>
+  Public: The Node representation of a CoffeeScript mixins
+
+
 </div>
 <div class='tags'>
 </div>
@@ -130,10 +132,9 @@
   <li>
     <span class='signature'>
       <a href='#constructor-instance'>
-        .<strong>constructor</strong>(node, fileName, options, comment)
+        ::<strong>constructor</strong>(node, fileName, options, comment)
       </a>
     </span>
-    <span class='constructor note title'>Constructor</span>
     <span class='desc'>
       Construct a mixin
     </span>
@@ -141,7 +142,7 @@
   <li>
     <span class='signature'>
       <a href='#getDoc-instance'>
-        .<strong>getDoc</strong>()
+        ::<strong>getDoc</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -151,7 +152,7 @@
   <li>
     <span class='signature'>
       <a href='#getFileName-instance'>
-        String .<strong>getFileName</strong>()
+        String ::<strong>getFileName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -161,17 +162,17 @@
   <li>
     <span class='signature'>
       <a href='#getFullName-instance'>
-        .<strong>getFullName</strong>()
+        ::<strong>getFullName</strong>()
       </a>
     </span>
     <span class='desc'>
-      Alias for {::getMixinName}
+      Alias for <a href='../classes/Mixin.html#getMixinName-instance'>::getMixinName</a>
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#getMethods-instance'>
-        Array .<strong>getMethods</strong>()
+        Array ::<strong>getMethods</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -181,7 +182,7 @@
   <li>
     <span class='signature'>
       <a href='#getMixinName-instance'>
-        String .<strong>getMixinName</strong>()
+        String ::<strong>getMixinName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -191,7 +192,7 @@
   <li>
     <span class='signature'>
       <a href='#getName-instance'>
-        String .<strong>getName</strong>()
+        String ::<strong>getName</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -201,7 +202,7 @@
   <li>
     <span class='signature'>
       <a href='#getNamespace-instance'>
-        String .<strong>getNamespace</strong>()
+        String ::<strong>getNamespace</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -210,18 +211,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#getVariables-instance'>
-        Array .<strong>getVariables</strong>()
-      </a>
-    </span>
-    <span class='desc'>
-      Get all variables.
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#toJSON-instance'>
-        Object .<strong>toJSON</strong>()
+        Object ::<strong>toJSON</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -243,10 +234,18 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='constructor-instance'>
-      .<strong>constructor</strong>(node, fileName, options, comment)
+      ::<strong>constructor</strong>(node, fileName, options, comment)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L15'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Construct a mixin</p>
+   Public: Construct a mixin
+
+node - The mixin node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+fileName - The filename (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)
+options - The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)
+comment - The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>) 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -255,25 +254,25 @@
       <span class='type'>(Object)</span>
       <span class='name'>node</span>
       &mdash;
-      <span class='desc'>The mixin node (a {Object})</span>
+      <span class='desc'>The mixin node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>fileName</span>
       &mdash;
-      <span class='desc'>The filename (a {String})</span>
+      <span class='desc'>The filename (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>)</span>
     </li>
     <li>
       <span class='type'>(Object)</span>
       <span class='name'>options</span>
       &mdash;
-      <span class='desc'>The parser options (a {Object})</span>
+      <span class='desc'>The parser options (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
     <li>
       <span class='type'>(Object)</span>
       <span class='name'>comment</span>
       &mdash;
-      <span class='desc'>The comment node (a {Object})</span>
+      <span class='desc'>The comment node (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>)</span>
     </li>
   </ul>
 </div>
@@ -283,10 +282,15 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='getDoc-instance'>
-      .<strong>getDoc</strong>()
+      ::<strong>getDoc</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L67'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the mixin doc</p>
+   Public: Get the mixin doc
+
+Returns the mixin doc (a [Doc]) 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -300,10 +304,15 @@
   </div>
   <div class='method_details'>
     <p class='signature' id='getFileName-instance'>
-      String .<strong>getFileName</strong>()
+      String ::<strong>getFileName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L62'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the source file name.</p>
+   Public: Get the source file name.
+
+Returns the filename of the mixin (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -312,27 +321,35 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the filename of the mixin (a {String}).</span>
+      <span class='desc'>Returns the filename of the mixin (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getFullName-instance'>
-      .<strong>getFullName</strong>()
+      ::<strong>getFullName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L86'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Alias for {::getMixinName}</p>
+  Public: Alias for <a href='../classes/Mixin.html#getMixinName-instance'>::getMixinName</a> 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getMethods-instance'>
-      Array .<strong>getMethods</strong>()
+      Array ::<strong>getMethods</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L121'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get all methods.</p>
+   Public: Get all methods.
+
+Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of all the <a href='../classes/Method.html'>Method</a>s. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -341,17 +358,22 @@
       <span class='type'></span>
       (<tt>Array</tt>)
       &mdash;
-      <span class='desc'>Returns an {Array} of all the {Method}s.</span>
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of all the <a href='../classes/Method.html'>Method</a>s.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getMixinName-instance'>
-      String .<strong>getMixinName</strong>()
+      String ::<strong>getMixinName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L72'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the full mixin name</p>
+   Public: Get the full mixin name
+
+Returns full mixin name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -360,17 +382,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns full mixin name (a {String}).</span>
+      <span class='desc'>Returns full mixin name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getName-instance'>
-      String .<strong>getName</strong>()
+      String ::<strong>getName</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L92'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Gets the mixin name</p>
+   Public: Gets the mixin name
+
+Returns the name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -379,17 +406,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the name (a {String}).</span>
+      <span class='desc'>Returns the name (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='getNamespace-instance'>
-      String .<strong>getNamespace</strong>()
+      String ::<strong>getNamespace</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L105'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the mixin namespace</p>
+   Public: Get the mixin namespace
+
+Returns the namespace (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -398,36 +430,22 @@
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the namespace (a {String}).</span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='getVariables-instance'>
-      Array .<strong>getVariables</strong>()
-    </p>
-    <div class='docstring'>
-  <p>Get all variables.</p>
-</div>
-<div class='tags'>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (<tt>Array</tt>)
-      &mdash;
-      <span class='desc'>Returns an {Array} of all the {Variable}s.</span>
+      <span class='desc'>Returns the namespace (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>).</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='toJSON-instance'>
-      Object .<strong>toJSON</strong>()
+      Object ::<strong>toJSON</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;nodes&#47;mixin.coffee#L131'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get a JSON representation of the object</p>
+   Public: Get a JSON representation of the object
+
+Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>). 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -436,7 +454,7 @@
       <span class='type'></span>
       (<tt>Object</tt>)
       &mdash;
-      <span class='desc'>Returns the JSON object (a {Object}).</span>
+      <span class='desc'>Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>).</span>
     </li>
   </ul>
 </div>
@@ -445,10 +463,10 @@
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

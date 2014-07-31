@@ -104,7 +104,7 @@
 </div>
     <div id='content'>
       <h1>
-        Class:
+        Class
         Biscotto
       </h1>
       <table class='box'>
@@ -115,7 +115,7 @@
       </table>
       <h2>Overview</h2>
       <div class='docstring'>
-  <p>Biscotto - the TomDoc-CoffeeScript API documentation generator</p>
+  Public: Biscotto - the TomDoc-CoffeeScript API documentation generator 
 </div>
 <div class='tags'>
 </div>
@@ -124,7 +124,7 @@
   <li>
     <span class='signature'>
       <a href='#detectExtras-class'>
-        @<strong>detectExtras</strong>(done)
+        .<strong>detectExtras</strong>(done)
       </a>
     </span>
     <span class='desc'>
@@ -134,17 +134,17 @@
   <li>
     <span class='signature'>
       <a href='#detectName-class'>
-        @<strong>detectName</strong>(done)
+        .<strong>detectName</strong>(done)
       </a>
     </span>
     <span class='desc'>
-      Find the project name by either parsing <code>package.json</code>,
+      Find the project name by either parsing <code>package.json</code>, or getting the current working directory name.
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#detectOrigin-class'>
-        @<strong>detectOrigin</strong>(done)
+        .<strong>detectOrigin</strong>(done)
       </a>
     </span>
     <span class='desc'>
@@ -154,7 +154,7 @@
   <li>
     <span class='signature'>
       <a href='#detectReadme-class'>
-        @<strong>detectReadme</strong>(done)
+        .<strong>detectReadme</strong>(done)
       </a>
     </span>
     <span class='desc'>
@@ -164,7 +164,7 @@
   <li>
     <span class='signature'>
       <a href='#detectSources-class'>
-        @<strong>detectSources</strong>(done)
+        .<strong>detectSources</strong>(done)
       </a>
     </span>
     <span class='desc'>
@@ -174,7 +174,7 @@
   <li>
     <span class='signature'>
       <a href='#detectTag-class'>
-        @<strong>detectTag</strong>(done)
+        .<strong>detectTag</strong>(done)
       </a>
     </span>
     <span class='desc'>
@@ -183,8 +183,28 @@
   </li>
   <li>
     <span class='signature'>
+      <a href='#generateMetadata-class'>
+        .<strong>generateMetadata</strong>(package_json_path, parser, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Builds and writes to metadata.json
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#populateSlug-class'>
+        .<strong>populateSlug</strong>(file, )
+      </a>
+    </span>
+    <span class='desc'>
+      Parse and collect metadata slugs
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
       <a href='#run-class'>
-        @<strong>run</strong>(done, file, analytics = false, homepage = false)
+        .<strong>run</strong>(done, file_generator_cb, analytics = false, homepage = false)
       </a>
     </span>
     <span class='desc'>
@@ -194,7 +214,7 @@
   <li>
     <span class='signature'>
       <a href='#script-class'>
-        String @<strong>script</strong>()
+        String .<strong>script</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -204,7 +224,7 @@
   <li>
     <span class='signature'>
       <a href='#style-class'>
-        String @<strong>style</strong>()
+        String .<strong>style</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -214,7 +234,7 @@
   <li>
     <span class='signature'>
       <a href='#version-class'>
-        String @<strong>version</strong>()
+        String .<strong>version</strong>()
       </a>
     </span>
     <span class='desc'>
@@ -226,20 +246,29 @@
       <div class='methods'>
   <div class='method_details'>
     <p class='signature' id='detectExtras-class'>
-      @<strong>detectExtras</strong>(done)
+      .<strong>detectExtras</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L349'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Find extra project files in the repository.</p>
+  Public: Find extra project files in the repository. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='detectName-class'>
-      @<strong>detectName</strong>(done)
+      .<strong>detectName</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L367'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Find the project name by either parsing <code>package.json</code>,</p>
+   Public: Find the project name by either parsing `package.json`,
+or getting the current working directory name.
+
+done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -248,17 +277,22 @@
       <span class='type'>(Function)</span>
       <span class='name'>done</span>
       &mdash;
-      <span class='desc'>The {Function} callback to call once this is done</span>
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='detectOrigin-class'>
-      @<strong>detectOrigin</strong>(done)
+      .<strong>detectOrigin</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L387'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Find the project&#39;s Git remote.origin URL.</p>
+   Public: Find the project's Git remote.origin URL.
+
+done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -267,37 +301,48 @@
       <span class='type'>(Function)</span>
       <span class='name'>done</span>
       &mdash;
-      <span class='desc'>The {Function} callback to call once this is done</span>
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='detectReadme-class'>
-      @<strong>detectReadme</strong>(done)
+      .<strong>detectReadme</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L338'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Find the project&#39;s README.</p>
+  Public: Find the project's README. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='detectSources-class'>
-      @<strong>detectSources</strong>(done)
+      .<strong>detectSources</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L332'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Find the source directories.</p>
+  Public: Find the source directories. 
 </div>
 <div class='tags'>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='detectTag-class'>
-      @<strong>detectTag</strong>(done)
+      .<strong>detectTag</strong>(done)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L378'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Find the project&#39;s latest Git tag.</p>
+   Public: Find the project's latest Git tag.
+
+done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done 
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -306,36 +351,101 @@
       <span class='type'>(Function)</span>
       <span class='name'>done</span>
       &mdash;
-      <span class='desc'>The {Function} callback to call once this is done</span>
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> callback to call once this is done</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='run-class'>
-      @<strong>run</strong>(done, file, analytics = false, homepage = false)
+    <p class='signature' id='generateMetadata-class'>
+      .<strong>generateMetadata</strong>(package_json_path, parser, options)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L263'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Run the documentation generator. This is usually done through</p><p>This function sets up all of the configuration options used by Biscotto.</p><p>You can also run the documentation generation without writing files
-to the file system, by supplying a callback function.</p>
+  Public: Builds and writes to metadata.json 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='populateSlug-class'>
+      .<strong>populateSlug</strong>(file, )
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L280'>Source</a>
+    </p>
+    <div class='docstring'>
+  Public: Parse and collect metadata slugs 
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='run-class'>
+      .<strong>run</strong>(done, file_generator_cb, analytics = false, homepage = false)
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L51'>Source</a>
+    </p>
+    <div class='docstring'>
+   Public: Run the documentation generator. This is usually done through
+the command line utility `biscotto` that is provided by this package.
+
+This function sets up all of the configuration options used by Biscotto.
+
+You can also run the documentation generation without writing files
+to the file system, by supplying a callback function.
+
+done - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to callback once the function is done
+file - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to callback on every file
+analytics - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing Google analytics tracking code
+homepage - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> homepage in the breadcrumbs
+
+Examples
+
+ biscotto = require 'biscotto'
+
+ file_generator_cb = (filename, content) ->
+   console.log "New file %s with content %s", filename, content
+
+ done = (err) ->
+   if err
+     console.log "Cannot generate documentation:", err
+   else
+     console.log "Documentation generated"
+
+ biscotto.run done, file_generator_cb
+
+ 
   <div class='examples'>
     <h3>Examples:</h3>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>biscotto = require &#39;biscotto&#39;</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>file_generator_cb = (filename, content) -&gt;
+  console.log &quot;New file %s with content %s&quot;, filename, content</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>done = (err) -&gt;
+  if err
+    console.log &quot;Cannot generate documentation:&quot;, err
+  else
+    console.log &quot;Documentation generated&quot;</code></pre>
     <h4>
       
     </h4>
-    <pre><code class='coffee'></code></pre>
+    <pre><code class='coffee'>biscotto.run done, file_generator_cb</code></pre>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffee'> </code></pre>
   </div>
 </div>
 <div class='tags'>
@@ -345,35 +455,40 @@ to the file system, by supplying a callback function.</p>
       <span class='type'>(Function)</span>
       <span class='name'>done</span>
       &mdash;
-      <span class='desc'>A {Function} to callback once the function is done</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to callback once the function is done</span>
     </li>
     <li>
       <span class='type'>(Function)</span>
       <span class='name'>file</span>
       &mdash;
-      <span class='desc'>A {Function} to callback on every file</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to callback on every file</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>analytics</span>
       &mdash;
-      <span class='desc'>A {String} representing Google analytics tracking code</span>
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing Google analytics tracking code</span>
     </li>
     <li>
       <span class='type'>(String)</span>
       <span class='name'>homepage</span>
       &mdash;
-      <span class='desc'>The {String} homepage in the breadcrumbs</span>
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> homepage in the breadcrumbs</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='script-class'>
-      String @<strong>script</strong>()
+      String .<strong>script</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L322'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the Biscotto script content that is used in the webinterface</p>
+   Public: Get the Biscotto script content that is used in the webinterface
+
+Returns the script contents as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -382,17 +497,22 @@ to the file system, by supplying a callback function.</p>
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the script contents as a {String}.</span>
+      <span class='desc'>Returns the script contents as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='style-class'>
-      String @<strong>style</strong>()
+      String .<strong>style</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L328'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the Biscotto style content that is used in the webinterface</p>
+   Public: Get the Biscotto style content that is used in the webinterface
+
+Returns the style content as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>. 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -401,17 +521,22 @@ to the file system, by supplying a callback function.</p>
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns the style content as a {String}.</span>
+      <span class='desc'>Returns the style content as a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
     </li>
   </ul>
 </div>
   </div>
   <div class='method_details'>
     <p class='signature' id='version-class'>
-      String @<strong>version</strong>()
+      String .<strong>version</strong>()
+      <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
+&#47;blob&#47;v2.2.1
+/src&#47;biscotto.coffee#L19'>Source</a>
     </p>
     <div class='docstring'>
-  <p>Get the current Biscotto version</p>
+   Public: Get the current Biscotto version
+
+Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the Biscotto version 
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -420,7 +545,7 @@ to the file system, by supplying a callback function.</p>
       <span class='type'></span>
       (<tt>String</tt>)
       &mdash;
-      <span class='desc'>Returns a {String} representing the Biscotto version</span>
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the Biscotto version</span>
     </li>
   </ul>
 </div>
@@ -429,10 +554,10 @@ to the file system, by supplying a callback function.</p>
     </div>
     <div id='footer'>
   Generated on
-  Wed May 14 2014 18:44:02 GMT-0700 (PDT)
+  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v0.0.12
+  v2.2.1
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
