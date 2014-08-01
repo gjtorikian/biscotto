@@ -186,9 +186,6 @@ module.exports = class Metadata
                 else
                   name = prototypeExp.variable.base.value
 
-                # Do not include the class constructor
-                continue if name is 'constructor'
-
                 value = @eval(prototypeExp.value)
 
                 if value.constructor?.name is 'Value'

@@ -20,6 +20,10 @@
             ],
             "prototypeProperties": [
               [
+                44,
+                15
+              ],
+              [
                 47,
                 8
               ],
@@ -99,6 +103,28 @@
               ]
             ],
             "doc": " Public: Returns the given point that is earlier in the buffer. "
+          }
+        },
+        "44": {
+          "15": {
+            "name": "constructor",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              null,
+              null
+            ],
+            "range": [
+              [
+                44,
+                15
+              ],
+              [
+                44,
+                36
+              ]
+            ],
+            "doc": "~Private~"
           }
         },
         "47": {
@@ -327,6 +353,10 @@
                 8
               ],
               [
+                60,
+                15
+              ],
+              [
                 73,
                 11
               ]
@@ -431,6 +461,28 @@
               ]
             ],
             "doc": " Public: Returns a {Range} that starts at the given point and ends at the\nstart point plus the given row and column deltas.\n\n* startPoint:\n  A {Point} or point-compatible {Array}\n* rowDelta:\n  A {Number} indicating how many rows to add to the start point to get the\n  end point.\n* columnDelta:\n  A {Number} indicating how many rows to columns to the start point to get\n  the end point.\n\nReturns a {Range} "
+          }
+        },
+        "60": {
+          "15": {
+            "name": "constructor",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "pointA",
+              "pointB"
+            ],
+            "range": [
+              [
+                60,
+                15
+              ],
+              [
+                73,
+                1
+              ]
+            ],
+            "doc": "~Private~"
           }
         },
         "73": {
