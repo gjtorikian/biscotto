@@ -49,6 +49,12 @@ module.exports = class Doc extends Node
   isPrivate: ->
     not @isPublic() and not @isInternal()
 
+  isDeprecated: ->
+    /deprecated/i.test(@status)
+
+  isAbstract: ->
+    /abstract/i.test(@status)
+
   # Public: Detect whitespace on the left and removes
   # the minimum whitespace amount.
   #
@@ -131,12 +137,12 @@ module.exports = class Doc extends Node
   #
   # Returns nothing.
   parse_description: (section) ->
-    if md = /([A-Z]\w+)\:((.|[\r\n])*)/g.exec(section)
+    if md = /((?:[A-Z]\w+ ?)+)\:((.|[\r\n])*)/g.exec(section)
       return {
         status:      md[1]
         description: _.str.strip(md[2]).replace(/\r?\n/g, ' ')
       }
-    else if md = /~([A-Z]\w+)\~((.|[\r\n])*)/g.exec(section)
+    else if md = /~((?:[A-Z]\w+ ?)+)\~((.|[\r\n])*)/g.exec(section)
       return {
         status:      md[1]
         description: _.str.strip(md[2]).replace(/\r?\n/g, ' ')
@@ -273,9 +279,10 @@ module.exports = class Doc extends Node
         includes: @includeMixins
         extends: @extendMixins
         concerns: @concerns
-        abstract: @abstract
-        private: @private
-        deprecated: @deprecated
+        abstract: @isAbstract()
+        private: @isPrivate()
+        internal: @isInternal()
+        deprecated: @isDeprecated()
         version: @version
         since: @since
         examples: @examples

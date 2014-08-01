@@ -10,8 +10,6 @@
           != method.signature
         - if method.bound
           (bound)
-        - if method.doc?.private
-          (private)
 
         - if @parent.repo
           - filePath = @parent.classData?.file || "#{@parent.filepath}/#{@parent.filename}"

@@ -150,7 +150,7 @@ module.exports = class Parser
             comment.push commentLine[2]?.replace /#/g, "\u0091#"
           else
             # append current global status flag if needed
-            if !/^\s*\w+:/.test(commentLine[2])
+            if !/^\s*(?:\w\s?)+:/.test(commentLine[2])
               commentLine[2] = @globalStatus + ": " + commentLine[2]
             inComment = true
             indentComment =  commentLine[1].length - 1
