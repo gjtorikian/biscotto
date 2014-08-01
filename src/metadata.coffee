@@ -153,6 +153,9 @@ module.exports = class Metadata
   visitBlock: (exp) ->
 
   evalComment: (exp) ->
+    type: 'comment'
+    doc: exp.comment
+    range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
   evalClass: (exp) ->
     className = exp.variable.base.value
@@ -173,7 +176,8 @@ module.exports = class Metadata
 
             switch prototypeExp.constructor.name
               when 'Comment'
-                continue
+                value = @eval(prototypeExp)
+                @defs["#{value.range[0][0]}_line_comment"] = value
               else
                 isClassLevel = prototypeExp.variable.this
 

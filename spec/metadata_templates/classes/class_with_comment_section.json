@@ -1,0 +1,91 @@
+{
+  "files": {
+    "spec/metadata_templates/classes/class_with_comment_section.coffee": {
+      "objects": {
+        "3": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "classProperties": [],
+            "prototypeProperties": [
+              [
+                4,
+                9
+              ],
+              [
+                15,
+                11
+              ]
+            ],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text.\n\n ",
+            "range": [
+              [
+                3,
+                0
+              ],
+              [
+                15,
+                17
+              ]
+            ]
+          }
+        },
+        "4": {
+          "9": {
+            "name": "prop2",
+            "type": "primitive",
+            "range": [
+              [
+                4,
+                9
+              ],
+              [
+                4,
+                13
+              ]
+            ],
+            "bindingType": "prototypeProperty"
+          }
+        },
+        "6": {
+          "2": {
+            "type": "comment",
+            "doc": "\nSection: Something\n",
+            "range": [
+              [
+                6,
+                2
+              ],
+              [
+                8,
+                4
+              ]
+            ]
+          }
+        },
+        "15": {
+          "11": {
+            "name": "method2",
+            "bindingType": "prototypeProperty",
+            "type": "function",
+            "paramNames": [
+              "a"
+            ],
+            "range": [
+              [
+                15,
+                11
+              ],
+              [
+                15,
+                16
+              ]
+            ],
+            "doc": " Public: Takes an argument and does some stuff.\n\na - A {String}\n\nReturns {Boolean}. "
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}
