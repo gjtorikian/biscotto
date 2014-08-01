@@ -85,6 +85,10 @@ module.exports = class Metadata
         # X.y   = ...
         switch exp.variable.base.constructor.name
           when 'Literal'
+            # Something we dont care about is on the right side of the `=`.
+            # This could be some garbage like an if statement.
+            return unless value.range
+
             # case _.str = ...
             if exp.variable.properties.length > 0
               nameWithPeriods = [exp.variable.base.value].concat(_.map(exp.variable.properties, (prop) -> prop.name.value)).join(".")
