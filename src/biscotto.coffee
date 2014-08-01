@@ -240,14 +240,14 @@ module.exports = class Biscotto
                       parser.parseFile relativePath if _.some(SRC_DIRS, (dir) -> ///^#{dir}///.test(shortPath))
                     catch error
                       throw error if options.debug
-                      console.log "Cannot parse file #{ filename }: #{ error.message }"
+                      console.log "Cannot parse file #{ filename }@#{error.location.first_line}: #{ error.message }"
               else
                 if input.match /\._?coffee$/
                   try
                     parser.parseFile input
                   catch error
                     throw error if options.debug
-                    console.log "Cannot parse file #{ filename }: #{ error.message }"
+                    console.log "Cannot parse file #{ filename }@#{error.location.first_line}: #{ error.message }"
 
           if options.metadata
             @generateMetadata(package_json_path, parser, options)
