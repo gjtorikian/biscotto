@@ -240,7 +240,8 @@ module.exports = class Metadata
 
                 if value.type == "function"
                   # find the matching method from the parsed files
-                  func = _.find(@methods, (method) -> method.name == value.name)
+                  func = _.find @methods, (method) ->
+                    method.entity.getClassName() == className and method.name == value.name
                   value.doc = if func? then func.doc.node.comment else null
           true
 

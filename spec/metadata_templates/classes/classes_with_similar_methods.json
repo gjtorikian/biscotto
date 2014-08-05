@@ -1,0 +1,95 @@
+{
+  "files": {
+    "spec/metadata_templates/classes/classes_with_similar_methods.coffee": {
+      "objects": {
+        "2": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "classProperties": [
+              [
+                4,
+                9
+              ]
+            ],
+            "prototypeProperties": [],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text. ",
+            "range": [
+              [
+                2,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          }
+        },
+        "4": {
+          "9": {
+            "name": "copy",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [],
+            "range": [
+              [
+                4,
+                9
+              ],
+              [
+                4,
+                10
+              ]
+            ],
+            "doc": " Public: Takes an argument and does some stuff. "
+          }
+        },
+        "6": {
+          "0": {
+            "type": "class",
+            "name": "DisplayBuffer",
+            "classProperties": [
+              [
+                8,
+                9
+              ]
+            ],
+            "prototypeProperties": [],
+            "doc": "~Private~",
+            "range": [
+              [
+                6,
+                0
+              ],
+              [
+                8,
+                11
+              ]
+            ]
+          }
+        },
+        "8": {
+          "9": {
+            "name": "copy",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [],
+            "range": [
+              [
+                8,
+                9
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "doc": " Private: Nope, not the same as the other `copy()` "
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}

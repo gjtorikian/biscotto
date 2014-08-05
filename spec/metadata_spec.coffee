@@ -66,6 +66,9 @@ describe "Metadata", ->
     it 'understands comment sections properties', ->
       constructDelta("spec/metadata_templates/classes/class_with_comment_section.coffee")
 
+    it 'selects the correct doc string for each function', ->
+      constructDelta("spec/metadata_templates/classes/classes_with_similar_methods.coffee")
+
   describe "Exports", ->
     it 'understands basic exports', ->
       constructDelta("spec/metadata_templates/exports/basic_exports.coffee")
