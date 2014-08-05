@@ -272,17 +272,18 @@ module.exports = class Biscotto
     fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(metadataSlugs, null, "    ")
 
   # Public: Builds and writes to metadata.json
-  @generateMetadataSlug: (package_json_path, parser, options) ->
-    if fs.existsSync(package_json_path)
-      package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
+  @generateMetadataSlug: (packageJsonPath, parser, options) ->
+    if fs.existsSync(packageJsonPath)
+      packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 
-    metadata = new Metadata(package_json?["dependencies"] ? {}, parser)
-    slug = { main: "", files: {} }
-
-    slug["main"] = @mainFileFinder(package_json_path, package_json?["main"])
+    metadata = new Metadata(packageJson?.dependencies ? {}, parser)
+    slug =
+      main: @mainFileFinder(packageJsonPath, packageJson?.main)
+      repo: packageJson?.repo
+      files: {}
 
     for filename, content of parser.iteratedFiles
-      relativeFilename = path.relative(package_json_path, filename)
+      relativeFilename = path.relative(packageJsonPath, filename)
       # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
       metadata.generate(CoffeeScript.nodes(content))
       @populateSlug(slug, relativeFilename, metadata)
