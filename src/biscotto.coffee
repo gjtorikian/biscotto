@@ -81,8 +81,6 @@ module.exports = class Biscotto
       },
       (err, defaults) =>
 
-        @slugs   = {}
-
         extraUsage = if defaults.extras.length is 0 then '' else  "- #{ defaults.extras.join ' ' }"
 
         optimist = require('optimist')
@@ -221,36 +219,39 @@ module.exports = class Biscotto
           options.extras = defaults.extras if options.extras.length is 0
 
           parser = new Parser(options)
+          metadataSlugs = []
 
           for input in options.inputs
+            continue unless (fs.existsSync || path.existsSync)(input)
+
             # collect probable package.json path
             package_json_path = path.join(input, 'package.json')
+            stats = fs.lstatSync input
 
-            if (fs.existsSync || path.existsSync)(input)
-              stats = fs.lstatSync input
-
-              if stats.isDirectory()
-                for filename in walkdir.sync input
-                  if filename.match /\._?coffee$/
-                    try
-                      relativePath = filename
-                      relativePath = path.normalize(filename.replace(process.cwd(), ".#{path.sep}")) if filename.indexOf(process.cwd()) == 0
-                      shortPath = relativePath.replace(path.resolve(process.cwd(), input) + path.sep, '')
-                      # don't parse Gruntfile.coffee, specs, or anything not in a src dir
-                      parser.parseFile relativePath if _.some(SRC_DIRS, (dir) -> ///^#{dir}///.test(shortPath))
-                    catch error
-                      throw error if options.debug
-                      console.log "Cannot parse file #{ filename }@#{error.location.first_line}: #{ error.message }"
-              else
-                if input.match /\._?coffee$/
+            if stats.isDirectory()
+              for filename in walkdir.sync input
+                if filename.match /\._?coffee$/
                   try
-                    parser.parseFile input
+                    relativePath = filename
+                    relativePath = path.normalize(filename.replace(process.cwd(), ".#{path.sep}")) if filename.indexOf(process.cwd()) == 0
+                    shortPath = relativePath.replace(path.resolve(process.cwd(), input) + path.sep, '')
+                    # don't parse Gruntfile.coffee, specs, or anything not in a src dir
+                    parser.parseFile relativePath if _.some(SRC_DIRS, (dir) -> ///^#{dir}///.test(shortPath))
                   catch error
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }@#{error.location.first_line}: #{ error.message }"
+            else
+              if input.match /\._?coffee$/
+                try
+                  parser.parseFile input
+                catch error
+                  throw error if options.debug
+                  console.log "Cannot parse file #{ filename }@#{error.location.first_line}: #{ error.message }"
+
+            metadataSlugs.push @generateMetadataSlug(package_json_path, parser, options) if options.metadata
 
           if options.metadata
-            @generateMetadata(package_json_path, parser, options)
+            @writeMetadata(metadataSlugs, options)
           else
             generator = new Generator(parser, options)
             generator.generate(file_generator_cb)
@@ -267,26 +268,29 @@ module.exports = class Biscotto
       console.log "Cannot generate documentation: #{ error.message }"
       throw error
 
+  @writeMetadata: (metadataSlugs, options) ->
+    fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(metadataSlugs, null, "    ")
+
   # Public: Builds and writes to metadata.json
-  @generateMetadata: (package_json_path, parser, options) ->
+  @generateMetadataSlug: (package_json_path, parser, options) ->
     if fs.existsSync(package_json_path)
       package_json = JSON.parse(fs.readFileSync(package_json_path, 'utf-8'))
 
-    metadata = new Metadata(package_json["dependencies"], parser)
-    @slugs = { main: "", files: {} }
+    metadata = new Metadata(package_json?["dependencies"] ? {}, parser)
+    slug = { main: "", files: {} }
 
-    @slugs["main"] = @mainFileFinder(package_json_path, package_json["main"])
+    slug["main"] = @mainFileFinder(package_json_path, package_json?["main"])
 
     for filename, content of parser.iteratedFiles
-      relative_filename = path.relative(package_json_path, filename)
+      relativeFilename = path.relative(package_json_path, filename)
       # TODO: @lineMapping is all messed up; try to avoid a *second* call to .nodes
       metadata.generate(CoffeeScript.nodes(content))
-      @populateSlug(relative_filename, metadata)
+      @populateSlug(slug, relativeFilename, metadata)
 
-    fs.writeFileSync path.join(options.output, 'metadata.json'), JSON.stringify(@slugs, null, "    ")
+    slug
 
   # Public: Parse and collect metadata slugs
-  @populateSlug: (file, {defs:unindexedObjects, exports:exports}) ->
+  @populateSlug: (slug, filename, {defs:unindexedObjects, exports:exports}) ->
     objects = {}
     for key, value of unindexedObjects
       startLineNumber = value.range[0][0]
@@ -305,11 +309,13 @@ module.exports = class Biscotto
         exports[key] = value.startLineNumber
 
     # TODO: ugh, I don't understand relative resolving ;_;
-    file = file.substring(1, file.length) if file.match /^\.\./
-    @slugs["files"][file] = {objects, exports}
-    @slugs
+    filename = filename.substring(1, filename.length) if filename.match /^\.\./
+    slug["files"][filename] = {objects, exports}
+    slug
 
   @mainFileFinder: (package_json_path, main_file) ->
+    return unless main_file?
+
     if main_file.match(/\.js$/)
       main_file = main_file.replace(/\.js$/, ".coffee")
     else
