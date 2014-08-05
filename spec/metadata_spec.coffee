@@ -19,12 +19,10 @@ describe "Metadata", ->
   constructDelta = (filename, hasReferences = false) ->
     source = fs.readFileSync filename, 'utf8'
 
-    Biscotto.slugs = { files: {} }
     parser.parseContent source, filename
     metadata = new Metadata({}, parser)
     metadata.generate(CoffeeScript.nodes(source))
-    generated = Biscotto.populateSlug(filename, metadata)
-    Biscotto.slugs = {} # reset the slugs
+    generated = Biscotto.populateSlug({ files: {} }, filename, metadata)
 
     expected_filename = filename.replace(/\.coffee$/, '.json')
     expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)
@@ -89,22 +87,22 @@ describe "Metadata", ->
       constructDelta("spec/metadata_templates/requires/references/buffer-patch.coffee")
 
   describe "A real package", ->
-    package_json_path = null
+    packageJsonPath = null
     test_path = null
 
     beforeEach ->
       test_path = path.join("spec", "metadata_templates", "test_package")
-      package_json_path = path.join(test_path, 'package.json')
+      packageJsonPath = path.join(test_path, 'package.json')
       for file in fs.readdirSync(path.join(test_path, "src"))
         parser.parseFile path.join(test_path, "src", file)
 
     it "renders the package correctly", ->
-      Biscotto.generateMetadata(package_json_path, parser, {output: ""})
+      slug = Biscotto.generateMetadataSlug(packageJsonPath, parser, {output: ""})
 
       expected_filename = path.join(test_path, 'test_metadata.json')
       expected = JSON.stringify(JSON.parse(fs.readFileSync expected_filename, 'utf8'), null, 2)
-      generated =  JSON.stringify(Biscotto.slugs, null, 2)
+      generated =  JSON.stringify(slug, null, 2)
 
       checkDelta(expected_filename, expected, generated, diff(expected, generated))
-      expect(_.keys(Biscotto.slugs.files)).not.toContain "./Gruntfile.coffee"
-      expect(_.keys(Biscotto.slugs.files)).not.toContain "./spec/text-buffer-spec.coffee"
+      expect(_.keys(slug.files)).not.toContain "./Gruntfile.coffee"
+      expect(_.keys(slug.files)).not.toContain "./spec/text-buffer-spec.coffee"
