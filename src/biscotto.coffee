@@ -279,7 +279,8 @@ module.exports = class Biscotto
     metadata = new Metadata(packageJson?.dependencies ? {}, parser)
     slug =
       main: @mainFileFinder(packageJsonPath, packageJson?.main)
-      repo: packageJson?.repo
+      repository: packageJson?.repository?.url ? packageJson?.repository
+      version: packageJson?.version
       files: {}
 
     for filename, content of parser.iteratedFiles
