@@ -146,16 +146,17 @@ module.exports = class Parser
       else
         commentLine = /^(\s*#)\s?(\s*.*)/.exec(line)
         if commentLine
-          if inComment
-            comment.push commentLine[2]?.replace /#/g, "\u0091#"
-          else
+          commentText = commentLine[2]?.replace(/#/g, "\u0091#")
+          unless inComment
             # append current global status flag if needed
             if !/^\s*\w+:/.test(commentLine[2])
               commentLine[2] = @globalStatus + ": " + commentLine[2]
             inComment = true
             indentComment =  commentLine[1].length - 1
+            commentText = "### #{commentText}"
 
-            comment.push whitespace(indentComment) + '### ' + commentLine[2]?.replace /#/g, "\u0091#"
+          comment.push whitespace(indentComment) + commentText
+
         else
           if inComment
             inComment = false
