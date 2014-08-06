@@ -80,7 +80,7 @@
                 1
               ]
             ],
-            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n  This can be an object that's already a {Point}, in which case it's\n  simply returned, or an array containing two {Number}s representing the\n  row and column.\n\n* copy:\n  An optional boolean indicating whether to force the copying of objects\n  that are already points.\n\nReturns: A {Point} based on the given object. "
+            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n    This can be an object that's already a {Point}, in which case it's\n    simply returned, or an array containing two {Number}s representing the\n    row and column.\n\n* copy:\n    An optional boolean indicating whether to force the copying of objects\n    that are already points.\n\nReturns: A {Point} based on the given object. "
           }
         },
         "36": {
@@ -437,7 +437,7 @@
                 1
               ]
             ],
-            "doc": " Public: Convert any point-compatible object to a {Point}.\n\n* object:\n  This can be an object that's already a {Point}, in which case it's\n  simply returned, or an array containing two {Number}s representing the\n  row and column.\n\n* copy:\n  An optional boolean indicating whether to force the copying of objects\n  that are already points.\n\nReturns: A {Point} based on the given object. "
+            "doc": " Public: Convert any range-compatible object to a {Range}.\n\n* object:\n    This can be an object that's already a {Range}, in which case it's\n    simply returned, or an array containing two {Point}s or point-compatible\n    arrays.\n* copy:\n    An optional boolean indicating whether to force the copying of objects\n    that are already ranges.\n\nReturns: A {Range} based on the given object. "
           }
         },
         "55": {
@@ -460,7 +460,7 @@
                 1
               ]
             ],
-            "doc": " Public: Returns a {Range} that starts at the given point and ends at the\nstart point plus the given row and column deltas.\n\n* startPoint:\n  A {Point} or point-compatible {Array}\n* rowDelta:\n  A {Number} indicating how many rows to add to the start point to get the\n  end point.\n* columnDelta:\n  A {Number} indicating how many rows to columns to the start point to get\n  the end point.\n\nReturns a {Range} "
+            "doc": " Public: Returns a {Range} that starts at the given point and ends at the\nstart point plus the given row and column deltas.\n\n* startPoint:\n    A {Point} or point-compatible {Array}\n* rowDelta:\n    A {Number} indicating how many rows to add to the start point to get the\n    end point.\n* columnDelta:\n    A {Number} indicating how many rows to columns to the start point to get\n    the end point.\n\nReturns a {Range} "
           }
         },
         "60": {

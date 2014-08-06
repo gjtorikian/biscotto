@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": " Public: Does something.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
+          "comment": " Public: Does something.\n\nobj - An object with the following defaults:\n      :option1 - Does some stuff\n      :option2 - Does some {Integer} stuff ",
           "summary": "Does something.",
           "status": "Public",
           "params": [
@@ -63,7 +63,7 @@
       },
       {
         "doc": {
-          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
+          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n      :option1 - Does some stuff\n      :option2 - Does some {Integer} stuff ",
           "summary": "Does something else.",
           "status": "Public",
           "params": [
@@ -108,7 +108,7 @@
       },
       {
         "doc": {
-          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n    :option1 - Does some stuff\n    :option2 - Does some {Integer} stuff ",
+          "comment": " Public: Does something else.\n\nobj - An object with the following defaults:\n      :option1 - Does some stuff\n      :option2 - Does some {Integer} stuff ",
           "summary": "Does something else.",
           "status": "Public",
           "params": [

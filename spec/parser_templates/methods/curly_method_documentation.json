@@ -40,7 +40,7 @@
       },
       {
         "doc": {
-          "comment": " Private: Do it!\n\nSee {#undo} for more information.\n\nit - The {String} thing to do\nagain - A {Boolean} for do it again\noptions - The do options\n        :speed - The {String} speed\n        :repeat - How many {Number} times to repeat\n        :tasks - The {Tasks} tasks to do\n\nReturns {Boolean} when successfully executed\n\n ",
+          "comment": " Private: Do it!\n\nSee {#undo} for more information.\n\nit - The {String} thing to do\nagain - A {Boolean} for do it again\noptions - The do options\n          :speed - The {String} speed\n          :repeat - How many {Number} times to repeat\n          :tasks - The {Tasks} tasks to do\n\nReturns {Boolean} when successfully executed\n\n ",
           "summary": "Do it! See {#undo} for more information.",
           "status": "Private",
           "params": [

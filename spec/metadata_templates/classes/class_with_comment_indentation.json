@@ -1,0 +1,52 @@
+{
+  "files": {
+    "spec/metadata_templates/classes/class_with_comment_indentation.coffee": {
+      "objects": {
+        "2": {
+          "0": {
+            "type": "class",
+            "name": "TextBuffer",
+            "classProperties": [
+              [
+                11,
+                9
+              ]
+            ],
+            "prototypeProperties": [],
+            "doc": " Public: A mutable text container with undo/redo support and the ability to\nannotate logical regions in the text. ",
+            "range": [
+              [
+                2,
+                0
+              ],
+              [
+                11,
+                11
+              ]
+            ]
+          }
+        },
+        "11": {
+          "9": {
+            "name": "copy",
+            "bindingType": "classProperty",
+            "type": "function",
+            "paramNames": [],
+            "range": [
+              [
+                11,
+                9
+              ],
+              [
+                11,
+                10
+              ]
+            ],
+            "doc": " Public: Takes an argument and does some stuff.\n\n* one\n  * two\n  * three\n    * four\n  * five "
+          }
+        }
+      },
+      "exports": {}
+    }
+  }
+}
