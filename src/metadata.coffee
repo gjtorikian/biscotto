@@ -242,7 +242,7 @@ module.exports = class Metadata
                   # find the matching method from the parsed files
                   func = _.find @methods, (method) ->
                     method.entity.getClassName() == className and method.name == value.name
-                  value.doc = if func? then func.doc.node.comment else null
+                  value.doc = if func? then func.doc.comment else null
           true
 
     # find the matching class from the parsed files
@@ -253,7 +253,7 @@ module.exports = class Metadata
     bindingType: @bindingTypes[className] unless _.isUndefined @bindingTypes[className]
     classProperties: classProperties
     prototypeProperties: prototypeProperties
-    doc: if clazz? then clazz.doc.node.comment else null
+    doc: if clazz? then clazz.doc.comment else null
     range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
   evalCode: (exp) ->
