@@ -14,6 +14,8 @@ SRC_DIRS = ['src', 'lib', 'app']
 
 # Public: Biscotto - the TomDoc-CoffeeScript API documentation generator
 module.exports = class Biscotto
+  @Parser: Parser
+  @Metadata: Metadata
 
   # Public: Get the current Biscotto version
   #
