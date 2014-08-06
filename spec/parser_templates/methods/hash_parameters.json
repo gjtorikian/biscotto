@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": " Public: Does something.\n\nobj - An object with the following defaults:\n    :aaa - Does some stuff\n    :bbb - Does some {Integer} stuff\n    :ccc - Other stuff ",
+          "comment": " Public: Does something.\n\nobj - An object with the following defaults:\n      :aaa - Does some stuff\n      :bbb - Does some {Integer} stuff\n      :ccc - Other stuff ",
           "summary": "Does something.",
           "status": "Public",
           "params": [
@@ -63,7 +63,7 @@
       },
       {
         "doc": {
-          "comment": " Public: Does something else.\n\nobj - An object with some defaults.\n    Those defaults are nice!\n    Here are some of those defaults:\n    :aaa - Does some {String} stuff\n    :bbb - Does some {Integer} stuff\n    :ccc - Other stuff ",
+          "comment": " Public: Does something else.\n\nobj - An object with some defaults.\n      Those defaults are nice!\n      Here are some of those defaults:\n      :aaa - Does some {String} stuff\n      :bbb - Does some {Integer} stuff\n      :ccc - Other stuff ",
           "summary": "Does something else.",
           "status": "Public",
           "params": [

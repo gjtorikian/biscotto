@@ -149,8 +149,8 @@ module.exports = class Parser
           commentText = commentLine[2]?.replace(/#/g, "\u0091#")
           unless inComment
             # append current global status flag if needed
-            if !/^\s*\w+:/.test(commentLine[2])
-              commentLine[2] = @globalStatus + ": " + commentLine[2]
+            if !/^\s*\w+:/.test(commentText)
+              commentText = @globalStatus + ": " + commentText
             inComment = true
             indentComment =  commentLine[1].length - 1
             commentText = "### #{commentText}"

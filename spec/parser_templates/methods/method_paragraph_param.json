@@ -18,7 +18,7 @@
     "methods": [
       {
         "doc": {
-          "comment": " Public: Does stuff\n\nsomething - Blah blah blah.\n          Foo foo foo! ",
+          "comment": " Public: Does stuff\n\nsomething - Blah blah blah.\n            Foo foo foo! ",
           "summary": "Does stuff",
           "status": "Public",
           "params": [
@@ -45,7 +45,7 @@
       },
       {
         "doc": {
-          "comment": " Public: Does other stuff\n\nsomething - Blah blah blah.\n          Fah fah fah?\n           Foo foo foo!\nsomething2 - Bar bar bar.\n           Cha cha cha!!\noptions - The do options\n        :speed - The {String} speed\n        :repeat - How many {Number} times to repeat\n        :tasks - The {Tasks} tasks to do ",
+          "comment": " Public: Does other stuff\n\nsomething - Blah blah blah.\n            Fah fah fah?\n             Foo foo foo!\nsomething2 - Bar bar bar.\n             Cha cha cha!!\noptions - The do options\n          :speed - The {String} speed\n          :repeat - How many {Number} times to repeat\n          :tasks - The {Tasks} tasks to do ",
           "summary": "Does other stuff",
           "status": "Public",
           "params": [
@@ -103,7 +103,7 @@
       },
       {
         "doc": {
-          "comment": " Public: Does more other stuff\n\nsomething - Blah **blah blah**.\n          Fah fah fah?\n           Foo foo foo!\nsomething2 - Bar bar bar.\n           Cha cha cha!!\nopts - The do options\n     :speed - The {String} speed\n     :repeat -  How many {Number} times to repeat\n     :tasks - The {Tasks} tasks to do ",
+          "comment": " Public: Does more other stuff\n\nsomething - Blah **blah blah**.\n            Fah fah fah?\n             Foo foo foo!\nsomething2 - Bar bar bar.\n             Cha cha cha!!\nopts - The do options\n       :speed - The {String} speed\n       :repeat -  How many {Number} times to repeat\n       :tasks - The {Tasks} tasks to do ",
           "summary": "Does more other stuff",
           "status": "Public",
           "params": [
