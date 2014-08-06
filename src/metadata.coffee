@@ -14,7 +14,6 @@ module.exports = class Metadata
     @modules = {}
     @classes = @parser.classes
     @files = @parser.files
-    @methods = @parser.getAllMethods()
 
     @root.traverseChildren no, (exp) => @visit(exp) # `no` means Stop at scope boundaries
 
@@ -166,6 +165,8 @@ module.exports = class Metadata
     classProperties = []
     prototypeProperties = []
 
+    classNode = _.find(@classes, (clazz) -> clazz.getFullName() == className)
+
     for subExp in exp.body.expressions
 
       switch subExp.constructor.name
@@ -240,20 +241,16 @@ module.exports = class Metadata
 
                 if value.type == "function"
                   # find the matching method from the parsed files
-                  func = _.find @methods, (method) ->
-                    method.entity.getClassName() == className and method.name == value.name
-                  value.doc = if func? then func.doc.comment else null
+                  func = _.find classNode?.getMethods(), (method) -> method.name == value.name
+                  value.doc = func?.doc.comment
           true
-
-    # find the matching class from the parsed files
-    clazz = _.find(@classes, (clazz) -> clazz.getFullName() == className)
 
     type: 'class'
     name: className
     bindingType: @bindingTypes[className] unless _.isUndefined @bindingTypes[className]
     classProperties: classProperties
     prototypeProperties: prototypeProperties
-    doc: if clazz? then clazz.doc.comment else null
+    doc: classNode?.doc.comment
     range: [ [exp.locationData.first_line, exp.locationData.first_column], [exp.locationData.last_line, exp.locationData.last_column ] ]
 
   evalCode: (exp) ->
