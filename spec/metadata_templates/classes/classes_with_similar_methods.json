@@ -42,7 +42,7 @@
                 10
               ]
             ],
-            "doc": " Public: Takes an argument and does some stuff. "
+            "doc": "Public: Takes an argument and does some stuff. "
           }
         },
         "6": {
@@ -85,7 +85,7 @@
                 10
               ]
             ],
-            "doc": " Private: Nope, not the same as the other `copy()` "
+            "doc": "Private: Nope, not the same as the other `copy()` "
           }
         }
       },
