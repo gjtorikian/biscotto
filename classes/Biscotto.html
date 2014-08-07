@@ -183,8 +183,8 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#generateMetadata-class'>
-        .<strong>generateMetadata</strong>(package_json_path, parser, options)
+      <a href='#generateMetadataSlug-class'>
+        .<strong>generateMetadataSlug</strong>(packageJsonPath, parser, options)
       </a>
     </span>
     <span class='desc'>
@@ -194,7 +194,7 @@
   <li>
     <span class='signature'>
       <a href='#populateSlug-class'>
-        .<strong>populateSlug</strong>(file, )
+        .<strong>populateSlug</strong>(slug, filename, )
       </a>
     </span>
     <span class='desc'>
@@ -248,8 +248,8 @@
     <p class='signature' id='detectExtras-class'>
       .<strong>detectExtras</strong>(done)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L349'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L357'>Source</a>
     </p>
     <div class='docstring'>
   Public: Find extra project files in the repository. 
@@ -261,8 +261,8 @@
     <p class='signature' id='detectName-class'>
       .<strong>detectName</strong>(done)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L367'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L375'>Source</a>
     </p>
     <div class='docstring'>
    Public: Find the project name by either parsing `package.json`,
@@ -286,8 +286,8 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
     <p class='signature' id='detectOrigin-class'>
       .<strong>detectOrigin</strong>(done)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L387'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L395'>Source</a>
     </p>
     <div class='docstring'>
    Public: Find the project's Git remote.origin URL.
@@ -310,8 +310,8 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
     <p class='signature' id='detectReadme-class'>
       .<strong>detectReadme</strong>(done)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L338'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L346'>Source</a>
     </p>
     <div class='docstring'>
   Public: Find the project's README. 
@@ -323,8 +323,8 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
     <p class='signature' id='detectSources-class'>
       .<strong>detectSources</strong>(done)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L332'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L340'>Source</a>
     </p>
     <div class='docstring'>
   Public: Find the source directories. 
@@ -336,8 +336,8 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
     <p class='signature' id='detectTag-class'>
       .<strong>detectTag</strong>(done)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L378'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L386'>Source</a>
     </p>
     <div class='docstring'>
    Public: Find the project's latest Git tag.
@@ -357,11 +357,11 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='generateMetadata-class'>
-      .<strong>generateMetadata</strong>(package_json_path, parser, options)
+    <p class='signature' id='generateMetadataSlug-class'>
+      .<strong>generateMetadataSlug</strong>(packageJsonPath, parser, options)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L263'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L268'>Source</a>
     </p>
     <div class='docstring'>
   Public: Builds and writes to metadata.json 
@@ -371,10 +371,10 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
   </div>
   <div class='method_details'>
     <p class='signature' id='populateSlug-class'>
-      .<strong>populateSlug</strong>(file, )
+      .<strong>populateSlug</strong>(slug, filename, )
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L280'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L286'>Source</a>
     </p>
     <div class='docstring'>
   Public: Parse and collect metadata slugs 
@@ -386,7 +386,7 @@ done - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Referenc
     <p class='signature' id='run-class'>
       .<strong>run</strong>(done, file_generator_cb, analytics = false, homepage = false)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;biscotto.coffee#L51'>Source</a>
     </p>
     <div class='docstring'>
@@ -405,18 +405,18 @@ homepage - The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Refe
 
 Examples
 
- biscotto = require 'biscotto'
+   biscotto = require 'biscotto'
 
- file_generator_cb = (filename, content) ->
-   console.log "New file %s with content %s", filename, content
+   file_generator_cb = (filename, content) ->
+     console.log "New file %s with content %s", filename, content
 
- done = (err) ->
-   if err
-     console.log "Cannot generate documentation:", err
-   else
-     console.log "Documentation generated"
+   done = (err) ->
+     if err
+       console.log "Cannot generate documentation:", err
+     else
+       console.log "Documentation generated"
 
- biscotto.run done, file_generator_cb
+   biscotto.run done, file_generator_cb
 
  
   <div class='examples'>
@@ -482,8 +482,8 @@ Examples
     <p class='signature' id='script-class'>
       String .<strong>script</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L322'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L330'>Source</a>
     </p>
     <div class='docstring'>
    Public: Get the Biscotto script content that is used in the webinterface
@@ -506,8 +506,8 @@ Returns the script contents as a <a href='https://developer.mozilla.org/en-US/do
     <p class='signature' id='style-class'>
       String .<strong>style</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
-/src&#47;biscotto.coffee#L328'>Source</a>
+&#47;blob&#47;v2.1.4
+/src&#47;biscotto.coffee#L336'>Source</a>
     </p>
     <div class='docstring'>
    Public: Get the Biscotto style content that is used in the webinterface
@@ -530,7 +530,7 @@ Returns the style content as a <a href='https://developer.mozilla.org/en-US/docs
     <p class='signature' id='version-class'>
       String .<strong>version</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;biscotto.coffee#L19'>Source</a>
     </p>
     <div class='docstring'>
@@ -554,10 +554,10 @@ Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference
     </div>
     <div id='footer'>
   Generated on
-  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
+  Thu Aug 07 2014 09:51:20 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v2.2.1
+  v2.2.2
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts

@@ -267,7 +267,7 @@ the comments for known tags.
     <p class='signature' id='constructor-instance'>
       ::<strong>constructor</strong>(node, options)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L16'>Source</a>
     </p>
     <div class='docstring'>
@@ -301,7 +301,7 @@ options - The parser options (a <a href='https://developer.mozilla.org/en-US/doc
     <p class='signature' id='hasComment-instance'>
       Boolean ::<strong>hasComment</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L29'>Source</a>
     </p>
     <div class='docstring'>
@@ -325,7 +325,7 @@ Returns the comment status (a <a href='https://developer.mozilla.org/en-US/docs/
     <p class='signature' id='isInternal-instance'>
       Boolean ::<strong>isInternal</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L41'>Source</a>
     </p>
     <div class='docstring'>
@@ -349,7 +349,7 @@ Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference
     <p class='signature' id='isPrivate-instance'>
       Boolean ::<strong>isPrivate</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L47'>Source</a>
     </p>
     <div class='docstring'>
@@ -373,7 +373,7 @@ Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference
     <p class='signature' id='isPublic-instance'>
       Boolean ::<strong>isPublic</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L35'>Source</a>
     </p>
     <div class='docstring'>
@@ -397,7 +397,7 @@ Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference
     <p class='signature' id='leftTrimBlock-instance'>
       ::<strong>leftTrimBlock</strong>(lines)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L63'>Source</a>
     </p>
     <div class='docstring'>
@@ -408,8 +408,8 @@ lines - The comment lines [<a href='https://developer.mozilla.org/en-US/docs/Jav
 
 Examples
 
-leftTrimBlock(['', '  Escape at maximum speed.', '', '  @param (see #move)', '  '])
-=> ['', 'Escape at maximum speed.', '', '@param (see #move)', '']
+  leftTrimBlock(['', '  Escape at maximum speed.', '', '  @param (see #move)', '  '])
+  => ['', 'Escape at maximum speed.', '', '@param (see #move)', '']
 
 This will keep indention for examples intact.
 
@@ -419,8 +419,8 @@ Returns the left trimmed lines as an <a href='https://developer.mozilla.org/en-U
     <h4>
       
     </h4>
-    <pre><code class='coffee'>
-</code></pre>
+    <pre><code class='coffee'>leftTrimBlock([&#39;&#39;, &#39;  Escape at maximum speed.&#39;, &#39;&#39;, &#39;  @param (see #move)&#39;, &#39;  &#39;])
+=&gt; [&#39;&#39;, &#39;Escape at maximum speed.&#39;, &#39;&#39;, &#39;@param (see #move)&#39;, &#39;&#39;]</code></pre>
     <h4>
       
     </h4>
@@ -447,7 +447,7 @@ Returns the left trimmed lines as an <a href='https://developer.mozilla.org/en-U
     <p class='signature' id='parseBlock-instance'>
       ::<strong>parseBlock</strong>(lines)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L84'>Source</a>
     </p>
     <div class='docstring'>
@@ -461,7 +461,7 @@ to the result object.
     <p class='signature' id='parse_arguments-instance'>
       ::<strong>parse_arguments</strong>(section)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L204'>Source</a>
     </p>
     <div class='docstring'>
@@ -495,7 +495,7 @@ Returns nothing.
     <p class='signature' id='parse_description-instance'>
       ::<strong>parse_description</strong>(section)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L130'>Source</a>
     </p>
     <div class='docstring'>
@@ -528,7 +528,7 @@ Returns nothing.
     <p class='signature' id='parse_examples-instance'>
       ::<strong>parse_examples</strong>(section, sections)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L151'>Source</a>
     </p>
     <div class='docstring'>
@@ -567,7 +567,7 @@ Returns nothing.
     <p class='signature' id='parse_returns-instance'>
       ::<strong>parse_returns</strong>(section)
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L168'>Source</a>
     </p>
     <div class='docstring'>
@@ -600,7 +600,7 @@ Returns nothing.
     <p class='signature' id='toJSON-instance'>
       Object ::<strong>toJSON</strong>()
       <a class='gh-link' href='https:&#47;&#47;github.com&#47;atom&#47;biscotto
-&#47;blob&#47;v2.2.1
+&#47;blob&#47;v2.1.4
 /src&#47;nodes&#47;doc.coffee#L267'>Source</a>
     </p>
     <div class='docstring'>
@@ -624,10 +624,10 @@ Returns the JSON object (a <a href='https://developer.mozilla.org/en-US/docs/Jav
     </div>
     <div id='footer'>
   Generated on
-  Thu Jul 31 2014 13:35:23 GMT-0700 (PDT)
+  Thu Aug 07 2014 09:51:20 GMT-0700 (PDT)
   by
   <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
-  v2.2.1
+  v2.2.2
   (Node.js v0.10.3).
   &#10034;
   Press Ctrl-h to see the keyboard shortcuts
