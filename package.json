@@ -10,7 +10,10 @@
   "author": "Garen J. Torikian <gjtorikian@gmail.com>",
   "maintainers": [
     {
-      "name": "Garen J. Torikian"
+      "name": "Garen J. Torikian",
+      "name": "Kevin Sawicki",
+      "name": "Nathan Sobo",
+      "name": "Ben Ogle"
     }
   ],
   "version": "2.2.3",

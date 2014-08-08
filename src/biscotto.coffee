@@ -238,7 +238,7 @@ module.exports = class Biscotto
                     relativePath = path.normalize(filename.replace(process.cwd(), ".#{path.sep}")) if filename.indexOf(process.cwd()) == 0
                     shortPath = relativePath.replace(path.resolve(process.cwd(), input) + path.sep, '')
                     # don't parse Gruntfile.coffee, specs, or anything not in a src dir
-                    parser.parseFile relativePath if _.some(SRC_DIRS, (dir) -> ///^#{dir}///.test(shortPath))
+                    parser.parseFile relativePath if _.some(options.inputs, (dir) -> ///^#{dir}///.test(shortPath))
                   catch error
                     throw error if options.debug
                     console.log "Cannot parse file #{ filename }@#{error.location.first_line}: #{ error.message }"
