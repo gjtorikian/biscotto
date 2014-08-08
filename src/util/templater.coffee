@@ -1,10 +1,11 @@
-fs      = require 'fs'
-path    = require 'path'
-mkdirp  = require 'mkdirp'
-_       = require 'underscore'
-_.str   = require 'underscore.string'
-walkdir = require 'walkdir'
-hamlc   = require 'haml-coffee'
+fs       = require 'fs'
+path     = require 'path'
+mkdirp   = require 'mkdirp'
+_        = require 'underscore'
+_.str    = require 'underscore.string'
+walkdir  = require 'walkdir'
+hamlc    = require 'haml-coffee'
+strftime = require 'strftime'
 
 # Public: Haml Coffee template compiler.
 #
@@ -21,7 +22,7 @@ module.exports = class Templater
 
     @globalContext =
       biscottoVersion: 'v' + JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'package.json'), 'utf-8'))['version']
-      generationDate: new Date().toString()
+      generationDate: strftime('%B %d, %Y')
       JST: @JST
       underscore: _
       str: _.str
