@@ -336,6 +336,9 @@ module.exports = class Parser
 
     console.log stats
 
+    if @options.failIfMissing and (noDocClassNames.length > 0 or noDocMethodNames.length > 0)
+      throw new Error("#{noDocClassNames.length} classes and #{noDocMethodNames.length} methods are missing docs")
+
     if @options.json && @options.json.length
       fs.writeFileSync @options.json, JSON.stringify(@toJSON(), null, "    ");
 
