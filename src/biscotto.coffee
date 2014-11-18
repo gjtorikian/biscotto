@@ -199,7 +199,8 @@ module.exports = class Biscotto
             private: argv.private
             internal: argv.internal
             noOutput: argv.noOutput
-            missing: argv.missing
+            missing: argv.missing || argv.failOnMissing
+            failOnMissing: argv.failOnMissing
             verbose: argv.v
             debug: argv.d
             cautious: argv.cautious
