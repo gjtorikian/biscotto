@@ -1,6 +1,6 @@
 # Biscotto
 
-[![Build Status](https://travis-ci.org/atom/biscotto.svg?branch=master)](https://travis-ci.org/atom/biscotto)
+[![Build Status](https://travis-ci.org/gjtorikian/biscotto.svg?branch=master)](https://travis-ci.org/gjtorikian/biscotto)
 
 Biscotto is a tool for generating [CoffeeScript](http://coffeescript.org/) documentation. The underlying architecture was based on [codo](https://github.com/coffeedoc/codo); however, this project uses a variant of the excellent [TomDoc](http://tomdoc.org/) notation, instead of the more verbose JSDoc. It also has many more niceties.
 
