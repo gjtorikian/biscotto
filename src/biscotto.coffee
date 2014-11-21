@@ -152,6 +152,10 @@ module.exports = class Biscotto
             boolean   : true
             describe  : 'Lists which elements are missing documentation'
           )
+          .options('failOnMissing',
+            boolean   : true
+            describe  : 'Return a failure error code if elements are missing documentation'
+          )
           .options('private',
             boolean   : true
             default   : biscottoopts.private || false
@@ -195,7 +199,8 @@ module.exports = class Biscotto
             private: argv.private
             internal: argv.internal
             noOutput: argv.noOutput
-            missing: argv.missing
+            missing: argv.missing || argv.failOnMissing
+            failOnMissing: argv.failOnMissing
             verbose: argv.v
             debug: argv.d
             cautious: argv.cautious
