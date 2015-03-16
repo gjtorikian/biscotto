@@ -47,7 +47,7 @@
         Open fuzzy finder dialog
 
     %p
-      In frame mode you can toggle the list naviation frame on the left side:
+      In frame mode you can toggle the list navigation frame on the left side:
     %ul
       %li
         %span Ctrl-L
