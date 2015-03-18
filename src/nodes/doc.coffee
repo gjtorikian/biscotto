@@ -19,7 +19,7 @@ module.exports = class Doc extends Node
     try
       if @node
         trimmedComment = @leftTrimBlock(@node.comment.replace(/\u0091/gm, '').split('\n'))
-        @comment = trimmedComment.join("\n")
+        @comment = Markdown.convert(trimmedComment.join("\n"))
         @parseBlock trimmedComment
 
     catch error
