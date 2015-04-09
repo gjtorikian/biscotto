@@ -29,7 +29,7 @@
           %strong Note:
           != note
 
-    != @doc.comment
+    != @doc.summary
 
     - if @doc?.examples
       .examples
